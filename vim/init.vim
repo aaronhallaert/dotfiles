@@ -2,6 +2,19 @@
 " vim settings for @aaronhallaert
 "
 
+" Plugins
+call plug#begin()
+	Plug 'plasticboy/vim-markdown'
+call plug#end()
+
+" Don't actually know what these do, set for markdown plugin
+	syntax on
+	filetype off
+	filetype plugin indent on
+	set wrap
+
+	let g:vim_markdown_folding_disabled = 0
+
 " Sets numbers relative to current line number
 	set relativenumber
 
