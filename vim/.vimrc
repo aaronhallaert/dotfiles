@@ -5,8 +5,10 @@ syntax on
 
 " Sets numbers relative to current line number
 set relativenumber
+set nohlsearch
 
 set noerrorbells
+set incsearch
 
 " tabs related
 set tabstop=4 softtabstop=4
@@ -26,17 +28,6 @@ set undofile
 set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
-
-" Set split default positioning
-set splitbelow splitright
-
-" Set window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-
 call plug#begin('~/.vim/plugged')
 
 " color scheme
@@ -49,15 +40,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 " great for cpp
 Plug 'lyuts/vim-rtags'
-" File finding
-Plug 'ctrlpvim/ctrlp.vim'
+" Search for files
+Plug 'junegunn/fzf', {'do':{ -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Autocomplete
-Plug 'git@github.com:Valloric/YouCompleteMe.git'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " undo tree
 Plug 'mbbill/undotree'
 
 call plug#end()
 
+" fzf optimizations
+let g:fzf_layout={'window':{'width':0.8, 'height':0.8}}
+let $FZF_DEFAULT_OPTS='--reverse'
 
 
 colorscheme gruvbox
@@ -67,11 +62,33 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let mapleader=" "
 
 let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
 
-let g:ctrlp_use_caching=0
+
+
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <Leader>ps :Rg<SPACE>
+
+" go help word
+nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+" project word
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+
+" search for file keybind
+nnoremap <C-p> :GFiles<CR>
+
+
+
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
