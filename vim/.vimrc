@@ -1,14 +1,13 @@
 "
 " vim settings for @aaronhallaert
 "
-
 syntax on
 
 " Sets numbers relative to current line number
 set relativenumber
 
 " Set split default positioning
-	set splitbelow splitright
+set splitbelow splitright
 
 " Set window navigation
 map <C-h> <C-w>h
