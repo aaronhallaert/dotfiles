@@ -38,6 +38,7 @@ Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 " diffs or logs
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 " man pages
 Plug 'vim-utils/vim-man'
 " great for cpp
@@ -56,9 +57,11 @@ Plug 'lervag/vimtex'
 call plug#end()
    
 " latex
-let g:vimtex_view_general_viewer='SumatraPDF'
-let g:vimtex_view_general_options='-reuse-instance @pdf'
-let g:vimtex_view_general_options_latexmk='-reuse-instance'
+if executable('SumatraPDF')
+    let g:vimtex_view_general_viewer='SumatraPDF'
+    let g:vimtex_view_general_options='-reuse-instance @pdf'
+    let g:vimtex_view_general_options_latexmk='-reuse-instance'
+endif
 let g:tex_flavor= 'latex'
 
 " fzf optimizations
@@ -260,4 +263,16 @@ nnoremap <silent><nowait> <space>p :<C-u>CocListResume<CR>
 """"""""""""""""""""
 """"""""""""""""""""
 
+" cursor settings
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[5 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
 
