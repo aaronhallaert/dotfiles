@@ -58,6 +58,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mbbill/undotree'
 " latex preview
 Plug 'lervag/vimtex'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,6 +142,15 @@ nnoremap <leader>l :wincmd l<CR>
 " Resize
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General keyboard shortcuts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Git fugitive
+nnoremap <leader>gj :diffget //3<CR>
+nnoremap <leader>gf :diffget //2<CR>
+nnoremap <leader>gs :G<CR>
 
 " Show undo tree
 nnoremap <leader>u :UndotreeShow<CR>
