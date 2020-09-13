@@ -140,10 +140,10 @@ let g:tex_flavor= 'latex'
 
 " OmniSharp
 let g:OmniSharp_server_stdio = 1
-nnoremap <C-o><C-u> :OmniSharpFindUsages<CR>
-nnoremap <C-o><C-d> :OmniSharpGotoDefinition<CR>
-nnoremap <C-o><C-d><C-p> :OmniSharpPreviewDefinition<CR>
-nnoremap <C-o><C-r> :!dotnet run<CR>
+nnoremap <leader>ofu :OmniSharpFindUsages<CR>
+nnoremap <leader>ogd :OmniSharpGotoDefinition<CR>
+nnoremap <leader>opd :OmniSharpPreviewDefinition<CR>
+nnoremap <leader>odr :!dotnet run<CR>
 
 
 
