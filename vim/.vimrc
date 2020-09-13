@@ -5,6 +5,7 @@ syntax on
 
 let mapleader=" "
 let maplocalleader="\\"
+
 " Sets numbers relative to current line number
 set relativenumber
 set nohlsearch
@@ -12,7 +13,7 @@ set nohlsearch
 set noerrorbells
 set incsearch
 
-" tabs related
+" Tabs related
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -29,6 +30,8 @@ set undofile
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Plugins
@@ -58,8 +61,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mbbill/undotree'
 " latex preview
 Plug 'lervag/vimtex'
-
 call plug#end()
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM UI
@@ -82,10 +86,11 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " FZF
 let g:fzf_layout={'window':{'width':0.8, 'height':0.8}}
@@ -101,6 +106,8 @@ let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quick edits 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -109,6 +116,7 @@ let g:netrw_winsize=25
 inoremap ( ()<Esc>i
 " quick end of line semicolon when in normal mode
 nnoremap <leader>; A;<Esc><CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -130,6 +138,8 @@ nnoremap <C-o><C-d> :OmniSharpGotoDefinition<CR>
 nnoremap <C-o><C-d><C-p> :OmniSharpPreviewDefinition<CR>
 nnoremap <C-o><C-r> :!dotnet run<CR>
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Window management
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,6 +152,8 @@ nnoremap <leader>l :wincmd l<CR>
 " Resize
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General keyboard shortcuts
@@ -167,6 +179,7 @@ nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 " Search for file 
 nnoremap <C-p> :GFiles<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,6 +220,3 @@ inoremap <silent><expr> <TAB>
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-
-
