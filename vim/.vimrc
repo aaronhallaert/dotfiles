@@ -32,6 +32,7 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
 
+set foldmethod=syntax
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Plugins
@@ -59,6 +60,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " undo tree
 Plug 'mbbill/undotree'
+" Folding
+Plug 'pseewald/vim-anyfold'
 " latex preview
 Plug 'lervag/vimtex'
 call plug#end()
@@ -91,6 +94,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" anyfold
+filetype plugin indent on
+autocmd Filetype * AnyFoldActivate
+set foldlevel=99
 
 " FZF
 let g:fzf_layout={'window':{'width':0.8, 'height':0.8}}
