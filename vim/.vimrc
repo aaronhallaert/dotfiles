@@ -1,5 +1,5 @@
 "
-" vim settings for @aaronhallaert
+" Vim settings for @aaronhallaert
 "
 syntax on
 
@@ -30,10 +30,14 @@ set undofile
 set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
-call plug#begin('~/.vim/plugged')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'dense-analysis/ale'
+call plug#begin('~/.vim/plugged')
+" Autocompletion
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'dense-analysis/ale'
 " color scheme
 Plug 'morhetz/gruvbox'
 " fast grep
@@ -52,11 +56,64 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " undo tree
 Plug 'mbbill/undotree'
-
 " latex preview
 Plug 'lervag/vimtex'
 call plug#end()
-   
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM UI
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Color Scheme
+colorscheme gruvbox
+set background=dark
+
+" Cursor settings
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[5 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" FZF
+let g:fzf_layout={'window':{'width':0.8, 'height':0.8}}
+let $FZF_DEFAULT_OPTS='--reverse'
+
+" Ripgrep
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
+" not sure
+let g:netrw_browse_split=2
+let g:netrw_banner=0
+let g:netrw_winsize=25
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quick edits 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" autocomplete parenthesis
+inoremap ( ()<Esc>i
+" quick end of line semicolon when in normal mode
+nnoremap <leader>; A;<Esc><CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Language specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " latex
 if executable('SumatraPDF')
     let g:vimtex_view_general_viewer='SumatraPDF'
@@ -65,58 +122,46 @@ if executable('SumatraPDF')
 endif
 let g:tex_flavor= 'latex'
 
-" fzf optimizations
-let g:fzf_layout={'window':{'width':0.8, 'height':0.8}}
-let $FZF_DEFAULT_OPTS='--reverse'
-
-colorscheme gruvbox
-set background=dark
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
-
-let g:netrw_browse_split=2
-let g:netrw_banner=0
-let g:netrw_winsize=25
-
+" OmniSharp
+let g:OmniSharp_server_stdio = 1
 nnoremap <C-o><C-u> :OmniSharpFindUsages<CR>
 nnoremap <C-o><C-d> :OmniSharpGotoDefinition<CR>
 nnoremap <C-o><C-d><C-p> :OmniSharpPreviewDefinition<CR>
 nnoremap <C-o><C-r> :!dotnet run<CR>
 
-" autocomplete parenthesis
-inoremap ( ()<Esc>i
-" quick end of line semicolon when in normal mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Window management
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Movement
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <Leader>ps :Rg<SPACE>
-
-nnoremap <leader>; A;<Esc><CR>
-
-" go help word
-nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-" project word
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-
-" search for file keybind
-nnoremap <C-p> :GFiles<CR>
-
-
+" Resize
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
-""""""""""""""""""""
-" coc autocomplete "
-""""""""""""""""""""
-""""""""""""""""""""
+" Show undo tree
+nnoremap <leader>u :UndotreeShow<CR>
+" Show file tree
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <Leader>ps :Rg<SPACE>
+
+
+" Go help word under cursor
+nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
+" Search word under cursor with coc
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+" Search for word under cursor
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+" Search for file 
+nnoremap <C-p> :GFiles<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Coc Autocomplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " TextEdit fail if hidden is not set.
 set hidden
@@ -153,19 +198,5 @@ inoremap <silent><expr> <TAB>
     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-""""""""""""""""""""
-""""""""""""""""""""
 
-" cursor settings
-if &term =~ '^xterm'
-  " solid underscore
-  let &t_SI .= "\<Esc>[5 q"
-  " solid block
-  let &t_EI .= "\<Esc>[2 q"
-  " 1 or 0 -> blinking block
-  " 3 -> blinking underscore
-  " Recent versions of xterm (282 or above) also support
-  " 5 -> blinking vertical bar
-  " 6 -> solid vertical bar
-endif
 
