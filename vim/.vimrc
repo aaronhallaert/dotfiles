@@ -1,6 +1,9 @@
 "
 " Vim settings for @aaronhallaert
 "
+" Language support
+"  - C#
+"
 syntax on
 
 let mapleader=" "
