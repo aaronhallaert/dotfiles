@@ -126,6 +126,8 @@ let g:netrw_winsize=25
 inoremap ( ()<Esc>i
 " quick end of line semicolon when in normal mode
 nnoremap <leader>; A;<Esc><CR>
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
 
 
 
