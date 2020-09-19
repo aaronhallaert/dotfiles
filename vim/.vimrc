@@ -17,7 +17,8 @@ set noerrorbells
 set incsearch
 
 " Tabs related
-set tabstop=4 softtabstop=4
+set tabstop=4 
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 
@@ -42,25 +43,33 @@ set foldmethod=syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
-" Autocompletion
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'dense-analysis/ale'
 " color scheme
 Plug 'morhetz/gruvbox'
+" bar at bottom of buffer
+Plug 'vim-airline/vim-airline'
+
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Install with coc-snippets
+Plug 'honza/vim-snippets'
+" Autocompletion
+Plug 'OmniSharp/omnisharp-vim'
+" Linter
+Plug 'dense-analysis/ale'
+
 " fast grep
 Plug 'jremmen/vim-ripgrep'
+" Search for files
+Plug 'junegunn/fzf', {'do':{ -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " diffs or logs
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 " man pages
 Plug 'vim-utils/vim-man'
 " great for cpp
 Plug 'lyuts/vim-rtags'
-" Search for files
-Plug 'junegunn/fzf', {'do':{ -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " undo tree
 Plug 'mbbill/undotree'
 " Folding
@@ -257,10 +266,11 @@ endfunction
 
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
+let g:coc_snippet_next = '<tab>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " markdown previes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
