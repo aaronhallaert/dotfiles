@@ -56,6 +56,8 @@ Plug 'honza/vim-snippets'
 Plug 'OmniSharp/omnisharp-vim'
 " Linter
 Plug 'dense-analysis/ale'
+" highlight on f-F-t-T
+Plug 'unblevable/quick-scope'
 
 " fast grep
 Plug 'jremmen/vim-ripgrep'
@@ -87,6 +89,12 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set color for quickscope: Before! setting colorscheme
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+augroup END
 
 " Color Scheme
 colorscheme gruvbox
@@ -130,6 +138,14 @@ let g:netrw_banner=0
 let g:netrw_winsize=25
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quickscope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Trigger a highlight only when pressing f and F.
+let g:qs_highlight_on_keys = ['f', 'F']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quick edits 
