@@ -35,7 +35,6 @@ set undofile
 set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
-
 set foldmethod=syntax
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,6 +153,11 @@ let g:netrw_winsize=25
 " autocomplete parenthesis
 inoremap ( ()<Esc>i
 inoremap { {}<Esc>i
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leader keys
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " quick end of line semicolon when in normal mode
 nnoremap <leader>; A;<Esc><CR>
 nnoremap <leader>y "*y
@@ -162,6 +166,49 @@ vnoremap <leader>y "*y
 vnoremap <leader>p "*p
 nnoremap <leader>w :update<cr>
 
+" OmniSharp (for C# development)
+nnoremap <leader>ofu :OmniSharpFindUsages<CR>
+nnoremap <leader>ogd :OmniSharpGotoDefinition<CR>
+nnoremap <leader>opd :OmniSharpPreviewDefinition<CR>
+nnoremap <leader>odr :!dotnet run<CR>
+
+" Coc Related
+nmap <silent> <leader>cgd <Plug>(coc-definition)
+nmap <silent> <leader>cfr <Plug>(coc-references)
+nmap <silent> <leader>cff <Plug>(coc-format)
+" Show file tree
+nmap <leader>pv :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+" Git fugitive
+nnoremap <leader>gj :diffget //3<CR>
+nnoremap <leader>gf :diffget //2<CR>
+nnoremap <leader>gs :G<CR>
+
+" Show undo tree
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <Leader>ps :Rg<SPACE>
+
+" Search for word under cursor
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+
+" Movement
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+" Resize
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+" Vimspector Debug
+nmap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dx :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+nmap <leader>do :VimspectorShowOutput
+autocmd FileType java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Language specific
@@ -179,54 +226,10 @@ let g:tex_flavor= 'latex'
 let g:OmniSharp_server_stdio = 1
 
 
-nnoremap <leader>ofu :OmniSharpFindUsages<CR>
-nnoremap <leader>ogd :OmniSharpGotoDefinition<CR>
-nnoremap <leader>opd :OmniSharpPreviewDefinition<CR>
-nnoremap <leader>odr :!dotnet run<CR>
-
-nmap <silent> <leader>cgd <Plug>(coc-definition)
-nmap <silent> <leader>cfr <Plug>(coc-references)
-nmap <silent> <leader>cff <Plug>(coc-format)
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Window management
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Movement
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-" Resize
-nnoremap <silent> <Leader>+ :vertical resize +5<CR>
-nnoremap <silent> <Leader>- :vertical resize -5<CR>
-
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General keyboard shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Git fugitive
-nnoremap <leader>gj :diffget //3<CR>
-nnoremap <leader>gf :diffget //2<CR>
-nnoremap <leader>gs :G<CR>
-
-" Show undo tree
-nnoremap <leader>u :UndotreeShow<CR>
-" Show file tree
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <Leader>ps :Rg<SPACE>
-
-
-" Go help word under cursor
-nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
-" Search word under cursor with coc
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-" Search for word under cursor
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 " Search for file 
 nnoremap <C-p> :GFiles<CR>
 
@@ -235,12 +238,6 @@ nnoremap <C-p> :GFiles<CR>
 " Vimspector
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimspector_enable_mappings = 'HUMAN'
-nmap <leader>dd :call vimspector#Launch()<CR>
-nmap <leader>dx :VimspectorReset<CR>
-nmap <leader>de :VimspectorEval
-nmap <leader>dw :VimspectorWatch
-nmap <leader>do :VimspectorShowOutput
-autocmd FileType java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Coc Autocomplete
