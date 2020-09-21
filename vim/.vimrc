@@ -1,4 +1,4 @@
-"
+""
 " Vim settings for @aaronhallaert
 "
 " Language support
@@ -125,7 +125,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/dotfiles/PluginConfig/coc-config.vim
+source ~/dotfiles/vim/PluginConfig/coc-config.vim
 
 " anyfold
 filetype plugin indent on

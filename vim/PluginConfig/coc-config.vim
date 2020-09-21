@@ -7,7 +7,6 @@ nmap <silent> <leader>cff <Plug>(coc-format)
 nmap <leader>pv :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Default settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
