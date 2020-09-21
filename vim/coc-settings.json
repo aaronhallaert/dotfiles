@@ -2,7 +2,12 @@
   "diagnostic.checkCurrentLine": true,
   
 
-// explorer
+  // python
+  "python.linting.pylintEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+
+  // explorer
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
