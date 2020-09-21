@@ -56,3 +56,7 @@ nnoremap <leader>l :wincmd l<CR>
 " Resize
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+" Go out of insert mode
+imap jk <Esc>
+imap kj <Esc>
