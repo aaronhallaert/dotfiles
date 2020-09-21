@@ -1,0 +1,58 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Default vim settings with shortcuts related to ui
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+syntax on
+
+let mapleader=" "
+let maplocalleader="\\"
+
+" Sets numbers relative to current line number
+set relativenumber
+set nohlsearch
+set noerrorbells
+set incsearch
+
+" Tabs related
+set tabstop=4 
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+set smartindent
+set nu
+set nowrap
+set smartcase
+set noswapfile
+
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=grey guibg=black
+
+set foldmethod=syntax
+
+" Cursor settings
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[5 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
+
+" Movement
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+" Resize
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
