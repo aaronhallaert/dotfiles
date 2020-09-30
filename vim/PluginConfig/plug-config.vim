@@ -26,7 +26,7 @@ Plug 'pseewald/vim-anyfold'
 " ~/dotfiles/vim/PluginConfig/vimtex-config.vim
 Plug 'lervag/vimtex'
 " ~/dotfiles/vim/PluginConfig/markdownprev-config.vim
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " ~/dotfiles/vim/PluginConfig/vimspector-config.vim
 Plug 'puremourning/vimspector'
 
