@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Mount Onedrive
+Comment=This mounts my onedrive folder
+Exec=sh -c "rclone --vfs-cache-mode writes mount onedrive: ~/onedrive"
+Terminal=false
+Type=Application
