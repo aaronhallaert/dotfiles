@@ -24,3 +24,5 @@
     - Command: sh -c "rclone --vfs-cache-mode writes mount onedrive: ~/onedrive"
     - Description: This mounts my onedrive folder
 
+- Refresh on demand
+    - `killall -SIGHUP rclone`
