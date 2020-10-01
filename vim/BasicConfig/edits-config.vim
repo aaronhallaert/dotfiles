@@ -12,10 +12,10 @@ inoremap ' ''<Esc>i
 nnoremap <leader>; A;<Esc><CR>
 
 " yank to clipboard
-nnoremap <leader>y "*y
-nnoremap <leader>p "*p
-vnoremap <leader>y "*y
-vnoremap <leader>p "*p
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
 
 " update with leader key
 nnoremap <leader>w :update<cr>
