@@ -53,3 +53,5 @@ inoremap <silent><expr> <TAB>
     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 let g:coc_snippet_next = '<tab>'
+
+autocmd BufNewFile,BufRead *.ipynb let b:coc_suggest_disable = 1

@@ -21,3 +21,4 @@ source ~/dotfiles/vim/PluginConfig/markdownprev-config.vim
 source ~/dotfiles/vim/PluginConfig/undotree-config.vim
 source ~/dotfiles/vim/PluginConfig/vimspector-config.vim
 source ~/dotfiles/vim/PluginConfig/vimtex-config.vim
+source ~/dotfiles/vim/PluginConfig/vimpyter-config.vim

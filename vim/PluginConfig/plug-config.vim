@@ -6,6 +6,8 @@ call plug#begin('~/.vim/plugged')
 
 " ~/dotfiles/vim/BasicConfig/ui-config.vim
 Plug 'morhetz/gruvbox'
+" Icons
+Plug 'ryanoasis/vim-devicons'
 " ~/dotfiles/vim/PluginConfig/coc-config.vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ~/dotfiles/vim/PluginConfig/omnisharp-config.vim
@@ -30,6 +32,12 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " ~/dotfiles/vim/PluginConfig/vimspector-config.vim
 Plug 'puremourning/vimspector'
 
+" Jupyter notebooks
+" ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
+Plug 'szymonmaszke/vimpyter' 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' , 'for': 'ipynb'}
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'ipynb'}
+let g:deoplete#enable_at_startup = 1
 
 " Vim bar
 Plug 'vim-airline/vim-airline'
