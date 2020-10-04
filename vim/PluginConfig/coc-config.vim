@@ -55,3 +55,6 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 let g:coc_snippet_next = '<tab>'
 
 autocmd BufNewFile,BufRead *.ipynb let b:coc_suggest_disable = 1
+nmap <leader>cda :call coc#config('suggest.autoTrigger', v:false)<CR>
+nmap <leader>cea :call coc#config('suggest.autoTrigger', v:true)<CR>
+
