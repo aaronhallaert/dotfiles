@@ -34,10 +34,11 @@ Plug 'puremourning/vimspector'
 
 " Jupyter notebooks
 " ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
-Plug 'szymonmaszke/vimpyter' 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' , 'for': 'ipynb'}
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'ipynb'}
-let g:deoplete#enable_at_startup = 1
+" Plug 'szymonmaszke/vimpyter' 
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' , 'for': 'ipynb'}
+" Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'ipynb'}
+" let g:deoplete#enable_at_startup = 1
+
 
 " Vim bar
 Plug 'vim-airline/vim-airline'
