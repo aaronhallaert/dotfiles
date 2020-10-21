@@ -8,6 +8,9 @@ inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 
+nnoremap <leader>i /#%%<CR> zt
+nnoremap <leader>o ?#%%<CR> zt
+
 " quick end of line semicolon when in normal mode
 nnoremap <leader>; A;<Esc><CR>
 
