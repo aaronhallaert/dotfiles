@@ -6,6 +6,7 @@
 nmap <silent> <leader>cgd <Plug>(coc-definition)
 nmap <silent> <leader>cfr <Plug>(coc-references)
 nmap <silent> <leader>cff <Plug>(coc-format)
+nmap <silent> <leader>crn <Plug>(coc-rename)
 
 " Coc-Explorer
 nmap <leader>pv :CocCommand explorer<CR>
