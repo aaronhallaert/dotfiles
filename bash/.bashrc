@@ -132,13 +132,17 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="/home/aaron/dotfiles/scripts:$PATH"
+export PATH="/home/aaron/.local/bin:$PATH"
 # aliases
 alias ad='cd ~/onedrive/Burgie2/Semester_1/Geavanceerde\ Databanken'
 alias ml='cd ~/onedrive/Burgie2/Semester_1/Machine\ Learning'
 alias ai='cd ~/onedrive/Burgie2/Semester_1/Artificial\ Intelligence'
 
+alias repos='cd /media/aaron/repos/'
+
 alias mlproj='cd /media/aaron/repos/School/machine-learning-competition'
 alias dbproj='cd /media/aaron/repos/School/advanced-databases-project'
+alias thesis='cd /media/aaron/repos/School/thesis_game_of_pirates'
 
 alias dot='cd ~/dotfiles'
 alias vimdot='cd ~/dotfiles/vim'

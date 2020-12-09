@@ -9,3 +9,4 @@ if executable('SumatraPDF')
     let g:vimtex_view_general_options_latexmk='-reuse-instance'
 endif
 let g:tex_flavor= 'latex'
+let g:vimtex_compiler_latexmk = {'continuous' : 1}

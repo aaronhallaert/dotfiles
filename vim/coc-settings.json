@@ -1,11 +1,13 @@
 {
   "diagnostic.checkCurrentLine": true,
-  
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
 
   // python
-  "python.linting.pylintEnabled": false,
+  "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
+  "python.enabled.provider": true,
+  "python.formatting.provider": "yapf",
 
   // explorer
   "explorer.width": 30,

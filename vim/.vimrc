@@ -4,6 +4,7 @@
 
 source ~/dotfiles/vim/BasicConfig/default-config.vim
 source ~/dotfiles/vim/BasicConfig/edits-config.vim
+source ~/dotfiles/vim/spellcheck/spell-config.vim
 
 " Specify plugins
 source ~/dotfiles/vim/PluginConfig/plug-config.vim

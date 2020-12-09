@@ -8,6 +8,13 @@ inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 
+autocmd FileType tex inoremap " ``''<Esc>hi
+autocmd FileType tex inoremap <C-b> \textbf{}<Esc>i
+autocmd FileType tex inoremap <C-a> \textit{}<Esc>i
+
+nnoremap <leader>i /#%%<CR> zt
+nnoremap <leader>b 2?#%%<CR> zt
+
 " quick end of line semicolon when in normal mode
 nnoremap <leader>; A;<Esc><CR>
 

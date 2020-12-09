@@ -31,20 +31,25 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " ~/dotfiles/vim/PluginConfig/vimspector-config.vim
 Plug 'puremourning/vimspector'
+" ~/dotfiles/vim/PluginConfig/tabularize.vim
+Plug 'godlygeek/tabular'
+
+
+" ~/dotfiles/vim/PluginConfig/nerdcommenter-config.vim
+Plug 'preservim/nerdcommenter'
 
 " Jupyter notebooks
 " ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
-Plug 'szymonmaszke/vimpyter' 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' , 'for': 'ipynb'}
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'ipynb'}
-let g:deoplete#enable_at_startup = 1
+" Plug 'szymonmaszke/vimpyter' 
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' , 'for': 'ipynb'}
+" Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'ipynb'}
+" let g:deoplete#enable_at_startup = 1
+
 
 " Vim bar
 Plug 'vim-airline/vim-airline'
 " Snippets
 Plug 'honza/vim-snippets'
-" Linter
-Plug 'dense-analysis/ale'
 " Man pages
 Plug 'vim-utils/vim-man'
 " Great for cpp
