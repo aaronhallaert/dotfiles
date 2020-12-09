@@ -31,6 +31,8 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " ~/dotfiles/vim/PluginConfig/vimspector-config.vim
 Plug 'puremourning/vimspector'
+" ~/dotfiles/vim/PluginConfig/tabularize.vim
+Plug 'godlygeek/tabular'
 
 
 " ~/dotfiles/vim/PluginConfig/nerdcommenter-config.vim

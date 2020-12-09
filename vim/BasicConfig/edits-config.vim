@@ -8,6 +8,10 @@ inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 
+autocmd FileType tex inoremap " ``''<Esc>hi
+autocmd FileType tex inoremap <C-b> \textbf{}<Esc>i
+autocmd FileType tex inoremap <C-i>  \textit{}<Esc>i
+
 nnoremap <leader>i /#%%<CR> zt
 nnoremap <leader>b 2?#%%<CR> zt
 
@@ -22,4 +26,3 @@ vnoremap <leader>p "+p
 
 " update with leader key
 nnoremap <leader>w :update<cr>
-nnoremap <leader>s :source %<cr>
