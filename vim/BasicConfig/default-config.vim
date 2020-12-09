@@ -33,6 +33,7 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
 set foldmethod=syntax
+autocmd BufEnter * silent! lcd %:p:h
 
 " Cursor settings
 if &term =~ '^xterm'
