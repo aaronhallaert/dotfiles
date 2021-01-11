@@ -25,6 +25,9 @@ set nowrap
 set smartcase
 set noswapfile
 
+set scrolloff=15
+set signcolumn=yes
+
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
@@ -61,8 +64,8 @@ nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Go out of insert mode
-imap jk <Esc>
 imap kj <Esc>
+imap jk <Esc>
 
 " Better tabbing
 vnoremap < <gv
