@@ -1,6 +1,6 @@
 {
   "diagnostic.checkCurrentLine": true,
-  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  // "coc.preferences.formatOnSaveFiletypes": ["python"],
 
   // python
   "python.linting.pylintEnabled": true,
