@@ -55,6 +55,9 @@ Plug 'vim-utils/vim-man'
 " Great for cpp
 Plug 'lyuts/vim-rtags'
 
+" save as super user
+" ~/dotfiles/vim/PluginConfig/suda-config.vim
+Plug 'lambdalisue/suda.vim'
 
 
 call plug#end()
