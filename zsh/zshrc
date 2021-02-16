@@ -133,3 +133,7 @@ unset __conda_setup
 export PATH="/home/aaron/anaconda3/bin:$PATH"
 # <<< conda initialize <<<
 
+
+# ALIASES
+alias open="xdg-open"
+
