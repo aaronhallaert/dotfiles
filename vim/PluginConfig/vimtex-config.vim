@@ -3,8 +3,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " latex
-if executable('SumatraPDF')
-    let g:vimtex_view_general_viewer='SumatraPDF'
+if executable('SumatraPDF.exe')
+    let g:vimtex_view_general_viewer='SumatraPDF.exe'
     let g:vimtex_view_general_options='-reuse-instance @pdf'
     let g:vimtex_view_general_options_latexmk='-reuse-instance'
 endif

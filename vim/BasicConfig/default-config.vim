@@ -99,3 +99,13 @@ vnoremap <leader>p "+p
 
 " update with leader key
 nnoremap <leader>w :update<cr>
+
+
+" WSL yank support
+let s:clip = 'clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
