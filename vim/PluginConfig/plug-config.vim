@@ -4,6 +4,10 @@
 
 call plug#begin('~/.vim/plugged')
 
+
+" ~/dotfiles/vim/PluginConfig/whichkey-config.vim
+Plug 'liuchengxu/vim-which-key'
+
 " ~/dotfiles/vim/BasicConfig/ui-config.vim
 Plug 'morhetz/gruvbox'
 " Icons
@@ -39,6 +43,10 @@ Plug 'godlygeek/tabular'
 
 " ~/dotfiles/vim/PluginConfig/nerdcommenter-config.vim
 Plug 'preservim/nerdcommenter'
+
+" ~/dotfiles/vim/PluginConfig/floaterm-config.vim
+Plug 'voldikss/vim-floaterm'
+
 
 " Jupyter notebooks
 " ~/dotfiles/vim/PluginConfig/vimpyter-config.vim

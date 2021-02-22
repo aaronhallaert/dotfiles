@@ -9,6 +9,7 @@ source ~/dotfiles/vim/spellcheck/spell-config.vim
 source ~/dotfiles/vim/PluginConfig/plug-config.vim
 
 " Needs to be configured before colorscheme
+source ~/dotfiles/vim/PluginConfig/whichkey-config.vim
 source ~/dotfiles/vim/PluginConfig/quickscope-config.vim
 source ~/dotfiles/vim/BasicConfig/ui-config.vim
 source ~/dotfiles/vim/PluginConfig/anyfold-config.vim
@@ -24,3 +25,4 @@ source ~/dotfiles/vim/PluginConfig/vimtex-config.vim
 source ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
 source ~/dotfiles/vim/PluginConfig/suda-config.vim
 source ~/dotfiles/vim/PluginConfig/vimmaximizer-config.vim
+source ~/dotfiles/vim/PluginConfig/floaterm-config.vim

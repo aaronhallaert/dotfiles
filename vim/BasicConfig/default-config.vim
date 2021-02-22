@@ -85,7 +85,9 @@ autocmd FileType tex inoremap " ``''<Esc>hi
 autocmd FileType tex inoremap <C-b> \textbf{}<Esc>i
 autocmd FileType tex inoremap <C-a> \textit{}<Esc>i
 
+" go to next jupyter notebook block
 nnoremap <leader>i /#%%<CR> zt
+" go to previous jupyter notebook block
 nnoremap <leader>b 2?#%%<CR> zt
 
 " quick end of line semicolon when in normal mode
