@@ -1,6 +1,30 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimspector: https://github.com/puremourning/vimspector
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimspector_code_minwidth = 90
+let g:vimspector_terminal_maxwidth = 75
+let g:vimspector_terminal_minwidth = 30
+
+"function! s:CustomiseUI()
+  "" Customise the basic UI...
+
+  "" Close the output window
+  "call win_gotoid( g:vimspector_session_windows.output )
+  "q
+"endfunction
+
+"function s:SetUpTerminal()
+  "" Customise the terminal window size/position
+  "" For some reasons terminal buffers in Neovim have line numbers
+  "call win_gotoid( g:vimspector_session_windows.term )
+  "set norelativenumber nonumber
+"endfunction
+
+"augroup MyVimspectorUICustomistaion
+  "autocmd!
+  "autocmd User VimspectorUICreated call s:CustomiseUI()
+  "autocmd User VimspectorTerminalOpened call s:SetUpTerminal()
+"augroup END
 
 autocmd FileType java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR>
 fun! GotoWindow(id)
