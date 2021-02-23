@@ -117,6 +117,8 @@ export PATH="/home/aaron/dotfiles/scripts:$PATH"
 export PATH="/usr/local/cuda-11.2/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH"
 
+export PATH="$HOME/dotfiles/tmux/session_setup:$PATH"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/aaron/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
