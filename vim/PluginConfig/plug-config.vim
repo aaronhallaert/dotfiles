@@ -40,13 +40,13 @@ Plug 'szw/vim-maximizer'
 " ~/dotfiles/vim/PluginConfig/tabularize.vim
 Plug 'godlygeek/tabular'
 
-
 " ~/dotfiles/vim/PluginConfig/nerdcommenter-config.vim
 Plug 'preservim/nerdcommenter'
 
 " ~/dotfiles/vim/PluginConfig/floaterm-config.vim
 Plug 'voldikss/vim-floaterm'
 
+Plug 'dbeniamine/cheat.sh-vim'
 
 " Jupyter notebooks
 " ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
