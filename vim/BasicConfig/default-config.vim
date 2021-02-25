@@ -25,7 +25,7 @@ set nowrap
 set smartcase
 set noswapfile
 
-set scrolloff=15
+set scrolloff=8
 set signcolumn=yes
 
 set nobackup
