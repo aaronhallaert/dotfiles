@@ -7,7 +7,29 @@ nmap <silent> <leader>cgd <Plug>(coc-definition)
 nmap <silent> <leader>cfr <Plug>(coc-references)
 nmap <silent> <leader>cff <Plug>(coc-format)
 nmap <silent> <leader>crn <Plug>(coc-rename)
-nmap <silent> <leader>csi :call CocAction('doHover')<CR>
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+"Apply AutoFix to problem on the current line.
+nmap <silent> F <Plug>(coc-fix-current)
+" scroll over errors
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Coc-Explorer
 nmap <leader>pv :CocCommand explorer<CR>

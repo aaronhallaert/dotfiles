@@ -4,14 +4,13 @@ tmux neww -t thesis: -n workspace -c ~/repos/Thesis/thesis_game_of_pirates
 tmux send-keys -t thesis:workspace "conda activate thesis" 'Enter'
 tmux send-keys -t thesis:workspace "clear" 'Enter'
 
-tmux neww -t thesis: -n dain -c ~/repos/Thesis/Dain-Interpolation-Attack
-tmux send-keys -t thesis:dain "conda activate dainapp" 'Enter'
-tmux send-keys -t thesis:dain "clear" 'Enter'
-
 tmux neww -t thesis: -n rife -c ~/repos/Thesis/RIFE-Interpolation-Attack
 tmux send-keys -t thesis:rife "conda activate rifeapp" 'Enter'
 tmux send-keys -t thesis:rife "clear" 'Enter'
 
+tmux neww -t thesis: -n dain -c ~/repos/Thesis/Dain-Interpolation-Attack
+tmux send-keys -t thesis:dain "conda activate dainapp" 'Enter'
+tmux send-keys -t thesis:dain "clear" 'Enter'
 
 tmux send-keys -t thesis:1 "cd ~/repos/Thesis/thesis_game_of_pirates" 'Enter'
 tmux send-keys -t thesis:1 "clear" 'Enter'

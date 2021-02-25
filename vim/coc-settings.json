@@ -1,18 +1,14 @@
 {
   "diagnostic.checkCurrentLine": true,
-  // "coc.preferences.formatOnSaveFiletypes": ["python"],
-
   // python
   "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
   "python.analysis.typeCheckingMode":"off",
-  //"python.jediEnabled": true,
-  "python.enabled.provider": true,
   "python.formatting.provider": "yapf",
+  
+  "python.linting.flake8Enabled": true,
   "python.linting.flake8Args":["--ignore=E501,E3,W2,E2"],
-
-  // explorer
+    
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
