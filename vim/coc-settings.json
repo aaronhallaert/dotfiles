@@ -8,6 +8,7 @@
   
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args":["--ignore=E501,E3,W2,E2"],
+
     
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,

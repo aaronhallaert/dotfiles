@@ -1,5 +1,9 @@
 #!/bin/bash
 tmux new -s thesis -d
+
+tmux neww -t thesis: -n scriptie -c ~/repos/Thesis/thesis_scriptie_game_of_pirates/boek
+tmux send-keys -t thesis:scriptie "nvim scriptie.tex" 'Enter'
+
 tmux neww -t thesis: -n workspace -c ~/repos/Thesis/thesis_game_of_pirates
 tmux send-keys -t thesis:workspace "conda activate thesis" 'Enter'
 tmux send-keys -t thesis:workspace "clear" 'Enter'
