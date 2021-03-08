@@ -7,4 +7,4 @@ IFS=':' read -ra ADDR <<< "$address"
 domain="${ADDR[0]}"
 port="${ADDR[1]}"
 
-ssh aaron@${domain} -p${port}
+ssh -X aaron@${domain} -p${port}

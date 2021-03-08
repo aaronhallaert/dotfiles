@@ -49,6 +49,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+bindsym $alt+Return exec xfce4-terminal
 bindsym $mod+P exec flameshot gui
 
 # kill focused window
