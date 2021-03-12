@@ -26,7 +26,7 @@ endfunction
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 "Apply AutoFix to problem on the current line.
-nmap <silent> F <Plug>(coc-fix-current)
+"nmap <silent> F <Plug>(coc-fix-current)
 " scroll over errors
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
