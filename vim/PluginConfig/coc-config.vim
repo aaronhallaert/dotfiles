@@ -1,102 +1,103 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Coc: https://github.com/neoclide/coc.nvim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" General keybinds
-nmap <silent> <leader>cgd <Plug>(coc-definition)
-nmap <silent> <leader>cfr <Plug>(coc-references)
-nmap <silent> <leader>cff <Plug>(coc-format)
-nmap <silent> <leader>crn <Plug>(coc-rename)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-"Apply AutoFix to problem on the current line.
-nmap <silent> F <Plug>(coc-fix-current)
-" scroll over errors
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Coc: https://github.com/neoclide/coc.nvim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Coc-Explorer
 nmap <leader>pv :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
+"" General keybinds
+"nmap <silent> <leader>cgd <Plug>(coc-definition)
+"nmap <silent> <leader>cfr <Plug>(coc-references)
+"nmap <silent> <leader>cff <Plug>(coc-format)
+"nmap <silent> <leader>crn <Plug>(coc-rename)
 
-" TextEdit fail if hidden is not set.
-set hidden
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
 
-" Give more space for displaying messages.
-set cmdheight=2
+"function! s:show_documentation()
+"  if (index(['vim','help'], &filetype) >= 0)
+"    execute 'h '.expand('<cword>')
+"  elseif (coc#rpc#ready())
+"    call CocActionAsync('doHover')
+"  else
+"    execute '!' . &keywordprg . " " . expand('<cword>')
+"  endif
+"endfunction
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
 
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-    " Recently vim can merge signcolumn and number column into one
-    set signcolumn=number
-    else
-    set signcolumn=yes
-endif
+"" Remap keys for applying codeAction to the current buffer.
+"nmap <leader>ac  <Plug>(coc-codeaction)
+""Apply AutoFix to problem on the current line.
+"nmap <silent> F <Plug>(coc-fix-current)
+"" scroll over errors
+"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
 
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-let g:coc_snippet_next = '<tab>'
 
-autocmd BufNewFile,BufRead *.ipynb let b:coc_suggest_disable = 1
-nmap <leader>cda :call coc#config('suggest.autoTrigger', v:false)<CR>
-nmap <leader>cea :call coc#config('suggest.autoTrigger', v:true)<CR>
+"" TextEdit fail if hidden is not set.
+"set hidden
 
-" Coc-Snippets
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+"" Some servers have issues with backup files, see #649.
+"set nobackup
+"set nowritebackup
 
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+"" Give more space for displaying messages.
+"set cmdheight=2
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
+"" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+"" delays and poor user experience.
+"set updatetime=300
 
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
+"" Don't pass messages to |ins-completion-menu|.
+"set shortmess+=c
 
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+"" Always show the signcolumn, otherwise it would shift the text each time
+"" diagnostics appear/become resolved.
+"if has("patch-8.1.1564")
+"    " Recently vim can merge signcolumn and number column into one
+"    set signcolumn=number
+"    else
+"    set signcolumn=yes
+"endif
 
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
+"" Use tab for trigger completion with characters ahead and navigate.
+"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+"" other plugin before putting this into your config.
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction
+
+"inoremap <silent><expr> <TAB>
+"    \ pumvisible() ? "\<C-n>" :
+"    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"    \ <SID>check_back_space() ? "\<TAB>" :
+"    \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"let g:coc_snippet_next = '<tab>'
+
+"autocmd BufNewFile,BufRead *.ipynb let b:coc_suggest_disable = 1
+"nmap <leader>cda :call coc#config('suggest.autoTrigger', v:false)<CR>
+"nmap <leader>cea :call coc#config('suggest.autoTrigger', v:true)<CR>
+
+"" Coc-Snippets
+"" Use <C-l> for trigger snippet expand.
+"imap <C-l> <Plug>(coc-snippets-expand)
+
+"" Use <C-j> for select text for visual placeholder of snippet.
+"vmap <C-j> <Plug>(coc-snippets-select)
+
+"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+"let g:coc_snippet_next = '<c-j>'
+
+"" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+"let g:coc_snippet_prev = '<c-k>'
+
+"" Use <C-j> for both expand and jump (make expand higher priority.)
+"imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+"" Use <leader>x for convert visual selected code to snippet
+"xmap <leader>x  <Plug>(coc-convert-snippet)

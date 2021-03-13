@@ -14,6 +14,7 @@ source ~/dotfiles/vim/PluginConfig/quickscope-config.vim
 source ~/dotfiles/vim/BasicConfig/ui-config.vim
 source ~/dotfiles/vim/PluginConfig/anyfold-config.vim
 source ~/dotfiles/vim/PluginConfig/coc-config.vim
+source ~/dotfiles/vim/PluginConfig/nvimlspconfig-config.vim
 source ~/dotfiles/vim/PluginConfig/fzf-config.vim
 source ~/dotfiles/vim/PluginConfig/ripgrep-config.vim
 source ~/dotfiles/vim/PluginConfig/omnisharp-config.vim

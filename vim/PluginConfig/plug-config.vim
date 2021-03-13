@@ -14,6 +14,8 @@ Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 " ~/dotfiles/vim/PluginConfig/coc-config.vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" ~/dotfiles/vim/PluginConfig/nvimlspconfig-config.vim
+Plug 'neovim/nvim-lspconfig'
 " ~/dotfiles/vim/PluginConfig/omnisharp-config.vim
 Plug 'OmniSharp/omnisharp-vim'
 " ~/dotfiles/vim/PluginConfig/quickscope-config.vim
