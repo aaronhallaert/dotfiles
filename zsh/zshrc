@@ -139,6 +139,7 @@ export PATH="/home/aaron/anaconda3/bin:$PATH"
 
 # ALIASES
 alias open="xdg-open"
+alias dotf="cd ~/dotfiles"
 alias makehandout="~/dotfiles/scripts/make_handout.sh"
 
 export NVM_DIR="$HOME/.nvm"
