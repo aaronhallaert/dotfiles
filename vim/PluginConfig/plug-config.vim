@@ -70,6 +70,8 @@ Plug 'lyuts/vim-rtags'
 " save as super user
 " ~/dotfiles/vim/PluginConfig/suda-config.vim
 Plug 'lambdalisue/suda.vim'
-
-
+" ~/dotfiles/vim/PluginConfig/translator-config.vim
+Plug 'voldikss/vim-translator'
+" ~/dotfiles/vim/PluginConfig/thesaurus-config.vim
+Plug 'ron89/thesaurus_query.vim'
 call plug#end()

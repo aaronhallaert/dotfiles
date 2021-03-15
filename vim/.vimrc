@@ -27,3 +27,5 @@ source ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
 source ~/dotfiles/vim/PluginConfig/suda-config.vim
 source ~/dotfiles/vim/PluginConfig/vimmaximizer-config.vim
 source ~/dotfiles/vim/PluginConfig/floaterm-config.vim
+source ~/dotfiles/vim/PluginConfig/translator-config.vim
+source ~/dotfiles/vim/PluginConfig/thesaurus-config.vim
