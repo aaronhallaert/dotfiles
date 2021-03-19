@@ -16,8 +16,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ~/dotfiles/vim/PluginConfig/nvimlspconfig-config.vim
 Plug 'neovim/nvim-lspconfig'
-" ~/dotfiles/vim/PluginConfig/omnisharp-config.vim
-Plug 'OmniSharp/omnisharp-vim'
 " ~/dotfiles/vim/PluginConfig/quickscope-config.vim
 Plug 'unblevable/quick-scope'
 " ~/dotfiles/vim/PluginConfig/ripgrep-config.vim
@@ -49,14 +47,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 
 Plug 'dbeniamine/cheat.sh-vim'
-
-" Jupyter notebooks
-" ~/dotfiles/vim/PluginConfig/vimpyter-config.vim
-" Plug 'szymonmaszke/vimpyter' 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' , 'for': 'ipynb'}
-" Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'ipynb'}
-" let g:deoplete#enable_at_startup = 1
-
 
 " Vim bar
 Plug 'vim-airline/vim-airline'

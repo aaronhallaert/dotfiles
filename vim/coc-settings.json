@@ -1,15 +1,6 @@
 {
   "diagnostic.checkCurrentLine": true,
-  // python
-  "python.linting.pylintEnabled": false,
-  "python.linting.enabled": true,
-  "python.analysis.typeCheckingMode":"off",
-  "python.formatting.provider": "yapf",
-  
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args":["--ignore=E501,E3,W2,E2"],
 
-    
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
