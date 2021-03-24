@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enabl ePowerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -115,10 +115,14 @@ source $ZSH/oh-my-zsh.sh
 
 # CUSTOM
 export PATH="/home/aaron/dotfiles/scripts:$PATH"
-export PATH="/usr/local/cuda-11.2/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH"
+#export PATH="/usr/local/cuda-11.2/bin:$PATH"
+#export LD_LIBRARY_PATH="/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH"
+
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 export PATH="$HOME/dotfiles/tmux/session_setup:$PATH"
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -133,7 +137,6 @@ else
     fi
 fi
 unset __conda_setup
-export PATH="/home/aaron/anaconda3/bin:$PATH"
 # <<< conda initialize <<<
 
 

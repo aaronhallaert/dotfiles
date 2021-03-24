@@ -1,0 +1,1 @@
+./configure --enable-gpl --enable-demuxer=dash --enable-libxml2 --enable-librsvg --enable-libaom --enable-libass --enable-libmp3lame --enable-libfreetype --enable-libvorbis --enable-libopus --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-libvmaf --enable-version3 --enable-nonfree
