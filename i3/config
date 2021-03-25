@@ -51,6 +51,7 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 bindsym $alt+Return exec xfce4-terminal
 bindsym $mod+P exec flameshot gui
+bindsym $mod+n exec thunar
 
 # kill focused window
 bindsym $mod+q kill
