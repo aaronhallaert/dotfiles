@@ -32,7 +32,8 @@ Plug 'pseewald/vim-anyfold'
 " ~/dotfiles/vim/PluginConfig/vimtex-config.vim
 Plug 'lervag/vimtex'
 " ~/dotfiles/vim/PluginConfig/markdownprev-config.vim
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " ~/dotfiles/vim/PluginConfig/vimspector-config.vim
 Plug 'puremourning/vimspector'
 "  ~/dotfiles/vim/PluginConfig/vimmaximizer-config.vim
