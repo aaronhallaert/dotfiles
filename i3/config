@@ -52,6 +52,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $alt+Return exec xfce4-terminal
+bindsym $alt+r exec nitrogen --restore &
 bindsym $mod+P exec flameshot gui
 bindsym $mod+n exec thunar
 
