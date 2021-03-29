@@ -120,16 +120,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-workspace "1: P1" output DP-0
-workspace "2: P2" output DP-0
-workspace "3: P3" output DP-0
-workspace "4: P4" output DP-0
-workspace "5: P5" output DP-0
-workspace "6: S1" output HDMI-0
-workspace "7: S2" output HDMI-0
-workspace "8: S3" output HDMI-0
-workspace "9: S4" output HDMI-0
-workspace "10: S5" output HDMI-0
+workspace "1: P1" output DP-0 eDP-1-1
+workspace "2: P2" output DP-0 eDP-1-1
+workspace "3: P3" output DP-0 eDP-1-1
+workspace "4: P4" output DP-0 eDP-1-1
+workspace "5: P5" output DP-0 eDP-1-1
+workspace "6: S1" output HDMI-0 HDMI-1-1 DP-0 eDP-1-1
+workspace "7: S2" output HDMI-0 HDMI-1-1 DP-0 eDP-1-1
+workspace "8: S3" output HDMI-0 HDMI-1-1 DP-0 eDP-1-1
+workspace "9: S4" output HDMI-0 HDMI-1-1 DP-0 eDP-1-1
+workspace "10: S5" output HDMI-0 HDMI-1-1 DP-0 eDP-1-1
 
 set $ws1 "1"
 set $ws2 "2"
