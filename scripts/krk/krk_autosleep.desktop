@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Disable KRK autosleep
-Comment=This disables krk monitors from sleeping
-Exec=sh -c "~/dotfiles/scripts/krk/disable_sleep_krk.sh"
-Terminal=false
-Type=Application
