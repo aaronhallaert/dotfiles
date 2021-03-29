@@ -133,6 +133,7 @@ label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
+pin-workspaces = false
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
@@ -157,7 +158,8 @@ label-unfocused-padding = 2
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
+label-visible-underline = ${colors.alert}
+;label-visible-underline =${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
