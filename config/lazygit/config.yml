@@ -2,4 +2,4 @@ git:
     merging:
         args: "--no-ff"
     pull:
-        args: "--ff"
+        mode: "ff-only"
