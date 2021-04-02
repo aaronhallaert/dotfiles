@@ -20,10 +20,6 @@ source ~/dotfiles/config/nvim/PluginConfig/vimmaximizer-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/nerdcommenter-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/undotree-config.vim
 
-" Extra project functionality
-source ~/dotfiles/config/nvim/PluginConfig/fzf-config.vim
-source ~/dotfiles/config/nvim/PluginConfig/ripgrep-config.vim
-
 " Code Tools
 source ~/dotfiles/config/nvim/PluginConfig/coc-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/nvimlspconfig-config.vim
@@ -33,6 +29,7 @@ source ~/dotfiles/config/nvim/PluginConfig/vimspector-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/markdownprev-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/gitfugitive-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/floaterm-config.vim
+source ~/dotfiles/config/nvim/PluginConfig/telescope-config.vim
 
 " Text writing
 source ~/dotfiles/config/nvim/SpellCheck/spell-config.vim
