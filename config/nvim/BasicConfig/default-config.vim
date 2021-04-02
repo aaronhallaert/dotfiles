@@ -64,8 +64,8 @@ nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Go out of insert mode
-imap kj <Esc>
-imap jk <Esc>
+inoremap jj <Esc>
+inoremap kk <Esc>
 
 " Better tabbing
 vnoremap < <gv
