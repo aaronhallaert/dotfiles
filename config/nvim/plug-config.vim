@@ -68,4 +68,7 @@ Plug 'lambdalisue/suda.vim'
 Plug 'voldikss/vim-translator'
 " ~/dotfiles/config/nvim/PluginConfig/thesaurus-config.vim
 Plug 'ron89/thesaurus_query.vim'
+" ~/dotfiles/config/nvim/PluginConfig/grammarous-config.vim
+Plug 'rhysd/vim-grammarous'
+
 call plug#end()

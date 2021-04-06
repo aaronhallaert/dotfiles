@@ -36,3 +36,4 @@ source ~/dotfiles/config/nvim/SpellCheck/spell-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/vimtex-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/translator-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/thesaurus-config.vim
+source ~/dotfiles/config/nvim/PluginConfig/grammarous-config.vim
