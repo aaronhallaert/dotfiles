@@ -2,7 +2,7 @@
 tmux new -s thesis -d
 
 tmux neww -t thesis: -n scriptie -c ~/repos/Thesis/thesis_scriptie_game_of_pirates/boek
-tmux send-keys -t thesis:scriptie "nvim scriptie.tex" 'Enter'
+tmux send-keys -t thesis:scriptie "nvim -S ~/.config/nvim/sessions/thesis.vim" 'Enter'
 
 tmux neww -t thesis: -n workspace -c ~/repos/Thesis/thesis_game_of_pirates
 tmux send-keys -t thesis:workspace "conda activate thesis" 'Enter'
@@ -15,7 +15,7 @@ tmux send-keys -t thesis:rife "clear" 'Enter'
 tmux send-keys -t thesis:1 "cd ~/repos/Thesis/thesis_game_of_pirates" 'Enter'
 tmux send-keys -t thesis:1 "clear" 'Enter'
 
-tmux a -t thesis:workspace
+tmux a -t thesis:scriptie
 
 #while [ "$#" -gt 0 ]; do
     #curr=$1

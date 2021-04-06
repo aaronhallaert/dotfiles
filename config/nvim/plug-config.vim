@@ -23,6 +23,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'tpope/vim-obsession'
 
 
 " ~/dotfiles/config/nvim/PluginConfig/quickscope-config.vim
