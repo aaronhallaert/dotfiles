@@ -16,6 +16,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ~/dotfiles/config/nvim/PluginConfig/nvimlspconfig-config.vim
 Plug 'neovim/nvim-lspconfig'
+" ~/dotfiles/config/nvim/PluginConfig/nvimcompletion-config.vim
+Plug 'nvim-lua/completion-nvim'
 
 
 " ~/dotfiles/config/nvim/PluginConfig/telescope-config.vim
