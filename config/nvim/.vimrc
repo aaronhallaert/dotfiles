@@ -32,6 +32,7 @@ source ~/dotfiles/config/nvim/PluginConfig/markdownprev-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/gitfugitive-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/floaterm-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/telescope-config.vim
+source ~/dotfiles/config/nvim/PluginConfig/vimwiki-config.vim
 
 " Text writing
 source ~/dotfiles/config/nvim/SpellCheck/spell-config.vim

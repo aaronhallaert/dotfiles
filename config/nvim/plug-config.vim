@@ -75,4 +75,9 @@ Plug 'ron89/thesaurus_query.vim'
 " ~/dotfiles/config/nvim/PluginConfig/grammarous-config.vim
 Plug 'rhysd/vim-grammarous'
 
+" ~/dotfiles/config/nvim/PluginConfig/vimwiki-config.vim
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
+
+nnoremap <silent> <leader>cf :e <cfile><cr>
