@@ -102,4 +102,4 @@ vnoremap <leader>p "+p
 " update with leader key
 nnoremap <leader>w :update<cr>
 
-nnoremap <leader>vrc :e ~/.vimrc<CR>
+nnoremap <leader>vrc :e ~/dotfiles/config/nvim/.vimrc<CR>

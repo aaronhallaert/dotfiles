@@ -13,12 +13,24 @@ Plug 'morhetz/gruvbox'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 " ~/dotfiles/config/nvim/PluginConfig/coc-config.vim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ~/dotfiles/config/nvim/PluginConfig/nvimlspconfig-config.vim
 Plug 'neovim/nvim-lspconfig'
 " ~/dotfiles/config/nvim/PluginConfig/nvimcompletion-config.vim
 Plug 'nvim-lua/completion-nvim'
 
+" ~/dotfiles/config/nvim/PluginConfig/neosnippets-config.vim
+"if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+  "Plug 'Shougo/deoplete.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
+
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " ~/dotfiles/config/nvim/PluginConfig/telescope-config.vim
 Plug 'nvim-lua/popup.nvim'
@@ -58,7 +70,7 @@ Plug 'dbeniamine/cheat.sh-vim'
 " Vim bar
 Plug 'vim-airline/vim-airline'
 " Snippets
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 " Man pages
 Plug 'vim-utils/vim-man'
 " Great for cpp
