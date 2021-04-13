@@ -19,6 +19,7 @@ source ~/dotfiles/config/nvim/PluginConfig/suda-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/vimmaximizer-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/nerdcommenter-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/undotree-config.vim
+source ~/dotfiles/config/nvim/PluginConfig/netrw-config.vim
 
 " Code Tools
 source ~/dotfiles/config/nvim/PluginConfig/nvimlspconfig-config.vim
