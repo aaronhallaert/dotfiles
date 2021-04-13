@@ -1,11 +1,27 @@
 lua << EOF
-
   local nvim_lsp = require('lspconfig')
   local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.fn.sign_define("LspDiagnosticsSignError",
+      {text = "", texthl = "GruvboxRed"})
+  vim.fn.sign_define("LspDiagnosticsSignWarning",
+      {text = "", texthl = "GruvboxYellow"})
+  vim.fn.sign_define("LspDiagnosticsSignInformation",
+      {text = "", texthl = "GruvboxBlue"})
+  vim.fn.sign_define("LspDiagnosticsSignHint",
+      {text = "", texthl = "GruvboxAqua"})
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = "»",
+        spacing = 4,
+      },
+      signs = true,
+      update_in_insert = false,
+    }
+  )
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -13,7 +29,7 @@ lua << EOF
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -54,3 +70,13 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 EOF
+
+
+" Use local quickfix list for LSP errors
+nnoremap <localleader>j :cnext<CR>zz
+nnoremap <localleader>k :cprev<CR>zz
+nnoremap <localleader>q :copen<CR>
+nnoremap <C-j> :lnext<CR>zz
+nnoremap <C-k> :lprev<CR>zz
+
+

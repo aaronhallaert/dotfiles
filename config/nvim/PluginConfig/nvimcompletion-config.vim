@@ -22,7 +22,7 @@ imap <c-k> <Plug>(completion_prev_source)
 let g:completion_chain_complete_list = [
     \{'complete_items': ['lsp']},
     \{'complete_items': ['Neosnippet']},
-    \{'complete_items': ['file']},
+    \{'complete_items': ['path']},
     \{'mode': '<c-p>'},
     \{'mode': '<c-n>'}
 \]

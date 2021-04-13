@@ -141,6 +141,7 @@ unset __conda_setup
 alias open="xdg-open"
 alias dotf="cd ~/dotfiles"
 alias makehandout="~/dotfiles/scripts/make_handout.sh"
+alias lg="lazygit"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
