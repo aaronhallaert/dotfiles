@@ -20,15 +20,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
 " ~/dotfiles/config/nvim/PluginConfig/neosnippets-config.vim
-"if has('nvim')
-  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-  "Plug 'Shougo/deoplete.nvim'
-  "Plug 'roxma/nvim-yarp'
-  "Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"let g:deoplete#enable_at_startup = 1
-
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
@@ -69,8 +60,6 @@ Plug 'dbeniamine/cheat.sh-vim'
 
 " Vim bar
 Plug 'vim-airline/vim-airline'
-" Snippets
-"Plug 'honza/vim-snippets'
 " Man pages
 Plug 'vim-utils/vim-man'
 " Great for cpp
