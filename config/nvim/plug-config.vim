@@ -77,7 +77,7 @@ Plug 'rhysd/vim-grammarous'
 
 " ~/dotfiles/config/nvim/PluginConfig/vimwiki-config.vim
 Plug 'vimwiki/vimwiki'
-
+Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
 call plug#end()
 
 nnoremap <silent> <leader>cf :e <cfile><cr>
