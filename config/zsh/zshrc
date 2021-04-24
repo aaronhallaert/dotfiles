@@ -138,7 +138,7 @@ unset __conda_setup
 
 
 # ALIASES
-alias open="xdg-open"
+alias open="xdg-open 2>/dev/null"
 alias dotf="cd ~/dotfiles"
 alias makehandout="~/dotfiles/scripts/make_handout.sh"
 alias lg="lazygit"
