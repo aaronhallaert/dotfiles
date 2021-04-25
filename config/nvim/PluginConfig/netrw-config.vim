@@ -6,9 +6,13 @@ let g:netrw_altv = 1
 
 
 function! OpenExplorer(path)
-    execute 'Vexplore ' . a:path
+    if isdirectory(a:path)
+        execute 'Vexplore ' . a:path
+    else
+        execute 'Vexplore'
+    endif
 endfunction
 
 " Find root of 
-let &path = system("git rev-parse --show-toplevel")
+let &path = system("git rev-parse --show-toplevel | tr -d '\\n'")
 nnoremap <leader>pv :call OpenExplorer(&path)<CR>
