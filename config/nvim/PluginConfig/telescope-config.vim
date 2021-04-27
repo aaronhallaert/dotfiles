@@ -9,6 +9,10 @@ end
 
 search_dotfiles_words = function()
     require("telescope.builtin").live_grep({
+        find_command=rg,
+        --ignore,
+        --hidden,
+        --files prompt_prefix=🔍,
         prompt_title = "< VimRC >",
         cwd = "$HOME/dotfiles/config/nvim",
     })
@@ -21,5 +25,5 @@ nnoremap <leader>fg <cmd>Telescope live_grep <cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-nnoremap <leader>src :lua search_dotfiles_words()<CR>
+nnoremap <leader>vrc :lua search_dotfiles_words()<CR>
 nnoremap <leader>frc :lua search_dotfiles()<CR>
