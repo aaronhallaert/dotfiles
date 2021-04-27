@@ -4,10 +4,6 @@
 
 call plug#begin('~/.vim/plugged')
 
-
-" ~/dotfiles/config/nvim/PluginConfig/whichkey-config.vim
-Plug 'liuchengxu/vim-which-key'
-
 " ~/dotfiles/config/nvim/BasicConfig/ui-config.vim
 Plug 'morhetz/gruvbox'
 " Icons

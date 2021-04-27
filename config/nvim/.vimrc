@@ -8,7 +8,6 @@ source ~/dotfiles/config/nvim/BasicConfig/default-config.vim
 source ~/dotfiles/config/nvim/plug-config.vim
 
 " UI functionality
-source ~/dotfiles/config/nvim/PluginConfig/whichkey-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/quickscope-config.vim
 source ~/dotfiles/config/nvim/BasicConfig/ui-config.vim
 
