@@ -4,7 +4,6 @@
 
 " Default config
 source ~/dotfiles/config/nvim/BasicConfig/default-config.vim
-
 " Specify plugins
 source ~/dotfiles/config/nvim/plug-config.vim
 

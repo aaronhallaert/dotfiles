@@ -50,11 +50,11 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-bindsym $alt+Return exec xfce4-terminal
-bindsym $alt+r exec nitrogen --restore &
-bindsym $mod+P exec flameshot gui
-bindsym $mod+n exec thunar
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $alt+Return exec --no-startup-id xfce4-terminal
+bindsym $alt+r exec --no-startup-id nitrogen --restore &
+bindsym $mod+P exec --no-startup-id flameshot gui
+bindsym $mod+n exec --no-startup-id thunar
 
 # kill focused window
 bindsym $mod+q kill
@@ -168,7 +168,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # shutdown pc
-bindsym $mod+m exec shutdown now
+bindsym $mod+m exec --no-startup-id shutdown now
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
