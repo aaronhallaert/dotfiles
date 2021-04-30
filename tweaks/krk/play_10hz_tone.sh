@@ -1,3 +1,3 @@
-echo "$(date): Wake up monitor" >> ~/dotfiles/scripts/krk/krk.log
-aplay -d 19 ~/dotfiles/scripts/krk/10hz_tone.wav >> ~/dotfiles/scripts/krk/krk.log
+echo "$(date): Wake up monitor" >> ~/dotfiles/tweaks/krk/krk.log
+aplay -d 19 ~/dotfiles/tweaks/krk/10hz_tone.wav >> ~/dotfiles/tweaks/krk/krk.log
 

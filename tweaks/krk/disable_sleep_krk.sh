@@ -1,30 +1,31 @@
 #!/bin/bash
 # reset logfile
-echo "$(date):" > ~/dotfiles/scripts/krk/krk.log
+LOG="$HOME/dotfiles/tweaks/krk/krk.log"
+echo "$(date):" > $LOG
 
 sleep 15
-echo "$(date): change audio" >> ~/dotfiles/scripts/krk/krk.log
-jack_control start >> ~/dotfiles/scripts/krk/krk.log
-echo "$(date): wait for 5 seconds" >> ~/dotfiles/scripts/krk/krk.log
+echo "$(date): change audio" >> $LOG
+jack_control start >> $LOG
+echo "$(date): wait for 5 seconds" >> $LOG
 sleep 5
-echo "$(date): Set default sink" >> ~/dotfiles/scripts/krk/krk.log
-pacmd set-default-sink "jack_out" >> ~/dotfiles/scripts/krk/krk.log
+echo "$(date): Set default sink" >> $LOG
+pacmd set-default-sink "jack_out" >> $LOG
 
 sleep 5
-echo "$(date): START autoplay" >> ~/dotfiles/scripts/krk/krk.log
+echo "$(date): START autoplay" >> $LOG
 
 while true
 do
-    echo "$(date): call play tone" >> ~/dotfiles/scripts/krk/krk.log
-    ~/dotfiles/scripts/krk/play_10hz_tone.sh
+    echo "$(date): call play tone" >> $LOG
+    $HOME/dotfiles/tweaks/krk/play_10hz_tone.sh
     sleep 300
-    echo "$(date): 5 minutes" >> ~/dotfiles/scripts/krk/krk.log
+    echo "$(date): 5 minutes" >> $LOG
     sleep 300
-    echo "$(date): 10 minutes" >> ~/dotfiles/scripts/krk/krk.log
+    echo "$(date): 10 minutes" >> $LOG
     sleep 300
-    echo "$(date): 15 minutes" >> ~/dotfiles/scripts/krk/krk.log
+    echo "$(date): 15 minutes" >> $LOG
     sleep 300
-    echo "$(date): 20 minutes" >> ~/dotfiles/scripts/krk/krk.log
+    echo "$(date): 20 minutes" >> $LOG
 done
 
 

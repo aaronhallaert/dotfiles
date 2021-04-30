@@ -12,3 +12,7 @@ function! g:grammarous#hooks.on_reset(errs) abort
     nunmap <buffer><C-n>
     nunmap <buffer><C-p>
 endfunction
+
+
+
+let g:grammarous#languagetool_cmd='java -jar $HOME/repos/languagetool/languagetool-standalone/target/LanguageTool-5.4-SNAPSHOT/LanguageTool-5.4-SNAPSHOT/languagetool-commandline.jar --level PICKY'
