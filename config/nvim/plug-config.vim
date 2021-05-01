@@ -14,6 +14,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neovim/nvim-lspconfig'
 " ~/dotfiles/config/nvim/PluginConfig/nvimcompletion-config.vim
 Plug 'nvim-lua/completion-nvim'
+" ~/dotfiles/config/nvim/PluginConfig/lightbulb-config.vim
+Plug 'kosayoda/nvim-lightbulb'
 
 " ~/dotfiles/config/nvim/PluginConfig/neosnippets-config.vim
 Plug 'Shougo/neosnippet.vim'

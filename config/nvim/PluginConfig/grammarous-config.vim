@@ -13,6 +13,9 @@ function! g:grammarous#hooks.on_reset(errs) abort
     nunmap <buffer><C-p>
 endfunction
 
+let g:grammarous#enabled_categories = {'*' : ['PUNCTUATION']}
+let g:grammarous#disabled_rules = {
+            \ '*' : ['WORD_CONTAINS_UNDERSCORE', 'PASSIVE_VOICE'],
+            \ }
 
-
-let g:grammarous#languagetool_cmd='java -jar $HOME/repos/languagetool/languagetool-standalone/target/LanguageTool-5.4-SNAPSHOT/LanguageTool-5.4-SNAPSHOT/languagetool-commandline.jar --level PICKY'
+let g:grammarous#languagetool_cmd='java -jar $HOME/Downloads/LanguageTool-5.4-SNAPSHOT/languagetool-commandline.jar --level PICKY'
