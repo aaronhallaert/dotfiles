@@ -1,9 +1,13 @@
 #!/bin/bash
 session="thesis"
 
-tmux has-session -t $session 2>/dev/null
+tmux has-session -t $session
 
-if [ $? != 0 ]; then
+newly_created=false
+
+if [[ $? != 0 ]]; then
+
+    echo "Creating Session"
 
     tmux new -s $session -d
 
@@ -20,8 +24,13 @@ if [ $? != 0 ]; then
 
     tmux send-keys -t $session:1 "cd ~/repos/Thesis/thesis_game_of_pirates" 'Enter'
     tmux send-keys -t $session:1 "clear" 'Enter'
+    newly_created=true
 
 fi
 
-tmux a -t $session:scriptie
+if [ "$newly_created" = true ]; then
+    tmux a -t $session:scriptie
+else
+    tmux a -t $session
+fi
 
