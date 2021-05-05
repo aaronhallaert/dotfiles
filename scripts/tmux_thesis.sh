@@ -1,15 +1,16 @@
 #!/bin/bash
 session="thesis"
 
+newly_created=false
+
 tmux has-session -t $session
 
-newly_created=false
 
 if [[ $? != 0 ]]; then
 
     echo "Creating Session"
 
-    tmux new -s $session -d
+    tmux new -t $session -d
 
     tmux neww -t $session: -n scriptie -c ~/repos/Thesis/thesis_scriptie_game_of_pirates/boek
     tmux send-keys -t $session:scriptie "nvim -S ~/.config/nvim/sessions/thesis.vim" 'Enter'
