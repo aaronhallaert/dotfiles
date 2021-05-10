@@ -19,6 +19,8 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+set hidden
+
 set smartindent
 set nu
 set nowrap
