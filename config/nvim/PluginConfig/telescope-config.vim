@@ -1,43 +1,16 @@
-lua << EOF
-local actions = require('telescope.actions')
-require('telescope').setup{
-   defaults = {
-    mappings = {
-      i = {
-        ['<esc>'] = actions.close,
-      },
-      n = {
-        ['<esc>'] = actions.close,
-      }
-    },
-   },
-}
+lua require("aaron")
 
+nnoremap <leader>ff <cmd>lua require("aaron.telescope").search_git_files()<cr>
+nnoremap <leader>fg <cmd>lua require("telescope.builtin").live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require("telescope.builtin").buffers()<cr>
+nnoremap <leader>fh <cmd>lua require("telescope.builtin").help_tags()<cr>
 
-search_dotfiles = function()
-    require("telescope.builtin").find_files({
-        prompt_title = "< VimRC >",
-        cwd = "$HOME/dotfiles/config/nvim",
-    })
-end
+nnoremap <leader>vrc :lua require('aaron.telescope').search_dotfiles_words()<CR>
+nnoremap <leader>frc :lua require('aaron.telescope').search_dotfiles()<CR>
 
-search_dotfiles_words = function()
-    require("telescope.builtin").live_grep({
-        find_command=rg,
-        --ignore,
-        --hidden,
-        --files prompt_prefix=🔍,
-        prompt_title = "< VimRC >",
-        cwd = "$HOME/dotfiles/config/nvim",
-    })
-end
-
-EOF
-
-nnoremap <leader>ff <cmd>Telescope git_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep <cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-nnoremap <leader>vrc :lua search_dotfiles_words()<CR>
-nnoremap <leader>frc :lua search_dotfiles()<CR>
+" Use local quickfix list for LSP errors
+nnoremap <localleader>j :cnext<CR>zz
+nnoremap <localleader>k :cprev<CR>zz
+nnoremap <localleader>q :copen<CR>
+nnoremap <C-j> :lnext<CR>zz
+nnoremap <C-k> :lprev<CR>zz

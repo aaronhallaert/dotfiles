@@ -27,7 +27,6 @@ source ~/dotfiles/config/nvim/PluginConfig/telescope-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/vimwiki-config.vim
 
 " Code Tools
-source ~/dotfiles/config/nvim/PluginConfig/nvimlspconfig-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/nvimcompletion-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/neosnippets-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/vimspector-config.vim
