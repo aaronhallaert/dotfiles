@@ -1,4 +1,18 @@
 lua << EOF
+local actions = require('telescope.actions')
+require('telescope').setup{
+   defaults = {
+    mappings = {
+      i = {
+        ['<esc>'] = actions.close,
+      },
+      n = {
+        ['<esc>'] = actions.close,
+      }
+    },
+   },
+}
+
 
 search_dotfiles = function()
     require("telescope.builtin").find_files({
