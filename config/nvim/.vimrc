@@ -20,6 +20,7 @@ source ~/dotfiles/config/nvim/PluginConfig/undotree-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/netrw-config.vim
 
 " General Nvim Tools
+source ~/dotfiles/config/nvim/PluginConfig/feline-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/markdownprev-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/gitfugitive-config.vim
 source ~/dotfiles/config/nvim/PluginConfig/floaterm-config.vim

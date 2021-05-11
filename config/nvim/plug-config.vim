@@ -28,6 +28,11 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'tpope/vim-obsession'
 
+Plug 'simrat39/symbols-outline.nvim'
+" ~/dotfiles/config/nvim/PluginConfig/feline-config.vim
+Plug 'famiu/feline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'mhinz/vim-startify'
 
 " ~/dotfiles/config/nvim/PluginConfig/quickscope-config.vim
 Plug 'unblevable/quick-scope'
@@ -56,8 +61,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 Plug 'dbeniamine/cheat.sh-vim'
 
-" Vim bar
-Plug 'vim-airline/vim-airline'
 " Man pages
 Plug 'vim-utils/vim-man'
 " Great for cpp
