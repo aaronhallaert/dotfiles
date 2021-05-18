@@ -34,6 +34,7 @@ Plug 'famiu/feline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
 " ~/dotfiles/config/nvim/PluginConfig/quickscope-config.vim
 Plug 'unblevable/quick-scope'
 " ~/dotfiles/config/nvim/PluginConfig/gitfugitive-config.vim
