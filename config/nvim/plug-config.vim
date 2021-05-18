@@ -33,7 +33,7 @@ Plug 'simrat39/symbols-outline.nvim'
 Plug 'famiu/feline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
-
+Plug 'wellle/targets.vim'
 " ~/dotfiles/config/nvim/PluginConfig/quickscope-config.vim
 Plug 'unblevable/quick-scope'
 " ~/dotfiles/config/nvim/PluginConfig/gitfugitive-config.vim
