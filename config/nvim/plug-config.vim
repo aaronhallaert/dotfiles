@@ -30,6 +30,7 @@ Plug 'tpope/vim-obsession'
 
 Plug 'simrat39/symbols-outline.nvim'
 " ~/dotfiles/config/nvim/PluginConfig/feline-config.vim
+" ~/dotfiles/config/nvim/PluginConfig/felin-config.vim
 Plug 'famiu/feline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
@@ -62,6 +63,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 Plug 'dbeniamine/cheat.sh-vim'
 
+" ~/dotfiles/config/nvim/PluginConfig/doge-config.vim
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Man pages
 Plug 'vim-utils/vim-man'
 " Great for cpp
@@ -78,7 +81,7 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'rhysd/vim-grammarous'
 
 " ~/dotfiles/config/nvim/PluginConfig/vimwiki-config.vim
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
 call plug#end()
 
