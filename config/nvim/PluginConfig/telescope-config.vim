@@ -9,8 +9,8 @@ nnoremap <leader>vrc :lua require('aaron.telescope').search_dotfiles_words()<CR>
 nnoremap <leader>frc :lua require('aaron.telescope').search_dotfiles()<CR>
 
 " Use local quickfix list for LSP errors
-nnoremap J :cnext<CR>zz
-nnoremap K :cprev<CR>zz
+nnoremap <localleader>j :cnext<CR>zz
+nnoremap <localleader>k :cprev<CR>zz
 nnoremap <localleader>q :copen<CR>
 nnoremap <C-j> :lnext<CR>zz
 nnoremap <C-k> :lprev<CR>zz
