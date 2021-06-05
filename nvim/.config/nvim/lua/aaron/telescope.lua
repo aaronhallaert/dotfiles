@@ -38,10 +38,10 @@ function M.search_git_files()
     require("telescope.builtin").git_files({
         hidden = true,
         prompt_prefix = "   ",
+        prompt_title = "< project files >",
         find_command=rg,
         hidden = true,
     })
 end
-
 
 return M
