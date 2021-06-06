@@ -27,7 +27,7 @@ function! ToggleNetrw(path)
 endfunction
 
 " Add your own mapping. For example:
-noremap <silent> <C-E> :call ToggleNetrw()<CR>
+"noremap <silent> <C-E> :call ToggleNetrw()<CR>
 
 " Find root of 
 let &path = system("git rev-parse --show-toplevel | tr -d '\\n'")
