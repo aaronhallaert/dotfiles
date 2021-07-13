@@ -18,6 +18,7 @@ Plug 'honza/vim-snippets'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-tree.lua', {'commit': 'fd7f60e242205ea9efc9649101c81a07d5f458bb'}
 
 Plug 'tpope/vim-obsession'
 
