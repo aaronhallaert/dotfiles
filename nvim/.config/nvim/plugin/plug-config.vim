@@ -15,6 +15,8 @@ Plug 'kosayoda/nvim-lightbulb'
 Plug 'Sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'ray-x/lsp_signature.nvim'
+
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
