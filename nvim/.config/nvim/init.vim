@@ -136,8 +136,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimwiki-config.vim
 
 " Code Tools
-source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimcompletion-config.vim
-source $HOME/dotfiles/nvim/.config/nvim/plugin/neosnippets-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimcompe-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimspector-config.vim
 
 
