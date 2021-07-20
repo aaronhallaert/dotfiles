@@ -12,6 +12,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'kosayoda/nvim-lightbulb'
 
+Plug 'phaazon/hop.nvim'
+
 Plug 'Sirver/ultisnips'
 Plug 'honza/vim-snippets'
 

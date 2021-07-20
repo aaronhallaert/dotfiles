@@ -127,6 +127,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/nerdcommenter-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/undotree-config.vim
 "source $HOME/dotfiles/nvim/.config/nvim/plugin/netrw-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimtree-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/hop-config.vim
 
 " General Nvim Tools
 source $HOME/dotfiles/nvim/.config/nvim/plugin/feline-config.vim
