@@ -101,13 +101,31 @@ nnoremap <leader>; A;<Esc><CR>
 
 " yank to clipboard
 nnoremap <leader>y "+y
-nnoremap <leader>p "+p
 vnoremap <leader>y "+y
+nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
 " update with leader key
 nnoremap <leader>w :update<cr>
 nnoremap <silent> <leader>cf :e <cfile><cr>
+
+" best remaps
+"" behave vim
+nnoremap Y y$
+"" fix search position
+nnoremap n nzz
+nnoremap N nzz
+nnoremap J mzJ`z
+"" jumplist mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+"" moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-k> <esc>:m .-2<CR>==
+inoremap <C-j> <esc>:m .+1<CR>==
+nnoremap gk :m .-2<CR>==
+nnoremap gj :m .+1<CR>==
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source plugin settings
