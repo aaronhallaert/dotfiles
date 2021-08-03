@@ -1,20 +1,5 @@
 local nvim_lsp = require('lspconfig')
 
-nvim_lsp.solargraph.setup {
-    filetypes = {"ruby", "rakefile"},
-    root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
-    settings = {
-        solargraph = {
-            autoformat = true,
-            completion = true,
-            diagnostic = true,
-            folding = true,
-            references = true,
-            rename = true,
-            symbols = true
-        }
-    }
-}
 
 local on_attach = function(client, bufnr)
     cfg = {
@@ -116,6 +101,24 @@ end
 local servers = { "pyright", "solargraph", "jsonls", "vimls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
+  if lsp == "solargraph" then
+      nvim_lsp.solargraph.setup {
+          on_attach = on_attach,
+          filetypes = {"ruby", "rakefile"},
+          root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+          settings = {
+              solargraph = {
+                  autoformat = true,
+                  completion = true,
+                  diagnostic = true,
+                  folding = true,
+                  references = true,
+                  rename = true,
+                  symbols = true
+              }
+          }
+      }
+   end
 end
 
 
