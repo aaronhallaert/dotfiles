@@ -1,4 +1,21 @@
 local nvim_lsp = require('lspconfig')
+
+nvim_lsp.solargraph.setup {
+    filetypes = {"ruby", "rakefile"},
+    root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+    settings = {
+        solargraph = {
+            autoformat = true,
+            completion = true,
+            diagnostic = true,
+            folding = true,
+            references = true,
+            rename = true,
+            symbols = true
+        }
+    }
+}
+
 local on_attach = function(client, bufnr)
     cfg = {
       bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -48,7 +65,7 @@ local on_attach = function(client, bufnr)
             --prefix = "»",
             --spacing = 4,
             --},
-            virtual_text = false,
+            virtual_text = true,
             signs = true,
             update_in_insert = false,
         }
@@ -100,4 +117,5 @@ local servers = { "pyright", "solargraph", "jsonls", "vimls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
 
