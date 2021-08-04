@@ -3,6 +3,8 @@ local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
     cfg = {
+      debug = true,
+      log_path = "/tmp/lsp_signature.log",
       bind = true, -- This is mandatory, otherwise border config won't get registered.
                    -- If you want to hook lspsaga or other signature handler, pls set to false
       doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
@@ -56,7 +58,7 @@ local on_attach = function(client, bufnr)
         }
     )
 
-    -- Mappings.
+    -- Mappings/shortcuts.
     local opts = { noremap=true, silent=true }
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -100,7 +102,7 @@ end
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "solargraph", "jsonls", "vimls" }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+
   if lsp == "solargraph" then
       nvim_lsp.solargraph.setup {
           on_attach = on_attach,
@@ -118,6 +120,8 @@ for _, lsp in ipairs(servers) do
               }
           }
       }
+    else 
+       nvim_lsp[lsp].setup { on_attach = on_attach }
    end
 end
 
