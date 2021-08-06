@@ -127,6 +127,8 @@ inoremap <C-j> <esc>:m .+1<CR>==
 nnoremap gk :m .-2<CR>==
 nnoremap gj :m .+1<CR>==
 
+nnoremap <leader>tt :terminal<CR> i
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -18,6 +18,8 @@ Plug 'Sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'tzachar/compe-tabnine', {'do': './install.sh'}
+Plug 'f-person/git-blame.nvim'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
