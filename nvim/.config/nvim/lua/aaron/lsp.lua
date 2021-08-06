@@ -100,7 +100,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "solargraph", "jsonls", "vimls" }
+local servers = { "pyright", "solargraph", "jsonls", "vimls" , "tsserver"}
 for _, lsp in ipairs(servers) do
 
   if lsp == "solargraph" then

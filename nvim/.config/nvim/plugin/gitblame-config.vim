@@ -1,1 +1,1 @@
-let g:gitblame_data_format = '%r'
+let g:gitblame_date_format = '%r'

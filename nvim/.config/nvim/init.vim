@@ -64,10 +64,10 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
 " Resize
-nnoremap <silent> <M-j>    :resize -2<CR>
-nnoremap <silent> <M-k>    :resize +2<CR>
-nnoremap <silent> <M-h>    :vertical resize -2<CR>
-nnoremap <silent> <M-l>    :vertical resize +2<CR>
+nnoremap <silent> <A-j>    :resize -2<CR>
+nnoremap <silent> <A-k>    :resize +2<CR>
+nnoremap <silent> <A-h>    :vertical resize -2<CR>
+nnoremap <silent> <A-l>    :vertical resize +2<CR>
 
 " Go out of insert mode
 inoremap kj <Esc>
@@ -153,6 +153,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/hop-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/feline-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/markdownprev-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitfugitive-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/gitblame-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/floaterm-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimwiki-config.vim
