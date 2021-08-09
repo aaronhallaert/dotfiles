@@ -1,1 +1,1 @@
-nmap <leader>f :MaximizerToggle<CR>
+"nmap <leader>f :MaximizerToggle<CR>

@@ -114,7 +114,7 @@ nnoremap <silent> <leader>cf :e <cfile><cr>
 nnoremap Y y$
 "" fix search position
 nnoremap n nzz
-nnoremap N nzz
+nnoremap N Nzz
 nnoremap J mzJ`z
 "" jumplist mutations
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'

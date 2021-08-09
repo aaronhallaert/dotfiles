@@ -120,9 +120,65 @@ for _, lsp in ipairs(servers) do
               }
           }
       }
+    --elseif lsp == "tsserver" then
+        ---- disable formatting for typescript
+        --on_attach = function(client)
+            --client.resolved_capabilities.document_formatting = false
+            --on_attach(client)
+        --end
     else 
        nvim_lsp[lsp].setup { on_attach = on_attach }
    end
+
 end
 
+
+nvim_lsp.diagnosticls.setup {
+    filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact", "css"},
+    init_options = {
+        filetypes = {
+            javascript = "eslint",
+            typescript = "eslint",
+            javascriptreact = "eslint",
+            typescriptreact = "eslint"
+        },
+        linters = {
+            eslint = {
+                sourceName = "eslint",
+                command = "eslint_d",
+                rootPatterns = {
+                    ".eslitrc.js",
+                    "package.json"
+                },
+                debounce = 100,
+                args = {
+                    "--cache",
+                    "--stdin",
+                    "--stdin-filename",
+                    "%filepath",
+                    "--format",
+                    "json"
+                },
+                parseJson = {
+                    errorsRoot = "[0].messages",
+                    line = "line",
+                    column = "column",
+                    endLine = "endLine",
+                    endColumn = "endColumn",
+                    message = "${message} [${ruleId}]",
+                    security = "severity"
+                },
+                securities = {
+                    [2] = "error",
+                    [1] = "warning"
+                }
+            }
+        }
+        --formatters= {prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}},
+        --formatFiletype = {
+            --typescript= "prettier",
+            --typescriptreact = "prettier"
+        --}
+    }
+}
 
