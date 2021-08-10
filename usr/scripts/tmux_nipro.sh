@@ -43,7 +43,7 @@ if [[ $? != 0 ]]; then
     ##### PGADMIN DOCKER #####
     tmux neww -t $session: -n database -c "$HOME/Developer/nephroflow/nephroflow-api"
     tmux send-keys -t $session:interactive -t 0 "clear" 'Enter'
-    tmux send-keys -t $session:database "doker-compose up pgadmin -d"
+    tmux send-keys -t $session:database "docker-compose up pgadmin -d"
     newly_created=true
     ##########################
 fi
