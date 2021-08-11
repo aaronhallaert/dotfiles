@@ -114,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # CUSTOM
-export PATH="/home/aaron/dotfiles/usr/scripts:$PATH"
+export PATH="$HOME/dotfiles/usr/scripts:$PATH"
 
 
  #>>> conda initialize >>>
