@@ -1,9 +1,10 @@
 lua require("aaron")
 
 nnoremap <leader>ff <cmd>lua require("aaron.telescope").search_git_files()<cr>
-nnoremap <leader>fg <cmd>lua require("telescope.builtin").live_grep()<cr>
+nnoremap <leader>fg <cmd>lua require("aaron.telescope").search_gitwords()<cr>
 nnoremap <leader>fb <cmd>lua require("telescope.builtin").buffers()<cr>
 nnoremap <leader>fh <cmd>lua require("telescope.builtin").help_tags()<cr>
+nnoremap <leader>gs <cmd>lua require("telescope.builtin").git_status()<cr>
 
 nnoremap <leader>vrc :lua require('aaron.telescope').search_dotfiles_words()<CR>
 nnoremap <leader>frc :lua require('aaron.telescope').search_dotfiles()<CR>

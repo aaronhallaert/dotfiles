@@ -42,7 +42,8 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
 set foldmethod=syntax
-autocmd BufEnter * silent! lcd %:p:h
+"autocmd BufEnter * silent! lcd %:p:h
+let g:startify_change_to_dir=0
 
 " Cursor settings
 if &term =~ '^xterm'
@@ -150,7 +151,6 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimtree-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/hop-config.vim
 
 " General Nvim Tools
-source $HOME/dotfiles/nvim/.config/nvim/plugin/feline-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/markdownprev-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitfugitive-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitblame-config.vim

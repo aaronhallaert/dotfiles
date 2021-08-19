@@ -3,14 +3,27 @@ require('telescope').setup{
    defaults = {
        --prompt_prefix = "> ",
    },
-   mappings = {
-      i = {
-        ['<esc>'] = actions.close,
-      },
-      n = {
-        ['<esc>'] = actions.close,
+   pickers = {
+       mappings = {
+          i = {
+            ['<esc>'] = actions.close,
+          },
+          n = {
+            ['<esc>'] = actions.close,
+          }
+       },
+      buffers = {
+          sort_lastused = true,
+          mappings = {
+              i = {
+                  ["<c-d>"] = require("telescope.actions").delete_buffer,
+              },
+              n = {
+                  ["<c-d>"] = require("telescope.actions").delete_buffer,
+              }
+          }
       }
-    },
+   }
 }
 
 local M = {}
@@ -33,6 +46,15 @@ function M.search_dotfiles_words()
     })
 end
 
+function M.search_gitwords()
+    require("telescope.builtin").live_grep({
+        hidden = true,
+        prompt_prefix = "   ",
+        prompt_title = "< project words >",
+        find_command=rg,
+        cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+    })
+end
 
 function M.search_git_files()
     require("telescope.builtin").git_files({
@@ -40,7 +62,6 @@ function M.search_git_files()
         prompt_prefix = "   ",
         prompt_title = "< project files >",
         find_command=rg,
-        hidden = true,
     })
 end
 

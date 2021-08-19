@@ -75,6 +75,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap('n', '<leader>is', '<Cmd>!eslint_d % --fix<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
@@ -100,14 +101,14 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "solargraph", "jsonls", "vimls" , "tsserver"}
+local servers = { "pyright", "solargraph", "jsonls", "vimls" , "tsserver", "diagnosticls"}
 for _, lsp in ipairs(servers) do
 
   if lsp == "solargraph" then
       nvim_lsp.solargraph.setup {
           on_attach = on_attach,
           filetypes = {"ruby", "rakefile"},
-          root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+          root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "./"),
           settings = {
               solargraph = {
                   autoformat = true,
@@ -120,45 +121,26 @@ for _, lsp in ipairs(servers) do
               }
           }
       }
-    --elseif lsp == "tsserver" then
-        ---- disable formatting for typescript
-        --on_attach = function(client)
-            --client.resolved_capabilities.document_formatting = false
-            --on_attach(client)
-        --end
-    else 
-       nvim_lsp[lsp].setup { on_attach = on_attach }
-   end
-
-end
-
-
-nvim_lsp.diagnosticls.setup {
-    filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact", "css"},
-    init_options = {
-        filetypes = {
-            javascript = "eslint",
+    elseif lsp == "tsserver" then
+        -- disable formatting for typescript
+        nvim_lsp.tsserver.setup {
+            on_attach = function(client)
+                client.resolved_capabilities.document_formatting = false,
+                on_attach(client)
+            end
+        }
+    elseif lsp == "diagnosticls" then
+        local filetypes = {
             typescript = "eslint",
-            javascriptreact = "eslint",
-            typescriptreact = "eslint"
-        },
-        linters = {
+            typescriptreact = "eslint",
+        }
+        local linters = {
             eslint = {
                 sourceName = "eslint",
                 command = "eslint_d",
-                rootPatterns = {
-                    ".eslitrc.js",
-                    "package.json"
-                },
+                rootPatterns = {".eslintrc.js", "package.json"},
                 debounce = 100,
-                args = {
-                    "--cache",
-                    "--stdin",
-                    "--stdin-filename",
-                    "%filepath",
-                    "--format",
-                    "json"
-                },
+                args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
                 parseJson = {
                     errorsRoot = "[0].messages",
                     line = "line",
@@ -168,17 +150,32 @@ nvim_lsp.diagnosticls.setup {
                     message = "${message} [${ruleId}]",
                     security = "severity"
                 },
-                securities = {
-                    [2] = "error",
-                    [1] = "warning"
-                }
+                securities = {[2] = "error", [1] = "warning"}
             }
         }
-        --formatters= {prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}},
-        --formatFiletype = {
-            --typescript= "prettier",
-            --typescriptreact = "prettier"
-        --}
-    }
-}
+        local formatters = {
+            prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
+        }
+        local formatFiletypes = {
+            typescript = "prettier",
+            typescriptreact = "prettier"
+        }
+        nvim_lsp.diagnosticls.setup {
+            on_attach = on_attach,
+            filetypes = vim.tbl_keys(filetypes),
+            init_options = {
+                filetypes = filetypes,
+                linters = linters,
+                formatters = formatters,
+                formatFiletypes = formatFiletypes
+            }
+        }
+    else 
+       nvim_lsp[lsp].setup { 
+          on_attach = on_attach,
+          root_dir = nvim_lsp.util.root_pattern(".git")
+       }
+   end
+
+end
 

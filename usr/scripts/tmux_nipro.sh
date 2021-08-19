@@ -9,43 +9,56 @@ tmux has-session -t $session
 if [[ $? != 0 ]]; then
 
     echo "Creating Session"
-    tmux new -t $session -d
+    tmux new -t $session -d -x- -y-
 
     ##### API DEV ENV #####
     tmux neww -t $session: -n api -c $HOME/Developer/nephroflow/nephroflow-api
-    tmux send-keys -t $session:api "git fetch" 'Enter'
-    tmux send-keys -t $session:api "clear" 'Enter'
-    tmux send-keys -t $session:api "git status" 'Enter'
+
+    tmux split-window -v -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -l 25%
+    tmux send-keys -t $session:api -t 0 "git fetch" 'Enter'
+    tmux send-keys -t $session:api -t 0 "clear" 'Enter'
+    tmux send-keys -t $session:api -t 0 "git status" 'Enter'
+
+    tmux send-keys -t $session:api -t 1 "clear" 'Enter'
+    tmux send-keys -t $session:api -t 1 "docker exec -it selfweb bash"
+
+    tmux split-window -h -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -l 50%
+    tmux send-keys -t $session:api -t 2 "clear" 'Enter'
+    tmux send-keys -t $session:api -t 2 "docker-compose run --rm --service-ports --name selfweb web bash"
     #######################
 
     ##### MANAGER DEV ENV #####
     tmux neww -t $session: -n manager -c $HOME/Developer/nephroflow/nephroflow-manager
-    tmux send-keys -t $session:manager "git fetch" 'Enter'
-    tmux send-keys -t $session:manager "clear" 'Enter'
-    tmux send-keys -t $session:manager "git status" 'Enter'
-    ###########################
+    tmux split-window -v -t $session:manager -c "$HOME/Developer/nephroflow/nephroflow-manager" -l 25%
 
 
-    ##### INTERACTIVE DEV ENV #####
-    tmux neww -t $session: -n interactive -c "$HOME/Developer/nephroflow/nephroflow-api"
-    tmux split-window -t $session:interactive -c "$HOME/Developer/nephroflow/nephroflow-manager"
+    tmux send-keys -t $session:manager -t 0 "git fetch" 'Enter'
+    tmux send-keys -t $session:manager -t 0 "clear" 'Enter'
+    tmux send-keys -t $session:manager -t 0 "git status" 'Enter'
 
-    # DOCKER API
-    tmux send-keys -t $session:interactive -t 0 "clear" 'Enter'
-    tmux send-keys -t $session:interactive -t 0 "docker-compose run --rm --service-ports --name selfweb web bash"
+    tmux send-keys -t $session:manager -t 1 "yarn install" 'Enter'
+    tmux send-keys -t $session:manager -t 1 "clear" 'Enter'
+    tmux send-keys -t $session:manager -t 1 "yarn start"
 
-    # MANAGER
-    tmux send-keys -t $session:interactive -t 1 "clear" 'Enter'
-    tmux send-keys -t $session:interactive -t 1 "yarn start"
+
+
     ###############################
 
 
     ##### PGADMIN DOCKER #####
     tmux neww -t $session: -n database -c "$HOME/Developer/nephroflow/nephroflow-api"
-    tmux send-keys -t $session:interactive -t 0 "clear" 'Enter'
-    tmux send-keys -t $session:database "docker-compose up pgadmin -d"
-    newly_created=true
+    tmux send-keys -t $session:database -t 0 "clear" 'Enter'
+    tmux send-keys -t $session:database "docker-compose up pgadmin"
     ##########################
+
+    ##### ASSISTANT #####
+    tmux neww -t $session: -n assistant -c "$HOME/Developer/nephroflow/nephroflow-assistant"
+    tmux send-keys -t $session:assistant "git fetch" 'Enter'
+    tmux send-keys -t $session:assistant "clear" 'Enter'
+    tmux send-keys -t $session:assistant "git status" 'Enter'
+    ##########################
+
+    newly_created=true
 fi
 
 if [ "$newly_created" = true ]; then
