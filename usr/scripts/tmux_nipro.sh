@@ -19,18 +19,17 @@ if [[ $? != 0 ]]; then
     tmux send-keys -t $session:api -t 0 "clear" 'Enter'
     tmux send-keys -t $session:api -t 0 "git status" 'Enter'
 
-    tmux send-keys -t $session:api -t 1 "clear" 'Enter'
-    tmux send-keys -t $session:api -t 1 "docker exec -it selfweb bash"
+    #tmux send-keys -t $session:api -t 1 "clear" 'Enter'
+    #tmux send-keys -t $session:api -t 1 "docker exec -it selfweb bash"
 
-    tmux split-window -h -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -l 50%
-    tmux send-keys -t $session:api -t 2 "clear" 'Enter'
-    tmux send-keys -t $session:api -t 2 "docker-compose run --rm --service-ports --name selfweb web bash"
+    #tmux split-window -h -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -l 50%
+    tmux send-keys -t $session:api -t 1 "clear" 'Enter'
+    tmux send-keys -t $session:api -t 1 "docker-compose run --rm --service-ports --name selfweb web bash"
     #######################
 
     ##### MANAGER DEV ENV #####
     tmux neww -t $session: -n manager -c $HOME/Developer/nephroflow/nephroflow-manager
     tmux split-window -v -t $session:manager -c "$HOME/Developer/nephroflow/nephroflow-manager" -l 25%
-
 
     tmux send-keys -t $session:manager -t 0 "git fetch" 'Enter'
     tmux send-keys -t $session:manager -t 0 "clear" 'Enter'
@@ -39,10 +38,15 @@ if [[ $? != 0 ]]; then
     tmux send-keys -t $session:manager -t 1 "yarn install" 'Enter'
     tmux send-keys -t $session:manager -t 1 "clear" 'Enter'
     tmux send-keys -t $session:manager -t 1 "yarn start"
-
-
-
     ###############################
+
+
+    ##### ASSISTANT #####
+    #tmux neww -t $session: -n assistant -c "$HOME/Developer/nephroflow/nephroflow-assistant"
+    #tmux send-keys -t $session:assistant "git fetch" 'Enter'
+    #tmux send-keys -t $session:assistant "clear" 'Enter'
+    #tmux send-keys -t $session:assistant "git status" 'Enter'
+    ##########################
 
 
     ##### PGADMIN DOCKER #####
@@ -51,12 +55,6 @@ if [[ $? != 0 ]]; then
     tmux send-keys -t $session:database "docker-compose up pgadmin"
     ##########################
 
-    ##### ASSISTANT #####
-    tmux neww -t $session: -n assistant -c "$HOME/Developer/nephroflow/nephroflow-assistant"
-    tmux send-keys -t $session:assistant "git fetch" 'Enter'
-    tmux send-keys -t $session:assistant "clear" 'Enter'
-    tmux send-keys -t $session:assistant "git status" 'Enter'
-    ##########################
 
     newly_created=true
 fi

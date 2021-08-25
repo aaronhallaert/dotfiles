@@ -29,7 +29,7 @@ let g:compe.source.ultisnips = v:true
 let g:compe.source.neosnippet = v:true
 let g:compe.source.luasnip = v:true
 let g:compe.source.emoji = v:true
-let g:compe.source.tabnine = v:true
+let g:compe.source.tabnine = v:false
 
 
 inoremap <silent><expr> <C-l> compe#confirm('<CR>')
