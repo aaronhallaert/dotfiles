@@ -14,7 +14,7 @@ if [[ $? != 0 ]]; then
     ##### API DEV ENV #####
     tmux neww -t $session: -n api -c $HOME/Developer/nephroflow/nephroflow-api
 
-    tmux split-window -v -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -l 25%
+    tmux split-window -v -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -p 25
     tmux send-keys -t $session:api -t 0 "git fetch" 'Enter'
     tmux send-keys -t $session:api -t 0 "clear" 'Enter'
     tmux send-keys -t $session:api -t 0 "git status" 'Enter'
@@ -29,7 +29,7 @@ if [[ $? != 0 ]]; then
 
     ##### MANAGER DEV ENV #####
     tmux neww -t $session: -n manager -c $HOME/Developer/nephroflow/nephroflow-manager
-    tmux split-window -v -t $session:manager -c "$HOME/Developer/nephroflow/nephroflow-manager" -l 25%
+    tmux split-window -v -t $session:manager -c "$HOME/Developer/nephroflow/nephroflow-manager" -p 25
 
     tmux send-keys -t $session:manager -t 0 "git fetch" 'Enter'
     tmux send-keys -t $session:manager -t 0 "clear" 'Enter'
