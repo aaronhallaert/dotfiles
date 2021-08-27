@@ -140,7 +140,7 @@ autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 
 nnoremap <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap ha :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
 nnoremap gt1 :lua require("harpoon.term").gotoTerminal(1)<CR>i
 nnoremap gt2 :lua require("harpoon.term").gotoTerminal(2)<CR>i
 nnoremap st11 :lua require("harpoon.term").sendCommand(1,1)<CR>i

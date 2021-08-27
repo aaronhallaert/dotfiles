@@ -58,7 +58,7 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Man pages
 Plug 'vim-utils/vim-man'
 " Great for cpp
-Plug 'lyuts/vim-rtags'
+"Plug 'lyuts/vim-rtags'
 
 " save as super user
 Plug 'lambdalisue/suda.vim'
