@@ -2,17 +2,19 @@ local actions = require('telescope.actions')
 require('telescope').setup{
    defaults = {
        --prompt_prefix = "> ",
-   },
-   pickers = {
        mappings = {
           i = {
-            ['<esc>'] = actions.close,
+            ["<c-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist,
           },
           n = {
-            ['<esc>'] = actions.close,
-          }
+            ["<c-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist,
+          },
        },
-      buffers = {
+   },
+   pickers = {
+       buffers = {
           sort_lastused = true,
           mappings = {
               i = {

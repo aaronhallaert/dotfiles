@@ -4,9 +4,11 @@
 
 " Color Scheme
 set termguicolors
+"colorscheme sonokai
 colorscheme gruvbox
 
 lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
+lua vim.cmd([[ autocmd ColorScheme sonokai :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
 
 
 let g:gruvbox_contrast_dark = 'hard'
