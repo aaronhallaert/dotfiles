@@ -108,8 +108,9 @@ for _, lsp in ipairs(servers) do
   if lsp == "solargraph" then
       nvim_lsp.solargraph.setup {
           on_attach = on_attach,
+          --cmd = {"nc", "localhost", "7658"},
           filetypes = {"ruby", "rakefile"},
-          root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "./"),
+          root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
           settings = {
               solargraph = {
                   autoformat = true,

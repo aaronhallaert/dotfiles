@@ -65,4 +65,22 @@ function M.search_git_files()
     })
 end
 
+function M.changed_on_branch()
+    local previewers = require('telescope.previewers')
+    local pickers = require('telescope.pickers')
+    local sorters = require('telescope.sorters')
+    local finders = require('telescope.finders')
+
+    pickers.new {
+        results_title = 'Modified on current branch',
+        finder = finders.new_oneshot_job({'git-branch-modified.sh', 'list'}),
+        sorter = sorters.get_fuzzy_file(),
+        previewer = previewers.new_termopen_previewer {
+            get_command = function(entry)
+                return {'git-branch-modified.sh', 'diff', entry.value}
+            end
+        },
+    }:find()
+end
+
 return M
