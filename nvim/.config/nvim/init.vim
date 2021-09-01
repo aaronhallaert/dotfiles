@@ -151,6 +151,14 @@ nnoremap g2 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap g3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap g4 :lua require("harpoon.ui").nav_file(4)<CR>
 
+
+function! DiffPR()
+    let baseCommit = system('git merge-base master $(git branch --show-current)')
+    execute "normal! :DiffviewOpen ".baseCommit
+endfunction
+nnoremap <leader>dpr :call DiffPR()<CR>
+
+
 " Specify plugins
 source $HOME/dotfiles/nvim/.config/nvim/plugin/plug-config.vim
 
