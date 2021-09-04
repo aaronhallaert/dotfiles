@@ -1,11 +1,7 @@
 require("aaron.telescope")
 require("aaron.harpoon")
 require("aaron.lsp")
+require("aaron.treesitter")
+require("aaron.feline")
 require("gitsigns").setup()
-require("feline").setup(
-{
-  file_info = {
-    type = 'full-path'
-  }
-}
-)
+require("octo").setup()

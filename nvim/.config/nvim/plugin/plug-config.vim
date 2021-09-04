@@ -12,7 +12,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'kosayoda/nvim-lightbulb'
-
+Plug 'pwntester/octo.nvim'
 Plug 'phaazon/hop.nvim'
 
 Plug 'sindrets/diffview.nvim'
@@ -29,7 +29,10 @@ Plug 'ThePrimeagen/harpoon'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
+Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua', {'commit': 'fd7f60e242205ea9efc9649101c81a07d5f458bb'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'tpope/vim-obsession'
 

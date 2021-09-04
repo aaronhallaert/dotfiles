@@ -133,32 +133,6 @@ nnoremap <leader>tt :terminal<CR> i
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-
-
-nnoremap <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
-nnoremap gt1 :lua require("harpoon.term").gotoTerminal(1)<CR>i
-nnoremap gt2 :lua require("harpoon.term").gotoTerminal(2)<CR>i
-nnoremap st11 :lua require("harpoon.term").sendCommand(1,1)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\><c-n>
-nnoremap st1f :lua require("harpoon.term").sendCommand(1, "bundle exec rspec ".. vim.fn.getreg('%'))<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\><c-n>
-nnoremap st1l :lua require("harpoon.term").sendCommand(1, "bundle exec rspec ".. vim.fn.getreg('%') ..":".. vim.api.nvim_win_get_cursor(0)[1])<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\><c-n>
-nnoremap g1 :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap g2 :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap g3 :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap g4 :lua require("harpoon.ui").nav_file(4)<CR>
-
-
-function! DiffPR()
-    let baseCommit = system('git merge-base master $(git branch --show-current)')
-    execute "normal! :DiffviewOpen ".baseCommit
-endfunction
-nnoremap <leader>dpr :call DiffPR()<CR>
-
-
 " Specify plugins
 source $HOME/dotfiles/nvim/.config/nvim/plugin/plug-config.vim
 
@@ -175,13 +149,16 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/undotree-config.vim
 "source $HOME/dotfiles/nvim/.config/nvim/plugin/netrw-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimtree-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/hop-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/harpoon-config.vim
 
 " General Nvim Tools
 source $HOME/dotfiles/nvim/.config/nvim/plugin/markdownprev-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitfugitive-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/diffview-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitblame-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/floaterm-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/lsp-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimwiki-config.vim
 
 " Code Tools
