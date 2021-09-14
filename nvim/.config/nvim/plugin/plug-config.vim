@@ -5,6 +5,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
 " Icons
 Plug 'ryanoasis/vim-devicons'
@@ -37,7 +38,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-obsession'
 
 Plug 'simrat39/symbols-outline.nvim'
-Plug 'famiu/feline.nvim'
+"Plug 'famiu/feline.nvim'
+Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'wellle/targets.vim'

@@ -1,6 +1,6 @@
 " Marks
 nnoremap <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>ah :lua require("harpoon.mark").add_file()<CR>
 
 " Send commands
 nnoremap st1 :lua require("harpoon.term").sendCommand(1,1)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\><c-n>

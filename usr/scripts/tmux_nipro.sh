@@ -14,7 +14,7 @@ if [[ $? != 0 ]]; then
     ##### API DEV ENV #####
     tmux neww -t $session: -n api -c $HOME/Developer/nephroflow/nephroflow-api
 
-    tmux split-window -v -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -p 25
+    tmux split-window -h -t $session:api -c "$HOME/Developer/nephroflow/nephroflow-api" -p 25
     tmux send-keys -t $session:api -t 0 "git fetch" 'Enter'
     tmux send-keys -t $session:api -t 0 "clear" 'Enter'
     tmux send-keys -t $session:api -t 0 "git status" 'Enter'
@@ -29,7 +29,7 @@ if [[ $? != 0 ]]; then
 
     ##### MANAGER DEV ENV #####
     tmux neww -t $session: -n manager -c $HOME/Developer/nephroflow/nephroflow-manager
-    tmux split-window -v -t $session:manager -c "$HOME/Developer/nephroflow/nephroflow-manager" -p 25
+    tmux split-window -h -t $session:manager -c "$HOME/Developer/nephroflow/nephroflow-manager" -p 25
 
     tmux send-keys -t $session:manager -t 0 "git fetch" 'Enter'
     tmux send-keys -t $session:manager -t 0 "clear" 'Enter'
@@ -59,13 +59,15 @@ if [[ $? != 0 ]]; then
     ##### LINK DEV ENV #####
     tmux neww -t $session: -n link -c $HOME/Developer/nephroflow/link
 
-    tmux split-window -v -t $session:link -c "$HOME/Developer/nephroflow/link" -p 25
+    tmux split-window -h -t $session:link -c "$HOME/Developer/nephroflow/link" -p 25
     tmux send-keys -t $session:link -t 0 "git fetch" 'Enter'
     tmux send-keys -t $session:link -t 0 "clear" 'Enter'
     tmux send-keys -t $session:link -t 0 "git status" 'Enter'
 
     tmux send-keys -t $session:link -t 1 "clear" 'Enter'
     tmux send-keys -t $session:link -t 1 "docker-compose run --rm --service-ports --name channel_host channel_host sh"
+
+    tmux split-window -v -t $session:link -c "$HOME/Developer/nephroflow/link" -p 50
     #tmux send-keys -t $session:link -t 1 "clear" 'Enter'
     #tmux send-keys -t $session:link -t 1 "docker-compose up -d"
 
