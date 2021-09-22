@@ -154,7 +154,6 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/harpoon-config.vim
 " General Nvim Tools
 source $HOME/dotfiles/nvim/.config/nvim/plugin/markdownprev-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitfugitive-config.vim
-source $HOME/dotfiles/nvim/.config/nvim/plugin/diffview-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitblame-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/floaterm-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim

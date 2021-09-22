@@ -16,7 +16,6 @@ Plug 'kosayoda/nvim-lightbulb'
 Plug 'pwntester/octo.nvim'
 Plug 'phaazon/hop.nvim'
 
-Plug 'sindrets/diffview.nvim'
 Plug 'Sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
