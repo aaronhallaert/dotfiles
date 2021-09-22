@@ -30,5 +30,5 @@ endfunction
 "noremap <silent> <C-E> :call ToggleNetrw()<CR>
 
 " Find root of 
-let &path = system("git rev-parse --show-toplevel | tr -d '\\n'")
-nnoremap <leader>pv :call ToggleNetrw(&path)<CR>
+"let &path = system("git rev-parse --show-toplevel | tr -d '\\n'")
+"nnoremap <leader>pv :call ToggleNetrw(&path)<CR>

@@ -1,5 +1,4 @@
 set timeoutlen=500
-nnoremap <leader>tp :FloatermNew python<CR>
 nnoremap <leader>tg :FloatermNew lazygit<CR>
 
 " Floaterm

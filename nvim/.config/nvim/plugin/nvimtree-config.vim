@@ -15,6 +15,9 @@ highlight NvimTreeFolderIcon guibg=blue
 
 let g:nvim_tree_disable_default_keybindings = 1
 
+let g:nvim_tree_hijack_netrw = 0
+let g:nvim_tree_disable_netrw = 0
+
 set mouse=a
 lua <<EOF
     local tree_cb = require'nvim-tree.config'.nvim_tree_callback
