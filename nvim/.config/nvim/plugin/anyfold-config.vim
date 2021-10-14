@@ -3,5 +3,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 filetype plugin indent on
-autocmd Filetype * AnyFoldActivate
+"autocmd Filetype * AnyFoldActivate
 set foldlevel=99

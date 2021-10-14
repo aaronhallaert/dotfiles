@@ -11,6 +11,22 @@ syntax on
 let mapleader=" "
 let maplocalleader="\\"
 
+function! DisableSyntaxOnWidth() abort
+  let view = winsaveview()
+  let max_col = 0
+  g/^/let max_col=max([max_col, col('$') - 1])
+  call histdel('search', -1)
+  let @/ = histget('search', -1)
+  call winrestview(view)
+  if max_col > 250
+      execute 'TSBufDisable highlight'
+      execute 'syntax off'
+  endif
+endfunction
+
+"autocmd BufEnter *.json call DisableSyntaxOnWidth()
+
+nmap <silent> gx :!open <cWORD><CR>
 " Sets numbers relative to current line number
 set relativenumber
 set nohlsearch

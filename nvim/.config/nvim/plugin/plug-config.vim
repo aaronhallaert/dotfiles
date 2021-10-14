@@ -29,12 +29,14 @@ Plug 'ThePrimeagen/harpoon'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua', {'commit': 'fd7f60e242205ea9efc9649101c81a07d5f458bb'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-abolish'
 
 Plug 'simrat39/symbols-outline.nvim'
 "Plug 'famiu/feline.nvim'
