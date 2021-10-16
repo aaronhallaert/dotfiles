@@ -80,9 +80,9 @@ local on_attach = function(client, bufnr)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Set autocommands conditional on server_capabilities
@@ -100,9 +100,11 @@ local on_attach = function(client, bufnr)
     end
 end
 
+
+
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "solargraph", "jsonls", "vimls" , "tsserver", "diagnosticls"}
+local servers = { "pylsp", "solargraph", "jsonls", "vimls" , "tsserver", "diagnosticls"}
 for _, lsp in ipairs(servers) do
 
   if lsp == "solargraph" then
@@ -172,6 +174,49 @@ for _, lsp in ipairs(servers) do
                 formatFiletypes = formatFiletypes
             }
         }
+    --elseif lsp == "pyright" then
+        --local filetypes = {
+            --python = "pycodestyle"
+        --}
+        --local linters = {
+            --pycodestyle = {
+                --sourceName = "pycodestyle",
+                --command = "pycodestyle",
+                --args = {"%filepath", "--format='%(row)d|%(col)d|%(code)s| %(text)s'"},
+                --debounce = 100,
+                --formatPattern = {
+                    --"^(\\d+)|(\\d+)|(\\w)|(\\w).+|(.*)$",
+                    --{
+                        --line = 1,
+                        --column = 2,
+                        --message = {"[",3,"] ", 5},
+                        --security = 4
+                    --}
+                --},
+                --securities = {
+                    --E = "error",
+                    --W = "warning",
+                    --F = "info",
+                    --B = "hint",
+                --}
+            --}
+        --}
+        --local formatters = {
+            --black = {command = "black", args = {"%filepath"}}
+        --}
+        --local formatFiletypes = {
+            --python = "black"
+        --}
+        --nvim_lsp.pyright.setup {
+            --on_attach = on_attach,
+            --filetypes = vim.tbl_keys(filetypes),
+            --init_options = {
+                --filetypes = filetypes,
+                --linters = linters,
+                --formatters = formatters,
+                --formatFiletypes = formatFiletypes
+            --}
+        --}
     else 
        nvim_lsp[lsp].setup { 
           on_attach = on_attach,
