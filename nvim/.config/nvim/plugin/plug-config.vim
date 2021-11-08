@@ -4,6 +4,10 @@
 
 call plug#begin('~/.vim/plugged')
 
+
+Plug 'github/copilot.vim'
+
+
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
@@ -25,7 +29,8 @@ Plug 'f-person/git-blame.nvim'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'ThePrimeagen/harpoon'
+"Plug 'ThePrimeagen/harpoon'
+Plug 'aaronhallaert/harpoon', { 'branch': 'marks_git_branch' }
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-telescope/telescope.nvim'
