@@ -118,29 +118,19 @@ export PATH="$HOME/dotfiles/usr/scripts:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/aaron/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/aaron/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/aaron/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
+        export PATH="/home/aaron/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-# ALIASES
-alias open="xdg-open 2>/dev/null"
-alias start-airplay="~/Developer/programs/UxPlay/build/uxplay &!"
-alias stop-airplay="pkill uxplay"
-alias dotf="cd ~/dotfiles"
-alias lg="lazygit"
-
-alias dump_db="pg_dump -h localhost -U postgres -c --file ~/Developer/nephroflow/development.sql --format=c nephroflow_development"
-alias restore_db="dropdb -h localhost -U postgres nephroflow_development && createdb -h localhost -U postgres nephroflow_development && pg_restore -h localhost -U postgres -d nephroflow_development ~/Developer/nephroflow/development.sql"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -151,4 +141,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
+source "$HOME/dotfiles/zsh/aliases.zsh"
 source "$HOME/dotfiles/zsh/keys"
