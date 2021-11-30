@@ -236,3 +236,5 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/vimtex-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/translator-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/thesaurus-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/grammarous-config.vim
+
+lua require("aaron")

@@ -52,7 +52,7 @@ local on_attach = function(client, bufnr)
             --prefix = "»",
             --spacing = 4,
             --},
-            virtual_text = false,
+            virtual_text = true,
             signs = true,
             update_in_insert = false,
         }
