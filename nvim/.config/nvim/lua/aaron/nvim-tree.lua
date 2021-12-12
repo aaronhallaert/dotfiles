@@ -73,7 +73,16 @@ require"nvim-tree".setup( {
   },
   filters = {
     dotfiles = false,
-    custom = {}
+    custom = {"docker-compose",
+              "tmp",
+              "storage",
+              "log",
+              "docs",
+              "docker-compose.medsoc.yml",
+              "docker-compose.sam.yml",
+              "docker-compose.vidal.yml",
+              "docker-compose.yml"
+          }
   },
   view = {
     width = 70,

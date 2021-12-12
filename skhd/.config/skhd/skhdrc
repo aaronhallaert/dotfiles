@@ -1,0 +1,54 @@
+ctrl + alt - l : yabai -m window --focus east
+ctrl + alt - j : yabai -m window --focus south
+ctrl + alt - k : yabai -m window --focus north
+ctrl + alt - h : yabai -m window --focus west
+
+ctrl + alt + shift - l : yabai -m window --warp east
+ctrl + alt + shift - j : yabai -m window --warp south
+ctrl + alt + shift - k : yabai -m window --warp north
+ctrl + alt + shift - h : yabai -m window --warp west
+
+
+ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
+ctrl + alt - e : yabai -m space --balance
+ctrl + alt - r : brew services restart yabai
+
+
+
+shift + cmd + ctrl - l : yabai -m window --resize right:50:0; \
+                         yabai -m window --resize left:50:0
+shift + cmd + ctrl - j : yabai -m window --resize bottom:0:50; \
+                         yabai -m window --resize top:0:50
+shift + cmd + ctrl - k : yabai -m window --resize top:0:-50; \
+                         yabai -m window --resize bottom:0:-50
+shift + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
+                         yabai -m window --resize right:-50:0
+
+
+
+cmd - 0x24 : open -na /System/Volumes/Data/Applications/iTerm.app
+
+cmd - 0x12 : yabai -m space --focus 1 && yabai -m window --focus first
+cmd - 0x13 : yabai -m space --focus 2 && yabai -m window --focus first
+cmd - 0x14 : yabai -m space --focus 3 && yabai -m window --focus first
+cmd - 0x15 : yabai -m space --focus 4 && yabai -m window --focus first
+cmd - 0x17 : yabai -m space --focus 5 && yabai -m window --focus first
+cmd - 0x16 : yabai -m space --focus 6 && yabai -m window --focus first
+cmd - 0x1A : yabai -m space --focus 7 && yabai -m window --focus first
+cmd - 0x1C : yabai -m space --focus 8 && yabai -m window --focus first
+cmd - 0x19 : yabai -m space --focus 9 && yabai -m window --focus first
+cmd - 0x1D : yabai -m space --focus 10 && yabai -m window --focus first
+
+cmd + shift - 0x12 : yabai -m window --space 1
+cmd + shift - 0x13 : yabai -m window --space 2
+cmd + shift - 0x14 : yabai -m window --space 3
+cmd + shift - 0x15 : yabai -m window --space 4
+cmd + shift - 0x17 : yabai -m window --space 5
+cmd + shift - 0x16 : yabai -m window --space 6
+cmd + shift - 0x1A : yabai -m window --space 7
+cmd + shift - 0x1C : yabai -m window --space 8
+cmd + shift - 0x19 : yabai -m window --space 9
+cmd + shift - 0x1D : yabai -m window --space 10
+
+cmd + ctrl + shift - 0x12 : yabai -m space --display 1
+cmd + ctrl + shift - 0x13 : yabai -m space --display 2

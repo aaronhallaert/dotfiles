@@ -105,10 +105,12 @@ end
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pylsp", "solargraph", "jsonls", "vimls" , "tsserver", "diagnosticls"}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 for _, lsp in ipairs(servers) do
 
   if lsp == "solargraph" then
       nvim_lsp.solargraph.setup {
+          capabilities = capabilities,
           on_attach = on_attach,
           --cmd = {"nc", "localhost", "7658"},
           filetypes = {"ruby", "rakefile"},
@@ -128,6 +130,7 @@ for _, lsp in ipairs(servers) do
     elseif lsp == "tsserver" then
         -- disable formatting for typescript
         nvim_lsp.tsserver.setup {
+            capabilities = capabilities,
             on_attach = function(client)
                 client.resolved_capabilities.document_formatting = false,
                 on_attach(client)
@@ -165,6 +168,7 @@ for _, lsp in ipairs(servers) do
             typescriptreact = "prettier"
         }
         nvim_lsp.diagnosticls.setup {
+            capabilities = capabilities,
             on_attach = on_attach,
             filetypes = vim.tbl_keys(filetypes),
             init_options = {
@@ -219,6 +223,7 @@ for _, lsp in ipairs(servers) do
         --}
     else 
        nvim_lsp[lsp].setup { 
+          capabilities = capabilities,
           on_attach = on_attach,
           root_dir = nvim_lsp.util.root_pattern(".git")
        }
