@@ -11,6 +11,7 @@ Plug 'github/copilot.vim'
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
+Plug 'Mofiqul/vscode.nvim'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}

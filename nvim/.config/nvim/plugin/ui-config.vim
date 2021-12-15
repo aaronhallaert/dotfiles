@@ -2,12 +2,24 @@
 " User Interface Configuration 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Color Scheme
+
+
+""""""""""""""""""""""""""""""""" defaults """""""""""""""""""""""""""""""""""
 set termguicolors
 
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+""""""""""""""""""""""""""""" Color Scheme Picker """""""""""""""""""""""""""""
 "colorscheme sonokai
 "colorscheme gruvbox
-colorscheme onedark
+"colorscheme onedark
+colorscheme vscode
+
+
+"""""""""""""""""""""""""""""""" Lightline """"""""""""""""""""""""""""""""""""
 let g:lightline = {
         \ 'colorscheme' :'onedark',
         \ 'active': {
@@ -19,20 +31,18 @@ let g:lightline = {
         \ }
         \ }
 
+""""""""""""""""""""""""""""""""" Settings """"""""""""""""""""""""""""""""""""
+
+let g:vscode_style = "dark"
+
 lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
-lua vim.cmd([[ autocmd ColorScheme sonokai :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
-
-
 let g:gruvbox_contrast_dark = 'hard'
-
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
 let g:gruvbox_invert_selection='0'
 set background=dark
 
+lua vim.cmd([[ autocmd ColorScheme sonokai :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
+
+""""""""""""""""""""""""""""""""" Completion """""""""""""""""""""""""""""""""
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 " blue

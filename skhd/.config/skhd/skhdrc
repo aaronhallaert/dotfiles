@@ -1,27 +1,28 @@
-ctrl + alt - l : yabai -m window --focus east
-ctrl + alt - j : yabai -m window --focus south
-ctrl + alt - k : yabai -m window --focus north
-ctrl + alt - h : yabai -m window --focus west
+cmd - l : yabai -m window --focus east
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - h : yabai -m window --focus west
 
-ctrl + alt + shift - l : yabai -m window --warp east
-ctrl + alt + shift - j : yabai -m window --warp south
-ctrl + alt + shift - k : yabai -m window --warp north
-ctrl + alt + shift - h : yabai -m window --warp west
-
-
-ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
-ctrl + alt - e : yabai -m space --balance
-ctrl + alt - r : brew services restart yabai
+cmd + shift - l : yabai -m window --warp east
+cmd + shift - j : yabai -m window --warp south
+cmd + shift - k : yabai -m window --warp north
+cmd + shift - h : yabai -m window --warp west
 
 
+cmd - f : yabai -m window --toggle zoom-fullscreen
+cmd - e : yabai -m space --balance
+cmd - r : brew services restart yabai
+cmd - s : skhd --reload
 
-shift + cmd + ctrl - l : yabai -m window --resize right:50:0; \
+
+
+alt + cmd + ctrl - l : yabai -m window --resize right:50:0; \
                          yabai -m window --resize left:50:0
-shift + cmd + ctrl - j : yabai -m window --resize bottom:0:50; \
+alt + cmd + ctrl - j : yabai -m window --resize bottom:0:50; \
                          yabai -m window --resize top:0:50
-shift + cmd + ctrl - k : yabai -m window --resize top:0:-50; \
+alt + cmd + ctrl - k : yabai -m window --resize top:0:-50; \
                          yabai -m window --resize bottom:0:-50
-shift + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
+alt + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
                          yabai -m window --resize right:-50:0
 
 
@@ -50,5 +51,5 @@ cmd + shift - 0x1C : yabai -m window --space 8
 cmd + shift - 0x19 : yabai -m window --space 9
 cmd + shift - 0x1D : yabai -m window --space 10
 
-cmd + ctrl + shift - 0x12 : yabai -m space --display 1
-cmd + ctrl + shift - 0x13 : yabai -m space --display 2
+# cmd + ctrl + alt + shift - 0x12 : yabai -m space --display 1
+# cmd + ctrl + alt + shift - 0x13 : yabai -m space --display 2
