@@ -98,6 +98,7 @@ set noswapfile
 
 set scrolloff=8
 set signcolumn=yes
+filetype plugin indent on
 
 set nobackup
 set undodir=~/.vim/undodir
@@ -238,3 +239,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/thesaurus-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/grammarous-config.vim
 
 lua require("aaron")
+augroup jdtls_lsp
+    au!
+    au FileType java lua require'jdtls_setup'.setup()
+augroup END

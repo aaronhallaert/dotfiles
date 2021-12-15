@@ -15,6 +15,7 @@ Plug 'Mofiqul/vscode.nvim'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mfussenegger/nvim-jdtls'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'pwntester/octo.nvim'
