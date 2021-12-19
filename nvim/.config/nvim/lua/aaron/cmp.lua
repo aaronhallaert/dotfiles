@@ -55,6 +55,7 @@ cmp.setup({
     -- { name = 'luasnip' }, -- For luasnip users.
     { name = 'ultisnips' }, -- For ultisnips users.
     { name = 'emoji' },
+    { name = 'path' },
     -- { name = 'snippy' }, -- For snippy users.
   }, {
     { name = 'buffer' },

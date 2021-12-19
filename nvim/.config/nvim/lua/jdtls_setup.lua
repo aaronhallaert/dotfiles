@@ -32,33 +32,33 @@ function M.setup()
       require'jdtls.setup'.add_commands()
       --require'jdtls'.setup_dap()
       --require'lsp-status'.register_progress()
-      --require'compe'.setup {
-          --enabled = true;
-          --autocomplete = true;
-          --debug = false;
-          --min_length = 1;
-          --preselect = 'enable';
-          --throttle_time = 80;
-          --source_timeout = 200;
-          --incomplete_delay = 400;
-          --max_abbr_width = 100;
-          --max_kind_width = 100;
-          --max_menu_width = 100;
-          --documentation = true;
+      require'compe'.setup {
+          enabled = true;
+          autocomplete = true;
+          debug = false;
+          min_length = 1;
+          preselect = 'enable';
+          throttle_time = 80;
+          source_timeout = 200;
+          incomplete_delay = 400;
+          max_abbr_width = 100;
+          max_kind_width = 100;
+          max_menu_width = 100;
+          documentation = true;
 
-          --source = {
-            --path = true;
-            --buffer = true;
-            --calc = true;
-            --vsnip = false;
-            --nvim_lsp = true;
-            --nvim_lua = true;
-            --spell = true;
-            --tags = true;
-            --snippets_nvim = false;
-            --treesitter = true;
-          --};
-        --}
+          source = {
+            path = true;
+            buffer = true;
+            calc = true;
+            vsnip = false;
+            nvim_lsp = true;
+            nvim_lua = true;
+            spell = true;
+            tags = true;
+            snippets_nvim = false;
+            treesitter = true;
+          };
+        }
 
       --require'lspkind'.init()
       --require'lspsaga'.init_lsp_saga()
@@ -81,28 +81,28 @@ function M.setup()
           --}
       --}
 
-      --vim.api.nvim_exec([[
-        --augroup FormatAutogroup
-          --autocmd!
-          --autocmd BufWritePost *.java FormatWrite
-        --augroup end
-      --]], true)
+      vim.api.nvim_exec([[
+        augroup FormatAutogroup
+          autocmd!
+          autocmd BufWritePost *.java FormatWrite
+        augroup end
+      ]], true)
 
       --local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
       --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
       --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-      --vim.api.nvim_exec([[
-          --hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-          --hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-          --hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-          --augroup lsp_document_highlight
-            --autocmd!
-            --autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            --autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-          --augroup END
-      --]], false)
+      vim.api.nvim_exec([[
+          hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+          hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+          hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+          augroup lsp_document_highlight
+            autocmd!
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+          augroup END
+      ]], false)
 
     end
 
@@ -110,7 +110,8 @@ function M.setup()
     local root_dir = require('jdtls.setup').find_root(root_markers)
     local home = os.getenv('HOME')
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    --local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     local workspace_folder = home .. "/.cache" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
     local config = {
@@ -120,6 +121,13 @@ function M.setup()
         capabilities = capabilities,
         on_attach = on_attach,
     }
+
+    local jdk_home = ""
+    if vim.fn.has('macunix') then
+        jdk_home = vim.fn.expand("/Library/Java/JavaVirtualMachines/jdk-11.0.12.jdk/Contents/Home")
+    else
+        jdk_home = vim.fn.expand("/Library/Java/JavaVirtualMachines/jdk-11.0.12.jdk/Contents/Home")
+    end
 
     config.settings = {
         --['java.format.settings.url'] = home .. "/.config/nvim/language-servers/java-google-formatter.xml",
@@ -153,13 +161,19 @@ function M.setup()
             runtimes = {
               {
                 name = "JavaSE-11",
-                path = "/usr/lib/jvm/java-11-openjdk-amd64/"
+                path = jdk_home
               },
             }
           };
         };
     }
-    config.cmd = {'/home/aaron/dotfiles/nvim/.config/nvim/lua/java-lsp.sh', workspace_folder}
+
+    if vim.fn.has('macunix') then
+        config.cmd = {vim.fn.expand('$HOME/dotfiles/nvim/.config/nvim/lua/java-lsp-mac.sh'), workspace_folder}
+    else
+        config.cmd = {vim.fn.expand('$HOME/dotfiles/nvim/.config/nvim/lua/java-lsp.sh'), workspace_folder}
+    end
+
     config.on_attach = on_attach
     config.on_init = function(client, _)
         client.notify('workspace/didChangeConfiguration', { settings = config.settings })
