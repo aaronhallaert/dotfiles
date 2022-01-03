@@ -140,6 +140,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/Developer/programs/lua-language-server/bin"
 
 source "$HOME/dotfiles/zsh/aliases.zsh"
 source "$HOME/dotfiles/zsh/keys"
+
+alias luamake=/Users/aaronhallaert/Developer/programs/lua-language-server/3rd/luamake/luamake
