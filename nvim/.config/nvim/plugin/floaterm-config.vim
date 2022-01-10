@@ -1,5 +1,6 @@
 set timeoutlen=500
 nnoremap <leader>tg :FloatermNew lazygit<CR>
+nnoremap <leader>td :FloatermNew lazydocker<CR>
 
 " Floaterm
 let g:floaterm_gitcommit='floaterm'

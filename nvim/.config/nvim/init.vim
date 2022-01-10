@@ -24,6 +24,8 @@ function! DisableSyntaxOnWidth() abort
   endif
 endfunction
 
+nnoremap <silent> fdp :Rg byebug$<CR>
+nnoremap <silent> fiw :Rg <C-R><C-W><CR>
 
 " Jump to the next or previous line that has the same level or a lower
 " level of indentation than the current line.
@@ -83,9 +85,9 @@ set noerrorbells
 set incsearch
 
 " Tabs related
-set tabstop=4 
-set softtabstop=4
-set shiftwidth=4
+" set tabstop=4 
+" set softtabstop=4
+" set shiftwidth=4
 set expandtab
 
 set hidden

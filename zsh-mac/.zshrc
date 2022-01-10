@@ -146,3 +146,5 @@ source "$HOME/dotfiles/zsh/aliases.zsh"
 source "$HOME/dotfiles/zsh/keys"
 
 alias luamake=/Users/aaronhallaert/Developer/programs/lua-language-server/3rd/luamake/luamake
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
