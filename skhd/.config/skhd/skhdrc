@@ -13,7 +13,7 @@ cmd - f : yabai -m window --toggle zoom-fullscreen
 cmd - e : yabai -m space --balance
 cmd - r : brew services restart yabai
 cmd - s : skhd --reload
-
+cmd - t : yabai -m window --toggle float
 
 
 alt + cmd + ctrl - l : yabai -m window --resize right:50:0; \

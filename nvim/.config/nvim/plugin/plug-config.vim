@@ -50,9 +50,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-sleuth'
+"Plug 'tpope/vim-sleuth'
 
-Plug 'simrat39/symbols-outline.nvim'
+"Plug 'simrat39/symbols-outline.nvim'
 "Plug 'famiu/feline.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
