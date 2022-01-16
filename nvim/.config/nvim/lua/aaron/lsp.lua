@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
-    cfg = {
+    local cfg = {
         debug = true,
         log_path = "/tmp/lsp_signature.log",
         bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -36,9 +36,9 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    --local function buf_set_option(...)
-        --vim.api.nvim_buf_set_option(bufnr, ...)
-    --end
+    -- local function buf_set_option(...)
+    -- vim.api.nvim_buf_set_option(bufnr, ...)
+    -- end
 
     vim.fn.sign_define("LspDiagnosticsSignError", {text = "", texthl = "GruvboxRed"})
     vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", texthl = "GruvboxYellow"})
@@ -71,13 +71,13 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     buf_set_keymap('n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action({ diagnostics = vim.lsp.diagnostic.get_line_diagnostics()})<CR>', opts)
     buf_set_keymap('n', '<leader>is', '<Cmd>!eslint_d % --fix<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    --buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -112,12 +112,7 @@ require"lspconfig".efm.setup {
                     formatStdin = true
                 }
             },
-            json = {
-                {
-                    formatCommand = "jq .",
-                    formatStdin = true
-                }
-            }
+            json = {{formatCommand = "jq .", formatStdin = true}}
         }
     }
 }
@@ -129,11 +124,13 @@ for _, lsp in ipairs(servers) do
             capabilities = capabilities,
             on_attach = on_attach,
             -- cmd = {"nc", "localhost", "7658"},
+            cmd = {"solargraph", "stdio"},
             filetypes = {"ruby", "rakefile"},
             root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
             settings = {
                 solargraph = {
                     autoformat = true,
+                    formatting = true,
                     completion = true,
                     diagnostic = true,
                     folding = true,

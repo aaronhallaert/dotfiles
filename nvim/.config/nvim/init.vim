@@ -225,6 +225,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/gitfugitive-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/gitblame-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/floaterm-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/telekasten-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/lsp-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimwiki-config.vim
 

@@ -1,7 +1,7 @@
-"nnoremap <leader>ff <cmd>lua require("aaron.telescope").search_git_files()<cr>
-nnoremap <leader>ff <cmd>Files<cr>
-"nnoremap <leader>fg <cmd>lua require("aaron.telescope").search_gitwords()<cr>
-nnoremap <leader>fg <cmd>Rg<cr>
+nnoremap <leader>ff <cmd>lua require("aaron.telescope").search_git_files()<cr>
+"nnoremap <leader>ff <cmd>GFiles<cr>
+nnoremap <leader>fg <cmd>lua require("aaron.telescope").search_gitwords()<cr>
+"nnoremap <leader>fg <cmd>Rg<cr>
 
 
 nnoremap <leader>fb <cmd>lua require("telescope.builtin").buffers()<cr>

@@ -42,6 +42,21 @@ set background=dark
 
 lua vim.cmd([[ autocmd ColorScheme sonokai :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
 
+
+""""""""""""""""""""""""""" TELEKASTEN """""""""""""""""""""""""""
+" for gruvbox
+highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+highlight! tkBrackets ctermfg=gray guifg=gray
+
+" real yellow
+highlight! tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
+" gruvbox
+"highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
+
+highlight! link CalNavi CalRuler
+highlight! tkTagSep ctermfg=gray guifg=gray
+highlight! tkTag ctermfg=175 guifg=#d3869B
+
 """"""""""""""""""""""""""""""""" Completion """""""""""""""""""""""""""""""""
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -59,3 +74,6 @@ highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
+
+
+

@@ -112,8 +112,6 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files'
-
 # CUSTOM
 export PATH="$HOME/dotfiles/usr/scripts:$PATH"
 

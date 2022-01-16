@@ -29,16 +29,16 @@ alt + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
 
 cmd - 0x24 : open -na /System/Volumes/Data/Applications/iTerm.app
 
-cmd - 0x12 : yabai -m space --focus 1 && yabai -m window --focus first
-cmd - 0x13 : yabai -m space --focus 2 && yabai -m window --focus first
-cmd - 0x14 : yabai -m space --focus 3 && yabai -m window --focus first
-cmd - 0x15 : yabai -m space --focus 4 && yabai -m window --focus first
-cmd - 0x17 : yabai -m space --focus 5 && yabai -m window --focus first
-cmd - 0x16 : yabai -m space --focus 6 && yabai -m window --focus first
-cmd - 0x1A : yabai -m space --focus 7 && yabai -m window --focus first
-cmd - 0x1C : yabai -m space --focus 8 && yabai -m window --focus first
-cmd - 0x19 : yabai -m space --focus 9 && yabai -m window --focus first
-cmd - 0x1D : yabai -m space --focus 10 && yabai -m window --focus first
+cmd - 0x12 : yabai -m space --focus 1
+cmd - 0x13 : yabai -m space --focus 2
+cmd - 0x14 : yabai -m space --focus 3
+cmd - 0x15 : yabai -m space --focus 4
+cmd - 0x17 : yabai -m space --focus 5
+cmd - 0x16 : yabai -m space --focus 6
+cmd - 0x1A : yabai -m space --focus 7
+cmd - 0x1C : yabai -m space --focus 8
+cmd - 0x19 : yabai -m space --focus 9
+cmd - 0x1D : yabai -m space --focus 10
 
 cmd + shift - 0x12 : yabai -m window --space 1
 cmd + shift - 0x13 : yabai -m window --space 2
