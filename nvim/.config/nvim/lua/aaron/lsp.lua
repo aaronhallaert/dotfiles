@@ -1,4 +1,4 @@
-local nvim_lsp = require('lspconfig')
+local nvim_lsp = require("lspconfig")
 
 local on_attach = function(client, bufnr)
     local cfg = {
@@ -27,10 +27,9 @@ local on_attach = function(client, bufnr)
         extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
         -- deprecate !!
         -- decorator = {"`", "`"}  -- this is no longer needed as nvim give me a handler and it allow me to highlight active parameter in floating_window
-
     }
 
-    require'lsp_signature'.on_attach(cfg)
+    require("lsp_signature").on_attach(cfg)
 
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -57,23 +56,23 @@ local on_attach = function(client, bufnr)
 
     -- Mappings/shortcuts.
     local opts = {noremap = true, silent = true}
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-    buf_set_keymap('n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action({ diagnostics = vim.lsp.diagnostic.get_line_diagnostics()})<CR>', opts)
-    buf_set_keymap('n', '<leader>is', '<Cmd>!eslint_d % --fix<CR>', opts)
+    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "H", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    buf_set_keymap("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    buf_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+    buf_set_keymap("n", "<localleader>ca", "<cmd>lua vim.lsp.buf.code_action({ diagnostics = vim.lsp.diagnostic.get_line_diagnostics()})<CR>", opts)
+    buf_set_keymap("n", "<leader>is", "<Cmd>!eslint_d % --fix<CR>", opts)
 
     -- Set some keybinds conditional on server capabilities
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -94,14 +93,14 @@ local on_attach = function(client, bufnr)
     end
 end
 
--- Use a loop to conveniently both setup defined servers 
+-- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {"pylsp", "solargraph", "jsonls", "vimls", "tsserver", "diagnosticls", "sumneko_lua"}
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require"lspconfig".efm.setup {
+require("lspconfig").efm.setup({
     init_options = {documentFormatting = true},
-    filetypes = {"lua", "json"},
+    filetypes = {"lua", "json", "markdown"},
     on_attach = on_attach,
     settings = {
         rootMarkers = {".git/"},
@@ -112,15 +111,20 @@ require"lspconfig".efm.setup {
                     formatStdin = true
                 }
             },
-            json = {{formatCommand = "jq .", formatStdin = true}}
+            json = {{formatCommand = "jq .", formatStdin = true}},
+            markdown = {
+                {
+                    lintCommand = "markdownlint -c ./.markdownlint.json %"
+                    -- formatCommand = "markdownlint -f -c ./.markdownlint.json %"
+                }
+            }
         }
     }
-}
+})
 
 for _, lsp in ipairs(servers) do
-
     if lsp == "solargraph" then
-        nvim_lsp.solargraph.setup {
+        nvim_lsp.solargraph.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             -- cmd = {"nc", "localhost", "7658"},
@@ -129,33 +133,32 @@ for _, lsp in ipairs(servers) do
             root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
             settings = {
                 solargraph = {
-                    autoformat = true,
                     formatting = true,
                     completion = true,
-                    diagnostic = true,
+                    diagnostics = true,
                     folding = true,
                     references = true,
                     rename = true,
                     symbols = true
                 }
             }
-        }
+        })
     elseif lsp == "sumneko_lua" then
-        nvim_lsp.sumneko_lua.setup {
+        nvim_lsp.sumneko_lua.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             cmd = {"lua-language-server", "--stdio"},
             filetypes = {"lua"},
             settings = {Lua = {diagnostics = {globals = {"vim"}}}}
-        }
+        })
     elseif lsp == "tsserver" then
         -- disable formatting for typescript
-        nvim_lsp.tsserver.setup {
+        nvim_lsp.tsserver.setup({
             capabilities = capabilities,
             on_attach = function(client)
                 client.resolved_capabilities.document_formatting = false, on_attach(client)
             end
-        }
+        })
     elseif lsp == "diagnosticls" then
         local filetypes = {typescript = "eslint", typescriptreact = "eslint"}
         local linters = {
@@ -179,12 +182,12 @@ for _, lsp in ipairs(servers) do
         }
         local formatters = {prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}}
         local formatFiletypes = {typescript = "prettier", typescriptreact = "prettier"}
-        nvim_lsp.diagnosticls.setup {
+        nvim_lsp.diagnosticls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = vim.tbl_keys(filetypes),
             init_options = {filetypes = filetypes, linters = linters, formatters = formatters, formatFiletypes = formatFiletypes}
-        }
+        })
         -- elseif lsp == "pyright" then
         -- local filetypes = {
         -- python = "pycodestyle"
@@ -229,8 +232,6 @@ for _, lsp in ipairs(servers) do
         -- }
         -- }
     else
-        nvim_lsp[lsp].setup {capabilities = capabilities, on_attach = on_attach, root_dir = nvim_lsp.util.root_pattern(".git")}
+        nvim_lsp[lsp].setup({capabilities = capabilities, on_attach = on_attach, root_dir = nvim_lsp.util.root_pattern(".git")})
     end
-
 end
-

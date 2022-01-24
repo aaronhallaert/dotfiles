@@ -50,24 +50,24 @@ if [[ $? != 0 ]]; then
 
 
     ##### PGADMIN DOCKER #####
-    tmux neww -t $session: -n database -c "$HOME/Developer/nephroflow/nephroflow-api"
-    tmux send-keys -t $session:database -t 0 "clear" 'Enter'
-    tmux send-keys -t $session:database "docker-compose up pgadmin"
+    #tmux neww -t $session: -n database -c "$HOME/Developer/nephroflow/nephroflow-api"
+    #tmux send-keys -t $session:database -t 0 "clear" 'Enter'
+    #tmux send-keys -t $session:database "docker-compose up pgadmin"
     ##########################
 
 
     ##### LINK DEV ENV #####
-    tmux neww -t $session: -n link -c $HOME/Developer/nephroflow/link
+    #tmux neww -t $session: -n link -c $HOME/Developer/nephroflow/link
 
-    tmux split-window -h -t $session:link -c "$HOME/Developer/nephroflow/link" -p 25
-    tmux send-keys -t $session:link -t 0 "git fetch" 'Enter'
-    tmux send-keys -t $session:link -t 0 "clear" 'Enter'
-    tmux send-keys -t $session:link -t 0 "git status" 'Enter'
+    #tmux split-window -h -t $session:link -c "$HOME/Developer/nephroflow/link" -p 25
+    #tmux send-keys -t $session:link -t 0 "git fetch" 'Enter'
+    #tmux send-keys -t $session:link -t 0 "clear" 'Enter'
+    #tmux send-keys -t $session:link -t 0 "git status" 'Enter'
 
-    tmux send-keys -t $session:link -t 1 "clear" 'Enter'
-    tmux send-keys -t $session:link -t 1 "docker-compose run --rm --service-ports --name channel_host channel_host sh"
+    #tmux send-keys -t $session:link -t 1 "clear" 'Enter'
+    #tmux send-keys -t $session:link -t 1 "docker-compose run --rm --service-ports --name channel_host channel_host sh"
 
-    tmux split-window -v -t $session:link -c "$HOME/Developer/nephroflow/link" -p 50
+    #tmux split-window -v -t $session:link -c "$HOME/Developer/nephroflow/link" -p 50
     #tmux send-keys -t $session:link -t 1 "clear" 'Enter'
     #tmux send-keys -t $session:link -t 1 "docker-compose up -d"
 

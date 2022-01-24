@@ -5,9 +5,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Default vim settings with shortcuts related to ui
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 syntax on
-
+set eol
 let mapleader=" "
 let maplocalleader="\\"
 
@@ -85,9 +84,9 @@ set noerrorbells
 set incsearch
 
 " Tabs related
-" set tabstop=4 
-" set softtabstop=4
-" set shiftwidth=4
+set tabstop=4 
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 
 set hidden
@@ -242,7 +241,9 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/thesaurus-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/grammarous-config.vim
 
 lua require("aaron")
+
 augroup jdtls_lsp
     au!
     au FileType java lua require'jdtls_setup'.setup()
 augroup END
+

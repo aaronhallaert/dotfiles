@@ -10,8 +10,12 @@ nnoremap stt :lua require("harpoon.term").sendCommand(1, "bundle exec rspec")<CR
 
 " Navigation
 nnoremap gt :lua require("harpoon.term").gotoTerminal(1)<CR>
+
 nnoremap g1 :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap g2 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap g3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap g4 :lua require("harpoon.ui").nav_file(4)<CR>
+
+nnoremap gn :lua require("harpoon.ui").nav_next()<CR>
+nnoremap gp :lua require("harpoon.ui").nav_prev()<CR>
 

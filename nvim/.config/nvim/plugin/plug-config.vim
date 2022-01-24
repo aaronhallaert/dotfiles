@@ -15,6 +15,7 @@ Plug 'Mofiqul/vscode.nvim'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'mfussenegger/nvim-lint'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kosayoda/nvim-lightbulb'
@@ -37,7 +38,7 @@ Plug 'f-person/git-blame.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 "Plug 'ThePrimeagen/harpoon'
-Plug 'aaronhallaert/harpoon', { 'commit': '1bd1675d1e24b2a099637769485d621a11efdea3' }
+Plug 'aaronhallaert/harpoon', { 'commit': 'accf7ef4efb405f2ec11408b7781a1619cfcc574' }
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -55,8 +56,6 @@ Plug 'tpope/vim-abolish'
 Plug 'renerocksai/calendar-vim'
 Plug 'renerocksai/telekasten.nvim'
 Plug 'mzlogin/vim-markdown-toc'
-
-
 
 "Plug 'simrat39/symbols-outline.nvim'
 "Plug 'famiu/feline.nvim'

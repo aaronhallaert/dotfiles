@@ -12,8 +12,11 @@ cmd + shift - h : yabai -m window --warp west
 cmd - f : yabai -m window --toggle zoom-fullscreen
 cmd - e : yabai -m space --balance
 cmd - r : brew services restart yabai
-cmd - s : skhd --reload
 cmd - t : yabai -m window --toggle float
+cmd + shift - s : yabai -m window --toggle topmost
+cmd - s : yabai -m window --toggle sticky;\
+          yabai -m window --toggle topmost;\
+          yabai -m window --grid 5:5:4:0:1:1
 
 
 alt + cmd + ctrl - l : yabai -m window --resize right:50:0; \
