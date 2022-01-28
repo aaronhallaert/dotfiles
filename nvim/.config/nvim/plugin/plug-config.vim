@@ -77,7 +77,8 @@ Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 Plug 'godlygeek/tabular'
 
-Plug 'preservim/nerdcommenter'
+"Plug 'preservim/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 
 Plug 'voldikss/vim-floaterm'
 Plug 'dbeniamine/cheat.sh-vim'

@@ -114,8 +114,9 @@ require("lspconfig").efm.setup({
             json = {{formatCommand = "jq .", formatStdin = true}},
             markdown = {
                 {
-                    lintCommand = "markdownlint -c ./.markdownlint.json %"
-                    -- formatCommand = "markdownlint -f -c ./.markdownlint.json %"
+                    lintCommand = "markdownlint -s -c ./.markdownlint.json",
+                    lintStdin = true,
+                    formatCommand = "markdownlint -f -c ./.markdownlint.json %"
                 }
             }
         }
