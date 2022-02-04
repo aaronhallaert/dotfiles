@@ -11,7 +11,6 @@ cmd + shift - h : yabai -m window --warp west
 
 cmd - f : yabai -m window --toggle zoom-fullscreen
 cmd - e : yabai -m space --balance
-cmd - r : brew services restart yabai
 cmd - t : yabai -m window --toggle float
 cmd + shift - s : yabai -m window --toggle topmost
 cmd - s : yabai -m window --toggle sticky;\
@@ -31,6 +30,10 @@ alt + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
 
 
 cmd - 0x24 : open -na /System/Volumes/Data/Applications/iTerm.app
+
+cmd - n : yabai -m display --focus next
+cmd - p : yabai -m display --focus prev
+cmd - r : yabai -m display --focus recent
 
 cmd - 0x12 : yabai -m space --focus 1
 cmd - 0x13 : yabai -m space --focus 2
