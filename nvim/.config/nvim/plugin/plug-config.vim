@@ -13,7 +13,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
-
+Plug 'lukas-reineke/indent-blankline.nvim'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -26,8 +26,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
-"Plug 'ThePrimeagen/harpoon'
-Plug 'aaronhallaert/harpoon', { 'commit': 'accf7ef4efb405f2ec11408b7781a1619cfcc574' }
+" Plug 'ThePrimeagen/harpoon'
+Plug 'aaronhallaert/harpoon'
 Plug 'unblevable/quick-scope'
 
 " Code Extensions
@@ -70,6 +70,7 @@ Plug 'f-person/git-blame.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 " Sessions and Workspaces
 Plug 'tpope/vim-obsession'

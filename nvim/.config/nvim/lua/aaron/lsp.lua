@@ -95,11 +95,13 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = {"pylsp", "solargraph", "jsonls", "vimls", "tsserver", "diagnosticls", "sumneko_lua"}
+local servers = {"pylsp", "jsonls", "vimls", "tsserver", "diagnosticls", "sumneko_lua", "sourcekit", "solargraph"}
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("lspconfig").efm.setup({
     init_options = {documentFormatting = true},
+    cmd = {'efm-langserver', '-logfile', '/tmp/efm.log', '-loglevel', '5'},
     filetypes = {"lua", "json", "markdown"},
     on_attach = on_attach,
     settings = {
@@ -116,9 +118,8 @@ require("lspconfig").efm.setup({
                 {
                     lintCommand = "markdownlint -c ./.markdownlint.json -s",
                     lintStdin = true,
-                    lintFormats = {"%f:%l:%c %m", "%f:%l %m"},
-                    formatCommand = "markdownlint -f ./.markdownlint.json % ",
-                    formatStdin = false
+                    lintFormats = {"%f:%l:%c %m", "%f:%l %m", "%f: %l: %m"},
+                    formatCommand = "prettier --stdin-filepath %"
                 }
             }
         }

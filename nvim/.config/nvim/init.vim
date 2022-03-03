@@ -10,6 +10,9 @@ set eol
 let mapleader=" "
 let maplocalleader="\\"
 
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
+
 function! DisableSyntaxOnWidth() abort
   let view = winsaveview()
   let max_col = 0
@@ -23,7 +26,7 @@ function! DisableSyntaxOnWidth() abort
   endif
 endfunction
 
-nnoremap <silent> fdp :Rg byebug$<CR>
+nnoremap <silent> fdp :Rg binding.break<CR>
 nnoremap <silent> fiw :Rg <C-R><C-W><CR>
 
 " Jump to the next or previous line that has the same level or a lower
@@ -226,6 +229,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/telekasten-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/lsp-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimwiki-config.vim
+source $HOME/dotfiles/nvim/.config/nvim/plugin/octo-config.vim
 
 " Code Tools
 source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimcompe-config.vim

@@ -6,8 +6,12 @@ nnoremap <leader>fg <cmd>lua require("aaron.telescope").search_gitwords()<cr>
 
 nnoremap <leader>fb <cmd>lua require("telescope.builtin").buffers()<cr>
 nnoremap <leader>fh <cmd>lua require("telescope.builtin").help_tags()<cr>
+
 nnoremap <leader>gs <cmd>lua require("telescope.builtin").git_status()<cr>
 nnoremap <leader>gc <cmd>lua require("aaron.telescope").changed_on_branch()<cr>
+
+nnoremap <leader>dfc <cmd>lua require("aaron.telescope").diff_file_commit()<cr>
+nnoremap <leader>dfb <cmd>lua require("aaron.telescope").diff_file_branch()<cr>
 
 nnoremap <leader>vrc :lua require('aaron.telescope').search_dotfiles_words()<CR>
 nnoremap <leader>frc :lua require('aaron.telescope').search_dotfiles()<CR>

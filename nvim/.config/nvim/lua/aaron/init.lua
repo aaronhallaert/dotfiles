@@ -9,3 +9,10 @@ require("aaron.nvim-tree")
 require("gitsigns").setup()
 require("octo").setup()
 require('Comment').setup()
+
+require("indent_blankline").setup {
+    use_treesitter = true,
+    char_list = {'|', '¦', '┆', '┊'},
+    show_current_context = true,
+    show_current_context_start = true
+}
