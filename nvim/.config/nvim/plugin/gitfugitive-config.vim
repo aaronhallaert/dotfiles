@@ -26,7 +26,4 @@ nnoremap <leader>gc <cmd>lua require("aaron.telescope").changed_on_branch()<cr>
 nnoremap <leader>dfc <cmd>lua require("aaron.telescope").diff_file_commit()<cr>
 nnoremap <leader>dfb <cmd>lua require("aaron.telescope").diff_file_branch()<cr>
 
-
-nnoremap K :tabnext<CR>
-nnoremap J :tabprev<CR>
 nnoremap <leader>tc :tabclose<CR>
