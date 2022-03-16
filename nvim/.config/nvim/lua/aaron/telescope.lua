@@ -85,7 +85,7 @@ function M.diff_file_branch()
     local c_branch = vim.fn.system('git branch --show-current')
     c_branch = string.gsub(c_branch, "\n", "")
     pickers.new {
-        results_title = 'Commits on branch :: ' .. c_branch,
+        results_title = 'Local branches :: ' .. c_branch,
         finder = finders.new_oneshot_job({'git', 'branch', "--format=%(refname:short)"}),
         sorter = sorters.get_fuzzy_file(),
         attach_mappings = function(_, map)

@@ -5,19 +5,18 @@
 
 
 """"""""""""""""""""""""""""""""" defaults """""""""""""""""""""""""""""""""""
-" set termguicolors
-"
-" if exists('+termguicolors')
-"     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" endif
+set termguicolors
+
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 """"""""""""""""""""""""""""" Color Scheme Picker """""""""""""""""""""""""""""
-"colorscheme sonokai
-"colorscheme gruvbox
+" colorscheme sonokai
+colorscheme gruvbox
 "colorscheme onedark
-colorscheme vscode
-
+" colorscheme vscode
 
 """""""""""""""""""""""""""""""" Lightline """"""""""""""""""""""""""""""""""""
 let g:lightline = {
@@ -35,12 +34,10 @@ let g:lightline = {
 
 let g:vscode_style = "dark"
 
-lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
+" lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
 set background=dark
-
-lua vim.cmd([[ autocmd ColorScheme sonokai :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
 
 
 """"""""""""""""""""""""""" TELEKASTEN """""""""""""""""""""""""""
@@ -51,7 +48,7 @@ highlight! tkBrackets ctermfg=gray guifg=gray
 " real yellow
 highlight! tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
 " gruvbox
-"highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
+" highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
 
 highlight! link CalNavi CalRuler
 highlight! tkTagSep ctermfg=gray guifg=gray
