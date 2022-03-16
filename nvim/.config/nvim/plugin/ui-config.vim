@@ -39,7 +39,6 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
 set background=dark
 
-
 """"""""""""""""""""""""""" TELEKASTEN """""""""""""""""""""""""""
 " for gruvbox
 highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline

@@ -10,7 +10,6 @@ Plug 'sainnhe/sonokai'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
 Plug 'lukas-reineke/indent-blankline.nvim'
