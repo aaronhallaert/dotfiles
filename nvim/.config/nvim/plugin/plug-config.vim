@@ -62,6 +62,7 @@ Plug 'voldikss/vim-translator'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'rhysd/vim-grammarous'
 Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
+Plug 'mizlan/iswap.nvim'
 
 " Git/GitHub
 Plug 'pwntester/octo.nvim'
