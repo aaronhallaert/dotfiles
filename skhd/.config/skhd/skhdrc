@@ -29,7 +29,7 @@ alt + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
 
 
 
-cmd - 0x24 : open -na /System/Volumes/Data/Applications/iTerm.app
+cmd - 0x24 : open -na /System/Volumes/Data/Applications/kitty.app
 
 cmd - n : yabai -m display --focus next
 cmd - p : yabai -m display --focus prev

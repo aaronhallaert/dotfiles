@@ -37,7 +37,7 @@ if [[ $? != 0 ]]; then
 
     tmux send-keys -t $session:manager -t 1 "yarn install" 'Enter'
     tmux send-keys -t $session:manager -t 1 "clear" 'Enter'
-    tmux send-keys -t $session:manager -t 1 "yarn start"
+    tmux send-keys -t $session:manager -t 1 "yarn dev"
     ###############################
 
 
