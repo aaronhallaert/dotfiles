@@ -10,6 +10,9 @@ require("gitsigns").setup()
 require("octo").setup()
 require('Comment').setup()
 
+require('pretty-fold').setup()
+require('pretty-fold.preview').setup()
+
 require("indent_blankline").setup {
     use_treesitter = true,
     char_list = {'|', '¦', '┆', '┊'},

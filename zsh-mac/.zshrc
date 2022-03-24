@@ -134,10 +134,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
-  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
+# if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+#   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+#   export PATH=`gem environment gemdir`/bin:$PATH
+# fi
 
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/Developer/programs/lua-language-server/bin"
@@ -150,4 +150,5 @@ alias luamake=/Users/aaronhallaert/Developer/programs/lua-language-server/3rd/lu
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
+eval "$(rbenv init - zsh)"
 unsetopt AUTO_CD

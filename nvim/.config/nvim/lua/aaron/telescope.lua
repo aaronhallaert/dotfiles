@@ -112,8 +112,8 @@ function M.diff_file_commit()
     local c_branch = vim.fn.system('git branch --show-current')
     c_branch = string.gsub(c_branch, "\n", "")
     pickers.new {
-        results_title = 'Last 100 commits from :: ' .. c_branch,
-        finder = finders.new_oneshot_job({'git', 'log', '-100', "--format=%C(auto)%H \t %as \t %C(green)%an -- %Creset %s"}),
+        results_title = 'Last commits from :: ' .. c_branch,
+        finder = finders.new_oneshot_job({'git', 'log', "--format=%C(auto)%H \t %as \t %C(green)%an -- %Creset %s"}),
         -- finder = finders.new_oneshot_job({'git', 'cherry', '-v', 'master', c_branch}),
         sorter = sorters.get_fuzzy_file(),
         attach_mappings = function(_, map)

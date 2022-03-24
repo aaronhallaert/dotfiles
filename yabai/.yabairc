@@ -26,6 +26,8 @@ yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
 yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="launcher" app="^launcher$" manage=off
+yabai -m rule --add label="Mirth Connect Administrator Launcher" app="^Mirth Connect Administrator Launcher$" manage=off
 yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="OpenGL renderer" title="OpenGL renderer" sticky=on layer=above manage=off

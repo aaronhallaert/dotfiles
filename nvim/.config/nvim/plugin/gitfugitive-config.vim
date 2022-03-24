@@ -16,7 +16,7 @@ endfunction
 
 
 " Open commit_hash under cursor in browser
-nnoremap <leader>gsc :call ShowCommit()<CR>
+nnoremap <leader>gbc :call ShowCommit()<CR>
 " Open changed files diff of current branch in tabs
 nnoremap <leader>dpr :call DiffPR()<CR>
 " Compare current file with master branch

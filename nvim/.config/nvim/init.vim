@@ -112,7 +112,8 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
 set foldmethod=syntax
-"autocmd BufEnter * silent! lcd %:p:h
+" let g:markdown_folding=1
+autocmd BufEnter * silent! lcd %:p:h
 let g:startify_change_to_dir=0
 
 " Cursor settings

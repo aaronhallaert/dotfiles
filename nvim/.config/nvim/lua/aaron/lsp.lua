@@ -151,13 +151,7 @@ for _, lsp in ipairs(servers) do
         nvim_lsp.rust_analyzer.setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            settings = {
-                ["rust-analyzer"] = {
-                    checkOnSave = {
-                        command = "clippy"
-                    },
-                }
-            }
+            settings = {["rust-analyzer"] = {checkOnSave = {command = "clippy"}}}
         })
     elseif lsp == "sumneko_lua" then
         nvim_lsp.sumneko_lua.setup({
@@ -176,7 +170,7 @@ for _, lsp in ipairs(servers) do
             end
         })
     elseif lsp == "diagnosticls" then
-        local filetypes = {typescript = "eslint", typescriptreact = "eslint"}
+        local filetypes = {javascript = "eslint", typescript = "eslint", typescriptreact = "eslint"}
         local linters = {
             eslint = {
                 sourceName = "eslint",
@@ -197,7 +191,7 @@ for _, lsp in ipairs(servers) do
             }
         }
         local formatters = {prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}}
-        local formatFiletypes = {typescript = "prettier", typescriptreact = "prettier"}
+        local formatFiletypes = {javascript = "prettier", typescript = "prettier", typescriptreact = "prettier"}
         nvim_lsp.diagnosticls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
