@@ -111,10 +111,13 @@ set undofile
 set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
-set foldmethod=syntax
+" see Treesitter config for folding
+" set foldmethod=syntax
 " let g:markdown_folding=1
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
+let g:startify_change_to_vcs_root = 1
 let g:startify_change_to_dir=0
+" let g:startify_change_to_dir = 1
 
 " Cursor settings
 if &term =~ '^xterm'
