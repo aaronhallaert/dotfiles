@@ -1,8 +1,9 @@
 BRANCH="$PROJECT_MAIN_BRANCH"
 
 if [[ -z "$BRANCH" ]]; then
-    BRANCH=$(git merge-base --fork-point $(git branch -l master main | sed 's/^* //') $(git rev-parse HEAD))
-    # $(git show-branch | sed "s/].*//" | grep "\*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*\[//")
+    BRANCH=$(git show-branch | sed "s/].*//" | grep "\*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*\[//")
+    #$(git merge-base --fork-point $(git branch -l master main | sed 's/^* //') $(git rev-parse HEAD))
+    
 fi
 
 if [[ "$1" == "list" ]]; then

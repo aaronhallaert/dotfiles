@@ -25,8 +25,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'ThePrimeagen/harpoon'
-Plug 'aaronhallaert/harpoon'
+Plug 'ThePrimeagen/harpoon'
+" Plug 'aaronhallaert/harpoon'
 Plug 'unblevable/quick-scope'
 
 " Code Extensions

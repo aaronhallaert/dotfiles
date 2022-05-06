@@ -154,3 +154,6 @@ alias luamake=/Users/aaronhallaert/Developer/programs/lua-language-server/3rd/lu
 
 eval "$(rbenv init - zsh)"
 unsetopt AUTO_CD
+
+export GO111MODULE=on
+export CGO_ENABLED=on
