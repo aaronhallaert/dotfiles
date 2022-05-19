@@ -64,6 +64,7 @@ Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
 Plug 'mizlan/iswap.nvim'
 " Plug 'pseewald/vim-anyfold'
 Plug 'anuvyklack/pretty-fold.nvim'
+Plug 'anuvyklack/nvim-keymap-amend'
 Plug 'mhinz/vim-startify'
 
 " Git/GitHub

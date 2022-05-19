@@ -1,7 +1,7 @@
 require("aaron.telescope")
-require("aaron.harpoon")
 require("aaron.lsp")
 require("aaron.cmp")
+require("harpoon").setup({})
 require("aaron.telekasten")
 require("aaron.treesitter")
 require("aaron.nvim-tree")

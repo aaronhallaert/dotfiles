@@ -157,3 +157,4 @@ unsetopt AUTO_CD
 
 export GO111MODULE=on
 export CGO_ENABLED=on
+export GOPATH=$HOME/go

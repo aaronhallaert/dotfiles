@@ -30,10 +30,14 @@ alt + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
 
 
 cmd - 0x24 : open -na /System/Volumes/Data/Applications/kitty.app
+cmd - 0x32 : open -a /System/Volumes/Data/Applications/kitty.app
+cmd - mute : open -a /System/Volumes/Data/Applications/Spotify.app
 
 cmd - n : yabai -m display --focus next
 cmd - p : yabai -m display --focus prev
 cmd - r : yabai -m display --focus recent
+cmd + shift - r : WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display recent && yabai -m window --focus $WIN_ID
+cmd + shift - p : open /System/Applications/Utilities/Screenshot.app
 
 cmd - 0x12 : yabai -m space --focus 1
 cmd - 0x13 : yabai -m space --focus 2
