@@ -14,15 +14,15 @@ endif
 
 """"""""""""""""""""""""""""" Color Scheme Picker """""""""""""""""""""""""""""
 " colorscheme sonokai
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme onedark
 " colorscheme vscode
 " colorscheme material
-colorscheme nordfox
+" colorscheme nordfox
 
 """""""""""""""""""""""""""""""" Lightline """"""""""""""""""""""""""""""""""""
 let g:lightline = {
-        \ 'colorscheme' :'nordfox',
+        \ 'colorscheme' :'gruvbox',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -36,20 +36,20 @@ let g:lightline = {
 
 " let g:vscode_style = "dark"
 
-" lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
+" lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]])
 " let g:gruvbox_contrast_dark = 'hard'
 " let g:gruvbox_invert_selection='0'
-" set background=dark
+set background=dark
 
 """"""""""""""""""""""""""" TELEKASTEN """""""""""""""""""""""""""
 " for gruvbox
-" highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-" highlight! tkBrackets ctermfg=gray guifg=gray
+highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+highlight! tkBrackets ctermfg=gray guifg=gray
 "
 " real yellow
-highlight! tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
+" highlight! tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
 " gruvbox
-" highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
+highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
 
 highlight! link CalNavi CalRuler
 highlight! tkTagSep ctermfg=gray guifg=gray
