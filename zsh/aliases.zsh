@@ -5,6 +5,9 @@ alias dotf="cd ~/dotfiles"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias vi="nvim"
+alias cat="bat"
+alias gp="git pull"
+alias gP="git push"
 
 
 

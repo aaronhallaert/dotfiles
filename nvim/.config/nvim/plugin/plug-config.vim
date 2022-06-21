@@ -5,6 +5,9 @@
 call plug#begin('~/.vim/plugged')
 " UI
 Plug 'morhetz/gruvbox'
+" Plug 'shapeoflambda/dark-purple.vim'
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+Plug 'marko-cerovac/material.nvim'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
 Plug 'Mofiqul/vscode.nvim'
@@ -13,6 +16,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'declancm/cinnamon.nvim'
+
 " Icons
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -22,10 +28,12 @@ Plug 'mortepau/codicons.nvim'
 Plug 'phaazon/hop.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ThePrimeagen/harpoon'
+Plug 'simrat39/symbols-outline.nvim'
 " Plug 'aaronhallaert/harpoon'
 Plug 'unblevable/quick-scope'
 
@@ -68,7 +76,8 @@ Plug 'anuvyklack/nvim-keymap-amend'
 Plug 'mhinz/vim-startify'
 
 " Git/GitHub
-Plug 'pwntester/octo.nvim'
+Plug 'ldelossa/gh.nvim'
+Plug 'ldelossa/litee.nvim'
 Plug 'f-person/git-blame.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
@@ -83,6 +92,10 @@ Plug 'renerocksai/telekasten.nvim'
 " Vim Extensions
 Plug 'voldikss/vim-floaterm'
 Plug 'dbeniamine/cheat.sh-vim'
+
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-cheat.sh'
+
 Plug 'vim-utils/vim-man'
 Plug 'lambdalisue/suda.vim'
 Plug 'nvim-lua/plenary.nvim'

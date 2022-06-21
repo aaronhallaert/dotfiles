@@ -79,7 +79,7 @@ onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 
 "autocmd BufEnter *.json call DisableSyntaxOnWidth()
 
-nmap <silent> gx :!open <cWORD><CR>
+" nmap <silent> gx :!open <cWORD><CR>
 " Sets numbers relative to current line number
 set relativenumber
 set nohlsearch
@@ -112,6 +112,8 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=grey guibg=black
 
 " see Treesitter config for folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 " set foldmethod=syntax
 " let g:markdown_folding=1
 " autocmd BufEnter * silent! lcd %:p:h
@@ -233,7 +235,7 @@ source $HOME/dotfiles/nvim/.config/nvim/plugin/telescope-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/telekasten-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/lsp-config.vim
 source $HOME/dotfiles/nvim/.config/nvim/plugin/vimwiki-config.vim
-source $HOME/dotfiles/nvim/.config/nvim/plugin/octo-config.vim
+" source $HOME/dotfiles/nvim/.config/nvim/plugin/octo-config.vim
 
 " Code Tools
 source $HOME/dotfiles/nvim/.config/nvim/plugin/nvimcompe-config.vim

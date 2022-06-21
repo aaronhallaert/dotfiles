@@ -14,13 +14,15 @@ endif
 
 """"""""""""""""""""""""""""" Color Scheme Picker """""""""""""""""""""""""""""
 " colorscheme sonokai
-colorscheme gruvbox
-"colorscheme onedark
+" colorscheme gruvbox
+" colorscheme onedark
 " colorscheme vscode
+" colorscheme material
+colorscheme nordfox
 
 """""""""""""""""""""""""""""""" Lightline """"""""""""""""""""""""""""""""""""
 let g:lightline = {
-        \ 'colorscheme' :'onedark',
+        \ 'colorscheme' :'nordfox',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -32,18 +34,18 @@ let g:lightline = {
 
 """"""""""""""""""""""""""""""""" Settings """"""""""""""""""""""""""""""""""""
 
-let g:vscode_style = "dark"
+" let g:vscode_style = "dark"
 
 " lua vim.cmd([[ autocmd ColorScheme gruvbox :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection='0'
-set background=dark
+" let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_invert_selection='0'
+" set background=dark
 
 """"""""""""""""""""""""""" TELEKASTEN """""""""""""""""""""""""""
 " for gruvbox
-highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-highlight! tkBrackets ctermfg=gray guifg=gray
-
+" highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+" highlight! tkBrackets ctermfg=gray guifg=gray
+"
 " real yellow
 highlight! tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
 " gruvbox
@@ -52,8 +54,8 @@ highlight! tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow gu
 highlight! link CalNavi CalRuler
 highlight! tkTagSep ctermfg=gray guifg=gray
 highlight! tkTag ctermfg=175 guifg=#d3869B
-
-""""""""""""""""""""""""""""""""" Completion """""""""""""""""""""""""""""""""
+"
+" """"""""""""""""""""""""""""""""" Completion """""""""""""""""""""""""""""""""
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 " blue
@@ -70,6 +72,3 @@ highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-
-
-
