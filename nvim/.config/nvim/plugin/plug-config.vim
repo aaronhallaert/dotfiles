@@ -14,7 +14,6 @@ Plug 'Mofiqul/vscode.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/lightline.vim'
-Plug 'szw/vim-maximizer'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'declancm/cinnamon.nvim'
@@ -50,7 +49,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'lervag/vimtex'
 
 " Editing Extensions
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
