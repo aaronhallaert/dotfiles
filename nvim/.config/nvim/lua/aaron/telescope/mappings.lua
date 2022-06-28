@@ -22,6 +22,10 @@ map_tele("<leader>fg", "search_gitwords")
 map_tele("<leader>vrc", "search_dotfiles_words")
 map_tele("<leader>frc", "search_dotfiles")
 
+map_tele("<leader>gr", "lsp_references")
+map_tele("<leader>ss", "lsp_document_symbols")
+map_tele("<leader>sws", "lsp_workspace_symbols")
+
 map_tele("<leader>fb", "buffers")
 map_tele("<leader>fh", "help_tags")
 

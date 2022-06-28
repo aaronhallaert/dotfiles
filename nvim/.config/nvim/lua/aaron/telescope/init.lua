@@ -215,4 +215,12 @@ function M.help_tags()
     require("telescope.builtin").help_tags()
 end
 
+function M.lsp_document_symbols()
+    require("telescope.builtin").lsp_document_symbols()
+end
+
+function M.lsp_workspace_symbols()
+    require("telescope.builtin").lsp_workspace_symbols()
+end
+
 return M

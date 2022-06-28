@@ -62,9 +62,9 @@ require('aaron.config.pretty-fold') -- folding
 require("aaron.config.nvim-tree") -- project view
 
 -- GIT/GITHUB
--- require("octo").setup()
-require('aaron.config.litee')
-require("aaron.config.gitsigns")
+require("octo").setup()
+-- require('aaron.config.litee')
+-- require("aaron.config.gitsigns")
 vim.cmd('source' .. nvimrc .. '/plugin/gitfugitive-config.vim')
 vim.cmd('source' .. nvimrc .. '/plugin/gitblame-config.vim')
 

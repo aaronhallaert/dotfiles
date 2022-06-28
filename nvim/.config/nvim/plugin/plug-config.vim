@@ -75,8 +75,9 @@ Plug 'anuvyklack/nvim-keymap-amend'
 Plug 'mhinz/vim-startify'
 
 " Git/GitHub
-Plug 'ldelossa/gh.nvim'
-Plug 'ldelossa/litee.nvim'
+" Plug 'ldelossa/gh.nvim'
+" Plug 'ldelossa/litee.nvim'
+Plug 'pwntester/octo.nvim'
 Plug 'f-person/git-blame.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
