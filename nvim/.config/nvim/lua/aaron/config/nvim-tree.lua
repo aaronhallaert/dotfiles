@@ -20,8 +20,7 @@ nvim_tree.setup({
     filters = {
         dotfiles = false,
         custom = {
-            "docker-compose", "tmp", "log", "docs", "docker-compose.medsoc.yml", "docker-compose.sam.yml", "docker-compose.vidal.yml",
-            "docker-compose.yml"
+            "docker-compose", "tmp", "log", "docker-compose.medsoc.yml", "docker-compose.sam.yml", "docker-compose.vidal.yml", "docker-compose.yml"
         }
     },
     view = {width = 70, height = 30, hide_root_folder = false, side = 'right', auto_resize = false, mappings = {custom_only = false, list = {}}},

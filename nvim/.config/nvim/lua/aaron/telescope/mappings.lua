@@ -17,14 +17,22 @@ local map_tele = function(key, f, options, buffer)
     end
 end
 
+-- SEARCH
 map_tele("<leader>ff", "search_git_files")
 map_tele("<leader>fg", "search_gitwords")
 map_tele("<leader>vrc", "search_dotfiles_words")
 map_tele("<leader>frc", "search_dotfiles")
 
+-- LSP
 map_tele("<leader>gr", "lsp_references")
 map_tele("<leader>ss", "lsp_document_symbols")
 map_tele("<leader>sws", "lsp_workspace_symbols")
+
+-- GIT
+map_tele("<leader>gs", "git_status")
+map_tele("<leader>gc", "changed_on_branch")
+map_tele("<leader>dfc", "diff_file_commit")
+map_tele("<leader>dfb", "diff_file_branch")
 
 map_tele("<leader>fb", "buffers")
 map_tele("<leader>fh", "help_tags")

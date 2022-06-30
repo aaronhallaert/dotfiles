@@ -223,4 +223,12 @@ function M.lsp_workspace_symbols()
     require("telescope.builtin").lsp_workspace_symbols()
 end
 
+function M.git_status()
+    require("telescope.builtin").git_status()
+end
+
+function M.lsp_references()
+    require("telescope.builtin").lsp_references()
+end
+
 return M
