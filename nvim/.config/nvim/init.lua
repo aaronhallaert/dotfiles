@@ -32,6 +32,7 @@ vim.cmd('source' .. nvimrc .. '/plugin/grammarous-config.vim')
 
 -- CODE EDIT
 require("aaron.config.lsp") -- code understanding (diagnostic + navigation)
+require("aaron.config.mason")
 vim.cmd('source' .. nvimrc .. '/plugin/lsp-config.vim')
 
 require("aaron.config.treesitter") -- code understanding (highlight...)
@@ -58,6 +59,7 @@ vim.cmd('source' .. nvimrc .. '/plugin/hop-config.vim')
 -- BEHAVIOUR
 require('aaron.config.cinnamon') -- smooth scrolling
 require('aaron.config.pretty-fold') -- folding
+require('aaron.config.surround') -- change encapsulating syntax
 
 require("aaron.config.nvim-tree") -- project view
 

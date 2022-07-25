@@ -15,7 +15,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/lightline.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'nvim-treesitter/nvim-treesitter-context'
+" Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'declancm/cinnamon.nvim'
 
 " Icons
@@ -38,6 +38,7 @@ Plug 'unblevable/quick-scope'
 
 " Code Extensions
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'ray-x/lsp_signature.nvim'
@@ -60,7 +61,8 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'Sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'wellle/targets.vim'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
+Plug 'kylechui/nvim-surround'
 Plug 'mbbill/undotree'
 Plug 'numToStr/Comment.nvim'
 Plug 'godlygeek/tabular'

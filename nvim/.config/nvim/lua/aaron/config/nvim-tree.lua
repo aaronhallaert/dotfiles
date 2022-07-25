@@ -13,7 +13,9 @@ nvim_tree.setup({
     open_on_tab = false,
     hijack_cursor = true,
     update_cwd = false,
-    update_to_buf_dir = {enable = true, update_cwd = false, auto_open = true},
+    sync_root_with_cwd = false,
+    actions = {open_file = {resize_window = true}},
+    hijack_directories = {enable = true, auto_open = true},
     diagnostics = {enable = false, icons = {hint = "", info = "", warning = "", error = ""}},
     update_focused_file = {enable = true, update_cwd = false, ignore_list = {}},
     system_open = {cmd = nil, args = {}},
@@ -23,6 +25,6 @@ nvim_tree.setup({
             "docker-compose", "tmp", "log", "docker-compose.medsoc.yml", "docker-compose.sam.yml", "docker-compose.vidal.yml", "docker-compose.yml"
         }
     },
-    view = {width = 70, height = 30, hide_root_folder = false, side = 'right', auto_resize = false, mappings = {custom_only = false, list = {}}},
+    view = {width = 70, height = 30, hide_root_folder = false, side = 'right', mappings = {custom_only = false, list = {}}},
     renderer = {highlight_opened_files = "all"}
 })

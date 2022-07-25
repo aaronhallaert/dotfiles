@@ -64,6 +64,7 @@ source "$HOME/dotfiles/zsh/keys"
 alias xdg-open="open"
 
 
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home"
 alias luamake=/Users/aaronhallaert/Developer/programs/lua-language-server/3rd/luamake/luamake
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -76,3 +77,4 @@ export GO111MODULE=on
 export CGO_ENABLED=on
 export GOPATH=$HOME/go
 export GPG_TTY=$(tty)
+
