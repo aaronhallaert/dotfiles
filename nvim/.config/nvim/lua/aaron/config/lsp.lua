@@ -96,7 +96,8 @@ end
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
-    "pylsp", "jsonls", "vimls", "tsserver", "diagnosticls", "sumneko_lua", "sourcekit", "solargraph", "rust_analyzer", "gopls", "tailwindcss"
+    "pylsp", "jsonls", "vimls", "tsserver", "diagnosticls", "sumneko_lua", "sourcekit", "solargraph", "rust_analyzer", "gopls", "tailwindcss",
+    "stylelint_lsp"
 }
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -170,6 +171,12 @@ for _, lsp in ipairs(servers) do
             on_attach = function(client, bufnr)
                 client.resolved_capabilities.document_formatting = false, on_attach(client, bufnr)
             end
+        })
+    elseif lsp == "stylelint_lsp" then
+        nvim_lsp.stylelint_lsp.setup({
+            on_attach = on_attach,
+            filetypes = {"css"},
+            settings = {stylelintplus = {enable = true, autoFixOnFormat = true, configFile = ".stylelintrc.json"}}
         })
     elseif lsp == "diagnosticls" then
         local filetypes = {javascript = "eslint", typescript = "eslint", typescriptreact = "eslint"}

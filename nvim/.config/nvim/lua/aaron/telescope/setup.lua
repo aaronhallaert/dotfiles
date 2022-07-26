@@ -36,7 +36,10 @@ telescope.setup {
             n = {["<c-s>"] = actions.send_selected_to_qflist + actions.open_qflist, ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist}
         }
     },
-    extensions = {fzy_native = {override_generic_sorter = false, override_file_sorter = true}},
+    extensions = {
+        fzy_native = {override_generic_sorter = false, override_file_sorter = true},
+        ["ui-select"] = {require("telescope.themes").get_dropdown()}
+    },
     pickers = {
         buffers = {
             sort_lastused = true,
