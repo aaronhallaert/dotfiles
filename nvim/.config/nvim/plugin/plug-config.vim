@@ -17,6 +17,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'declancm/cinnamon.nvim'
+Plug 'folke/trouble.nvim'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
@@ -73,6 +74,7 @@ Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
 Plug 'mizlan/iswap.nvim'
 " Plug 'pseewald/vim-anyfold'
 Plug 'anuvyklack/pretty-fold.nvim'
+Plug 'anuvyklack/fold-preview.nvim'
 Plug 'anuvyklack/nvim-keymap-amend'
 Plug 'mhinz/vim-startify'
 

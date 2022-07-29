@@ -1,29 +1,33 @@
-vim.api.nvim_command('set relativenumber')
-vim.api.nvim_command('set nohlsearch')
-vim.api.nvim_command('set noerrorbells')
-vim.api.nvim_command('set incsearch')
-vim.api.nvim_command('set hidden')
-vim.api.nvim_command('set nu')
-vim.api.nvim_command('set nowrap')
-vim.api.nvim_command('set smartcase')
-vim.api.nvim_command('set noswapfile')
-vim.api.nvim_command('set scrolloff=8')
-vim.api.nvim_command('set signcolumn=yes')
-vim.api.nvim_command('filetype plugin indent on')
-vim.api.nvim_command('set nobackup')
-vim.api.nvim_command('set undodir=~/.vim/undodir')
-vim.api.nvim_command('set undofile')
-vim.api.nvim_command('set colorcolumn=80')
+vim.o.relativenumber = true
+vim.o.hlsearch = false
+vim.o.errorbells = false
+vim.o.incsearch = true
+vim.o.hidden = true
+vim.o.nu = true
+vim.o.wrap = false
+vim.o.smartcase = true
+vim.o.swapfile = false
+vim.o.scrolloff = 8
+vim.o.signcolumn = 'yes'
+vim.o.backup = false
+vim.o.undodir = '~/.vim/undodir'
+vim.o.undofile = true
+vim.o.colorcolumn = 80
+vim.o.ignorecase = true
 vim.api.nvim_command('highlight ColorColumn ctermbg=grey guibg=black')
 -- see Treesitter config for folding
-vim.api.nvim_command('set foldmethod=expr')
-vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.clipboard = "unnamedplus"
+
+vim.api.nvim_command('filetype plugin indent on')
 
 -- TABS
-vim.api.nvim_command('set tabstop=4 softtabstop=4')
-vim.api.nvim_command('set shiftwidth=4')
-vim.api.nvim_command('set expandtab')
-vim.api.nvim_command('set smartindent')
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
 --- Tab exceptions
 vim.api.nvim_command('autocmd FileType typescript setlocal softtabstop=2 shiftwidth=2 tabstop=2')
 vim.api.nvim_command('autocmd FileType typescriptreact setlocal softtabstop=2 shiftwidth=2 tabstop=2')

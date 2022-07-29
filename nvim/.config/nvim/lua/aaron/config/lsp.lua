@@ -1,5 +1,12 @@
 local nvim_lsp = require("lspconfig")
 
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    command = "lua vim.lsp.buf.formatting_sync(nil, 1000)",
+    pattern = "*.js, *.jsx, *.tsx, *.ts, *.py, *.rb, *.lua, *.json, *.md, *.css"
+})
+
+
 local on_attach = function(client, bufnr)
     local cfg = {
         debug = true,
@@ -39,20 +46,29 @@ local on_attach = function(client, bufnr)
     -- vim.api.nvim_buf_set_option(bufnr, ...)
     -- end
 
-    vim.fn.sign_define("LspDiagnosticsSignError", {text = "", texthl = "GruvboxRed"})
-    vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", texthl = "GruvboxYellow"})
-    vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "GruvboxBlue"})
-    vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", texthl = "GruvboxAqua"})
+    vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "GruvBoxRedSign"})
+    vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "GruvboxYellowSign"})
+    vim.fn.sign_define("DiagnosticSignInformation", {text = "", texthl = "GruvboxBlueSign"})
+    vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "GruvboxAquaSign"})
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- virtual_text = {
-        -- prefix = "»",
-        -- spacing = 4,
-        -- },
-        virtual_text = true,
+        virtual_text = {prefix = "⦿", spacing = 4, border = 'single'},
         signs = true,
         update_in_insert = false
     })
+
+    vim.cmd('hi! link NormalFloat Normal')
+    local border = {
+        {"🭽", "FloatBorder"}, {"▔", "FloatBorder"}, {"🭾", "FloatBorder"}, {"▕", "FloatBorder"}, {"🭿", "FloatBorder"},
+        {"▁", "FloatBorder"}, {"🭼", "FloatBorder"}, {"▏", "FloatBorder"}
+    }
+
+    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        opts = opts or {}
+        opts.border = opts.border or border
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    end
 
     -- Mappings/shortcuts.
     local opts = {noremap = true, silent = true}
@@ -119,6 +135,7 @@ require("lspconfig").efm.setup({
             json = {{formatCommand = "jq .", formatStdin = true}},
             markdown = {
                 {
+                    root_dir = nvim_lsp.util.root_pattern(".markdownlint.json"),
                     lintCommand = "markdownlint -c ./.markdownlint.json -s",
                     lintStdin = true,
                     lintFormats = {"%f:%l:%c %m", "%f:%l %m", "%f: %l: %m"},
@@ -168,6 +185,7 @@ for _, lsp in ipairs(servers) do
         -- disable formatting for typescript
         nvim_lsp.tsserver.setup({
             capabilities = capabilities,
+            root_dir = nvim_lsp.util.root_pattern("package.json"),
             on_attach = function(client, bufnr)
                 client.resolved_capabilities.document_formatting = false, on_attach(client, bufnr)
             end
@@ -175,6 +193,7 @@ for _, lsp in ipairs(servers) do
     elseif lsp == "stylelint_lsp" then
         nvim_lsp.stylelint_lsp.setup({
             on_attach = on_attach,
+            root_dir = nvim_lsp.util.root_pattern("package.json"),
             filetypes = {"css"},
             settings = {stylelintplus = {enable = true, autoFixOnFormat = true, configFile = ".stylelintrc.json"}}
         })
@@ -204,6 +223,7 @@ for _, lsp in ipairs(servers) do
         nvim_lsp.diagnosticls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            root_dir = nvim_lsp.util.root_pattern("package.json"),
             filetypes = vim.tbl_keys(filetypes),
             init_options = {filetypes = filetypes, linters = linters, formatters = formatters, formatFiletypes = formatFiletypes}
         })

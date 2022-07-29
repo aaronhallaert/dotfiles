@@ -9,6 +9,7 @@ alias cat="bat"
 alias gp="git pull"
 alias gP="git push"
 alias git commit="git commit -S"
+alias wip="git commit -m 'wip' --no-verify"
 
 
 

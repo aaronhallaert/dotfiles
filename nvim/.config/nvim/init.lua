@@ -52,6 +52,7 @@ require("aaron.telescope.mappings") -- search
 -- UI
 -- require("aaron.config.feline")
 require('aaron.config.treesitter-context') -- fix context on first line
+require('trouble')
 require("aaron.config.indent_blankline") -- indent characters
 vim.cmd('source' .. nvimrc .. '/plugin/quickscope-config.vim') -- highlight on f/F
 vim.cmd('source' .. nvimrc .. '/plugin/hop-config.vim')
@@ -69,6 +70,7 @@ require("octo").setup()
 -- require("aaron.config.gitsigns")
 vim.cmd('source' .. nvimrc .. '/plugin/gitfugitive-config.vim')
 vim.cmd('source' .. nvimrc .. '/plugin/gitblame-config.vim')
+require("aaron.config.git-worktree")
 
 -- EXTRA FUNCTIONALITY
 require("aaron.config.telekasten") -- markdown notes
