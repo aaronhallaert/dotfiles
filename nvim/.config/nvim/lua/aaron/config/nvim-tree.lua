@@ -1,4 +1,4 @@
-local nvim_tree = require "nvim-tree"
+local nvim_tree = require("nvim-tree")
 local nvimrc = '$HOME/dotfiles/nvim/.config/nvim'
 
 vim.cmd('source' .. nvimrc .. '/plugin/nvimtree-config.vim')

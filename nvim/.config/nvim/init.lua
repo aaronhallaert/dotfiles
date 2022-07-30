@@ -1,15 +1,12 @@
 local nvimrc = '$HOME/dotfiles/nvim/.config/nvim'
-
--- " Use local quickfix list for LSP errors
-
 vim.cmd('source' .. nvimrc .. '/basic.vim')
-vim.cmd('source' .. nvimrc .. '/plugin/plug-config.vim')
-vim.cmd('source' .. nvimrc .. '/plugin/ui-config.vim')
-
 require('aaron.globals')
 
+require("aaron.plugged")
+require("aaron.ui")
+
+
 -- Extra file functionality
-vim.cmd('source' .. nvimrc .. '/plugin/anyfold-config.vim') -- folding based on indentation
 vim.cmd('source' .. nvimrc .. '/plugin/suda-config.vim') -- edit in sudo mode
 vim.cmd('source' .. nvimrc .. '/plugin/undotree-config.vim') -- keep track of file history
 vim.cmd('source' .. nvimrc .. '/plugin/netrw-config.vim') -- project view
@@ -31,16 +28,12 @@ vim.cmd('source' .. nvimrc .. '/plugin/thesaurus-config.vim')
 vim.cmd('source' .. nvimrc .. '/plugin/grammarous-config.vim')
 
 -- CODE EDIT
-require("aaron.config.lsp") -- code understanding (diagnostic + navigation)
-require("aaron.config.mason")
-vim.cmd('source' .. nvimrc .. '/plugin/lsp-config.vim')
-
+require("aaron.lsp") -- code understanding (diagnostic + navigation)
+require("aaron.config.mason") -- installing lsp servers, formatters, linters...
 require("aaron.config.treesitter") -- code understanding (highlight...)
 require('aaron.config.iswap') -- swapping arguments
 require('aaron.config.comment') -- commenting code
-
 require("aaron.config.cmp") -- completion
-vim.cmd('source' .. nvimrc .. '/plugin/nvimcompe-config.vim')
 
 -- CODE NAVIGATION
 require("aaron.config.harpoon") -- mark files
@@ -50,8 +43,8 @@ require("aaron.telescope.setup") -- search
 require("aaron.telescope.mappings") -- search
 
 -- UI
--- require("aaron.config.feline")
 require('aaron.config.treesitter-context') -- fix context on first line
+require('aaron.config.startify')
 require('trouble')
 require("aaron.config.indent_blankline") -- indent characters
 vim.cmd('source' .. nvimrc .. '/plugin/quickscope-config.vim') -- highlight on f/F
@@ -75,3 +68,4 @@ require("aaron.config.git-worktree")
 -- EXTRA FUNCTIONALITY
 require("aaron.config.telekasten") -- markdown notes
 vim.cmd('source' .. nvimrc .. '/plugin/telekasten-config.vim')
+require("guess-indent").setup()

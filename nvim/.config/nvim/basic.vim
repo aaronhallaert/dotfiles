@@ -1,11 +1,3 @@
-syntax on
-set eol
-let mapleader=" "
-let maplocalleader="\\"
-
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set grepformat=%f:%l:%c:%m
-
 function! DisableSyntaxOnWidth() abort
   let view = winsaveview()
   let max_col = 0
@@ -78,8 +70,6 @@ onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 " set foldmethod=syntax
 " let g:markdown_folding=1
 " autocmd BufEnter * silent! lcd %:p:h
-let g:startify_change_to_vcs_root = 1
-let g:startify_change_to_dir=0
 " let g:startify_change_to_dir = 1
 
 " Cursor settings
@@ -95,20 +85,3 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Basic custom vim quick edits 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" autocomplete parenthesis
-
-autocmd FileType tex inoremap " ``''<Esc>hi
-autocmd FileType tex inoremap <C-b> \textbf{}<Esc>i
-autocmd FileType tex inoremap <C-a> \textit{}<Esc>i
-
-nnoremap <silent> <leader>cf :e <cfile><cr>
-"" jumplist mutations
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-
-autocmd VimResized * :wincmd =
-autocmd VimResized * FloatermUpdate
