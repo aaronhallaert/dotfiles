@@ -31,10 +31,7 @@ map_tele("<leader>ss", "lsp_document_symbols")
 map_tele("<leader>sws", "lsp_workspace_symbols")
 
 -- GIT
-map_tele("<leader>gs", "git_status")
-map_tele("<leader>gc", "changed_on_branch")
-map_tele("<leader>dfc", "diff_file_commit")
-map_tele("<leader>dfb", "diff_file_branch")
+map_tele("<leader>sgd", "show_custom_functions")
 
 map_tele("<leader>fb", "buffers")
 map_tele("<leader>fh", "help_tags")
