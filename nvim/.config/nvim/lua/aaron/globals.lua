@@ -1,12 +1,12 @@
-vim.o.grepprg="rg --vimgrep --no-heading --smart-case"
-vim.o.grepformat="%f:%l:%c:%m"
+vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
+vim.o.grepformat = "%f:%l:%c:%m"
 vim.api.nvim_command('set undodir=~/.vim/undodir')
 vim.o.undofile = true
 
 vim.o.syntax = true
 vim.o.eol = true
-vim.g.mapleader=" "
-vim.g.maplocalleader="\\"
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.o.relativenumber = true
 vim.o.hlsearch = false
 vim.o.errorbells = false
@@ -26,7 +26,7 @@ vim.o.ignorecase = true
 -- see Treesitter config for folding
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldlevel=99
+vim.o.foldlevel = 99
 -- vim.o.clipboard = "unnamedplus"
 
 vim.api.nvim_command('filetype plugin indent on')
@@ -39,29 +39,28 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 
 --- Tab exception
-vim.api.nvim_create_autocmd({"FileType"},{
-    group = vim.api.nvim_create_augroup("indentation", { clear = true }),
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = vim.api.nvim_create_augroup("indentation", {clear = true}),
     callback = function()
         -- Override ftplugin indentation settings
-		vim.opt_local.expandtab = vim.opt_global.expandtab:get()
-		vim.opt_local.listchars = vim.opt_global.listchars:get()
-		vim.opt_local.shiftwidth = vim.opt_global.shiftwidth:get()
-		vim.opt_local.softtabstop = vim.opt_global.softtabstop:get()
-		vim.opt_local.tabstop = vim.opt_global.tabstop:get()
-		-- Run guess-indent
-		if vim.fn.exists(":GuessIndent") == 2 then
-			vim.api.nvim_command("silent GuessIndent auto_cmd")
-		end
-		-- Set whitespace characters for indentation with spaces
-		if vim.opt_local.expandtab:get() then
-			-- Switch to leadmultispace in Neovim 0.8
-			local ms = ":" .. string.rep(" ", vim.opt_local.tabstop:get() - 1)
-			vim.opt_local.listchars:remove("lead")
-			vim.opt_local.listchars:append({ multispace = ms })
-		end
+        vim.opt_local.expandtab = vim.opt_global.expandtab:get()
+        vim.opt_local.listchars = vim.opt_global.listchars:get()
+        vim.opt_local.shiftwidth = vim.opt_global.shiftwidth:get()
+        vim.opt_local.softtabstop = vim.opt_global.softtabstop:get()
+        vim.opt_local.tabstop = vim.opt_global.tabstop:get()
+        -- Run guess-indent
+        if vim.fn.exists(":GuessIndent") == 2 then
+            vim.api.nvim_command("silent GuessIndent auto_cmd")
+        end
+        -- Set whitespace characters for indentation with spaces
+        if vim.opt_local.expandtab:get() then
+            -- Switch to leadmultispace in Neovim 0.8
+            local ms = ":" .. string.rep(" ", vim.opt_local.tabstop:get() - 1)
+            vim.opt_local.listchars:remove("lead")
+            vim.opt_local.listchars:append({multispace = ms})
+        end
     end
 })
-
 
 -- MAPPINGS
 -- Going to normal mode
@@ -82,10 +81,14 @@ vim.api.nvim_set_keymap('n', '<leader>j', ':wincmd j<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>k', ':wincmd k<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', {noremap = true})
 --- Resize
-vim.api.nvim_set_keymap('n', '<A-j>', ':resize -2<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<A-k>', ':resize +2<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<A-h>', ':vertical resize -2<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<A-l>', ':vertical resize +2<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<A-j>', ':resize -2<CR>',
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<A-k>', ':resize +2<CR>',
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<A-h>', ':vertical resize -2<CR>',
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<A-l>', ':vertical resize +2<CR>',
+                        {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('i', '(', '()', {noremap = true})
 vim.api.nvim_set_keymap('i', '{', '{}', {noremap = true})
@@ -93,8 +96,10 @@ vim.api.nvim_set_keymap('i', '\"', '""', {noremap = true})
 vim.api.nvim_set_keymap('i', '\'', '\'\'', {noremap = true})
 
 -- Search shortcuts
-vim.api.nvim_set_keymap('n', 'fdp', ':Rg binding.break<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'fiw', ':Rg <C-R><C-W><CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'fdp', ':Rg binding.break<CR>',
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'fiw', ':Rg <C-R><C-W><CR>',
+                        {noremap = true, silent = true})
 
 -- yank to clipboard
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', {noremap = true})
@@ -112,21 +117,22 @@ vim.api.nvim_set_keymap('n', 'n', 'nzz', {noremap = true})
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', {noremap = true})
 vim.api.nvim_set_keymap('n', 'J', 'mzJ`z', {noremap = true})
 
-
 -- autocomplete parenthesis Latex
-vim.api.nvim_create_augroup("LatexParenthesis", { clear = true })
+vim.api.nvim_create_augroup("LatexParenthesis", {clear = true})
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {"tex"},
-	group = "LatexParenthesis",
-	callback = function()
-		vim.api.nvim_set_keymap('i', '"', "``''<Esc>", {noremap=true})
-		vim.api.nvim_set_keymap('i', '<C-b>', "\textbf{}<Esc>i", {noremap=true})
-		vim.api.nvim_set_keymap('i', '<C-a>', "\textit{}<Esc>i", {noremap=true})
-	end
+    pattern = {"tex"},
+    group = "LatexParenthesis",
+    callback = function()
+        vim.api.nvim_set_keymap('i', '"', "``''<Esc>", {noremap = true})
+        vim.api.nvim_set_keymap('i', '<C-b>', "\textbf{}<Esc>i",
+                                {noremap = true})
+        vim.api.nvim_set_keymap('i', '<C-a>', "\textit{}<Esc>i",
+                                {noremap = true})
+    end
 })
 
-
-vim.api.nvim_set_keymap('n', '<leader>f', ':e <cfile><CR>', {noremap = true, silent = true} )
+vim.api.nvim_set_keymap('n', '<leader>f', ':e <cfile><CR>',
+                        {noremap = true, silent = true})
 
 -- jumplist mutations
 -- nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
@@ -134,8 +140,8 @@ vim.api.nvim_set_keymap('n', '<leader>f', ':e <cfile><CR>', {noremap = true, sil
 
 vim.api.nvim_create_augroup("UpdateWinSize", {clear = true})
 vim.api.nvim_create_autocmd("VimResized", {
-	callback = function()
-		vim.api.nvim_command(":wincmd =")
-		vim.api.nvim_command("FloatermUpdate")
-	end
+    callback = function()
+        vim.api.nvim_command(":wincmd =")
+        vim.api.nvim_command("FloatermUpdate")
+    end
 })

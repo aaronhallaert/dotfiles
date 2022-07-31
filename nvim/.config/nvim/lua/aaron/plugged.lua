@@ -11,7 +11,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'nvim-lua/popup.nvim'
-Plug('nvim-treesitter/nvim-treesitter', {['do']='TSUpdate'})
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = 'TSUpdate'})
 Plug 'itchyny/lightline.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 -- Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -28,7 +28,7 @@ Plug 'phaazon/hop.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
-Plug( 'junegunn/fzf', {['do']= vim.fn['fzf#install']})
+Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ThePrimeagen/harpoon'
@@ -38,17 +38,17 @@ Plug 'unblevable/quick-scope'
 
 -- Code Extensions
 Plug 'neovim/nvim-lspconfig'
--- Plug 'tjdevries/nlua.nvim'
 Plug 'williamboman/mason.nvim'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'puremourning/vimspector'
 Plug 'NMAC427/guess-indent.nvim'
---" Language Specific
+-- " Language Specific
 Plug 'tpope/vim-rails'
 Plug 'mzlogin/vim-markdown-toc'
-Plug('iamcco/markdown-preview.nvim', { ['do']= vim.fn['mkdp#util#install'], ['for']= {'markdown', 'vim-plug'}})
+Plug('iamcco/markdown-preview.nvim',
+     {['do'] = vim.fn['mkdp#util#install'], ['for'] = {'markdown', 'vim-plug'}})
 Plug 'lervag/vimtex'
 
 -- Editing Extensions

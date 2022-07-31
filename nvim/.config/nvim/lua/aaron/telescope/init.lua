@@ -31,7 +31,12 @@ function M.search_gitwords()
 end
 
 function M.search_git_files()
-    require("telescope.builtin").git_files({hidden = true, prompt_prefix = "   ", prompt_title = "< project files >", find_command = 'rg'})
+    require("telescope.builtin").git_files({
+        hidden = true,
+        prompt_prefix = "   ",
+        prompt_title = "< project files >",
+        find_command = 'rg'
+    })
 end
 
 function M.changed_on_branch()
@@ -73,7 +78,9 @@ function M.diff_file_branch()
     c_branch = string.gsub(c_branch, "\n", "")
     pickers.new {
         results_title = 'Local branches :: ' .. c_branch,
-        finder = finders.new_oneshot_job({'git', 'branch', "--format=%(refname:short)"}),
+        finder = finders.new_oneshot_job({
+            'git', 'branch', "--format=%(refname:short)"
+        }),
         sorter = sorters.get_fuzzy_file(),
         attach_mappings = function(_, map)
 
@@ -107,12 +114,18 @@ function M.diff_file_log()
     pickers.new {
         results_title = 'Commits on selected lines, <CR> to compare to current',
         -- finder = finders.new_oneshot_job({'git', 'log', '--pretty=oneline', '--', file_name}),
-        finder = finders.new_oneshot_job({'git', 'log', location, "--format=%C(auto)%h %as %C(green)%an -- %Creset %s", "-s"}),
+        finder = finders.new_oneshot_job({
+            'git', 'log', location,
+            "--format=%C(auto)%h %as %C(green)%an -- %Creset %s", "-s"
+        }),
         -- finder = finders.new_oneshot_job({'git', 'log', location}),
         previewer = previewers.new_termopen_previewer {
             get_command = function(entry)
                 local commit_hash = Get_commit_hash(entry.value)
-                return {'git', 'diff', string.format("%s~", commit_hash), commit_hash, '--', file_name}
+                return {
+                    'git', 'diff', string.format("%s~", commit_hash),
+                    commit_hash, '--', file_name
+                }
             end
         },
         sorter = sorters.get_fuzzy_file(),
@@ -122,7 +135,8 @@ function M.diff_file_log()
                 local selection = action_state.get_selected_entry()
                 local commit_log = selection.value
 
-                vim.api.nvim_command(":Gvdiffsplit " .. Get_commit_hash(commit_log))
+                vim.api.nvim_command(":Gvdiffsplit " ..
+                                         Get_commit_hash(commit_log))
             end)
             map('i', '<C-o>', function(prompt_bufnr)
                 actions.close(prompt_bufnr)
@@ -149,12 +163,18 @@ function M.diff_file_commit()
     c_branch = string.gsub(c_branch, "\n", "")
     pickers.new {
         results_title = 'Last commits on current file compared to ' .. c_branch,
-        finder = finders.new_oneshot_job({'git', 'log', "--format=%C(auto)%h \t %as \t %C(green)%an -- %Creset %s", "--", file_name}),
+        finder = finders.new_oneshot_job({
+            'git', 'log',
+            "--format=%C(auto)%h \t %as \t %C(green)%an -- %Creset %s", "--",
+            file_name
+        }),
         -- finder = finders.new_oneshot_job({'git', 'cherry', '-v', 'master', c_branch}),
         sorter = sorters.get_fuzzy_file(),
         previewer = previewers.new_termopen_previewer {
             get_command = function(entry)
-                return {'git', 'diff', Get_commit_hash(entry.value), '--', file_name}
+                return {
+                    'git', 'diff', Get_commit_hash(entry.value), '--', file_name
+                }
             end
         },
         attach_mappings = function(_, map)
@@ -199,7 +219,8 @@ function M.checkout_reflog()
                     Splitted_reflog_entry[Count] = i
                     Count = Count + 1
                 end
-                vim.api.nvim_command(":!git checkout " .. Splitted_reflog_entry[1])
+                vim.api.nvim_command(":!git checkout " ..
+                                         Splitted_reflog_entry[1])
             end)
 
             return true
@@ -207,13 +228,9 @@ function M.checkout_reflog()
     }:find()
 end
 
-function M.buffers()
-    require("telescope.builtin").buffers()
-end
+function M.buffers() require("telescope.builtin").buffers() end
 
-function M.help_tags()
-    require("telescope.builtin").help_tags()
-end
+function M.help_tags() require("telescope.builtin").help_tags() end
 
 function M.lsp_document_symbols()
     require("telescope.builtin").lsp_document_symbols()
@@ -223,12 +240,8 @@ function M.lsp_workspace_symbols()
     require("telescope.builtin").lsp_workspace_symbols()
 end
 
-function M.git_status()
-    require("telescope.builtin").git_status()
-end
+function M.git_status() require("telescope.builtin").git_status() end
 
-function M.lsp_references()
-    require("telescope.builtin").lsp_references()
-end
+function M.lsp_references() require("telescope.builtin").lsp_references() end
 
 return M

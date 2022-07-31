@@ -1,6 +1,6 @@
-local M={}
+local M = {}
 
-M.setup = function (config)
+M.setup = function(config)
     config = config or {}
     local bufnr = config.bufnr
 
@@ -9,6 +9,7 @@ M.setup = function (config)
     end
     -- Mappings/shortcuts.
     local opts = {noremap = true, silent = true}
+    -- LuaFormatter off
     buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "H", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -26,11 +27,9 @@ M.setup = function (config)
     buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     buf_set_keymap("n", "<localleader>ca", "<cmd>lua vim.lsp.buf.code_action({ diagnostics = vim.lsp.diagnostic.get_line_diagnostics()})<CR>", opts)
     buf_set_keymap("n", "<leader>is", "<Cmd>!eslint_d % --fix<CR>", opts)
-
-    -- Set some keybinds conditional on server capabilities
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-        
+    -- LuaFormatter on
 end
 
 return M

@@ -4,7 +4,10 @@ local actions = require('telescope.actions')
 telescope.setup {
     defaults = {
         -- prompt_prefix = "> ",
-        vimgrep_arguments = {"rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case"},
+        vimgrep_arguments = {
+            "rg", "--color=never", "--no-heading", "--with-filename",
+            "--line-number", "--column", "--smart-case"
+        },
         selection_caret = "  ",
         entry_prefix = "  ",
         initial_mode = "insert",
@@ -12,7 +15,11 @@ telescope.setup {
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
         layout_config = {
-            horizontal = {prompt_position = "top", preview_width = 0.55, results_width = 0.8},
+            horizontal = {
+                prompt_position = "top",
+                preview_width = 0.55,
+                results_width = 0.8
+            },
             vertical = {mirror = false},
             width = 0.87,
             height = 0.80,
@@ -32,18 +39,32 @@ telescope.setup {
         use_less = true,
         set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
         mappings = {
-            i = {["<c-s>"] = actions.send_selected_to_qflist + actions.open_qflist, ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist},
-            n = {["<c-s>"] = actions.send_selected_to_qflist + actions.open_qflist, ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist}
+            i = {
+                ["<c-s>"] = actions.send_selected_to_qflist +
+                    actions.open_qflist,
+                ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist
+            },
+            n = {
+                ["<c-s>"] = actions.send_selected_to_qflist +
+                    actions.open_qflist,
+                ["<c-a>"] = actions.add_selected_to_qflist + actions.open_qflist
+            }
         }
     },
     extensions = {
-        fzy_native = {override_generic_sorter = false, override_file_sorter = true},
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true
+        },
         ["ui-select"] = {require("telescope.themes").get_dropdown()}
     },
     pickers = {
         buffers = {
             sort_lastused = true,
-            mappings = {i = {["<c-d>"] = require("telescope.actions").delete_buffer}, n = {["<c-d>"] = require("telescope.actions").delete_buffer}}
+            mappings = {
+                i = {["<c-d>"] = require("telescope.actions").delete_buffer},
+                n = {["<c-d>"] = require("telescope.actions").delete_buffer}
+            }
         }
     }
 }
