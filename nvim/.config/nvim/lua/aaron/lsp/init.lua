@@ -12,6 +12,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     }
 })
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+    command = "silent! !eslint_d % --fix",
+    pattern = {"*.js", "*.jsx", "*.tsx", "*.ts"}
+})
+
 local on_attach = function(client, bufnr)
     require("aaron.lsp.signature")
     require("aaron.lsp.keymaps").setup {bufnr = bufnr}
@@ -26,7 +31,7 @@ local prettier = require("aaron.efm.prettier")
 local luaFormat = require("aaron.efm.lua-format")
 local markdownlint = require("aaron.efm.markdownlint")
 local jq = require("aaron.efm.jq")
--- local eslint = require("aaron.efm.eslint")
+local eslint = require("aaron.efm.eslint")
 
 -- General purpose language server
 nvim_lsp.efm.setup({
@@ -34,6 +39,10 @@ nvim_lsp.efm.setup({
     -- lspconfig, disable lsp global options
     init_options = {documentFormatting = true},
     cmd = {'efm-langserver', '-logfile', '/tmp/efm.log', '-loglevel', '5'},
+    filetypes = {
+        "json", "markdown", "lua", "typescriptreact", "typescript",
+        "javascriptreact", "javascript"
+    },
     -- lsp specific options
     settings = {
         rootMarkers = {".git/"},
@@ -42,10 +51,10 @@ nvim_lsp.efm.setup({
             json = {jq},
             markdown = {markdownlint, prettier},
             lua = {luaFormat},
-            typescriptreact = {prettier},
-            typescript = {prettier},
-            javascript = {prettier},
-            javascriptreact = {prettier}
+            typescriptreact = {prettier, eslint},
+            typescript = {prettier, eslint},
+            javascript = {prettier, eslint},
+            javascriptreact = {prettier, eslint}
         }
     }
 })

@@ -78,3 +78,4 @@ export CGO_ENABLED=on
 export GOPATH=$HOME/go
 export GPG_TTY=$(tty)
 
+export THEME="gruvbox"

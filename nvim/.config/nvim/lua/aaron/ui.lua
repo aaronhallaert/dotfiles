@@ -8,20 +8,26 @@ vim.api.nvim_command("set t_8b=^[[48;2;%lu;%lu;%lum")
 
 -- """""""""""""""""""""""""""" Color Scheme Picker """""""""""""""""""""""""""""
 
--- vim.api.nvim_command('colorscheme sonokai')
---
--- vim.api.nvim_command("colorscheme onedark")
---
--- vim.api.nvim_command("colorscheme vscode")
--- let g:vscode_style = "dark"
---
--- vim.api.nvim_command("colorscheme material")
---
--- vim.api.nvim_command("colorscheme nordfox")
-vim.api.nvim_command('colorscheme gruvbox')
-vim.g.gruvbox_invert_selection = '0'
+local theme = os.getenv("THEME")
+
+if theme == 'gruvbox' then
+    vim.api.nvim_command('colorscheme gruvbox')
+    vim.g.gruvbox_invert_selection = '0'
+    -- vim.g.gruvbox_contrast_dark = 'hard'
+elseif theme == 'sonokai' then
+    vim.api.nvim_command('colorscheme sonokai')
+elseif theme == 'onedark' then
+    vim.api.nvim_command("colorscheme onedark")
+elseif theme == 'vscode' then
+    vim.api.nvim_command("colorscheme vscode")
+    vim.g.vscode_style = "dark"
+elseif theme == 'nord' then
+    vim.api.nvim_command("colorscheme nordfox")
+elseif theme == 'material' then
+    vim.api.nvim_command("colorscheme material")
+end
+
 vim.o.background = 'dark'
--- vim.g.gruvbox_contrast_dark = 'hard'
 
 ---------------------------- TELEKASTEN ---------------------------
 -- gruvbox
