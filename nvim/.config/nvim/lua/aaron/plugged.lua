@@ -3,7 +3,8 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.vim/plugged')
 -- UI
-Plug 'morhetz/gruvbox'
+-- Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 -- Plug 'shapeoflambda/dark-purple.vim'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'marko-cerovac/material.nvim'
@@ -12,11 +13,14 @@ Plug 'sainnhe/sonokai'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = 'TSUpdate'})
-Plug 'itchyny/lightline.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug('catppuccin/nvim', {['as'] = 'catppuccin'})
 -- Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'declancm/cinnamon.nvim'
 Plug 'folke/trouble.nvim'
+Plug 'Pocco81/true-zen.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim'
 
 -- Icons
 Plug 'ryanoasis/vim-devicons'
@@ -79,6 +83,7 @@ Plug 'anuvyklack/pretty-fold.nvim'
 Plug 'anuvyklack/fold-preview.nvim'
 Plug 'anuvyklack/nvim-keymap-amend'
 Plug 'mhinz/vim-startify'
+Plug 'windwp/nvim-autopairs'
 
 -- Git/GitHub
 -- Plug 'ldelossa/gh.nvim'

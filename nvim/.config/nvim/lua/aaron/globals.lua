@@ -3,6 +3,9 @@ vim.o.grepformat = "%f:%l:%c:%m"
 vim.api.nvim_command('set undodir=~/.vim/undodir')
 vim.o.undofile = true
 
+vim.g.material_style = "darker"
+-- vim.g.catppuccin_flavour = "frappe"
+
 vim.o.syntax = true
 vim.o.eol = true
 vim.g.mapleader = " "
@@ -90,10 +93,8 @@ vim.api.nvim_set_keymap('n', '<A-h>', ':vertical resize -2<CR>',
 vim.api.nvim_set_keymap('n', '<A-l>', ':vertical resize +2<CR>',
                         {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap('i', '(', '()', {noremap = true})
-vim.api.nvim_set_keymap('i', '{', '{}', {noremap = true})
-vim.api.nvim_set_keymap('i', '\"', '""', {noremap = true})
-vim.api.nvim_set_keymap('i', '\'', '\'\'', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', {noremap = true})
 
 -- Search shortcuts
 vim.api.nvim_set_keymap('n', 'fdp', ':Rg binding.break<CR>',

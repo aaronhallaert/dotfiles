@@ -5,7 +5,6 @@ require('aaron.globals')
 require("aaron.plugged")
 require("aaron.ui")
 
-
 -- Extra file functionality
 vim.cmd('source' .. nvimrc .. '/plugin/suda-config.vim') -- edit in sudo mode
 vim.cmd('source' .. nvimrc .. '/plugin/undotree-config.vim') -- keep track of file history
@@ -34,6 +33,7 @@ require("aaron.config.treesitter") -- code understanding (highlight...)
 require('aaron.config.iswap') -- swapping arguments
 require('aaron.config.comment') -- commenting code
 require("aaron.config.cmp") -- completion
+require("nvim-autopairs").setup()
 
 -- CODE NAVIGATION
 require("aaron.config.harpoon") -- mark files
@@ -43,12 +43,18 @@ require("aaron.telescope.setup") -- search
 require("aaron.telescope.mappings") -- search
 
 -- UI
+require("bufferline").setup {}
 require('aaron.config.treesitter-context') -- fix context on first line
 require('aaron.config.startify')
 require('trouble')
 require("aaron.config.indent_blankline") -- indent characters
+require('true-zen').setup()
+require("lualine").setup()
 vim.cmd('source' .. nvimrc .. '/plugin/quickscope-config.vim') -- highlight on f/F
-vim.cmd('source' .. nvimrc .. '/plugin/hop-config.vim')
+require("aaron.config.hop")
+-- THEMES
+require('material').setup()
+require('catppuccin').setup()
 
 -- BEHAVIOUR
 require('aaron.config.cinnamon') -- smooth scrolling

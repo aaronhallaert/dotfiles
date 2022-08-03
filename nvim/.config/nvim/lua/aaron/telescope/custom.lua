@@ -115,6 +115,65 @@ local function diff_file_log()
     }:find()
 end
 
+local function diff_entire_file_log()
+    local previewers = require('telescope.previewers')
+    local pickers = require('telescope.pickers')
+    local sorters = require('telescope.sorters')
+    local finders = require('telescope.finders')
+    local file_name = vim.fn.expand('%')
+    print(file_name)
+
+    pickers.new {
+        results_title = 'Commits history for entire file',
+        -- finder = finders.new_oneshot_job({'git', 'log', '--pretty=oneline', '--', file_name}),
+        finder = finders.new_oneshot_job({
+            'git', 'log', "--format=%C(auto)%h %as %C(green)%an -- %Creset %s",
+            "-s", '--follow', file_name
+        }),
+        -- finder = finders.new_oneshot_job({'git', 'log', location}),
+        previewer = previewers.new_termopen_previewer {
+            get_command = function(entry)
+                local commit_hash = Get_commit_hash(entry.value)
+                return {
+                    'git', 'diff', string.format("%s~", commit_hash),
+                    commit_hash
+                }
+            end
+        },
+        sorter = sorters.get_fuzzy_file(),
+        attach_mappings = function(_, map)
+            map('i', '<CR>', function(prompt_bufnr)
+                actions.close(prompt_bufnr)
+                local selection = action_state.get_selected_entry()
+                local commit_log = selection.value
+                local commit_hash = Get_commit_hash(commit_log)
+
+                local command = {
+                    'git', 'diff', string.format("%s~", commit_hash),
+                    commit_hash, "\n"
+                }
+
+                vim.api.nvim_command('split new') -- split a new window
+                vim.api.nvim_win_set_height(0, 30) -- set the window height
+                local buf_handle = vim.api.nvim_win_get_buf(0) -- get the buffer handler
+                local jobID = vim.api.nvim_call_function("termopen", {"$SHELL"})
+                vim.api.nvim_buf_set_option(buf_handle, 'modifiable', true)
+                vim.api.nvim_chan_send(jobID, table.concat(command, " "))
+
+            end)
+            map('i', '<C-o>', function(prompt_bufnr)
+                actions.close(prompt_bufnr)
+                local selection = action_state.get_selected_entry()
+                local commit = selection.value
+
+                vim.api.nvim_command(":GBrowse " .. Get_commit_hash(commit))
+            end)
+
+            return true
+        end
+    }:find()
+end
+
 -- Compare file with selected commit
 -- Lists commit history
 local function diff_file_commit()
@@ -202,6 +261,7 @@ local git_functions = {
     {value = "Diff file with branch", func = diff_file_branch},
     {value = "Diff file with previous commit", func = diff_file_commit},
     {value = "Diff file with line history", func = diff_file_log},
+    {value = "Diff file with file history", func = diff_entire_file_log},
     {value = "Checkout from reflog", func = checkout_reflog},
     {value = "Show (git add) changes on branch", func = changed_on_branch}
 }

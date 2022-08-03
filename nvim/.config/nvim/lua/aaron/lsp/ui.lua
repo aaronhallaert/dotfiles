@@ -1,17 +1,24 @@
 local M = {}
 
 M.init = function()
-
-    vim.fn.sign_define("DiagnosticSignError",
-                       {text = "", texthl = "GruvBoxRedSign"})
-    vim.fn.sign_define("DiagnosticSignWarn",
-                       {text = "", texthl = "GruvboxYellowSign"})
+    vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "Red"})
+    vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "Yellow"})
     vim.fn.sign_define("DiagnosticSignInformation",
-                       {text = "", texthl = "GruvboxBlueSign"})
-    vim.fn.sign_define("DiagnosticSignHint",
-                       {text = "", texthl = "GruvboxAquaSign"})
+                       {text = "", texthl = "White"})
+    vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "Aqua"})
 
     vim.cmd('hi! link NormalFloat Normal')
+    vim.cmd('hi! link FloatBorder DapUIFLoatBorder')
+
+    vim.cmd('hi! link VirtualTextError Red')
+    vim.cmd('hi! link VirtualTextWarn Yellow')
+    vim.cmd('hi! link VirtualTextInfo White')
+    vim.cmd('hi! link VirtualTextHint Aqua')
+
+    vim.cmd('hi! link ErrorFloat Red')
+    vim.cmd('hi! link WarnFloat Yellow')
+    vim.cmd('hi! link InfoFloat White')
+    vim.cmd('hi! link HintFloat Aqua')
 
     local border = {
         {"🭽", "FloatBorder"}, {"▔", "FloatBorder"},
