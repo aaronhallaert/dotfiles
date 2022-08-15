@@ -55,6 +55,7 @@ require("aaron.config.hop")
 -- THEMES
 require('material').setup()
 require('catppuccin').setup()
+require('aaron.config.luasnip')
 
 -- BEHAVIOUR
 require('aaron.config.cinnamon') -- smooth scrolling

@@ -11,7 +11,7 @@ M.init = function()
     vim.cmd('hi! link FloatBorder DapUIFLoatBorder')
 
     vim.cmd('hi! link VirtualTextError Red')
-    vim.cmd('hi! link VirtualTextWarn Yellow')
+    vim.cmd('hi! link VirtualTextWarning Yellow')
     vim.cmd('hi! link VirtualTextInfo White')
     vim.cmd('hi! link VirtualTextHint Aqua')
 

@@ -28,11 +28,11 @@ map_tele("<leader>frc", "search_dotfiles")
 -- LSP
 map_tele("<leader>gr", "lsp_references")
 map_tele("<leader>ss", "lsp_document_symbols")
-map_tele("<leader>sws", "lsp_workspace_symbols")
 
 -- GIT
 map_tele("<leader>sgd", "show_custom_functions")
 
 map_tele("<leader>fb", "buffers")
 map_tele("<leader>fh", "help_tags")
+map_tele("<leader>fws", "lsp_workspace_symbols")
 

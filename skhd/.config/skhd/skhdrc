@@ -29,7 +29,7 @@ alt + cmd + ctrl - h : yabai -m window --resize left:-50:0; \
 
 
 
-cmd - 0x24 : open -na /System/Volumes/Data/Applications/kitty.app
+# cmd - 0x24 : open -na /System/Volumes/Data/Applications/kitty.app
 cmd - 0x32 : open -a /System/Volumes/Data/Applications/kitty.app
 cmd - mute : open -a /System/Volumes/Data/Applications/Spotify.app
 

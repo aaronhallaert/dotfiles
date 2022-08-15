@@ -5,3 +5,5 @@ git:
         args: "--no-ff"
     pull:
         mode: "ff-only"
+    log:
+        showSignature: true
