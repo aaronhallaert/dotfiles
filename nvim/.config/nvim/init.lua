@@ -2,7 +2,7 @@ local nvimrc = '$HOME/dotfiles/nvim/.config/nvim'
 vim.cmd('source' .. nvimrc .. '/basic.vim')
 require('aaron.globals')
 
-require("aaron.plugged")
+require("aaron.plugins")
 require("aaron.ui")
 
 -- Extra file functionality

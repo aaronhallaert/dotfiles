@@ -93,8 +93,8 @@ vim.api.nvim_set_keymap('n', '<A-h>', ':vertical resize -2<CR>',
 vim.api.nvim_set_keymap('n', '<A-l>', ':vertical resize +2<CR>',
                         {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '+', ':bn<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '_', ':bp<CR>', {noremap = true})
 
 -- Search shortcuts
 vim.api.nvim_set_keymap('n', 'fdp', ':Rg binding.break<CR>',

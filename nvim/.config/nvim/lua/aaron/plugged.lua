@@ -113,6 +113,7 @@ Plug 'vim-utils/vim-man'
 Plug 'lambdalisue/suda.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ap/vim-css-color'
+Plug 'phaazon/mind.nvim'
 -- Plug 'williamboman/nvim-lsp-installer'
 
 vim.call('plug#end')

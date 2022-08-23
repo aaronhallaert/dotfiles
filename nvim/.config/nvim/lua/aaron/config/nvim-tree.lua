@@ -25,7 +25,7 @@ nvim_tree.setup({
     filters = {
         dotfiles = false,
         custom = {
-            "docker-compose", "tmp", "log", "docker-compose.medsoc.yml",
+            "docker-compose", "tmp", "docker-compose.medsoc.yml",
             "docker-compose.sam.yml", "docker-compose.vidal.yml",
             "docker-compose.yml"
         }

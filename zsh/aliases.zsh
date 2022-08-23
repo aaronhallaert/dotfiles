@@ -1,5 +1,5 @@
 # ALIASES
-alias start-airplay="~/Developer/programs/UxPlay/build/uxplay &!"
+alias start-airplay="~/Developer/programs/UxPlay/uxplay &!"
 alias stop-airplay="pkill uxplay"
 alias dotf="cd ~/dotfiles"
 alias lg="lazygit"
