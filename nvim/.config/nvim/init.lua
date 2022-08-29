@@ -37,7 +37,6 @@ require("nvim-autopairs").setup()
 
 -- CODE NAVIGATION
 require("aaron.config.harpoon") -- mark files
-vim.cmd('source' .. nvimrc .. '/plugin/harpoon-config.vim')
 
 require("aaron.telescope.setup") -- search
 require("aaron.telescope.mappings") -- search
@@ -67,7 +66,7 @@ require("aaron.config.nvim-tree") -- project view
 -- GIT/GITHUB
 require("octo").setup()
 -- require('aaron.config.litee')
--- require("aaron.config.gitsigns")
+require("aaron.config.gitsigns")
 vim.cmd('source' .. nvimrc .. '/plugin/gitfugitive-config.vim')
 vim.cmd('source' .. nvimrc .. '/plugin/gitblame-config.vim')
 require("aaron.config.git-worktree")

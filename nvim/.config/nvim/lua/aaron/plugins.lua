@@ -6,6 +6,17 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(function(use)
+    use {
+        'nvim-orgmode/orgmode',
+        config = function()
+            require('orgmode').setup_ts_grammar()
+            require('orgmode').setup {
+                org_agenda_files = {'~/org/**/*'},
+                org_default_notes_file = '~/org/default.org'
+            }
+        end
+    }
+
     use 'wbthomason/packer.nvim'
     use 'sainnhe/gruvbox-material'
     -- use 'shapeoflambda/dark-purple.vim'

@@ -17,7 +17,7 @@
     "excluded_filetypes": [
       "harpoon"
     ],
-    "enter_on_sendcmd": false,
+    "enter_on_sendcmd": true,
     "save_on_change": true,
     "tmux_autoclose_windows": false
   }

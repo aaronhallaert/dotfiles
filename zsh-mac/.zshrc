@@ -29,6 +29,7 @@ source $ZSH/oh-my-zsh.sh
 
 # CUSTOM
 export PATH="$HOME/dotfiles/usr/scripts:$PATH"
+export PATH="$HOME/dotfiles/usr/scripts/nipro:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

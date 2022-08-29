@@ -5,7 +5,7 @@ require("aaron.lsp.handlers")
 
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    command = "lua vim.lsp.buf.formatting_sync(nil, 1000)",
+    callback = function() vim.lsp.buf.format() end,
     pattern = {
         "*.js", "*.jsx", "*.tsx", "*.ts", "*.py", "*.rb", "*.lua", "*.json",
         "*.md", "*.css"
@@ -114,8 +114,7 @@ nvim_lsp.stylelint_lsp.setup({
 
 -- Default servers
 local servers = {
-    "pylsp", "jsonls", "vimls", "diagnosticls", "sourcekit", "gopls",
-    "tailwindcss"
+    "pylsp", "jsonls", "vimls", "sourcekit", "gopls", "tailwindcss"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({
