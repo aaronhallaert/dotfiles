@@ -19,6 +19,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- use {'levouh/tint.nvim', config = function() require("tint").setup() end}
+
     use 'sainnhe/gruvbox-material'
     -- use 'shapeoflambda/dark-purple.vim'
     use 'EdenEast/nightfox.nvim'
@@ -217,7 +219,10 @@ return require('packer').startup(function(use)
     -- Git/GitHub
     -- use 'ldelossa/gh.nvim'
     -- use 'ldelossa/litee.nvim'
-    use {'pwntester/octo.nvim', config = function() require("octo").setup() end}
+    use {
+        'pwntester/octo.nvim',
+        config = function() require("aaron.config.octo") end
+    }
     use 'f-person/git-blame.nvim'
     use {
         'lewis6991/gitsigns.nvim',

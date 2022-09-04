@@ -14,7 +14,6 @@ vim.cmd('source' .. nvimrc .. '/plugin/netrw-config.vim') -- project view
 vim.cmd('source' .. nvimrc .. '/plugin/markdownprev-config.vim')
 vim.cmd('source' .. nvimrc .. '/plugin/floaterm-config.vim')
 vim.cmd('source' .. nvimrc .. '/plugin/vimwiki-config.vim')
-vim.cmd('source' .. nvimrc .. '/plugin/octo-config.vim')
 
 -- Code Tools
 vim.cmd('source' .. nvimrc .. '/plugin/vimspector-config.vim')
