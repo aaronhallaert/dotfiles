@@ -29,7 +29,13 @@ local c = ls.choice_node
 local f = ls.function_node
 
 ls.add_snippets("lua", {
-    snippet("req", fmt("local {} = require('{}')", {i(1, "default"), rep(1)}))
+    snippet("req", fmt("local {} = require('{}')", {i(1, "default"), rep(1)})),
+    snippet("keymap", fmt("vim.api.nvim_set_keymap('{}', '{}', '{}', {{{}}})", {
+        c(1, {t "i", t "n", t "v"}),
+        i(2, ""),
+        i(3, ""),
+        i(0, "noremap = true")
+    }))
 })
 
 local same =
