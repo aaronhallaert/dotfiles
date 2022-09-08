@@ -3,6 +3,10 @@ local action_state = require "telescope.actions.state"
 
 local M = {}
 
+local function open_diff_view(commit)
+    vim.api.nvim_command(":Gvdiffsplit " .. commit)
+end
+
 local function changed_on_branch()
     local previewers = require('telescope.previewers')
     local pickers = require('telescope.pickers')
@@ -11,11 +15,15 @@ local function changed_on_branch()
 
     pickers.new {
         results_title = 'Modified on current branch',
-        finder = finders.new_oneshot_job({'git-branch-modified.sh', 'list'}),
+        finder = finders.new_oneshot_job(vim.tbl_flatten {
+            'bash',
+            'git-branch-modified.sh',
+            'list'
+        }),
         sorter = sorters.get_fuzzy_file(),
         previewer = previewers.new_termopen_previewer {
-            get_command = function(entry)
-                return {'git-branch-modified.sh', 'diff', entry.value}
+            get_command = function(entry, _)
+                return {"bash", "git-branch-modified.sh", "diff", entry.value}
             end
         }
     }:find()
@@ -43,7 +51,9 @@ local function diff_file_branch()
     pickers.new {
         results_title = 'Local branches :: ' .. c_branch,
         finder = finders.new_oneshot_job({
-            'git', 'branch', "--format=%(refname:short)"
+            'git',
+            'branch',
+            "--format=%(refname:short)"
         }),
         sorter = sorters.get_fuzzy_file(),
         attach_mappings = function(_, map)
@@ -54,7 +64,7 @@ local function diff_file_branch()
                 local branch = selection.value
                 print(branch)
 
-                vim.api.nvim_command(":Gvdiffsplit " .. branch)
+                open_diff_view(branch)
             end)
 
             return true
@@ -79,16 +89,23 @@ local function diff_file_log()
         results_title = 'Commits on selected lines, <CR> to compare to current',
         -- finder = finders.new_oneshot_job({'git', 'log', '--pretty=oneline', '--', file_name}),
         finder = finders.new_oneshot_job({
-            'git', 'log', location,
-            "--format=%C(auto)%h %as %C(green)%an -- %Creset %s", "-s"
+            'git',
+            'log',
+            location,
+            "--format=%C(auto)%h %as %C(green)%an -- %Creset %s",
+            "-s"
         }),
         -- finder = finders.new_oneshot_job({'git', 'log', location}),
         previewer = previewers.new_termopen_previewer {
             get_command = function(entry)
                 local commit_hash = Get_commit_hash(entry.value)
                 return {
-                    'git', 'diff', string.format("%s~", commit_hash),
-                    commit_hash, '--', file_name
+                    'git',
+                    'diff',
+                    string.format("%s~", commit_hash),
+                    commit_hash,
+                    '--',
+                    file_name
                 }
             end
         },
@@ -99,8 +116,7 @@ local function diff_file_log()
                 local selection = action_state.get_selected_entry()
                 local commit_log = selection.value
 
-                vim.api.nvim_command(":Gvdiffsplit " ..
-                                         Get_commit_hash(commit_log))
+                open_diff_view(Get_commit_hash(commit_log))
             end)
             map('i', '<C-o>', function(prompt_bufnr)
                 actions.close(prompt_bufnr)
@@ -127,15 +143,21 @@ local function diff_entire_file_log()
         results_title = 'Commits history for entire file',
         -- finder = finders.new_oneshot_job({'git', 'log', '--pretty=oneline', '--', file_name}),
         finder = finders.new_oneshot_job({
-            'git', 'log', "--format=%C(auto)%h %as %C(green)%an -- %Creset %s",
-            "-s", '--follow', file_name
+            'git',
+            'log',
+            "--format=%C(auto)%h %as %C(green)%an -- %Creset %s",
+            "-s",
+            '--follow',
+            file_name
         }),
         -- finder = finders.new_oneshot_job({'git', 'log', location}),
         previewer = previewers.new_termopen_previewer {
             get_command = function(entry)
                 local commit_hash = Get_commit_hash(entry.value)
                 return {
-                    'git', 'diff', string.format("%s~", commit_hash),
+                    'git',
+                    'diff',
+                    string.format("%s~", commit_hash),
                     commit_hash
                 }
             end
@@ -149,8 +171,11 @@ local function diff_entire_file_log()
                 local commit_hash = Get_commit_hash(commit_log)
 
                 local command = {
-                    'git', 'diff', string.format("%s~", commit_hash),
-                    commit_hash, "\n"
+                    'git',
+                    'diff',
+                    string.format("%s~", commit_hash),
+                    commit_hash,
+                    "\n"
                 }
 
                 vim.api.nvim_command('split new') -- split a new window
@@ -187,8 +212,10 @@ local function diff_file_commit()
     pickers.new {
         results_title = 'Last commits on current file compared to ' .. c_branch,
         finder = finders.new_oneshot_job({
-            'git', 'log',
-            "--format=%C(auto)%h \t %as \t %C(green)%an -- %Creset %s", "--",
+            'git',
+            'log',
+            "--format=%C(auto)%h \t %as \t %C(green)%an -- %Creset %s",
+            "--",
             file_name
         }),
         -- finder = finders.new_oneshot_job({'git', 'cherry', '-v', 'master', c_branch}),
@@ -196,7 +223,11 @@ local function diff_file_commit()
         previewer = previewers.new_termopen_previewer {
             get_command = function(entry)
                 return {
-                    'git', 'diff', Get_commit_hash(entry.value), '--', file_name
+                    'git',
+                    'diff',
+                    Get_commit_hash(entry.value),
+                    '--',
+                    file_name
                 }
             end
         },
@@ -206,7 +237,7 @@ local function diff_file_commit()
                 local selection = action_state.get_selected_entry()
                 local commit = selection.value
 
-                vim.api.nvim_command(":Gvdiffsplit " .. Get_commit_hash(commit))
+                open_diff_view(Get_commit_hash(commit))
             end)
             map('i', '<C-o>', function(prompt_bufnr)
                 actions.close(prompt_bufnr)

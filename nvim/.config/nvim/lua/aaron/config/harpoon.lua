@@ -23,9 +23,9 @@ function _G.Get_test_command( --[[optional]] line)
     if not line then line = false end
 
     if line then
-        return "bundle exec rspec " .. test_position
+        return "bundle exec spring rspec " .. test_position
     else
-        return "bundle exec rspec " .. test_file
+        return "bundle exec spring rspec " .. test_file
     end
 end
 

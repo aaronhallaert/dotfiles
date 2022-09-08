@@ -19,9 +19,15 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Packer
+    use {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
     -- use {'levouh/tint.nvim', config = function() require("tint").setup() end}
 
-    use 'sainnhe/gruvbox-material'
+    use {
+        'sainnhe/gruvbox-material',
+        commit = '9e30f2095e8ab80c68901e7aaee186cd3aa97168'
+    }
+    use 'B4mbus/oxocarbon-lua.nvim'
     -- use 'shapeoflambda/dark-purple.vim'
     use 'EdenEast/nightfox.nvim'
     use {
@@ -91,6 +97,8 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-telescope/telescope.nvim',
+        tag = '0.1.0',
+        requires = {{'nvim-lua/plenary.nvim'}},
         config = function()
             require("aaron.telescope.setup") -- search
             require("aaron.telescope.mappings") -- search

@@ -3,7 +3,7 @@ vim.cmd('source' .. nvimrc .. '/basic.vim')
 require('aaron.globals')
 
 require("aaron.plugins")
-require("aaron.config.integrated_ruby_test")
+require("aaron.config.integrated_tests")
 require("aaron.ui")
 
 -- Extra file functionality

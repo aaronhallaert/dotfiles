@@ -7,7 +7,7 @@ if [[ -z "$BRANCH" ]]; then
 fi
 
 if [[ "$1" == "list" ]]; then
-    git diff --name-only --diff-filter=ACMR --relative $BRANCH...$(git branch --show-current)
+    git --no-pager diff --name-only --diff-filter=ACMR --relative $BRANCH...$(git branch --show-current)
 elif [[ "$1" == "diff" ]]; then
-    git diff --diff-filter=ACMR --relative $BRANCH...$(git branch --show-current) "$2"
+    git --no-pager diff --diff-filter=ACMR --relative $BRANCH...$(git branch --show-current) "$2"
 fi

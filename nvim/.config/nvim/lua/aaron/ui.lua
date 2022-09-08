@@ -29,6 +29,8 @@ elseif theme == 'catppuccin' then
     vim.api.nvim_command("colorscheme catppuccin")
 end
 
+-- vim.cmd.colorscheme 'oxocarbon-lua'
+
 -- vim.o.background = 'dark'
 
 ---------------------------- TELEKASTEN ---------------------------
