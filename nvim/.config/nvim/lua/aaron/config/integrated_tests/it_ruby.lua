@@ -1,4 +1,6 @@
+local Job = require "plenary.job"
 local M = {}
+
 M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
     local state = {bufnr = bufnr, tests = {}}
     vim.api.nvim_buf_create_user_command(bufnr, "TestLineDiag", function()
@@ -29,22 +31,28 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
         end
 
     end, {})
+
+    local splitted_command = {}
+    for str in command:gmatch("[^ ]+") do table.insert(splitted_command, str) end
+    -- local first_command = table.remove(splitted_command, 1)
+    local args = splitted_command
+
     vim.api.nvim_create_autocmd("BufWritePost", {
-        buffer = bufnr,
+        pattern = "*.rb",
         group = group,
         callback = function()
             state.tests = {}
             vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-            vim.fn.jobstart(command, {
-                -- pass stdout for every line
-                stdout_buffered = true,
-                -- consume every stdout line
-                on_stdout = function(_, data)
-                    for _, line in ipairs(data) do
-                        if string.find(line, "version") then
-                            local decoded_output = vim.json.decode(line)
-                            local test_outputs = decoded_output.examples
-                            local failed = {}
+            Job:new({
+                command = "bash",
+                args = args,
+                on_exit = function(j, res_value)
+                    if (res_value == 1 or res_value == 0) then
+                        local result = table.concat(j:result(), "\n")
+                        local decoded_output = vim.json.decode(result)
+                        local test_outputs = decoded_output.examples
+                        local failed = {}
+                        vim.schedule(function()
                             for _, test_output in ipairs(test_outputs) do
                                 table.insert(state.tests, test_output)
                                 if test_output.status == "passed" then
@@ -73,13 +81,58 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
                                 end
 
                                 vim.diagnostic.set(ns, bufnr, failed, {})
-
                             end
-                        end
+                        end)
+                    else
+                        error(table.concat(j:result(), "\n"))
                     end
-                end
-            })
 
+                end
+            }):start()
+            -- vim.fn.jobstart(command, {
+            --     -- pass stdout for every line
+            --     stdout_buffered = true,
+            --     -- consume every stdout line
+            --     on_stdout = function(_, data)
+            --         for _, line in ipairs(data) do
+            --             if string.find(line, "version") then
+            --                 local decoded_output = vim.json.decode(line)
+            --                 local test_outputs = decoded_output.examples
+            --                 local failed = {}
+            --                 for _, test_output in ipairs(test_outputs) do
+            --                     table.insert(state.tests, test_output)
+            --                     if test_output.status == "passed" then
+            --                         local text = {"✅"}
+            --                         vim.api.nvim_buf_set_extmark(bufnr, ns,
+            --                             test_output.line_number - 1, 0, {
+            --                                 virt_text = {text}
+            --                             })
+            --
+            --                     end
+            --                     if test_output.status ~= "passed" then
+            --                         local text = {"🔴"}
+            --                         vim.api.nvim_buf_set_extmark(bufnr, ns,
+            --                             test_output.line_number - 1, 0, {
+            --                                 virt_text = {text}
+            --                             })
+            --
+            --                         table.insert(failed, {
+            --                             bufnr = bufnr,
+            --                             lnum = test_output.line_number - 1,
+            --                             col = 0,
+            --                             severity = vim.diagnostic.severity.ERROR,
+            --                             source = "rspec",
+            --                             message = "Test Failed"
+            --                         })
+            --                     end
+            --
+            --                     vim.diagnostic.set(ns, bufnr, failed, {})
+            --
+            --                 end
+            --             end
+            --         end
+            --     end
+            -- })
         end
     })
 end
