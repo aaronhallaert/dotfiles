@@ -1,9 +1,11 @@
-window:
-  padding:
-    x: 5
-    y: 5
-  dynamic_padding: true
-  decorations: none
+env:
+  TERM: xterm-256color
+# window:
+#   padding:
+#     x: 5
+#     y: 5
+#   dynamic_padding: true
+#   decorations: none
 scrolling:
   history: 10000
   multiplier: 3
@@ -21,153 +23,156 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
   size: 12.0
-  use_thin_strokes: true
+  use_thin_strokes: false
 # GitHub Dark
 colors:
   primary:
-    background: '0x24292e'
-    foreground: '0xd1d5da'
+    background: '#32302f'
+    foreground: '#d1d5da'
   normal:
-    black:   '0x24292e'
-    red:     '0xf14c4c'
-    green:   '0x23d18b'
-    yellow:  '0xe2e210'
-    blue:    '0x3b8eea'
-    magenta: '0xbc3fbc'
-    cyan:    '0x29b7da'
-    white:   '0xd1d5da'
-  bright:
-    black:   '0x666666'
-    red:     '0xf14c4c'
-    green:   '0x23d18b'
-    yellow:  '0xf5f543'
-    blue:    '0x3b8eea'
-    magenta: '0xd670d6'
-    cyan:    '0x29b7da'
-    white:   '0xd1d5da'
-  indexed_colors:
-    - { index: 16, color: '0xd18616' }
-    - { index: 17, color: '0xf14c4c' }
-# GitHub Light
-colors:
-  primary:
-    background: '0x1c1c1c'
-    foreground: '0xffffff'
-  normal:
-    black:   '0x697179'
-    red:     '0xd03d3d'
-    green:   '0x14ce14'
-    yellow:  '0x949800'
-    blue:    '0x0451a5'
-    magenta: '0xbc05bc'
-    cyan:    '0x0598bc'
-    white:   '0x586069'
-  bright:
-    black:   '0x666666'
-    red:     '0xcd3131'
-    green:   '0x14ce14'
-    yellow:  '0xb5ba00'
-    blue:    '0x0451a5'
-    magenta: '0xbc05bc'
-    cyan:    '0x0598bc'
-    white:   '0x586069'
-  indexed_colors:
-    - { index: 16, color: '0xd18616' }
-    - { index: 17, color: '0xcd3131' }
-# Colors (Monokai Pro)
-colors:
-  # Default colors
-  primary:
-    background: '#2D2A2E'
-    foreground: '#FCFCFA'
-
-  # Normal colors
-  normal:
-    black:   '#403E41'
-    red:     '#FF6188'
-    green:   '#A9DC76'
-    yellow:  '#FFD866'
-    blue:    '#FC9867'
-    magenta: '#AB9DF2'
-    cyan:    '#78DCE8'
-    white:   '#FCFCFA'
-
-  # Bright colors
-  bright:
-    black:   '#727072'
-    red:     '#FF6188'
-    green:   '#A9DC76'
-    yellow:  '#FFD866'
-    blue:    '#FC9867'
-    magenta: '#AB9DF2'
-    cyan:    '#78DCE8'
-    white:   '#FCFCFA'
-# Colors (Gruvbox light)
-colors:
-  # Default colors
-  primary:
-    # hard contrast: background = '#f9f5d7'
-    background: '#fbf1c7'
-    # soft contrast: background = '#f2e5bc'
-    foreground: '#3c3836'
-
-  # Normal colors
-  normal:
-    black:   '#fbf1c7'
-    red:     '#cc241d'
+    black:   '#24292e'
+    red:     '#f14c4c'
     green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#7c6f64'
-
-  # Bright colors
+    yellow:  '#e2e210'
+    blue:    '#3b8eea'
+    magenta: '#bc3fbc'
+    cyan:    '#29b7da'
+    white:   '#d1d5da'
   bright:
-    black:   '#928374'
-    red:     '#9d0006'
-    green:   '#79740e'
-    yellow:  '#b57614'
-    blue:    '#076678'
-    magenta: '#8f3f71'
-    cyan:    '#427b58'
-    white:   '#3c3836'
-# Colors (Gruvbox dark)
-colors:
-  # Default colors
-  primary:
-    # hard contrast: background = '0x1d2021'
-    background: '0x282828'
-    # soft contrast: background = '0x32302f'
-    foreground: '0xebdbb2'
+    black:   '#666666'
+    red:     '#f14c4c'
+    green:   '#b8bb26'
+    yellow:  '#f5f543'
+    blue:    '#3b8eea'
+    magenta: '#d670d6'
+    cyan:    '#29b7da'
+    white:   '#d1d5da'
+  indexed_colors:
+    - { index: 16, color: '#d18616' }
+    - { index: 17, color: '#f14c4c' }
+# # GitHub Light
+# colors:
+#   primary:
+#     background: '#1c1c1c'
+#     foreground: '#ffffff'
+#   normal:
+#     black:   '#697179'
+#     red:     '#d03d3d'
+#     green:   '#14ce14'
+#     yellow:  '#949800'
+#     blue:    '#0451a5'
+#     magenta: '#bc05bc'
+#     cyan:    '#0598bc'
+#     white:   '#586069'
+#   bright:
+#     black:   '#666666'
+#     red:     '#cd3131'
+#     green:   '#14ce14'
+#     yellow:  '#b5ba00'
+#     blue:    '#0451a5'
+#     magenta: '#bc05bc'
+#     cyan:    '#0598bc'
+#     white:   '#586069'
+#   indexed_colors:
+#     - { index: 16, color: '#d18616' }
+#     - { index: 17, color: '#cd3131' }
+# # Colors (Monokai Pro)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#2D2A2E'
+#     foreground: '#FCFCFA'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#403E41'
+#     red:     '#FF6188'
+#     green:   '#A9DC76'
+#     yellow:  '#FFD866'
+#     blue:    '#FC9867'
+#     magenta: '#AB9DF2'
+#     cyan:    '#78DCE8'
+#     white:   '#FCFCFA'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#727072'
+#     red:     '#FF6188'
+#     green:   '#A9DC76'
+#     yellow:  '#FFD866'
+#     blue:    '#FC9867'
+#     magenta: '#AB9DF2'
+#     cyan:    '#78DCE8'
+#     white:   '#FCFCFA'
+# # Colors (Gruvbox light)
+# colors:
+#   # Default colors
+#   primary:
+#     # hard contrast: background = '#f9f5d7'
+#     background: '#fbf1c7'
+#     # soft contrast: background = '#f2e5bc'
+#     foreground: '#3c3836'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#fbf1c7'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#7c6f64'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#928374'
+#     red:     '#9d0006'
+#     green:   '#79740e'
+#     yellow:  '#b57614'
+#     blue:    '#076678'
+#     magenta: '#8f3f71'
+#     cyan:    '#427b58'
+#     white:   '#3c3836'
 
-  # Normal colors
-  normal:
-    black:   '0x282828'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
-    magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0xa89984'
-
-  # Bright colors
-  bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
-key_bindings:
-  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
-  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
-  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
-  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
-cursor:
-  style: Block
-  unfocused_hollow: true
-live_config_reload: true 
+# Colors (Tomorrow Night)
+# colors:
+#   cursor:
+#     text: '#000000'
+#     cursor: '#ffffff'
+#   # Default colors
+#   primary:
+#     background: '#2D2A2E'
+#     foreground: '#fff1f3'
+#
+  # # Normal colors
+  # normal:
+  #   black:   '#2c2525'
+  #   red:     '#fd6883'
+  #   green:   '#adda78'
+  #   yellow:  '#f9cc6c'
+  #   blue:    '#f38d70'
+  #   magenta: '#a8a9eb'
+  #   cyan:    '#85dacc'
+  #   white:   '#fff1f3'
+  #
+  # # Bright colors
+  # bright:
+  #   black:   '#72696a'
+  #   red:     '#fd6883'
+  #   green:   '#adda78'
+  #   yellow:  '#f9cc6c'
+  #   blue:    '#f38d70'
+  #   magenta: '#a8a9eb'
+  #   cyan:    '#85dacc'
+  #   white:   '#fff1f3'
+#
+# key_bindings:
+#   - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+#   - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+#   - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+#   - { key: L,        mods: Alt,     chars: "\x1bl"                       }
+# cursor:
+#   style: Block
+#   unfocused_hollow: true
+# live_config_reload: true 

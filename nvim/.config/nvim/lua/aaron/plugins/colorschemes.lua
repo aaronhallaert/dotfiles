@@ -2,47 +2,48 @@ local M = {}
 M.setup = function(config)
     local use = config.use
 
-    use {
-        'sam4llis/nvim-tundra',
-        config = function()
-            require('nvim-tundra').setup({
-                transparent_background = false,
-                editor = {search = {}, substitute = {}},
-                syntax = {
-                    booleans = {bold = true, italic = true},
-                    comments = {bold = true, italic = true},
-                    conditionals = {},
-                    constants = {bold = true},
-                    functions = {},
-                    keywords = {},
-                    loops = {},
-                    numbers = {bold = true},
-                    operators = {bold = true},
-                    punctuation = {},
-                    strings = {},
-                    types = {italic = true}
-                },
-                diagnostics = {
-                    errors = {},
-                    warnings = {},
-                    information = {},
-                    hints = {}
-                },
-                plugins = {
-                    lsp = true,
-                    treesitter = true,
-                    cmp = true,
-                    context = true,
-                    dbui = true,
-                    gitsigns = true,
-                    telescope = true
-                },
-                overwrite = {colors = {}, highlights = {}}
-            })
-            vim.opt.background = 'dark'
-            vim.api.nvim_command('colorscheme tundra')
-        end
-    }
+    -- use {
+    --     'sam4llis/nvim-tundra',
+    --     config = function()
+    --         require('nvim-tundra').setup({
+    --             transparent_background = false,
+    --             editor = {search = {}, substitute = {}},
+    --             syntax = {
+    --                 booleans = {bold = true, italic = true},
+    --                 comments = {bold = true, italic = true},
+    --                 conditionals = {},
+    --                 constants = {bold = true},
+    --                 functions = {},
+    --                 keywords = {},
+    --                 loops = {},
+    --                 numbers = {bold = true},
+    --                 operators = {bold = true},
+    --                 punctuation = {},
+    --                 strings = {},
+    --                 types = {italic = true}
+    --             },
+    --             diagnostics = {
+    --                 errors = {},
+    --                 warnings = {},
+    --                 information = {},
+    --                 hints = {}
+    --             },
+    --             plugins = {
+    --                 lsp = true,
+    --                 treesitter = true,
+    --                 cmp = true,
+    --                 context = true,
+    --                 dbui = true,
+    --                 gitsigns = true,
+    --                 telescope = true
+    --             },
+    --             overwrite = {colors = {}, highlights = {}}
+    --         })
+    --         vim.opt.background = 'dark'
+    --         vim.api.nvim_command('colorscheme tundra')
+    --     end
+    -- }
+
     -- use {
     --     'B4mbus/oxocarbon-lua.nvim',
     --     config = function() vim.cmd.colorscheme 'oxocarbon-lua' end
@@ -77,15 +78,17 @@ M.setup = function(config)
     --         vim.api.nvim_command("colorscheme catppuccin")
     --     end
     -- }
-    -- use {
-    --     'sainnhe/gruvbox-material',
-    --     commit = '9e30f2095e8ab80c68901e7aaee186cd3aa97168',
-    --     config = function()
-    --         vim.api.nvim_command('colorscheme gruvbox-material')
-    --         vim.g.gruvbox_material_background = 'soft'
-    --         vim.g.gruvbox_material_better_performance = 1
-    --     end
-    -- }
+
+    use {
+        'sainnhe/gruvbox-material',
+        commit = '9e30f2095e8ab80c68901e7aaee186cd3aa97168',
+        config = function()
+            vim.api.nvim_command('colorscheme gruvbox-material')
+            vim.opt.background = 'dark'
+            vim.g.gruvbox_material_background = 'soft'
+            vim.g.gruvbox_material_better_performance = 1
+        end
+    }
 
 end
 return M

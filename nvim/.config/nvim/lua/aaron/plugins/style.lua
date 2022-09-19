@@ -42,6 +42,22 @@ M.setup = function(config)
         end
     }
     use 'anuvyklack/fold-preview.nvim'
+
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function() require'colorizer'.setup {'*'} end
+    }
+
+    use {
+        'anuvyklack/windows.nvim',
+        config = function()
+            require("windows").setup({
+                animation = {
+                    duration = 300 -- ms
+                }
+            })
+        end
+    }
 end
 
 return M

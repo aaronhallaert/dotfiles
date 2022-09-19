@@ -1,16 +1,5 @@
 {
-  "projects": {
-    "/Users/aaronhallaert/Developer/nephroflow/nephroflow-api": {
-      "mark": {
-        "marks": []
-      },
-      "term": {
-        "cmds": [
-          "docker exec -it selfweb bash"
-        ]
-      }
-    }
-  },
+  "projects": {},
   "global_settings": {
     "save_on_toggle": false,
     "mark_branch": true,

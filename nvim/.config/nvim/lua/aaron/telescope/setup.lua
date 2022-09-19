@@ -5,8 +5,13 @@ telescope.setup {
     defaults = {
         -- prompt_prefix = "> ",
         vimgrep_arguments = {
-            "rg", "--color=never", "--no-heading", "--with-filename",
-            "--line-number", "--column", "--smart-case"
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case"
         },
         selection_caret = "  ",
         entry_prefix = "  ",

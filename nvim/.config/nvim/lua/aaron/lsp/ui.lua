@@ -4,7 +4,7 @@ M.init = function()
     vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "Red"})
     vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "Yellow"})
     vim.fn.sign_define("DiagnosticSignInformation",
-                       {text = "", texthl = "White"})
+        {text = "", texthl = "White"})
     vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "Aqua"})
 
     vim.cmd('hi! link NormalFloat Normal')
@@ -21,10 +21,14 @@ M.init = function()
     vim.cmd('hi! link HintFloat Aqua')
 
     local border = {
-        {"🭽", "FloatBorder"}, {"▔", "FloatBorder"},
-        {"🭾", "FloatBorder"}, {"▕", "FloatBorder"},
-        {"🭿", "FloatBorder"}, {"▁", "FloatBorder"},
-        {"🭼", "FloatBorder"}, {"▏", "FloatBorder"}
+        {"🭽", "FloatBorder"},
+        {"▔", "FloatBorder"},
+        {"🭾", "FloatBorder"},
+        {"▕", "FloatBorder"},
+        {"🭿", "FloatBorder"},
+        {"▁", "FloatBorder"},
+        {"🭼", "FloatBorder"},
+        {"▏", "FloatBorder"}
     }
 
     local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -40,7 +44,8 @@ M.lspHighlights = function(config)
     local client = config.client
 
     -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.document_highlight then
+    if client.resolved_capabilities.document_highlight then
+        -- if client.server_capabilities.document_highlight then
         vim.api.nvim_exec([[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
       hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow

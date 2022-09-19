@@ -1,14 +1,24 @@
 local nvim_lsp = require("lspconfig")
+local configs = require("lspconfig.configs")
+local util = require("lspconfig.util")
 
 require("aaron.lsp.ui").init()
 require("aaron.lsp.handlers")
 
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function() vim.lsp.buf.format() end,
+    callback = function() require("aaron.utils").lsp_format() end,
     pattern = {
-        "*.js", "*.jsx", "*.tsx", "*.ts", "*.py", "*.rb", "*.lua", "*.json",
-        "*.md", "*.css"
+        "*.js",
+        "*.jsx",
+        "*.tsx",
+        "*.ts",
+        "*.py",
+        "*.rb",
+        "*.lua",
+        "*.json",
+        "*.md",
+        "*.css"
     }
 })
 
@@ -40,8 +50,13 @@ nvim_lsp.efm.setup({
     init_options = {documentFormatting = true},
     cmd = {'efm-langserver', '-logfile', '/tmp/efm.log', '-loglevel', '5'},
     filetypes = {
-        "json", "markdown", "lua", "typescriptreact", "typescript",
-        "javascriptreact", "javascript"
+        "json",
+        "markdown",
+        "lua",
+        "typescriptreact",
+        "typescript",
+        "javascriptreact",
+        "javascript"
     },
     -- lsp specific options
     settings = {
@@ -58,6 +73,7 @@ nvim_lsp.efm.setup({
         }
     }
 })
+
 nvim_lsp.solargraph.setup({
     on_attach = on_attach,
     capabilities = capabilities_with_completion,
@@ -77,11 +93,45 @@ nvim_lsp.solargraph.setup({
         }
     }
 })
+
+if not configs.ruby_lsp then
+    local enabled_features = {
+        "documentHighlights",
+        "documentSymbols",
+        "foldingRanges",
+        "selectionRanges",
+        -- "semanticHighlighting",
+        "formatting",
+        "codeActions"
+    }
+
+    configs.ruby_lsp = {
+        default_config = {
+            cmd = {"ruby-lsp"},
+            filetypes = {"ruby"},
+            root_dir = util.root_pattern("Gemfile", ".git"),
+            init_options = {enabledFeatures = enabled_features},
+            settings = {}
+        },
+        commands = {
+            FormatRuby = {
+                function()
+                    vim.lsp.buf.format({name = "ruby_lsp", async = true})
+                end,
+                description = "Format using ruby-lsp"
+            }
+        }
+    }
+end
+
+-- nvim_lsp.ruby_lsp.setup({on_attach = on_attach})
+
 nvim_lsp.rust_analyzer.setup({
     capabilities = capabilities_with_completion,
     on_attach = on_attach,
     settings = {["rust-analyzer"] = {checkOnSave = {command = "clippy"}}}
 })
+
 nvim_lsp.sumneko_lua.setup({
     on_attach = on_attach,
     capabilities = capabilities_with_completion,
@@ -95,7 +145,8 @@ nvim_lsp.tsserver.setup({
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     on_attach = function(client, bufnr)
-        client.server_capabilities.document_formatting = false
+        client.resolved_capabilities.document_formatting = false
+        -- client.server_capabilities.document_formatting = false
         on_attach(client, bufnr)
     end
 })
@@ -114,7 +165,12 @@ nvim_lsp.stylelint_lsp.setup({
 
 -- Default servers
 local servers = {
-    "pylsp", "jsonls", "vimls", "sourcekit", "gopls", "tailwindcss"
+    "pylsp",
+    "jsonls",
+    "vimls",
+    "sourcekit",
+    "gopls",
+    "tailwindcss"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({

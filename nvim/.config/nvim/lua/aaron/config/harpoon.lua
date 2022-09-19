@@ -14,48 +14,87 @@ vim.api.nvim_set_keymap('n', '<leader>th',
 vim.api.nvim_set_keymap('n', 'st1',
     ':lua require("harpoon.term").sendCommand(1,1)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>',
     {noremap = true})
-
-function _G.Get_test_command( --[[optional]] line)
-    local test_file = vim.fn.getreg('%')
-    local test_line = vim.api.nvim_win_get_cursor(0)[1]
-    local test_position = test_file .. ":" .. test_line
-
-    if not line then line = false end
-
-    if line then
-        return "bundle exec spring rspec " .. test_position
-    else
-        return "bundle exec spring rspec " .. test_file
-    end
-end
-
-function _G.Run_command_in_terminal(command)
-    require("harpoon.term").sendCommand(1, "run_api.sh -- " .. command)
-    require("harpoon.term").gotoTerminal(1)
-end
-
-function _G.Get_quick_fix_tests_command()
-    local result = ""
-    local qflist = vim.fn.getqflist()
-    for index, _ in ipairs(qflist) do
-        result = result .. " " .. qflist[index]["text"]
-    end
-    return "bundle exec rspec" .. result
-end
-
-vim.api.nvim_set_keymap('n', 'stf',
-    ':lua Run_command_in_terminal(Get_test_command(false))<CR>',
-    {noremap = true})
-vim.api.nvim_set_keymap('n', 'stl',
-    ':lua Run_command_in_terminal(Get_test_command(true))<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', 'stt',
-    ':lua Run_command_in_terminal("bundle exec rspec")<CR>', {noremap = true})
-
-vim.api.nvim_set_keymap('n', 'stq',
-    ":lua Run_command_in_terminal(Get_quick_fix_tests_command())<CR>",
+vim.api.nvim_set_keymap('n', 'st2',
+    ':lua require("harpoon.term").sendCommand(1,2)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>',
     {noremap = true})
 
--- Navigation
+function _G.Run_command_in_terminal(command, --[[optional]] term)
+    if not term then term = 1 end
+
+    require("harpoon.term").sendCommand(term, command)
+    require("harpoon.term").gotoTerminal(term)
+end
+
+-- NEPHROFLOW/NEPHROFLOW API
+if string.find(vim.fn.getcwd(),
+    "/Users/aaronhallaert/Developer/nephroflow/nephroflow%-api") then
+    function _G.Get_test_command( --[[optional]] line)
+        local test_file = vim.fn.getreg('%')
+        local test_line = vim.api.nvim_win_get_cursor(0)[1]
+        local test_position = test_file .. ":" .. test_line
+
+        if not line then line = false end
+
+        if line then
+            return "bundle exec spring rspec " .. test_position
+        else
+            return "bundle exec spring rspec " .. test_file
+        end
+    end
+
+    function _G.Get_quick_fix_tests_command()
+        local result = ""
+        local qflist = vim.fn.getqflist()
+        for index, _ in ipairs(qflist) do
+            result = result .. " " .. qflist[index]["text"]
+        end
+        return "bundle exec rspec" .. result
+    end
+
+    vim.api.nvim_set_keymap('n', 'stf',
+        ':lua Run_command_in_terminal("run_api.sh -- " .. Get_test_command(false))<CR>',
+        {noremap = true})
+    vim.api.nvim_set_keymap('n', 'stl',
+        ':lua Run_command_in_terminal("run_api.sh -- " .. Get_test_command(true))<CR>',
+        {noremap = true})
+    vim.api.nvim_set_keymap('n', 'stt',
+        ':lua Run_command_in_terminal("run_api.sh -- bundle exec rspec")<CR>',
+        {noremap = true})
+    vim.api.nvim_set_keymap('n', 'stq',
+        ':lua Run_command_in_terminal("run_api.sh -- " .. Get_quick_fix_tests_command())<CR>',
+        {noremap = true})
+
+    vim.api.nvim_set_keymap('n', 'sts',
+        ':lua Run_command_in_terminal("run_api.sh -- rails s", 2)<CR>',
+        {noremap = true})
+    vim.api.nvim_set_keymap('n', 'std',
+        ':lua Run_command_in_terminal("run_api.sh -- pkill ruby && docker-compose down", 1)<CR>',
+        {noremap = true})
+    vim.api.nvim_set_keymap('n', 'stc',
+        ':lua Run_command_in_terminal("run_api.sh -- bash", 2)<CR>',
+        {noremap = true})
+    vim.api.nvim_set_keymap('n', 'str',
+        ':lua Run_command_in_terminal("restore_db.sh")<CR>', {noremap = true})
+
+end
+
+-- NEPHROFLOW/ELECTRON_APPS
+if string.find(vim.fn.getcwd(),
+    "/Users/aaronhallaert/Developer/nephroflow/electron%-apps") then
+
+    vim.api.nvim_set_keymap('n', 'stk',
+        ':lua Run_command_in_terminal("yarn dev --filter=nephroflow-kiosk...")<CR>',
+        {noremap = true})
+
+    vim.api.nvim_set_keymap('n', 'sti',
+        ':lua Run_command_in_terminal("yarn dev --filter=nephroflow-id...")<CR>',
+        {noremap = true})
+
+    vim.api.nvim_set_keymap('n', 'sty',
+        ':lua Run_command_in_terminal("yarn install")<CR>', {noremap = true})
+end
+
+-- NAVIGATION
 vim.api.nvim_set_keymap('n', 'gt',
     ':lua require("harpoon.term").gotoTerminal(1)<CR>', {noremap = true})
 
