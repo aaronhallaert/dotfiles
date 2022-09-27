@@ -13,5 +13,5 @@
 # @raycast.authorURL https://github.com/aaronhallaert
 
 pkill uxplay
-/Users/aaronhallaert/Developer/programs/UxPlay/uxplay &
+uxplay &
 

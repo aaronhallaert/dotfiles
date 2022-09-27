@@ -23,12 +23,14 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
         # cleanup
         docker rm $NAME
     fi
+
+    cd $HOME/Developer/nephroflow/nephroflow-api/
     # run your container
-    docker-compose run --rm --service-ports --name selfweb web $COMMAND
+    docker-compose run --rm --service-ports --name $NAME web $COMMAND
 else
     if $INTERACTIVE; then
-        docker exec -it selfweb $COMMAND
+        docker exec -it $NAME $COMMAND
     else
-        docker exec selfweb $COMMAND
+        docker exec $NAME $COMMAND
     fi
 fi

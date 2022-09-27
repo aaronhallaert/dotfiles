@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap('n', 'st2',
     ':lua require("harpoon.term").sendCommand(1,2)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>',
     {noremap = true})
 
-function _G.Run_command_in_terminal(command, --[[optional]] term)
+function _G.RunCommandInTerminal(command, --[[optional]] term)
     if not term then term = 1 end
 
     require("harpoon.term").sendCommand(term, command)
@@ -42,7 +42,7 @@ if string.find(vim.fn.getcwd(),
         end
     end
 
-    function _G.Get_quick_fix_tests_command()
+    function _G.GetQFTestCommands()
         local result = ""
         local qflist = vim.fn.getqflist()
         for index, _ in ipairs(qflist) do
@@ -52,29 +52,29 @@ if string.find(vim.fn.getcwd(),
     end
 
     vim.api.nvim_set_keymap('n', 'stf',
-        ':lua Run_command_in_terminal("run_api.sh -- " .. Get_test_command(false))<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- " .. Get_test_command(false))<CR>',
         {noremap = true})
     vim.api.nvim_set_keymap('n', 'stl',
-        ':lua Run_command_in_terminal("run_api.sh -- " .. Get_test_command(true))<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- " .. Get_test_command(true))<CR>',
         {noremap = true})
     vim.api.nvim_set_keymap('n', 'stt',
-        ':lua Run_command_in_terminal("run_api.sh -- bundle exec rspec")<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- bundle exec rspec")<CR>',
         {noremap = true})
     vim.api.nvim_set_keymap('n', 'stq',
-        ':lua Run_command_in_terminal("run_api.sh -- " .. Get_quick_fix_tests_command())<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- " .. GetQFTestCommands())<CR>',
         {noremap = true})
 
     vim.api.nvim_set_keymap('n', 'sts',
-        ':lua Run_command_in_terminal("run_api.sh -- rails s", 2)<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- rails s", 2)<CR>',
         {noremap = true})
     vim.api.nvim_set_keymap('n', 'std',
-        ':lua Run_command_in_terminal("run_api.sh -- pkill ruby && docker-compose down", 1)<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- pkill ruby && docker-compose down", 1)<CR>',
         {noremap = true})
     vim.api.nvim_set_keymap('n', 'stc',
-        ':lua Run_command_in_terminal("run_api.sh -- bash", 2)<CR>',
+        ':lua RunCommandInTerminal("run_api.sh -- bash", 2)<CR>',
         {noremap = true})
     vim.api.nvim_set_keymap('n', 'str',
-        ':lua Run_command_in_terminal("restore_db.sh")<CR>', {noremap = true})
+        ':lua RunCommandInTerminal("restore_db.sh")<CR>', {noremap = true})
 
 end
 
@@ -83,15 +83,42 @@ if string.find(vim.fn.getcwd(),
     "/Users/aaronhallaert/Developer/nephroflow/electron%-apps") then
 
     vim.api.nvim_set_keymap('n', 'stk',
-        ':lua Run_command_in_terminal("yarn dev --filter=nephroflow-kiosk...")<CR>',
+        ':lua RunCommandInTerminal("yarn dev --filter=nephroflow-kiosk...")<CR>',
         {noremap = true})
 
     vim.api.nvim_set_keymap('n', 'sti',
-        ':lua Run_command_in_terminal("yarn dev --filter=nephroflow-id...")<CR>',
+        ':lua RunCommandInTerminal("yarn dev --filter=nephroflow-id...")<CR>',
         {noremap = true})
 
     vim.api.nvim_set_keymap('n', 'sty',
-        ':lua Run_command_in_terminal("yarn install")<CR>', {noremap = true})
+        ':lua RunCommandInTerminal("yarn install")<CR>', {noremap = true})
+
+    vim.api.nvim_set_keymap('n', 'stt',
+        ':lua RunCommandInTerminal("yarn test:typecheck")<CR>', {noremap = true})
+end
+
+-- NEPHROFLOW/LINK
+if string.find(vim.fn.getcwd(), "/Users/aaronhallaert/Developer/nephroflow/link") then
+    function _G.RunSimulator()
+        require("harpoon.tmux").sendCommand("3",
+            "docker-compose run --rm --service-ports --name sim dialysis_simulator")
+        require("harpoon.tmux").sendCommand("1",
+            "docker-compose run --rm --service-ports --name channel_host channel_host")
+        require("harpoon.tmux").sendCommand("2",
+            "docker-compose run --rm --service-ports --name processor_host processor_host")
+    end
+
+    function _G.StopSimulator()
+        vim.fn.jobstart("docker stop channel_host")
+        vim.fn.jobstart("docker stop processor_host")
+        vim.fn.jobstart("docker stop sim")
+    end
+
+    vim.api.nvim_set_keymap('n', 'sts', ':lua RunSimulator()<CR>',
+        {noremap = true})
+
+    vim.api.nvim_set_keymap('n', 'stq', ':lua StopSimulator()<CR>',
+        {noremap = true})
 end
 
 -- NAVIGATION

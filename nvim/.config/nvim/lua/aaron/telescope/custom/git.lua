@@ -1,7 +1,7 @@
 local actions = require('telescope.actions')
 local action_state = require "telescope.actions.state"
 
-local M = {}
+local N = {}
 
 local function open_diff_view(commit)
     vim.api.nvim_command(":Gvdiffsplit " .. commit)
@@ -304,30 +304,32 @@ local function execute_git_function(value)
             return
         end
     end
-
 end
 
-function M.show_custom_functions()
-    -- local previewers = require('telescope.previewers')
-    local pickers = require('telescope.pickers')
-    local sorters = require('telescope.sorters')
-    local finders = require('telescope.finders')
-    pickers.new {
-        results_title = 'Git action',
-        finder = finders.new_table(map_item(git_functions, function(item)
-            return item["value"]
-        end)),
-        sorter = sorters.get_fuzzy_file(),
-        attach_mappings = function(_, map)
-            map('i', '<CR>', function(prompt_bufnr)
-                actions.close(prompt_bufnr)
-                local selection = action_state.get_selected_entry()
-                execute_git_function(selection.value)
-            end)
+function N.merge(M)
+    function M.show_custom_functions()
+        -- local previewers = require('telescope.previewers')
+        local pickers = require('telescope.pickers')
+        local sorters = require('telescope.sorters')
+        local finders = require('telescope.finders')
+        pickers.new {
+            results_title = 'Git action',
+            finder = finders.new_table(map_item(git_functions, function(item)
+                return item["value"]
+            end)),
+            sorter = sorters.get_fuzzy_file(),
+            attach_mappings = function(_, map)
+                map('i', '<CR>', function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    execute_git_function(selection.value)
+                end)
 
-            return true
-        end
-    }:find()
+                return true
+            end
+        }:find()
+    end
+    return M
 end
 
-return M
+return N

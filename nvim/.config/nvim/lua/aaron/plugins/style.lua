@@ -48,16 +48,18 @@ M.setup = function(config)
         config = function() require'colorizer'.setup {'*'} end
     }
 
-    use {
-        'anuvyklack/windows.nvim',
-        config = function()
-            require("windows").setup({
-                animation = {
-                    duration = 300 -- ms
-                }
-            })
-        end
-    }
+    -- use {
+    --     'anuvyklack/windows.nvim',
+    --     config = function()
+    --         require("windows").setup({
+    --             animation = {
+    --                 duration = 300 -- ms
+    --             }
+    --         })
+    --     end
+    -- }
+
+    use {'ElPiloto/significant.nvim'}
 end
 
 return M

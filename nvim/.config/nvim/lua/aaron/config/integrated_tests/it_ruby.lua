@@ -7,7 +7,6 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
         local line = vim.fn.line "."
         for _, test in pairs(state.tests) do
             if test.line_number == line then
-                vim.cmd.new()
                 local output = {}
                 table.insert(output, test.exception.class)
                 table.insert(output, "")
@@ -19,14 +18,30 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
                     s = s:gsub('/srv/', '')
                     table.insert(output, s)
                 end
-                vim.api.nvim_buf_set_lines(vim.api.nvim_get_current_buf(), 0,
-                    -1, false, output)
 
-                vim.cmd("setlocal buftype=nofile")
-                vim.cmd("setlocal bufhidden=hide")
-                vim.cmd("setlocal nobl")
-                vim.cmd("setlocal noswapfile")
-                vim.cmd("setlocal noma")
+                local width = vim.api.nvim_get_option("columns")
+                local height = vim.api.nvim_get_option("lines")
+
+                local win_height = math.ceil(height * 0.8 - 4)
+                local win_width = math.ceil(width * 0.8)
+
+                local row = math.ceil((height - win_height) / 2 - 1)
+                local col = math.ceil((width - win_width) / 2)
+
+                local opts = {
+                    style = "minimal",
+                    relative = "editor",
+                    width = win_width,
+                    height = win_height,
+                    row = row,
+                    col = col,
+                    border = "rounded"
+                }
+
+                local buffer = vim.api.nvim_create_buf(false, 'nomodified')
+                vim.api.nvim_buf_set_lines(buffer, 0, -1, false, output)
+                vim.api.nvim_open_win(buffer, true, opts)
+
             end
         end
 
@@ -42,7 +57,10 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
         group = group,
         callback = function()
             state.tests = {}
+
             vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+            require('significant').start_animated_sign(1, 'dots4', 100, bufnr)
+
             Job:new({
                 command = "bash",
                 args = args,
@@ -53,6 +71,8 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
                         local test_outputs = decoded_output.examples
                         local failed = {}
                         vim.schedule(function()
+                            require('significant').stop_animated_sign(1, bufnr)
+
                             for _, test_output in ipairs(test_outputs) do
                                 table.insert(state.tests, test_output)
                                 if test_output.status == "passed" then
@@ -82,6 +102,7 @@ M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
 
                                 vim.diagnostic.set(ns, bufnr, failed, {})
                             end
+                            vim.fn.sign_unplace("", {buffer = bufnr})
                         end)
                     else
                         error(table.concat(j:result(), "\n"))

@@ -26,12 +26,13 @@ M.setup = function(config)
         run = ':TSUpdate',
         config = function() require("aaron.config.treesitter") end
     }
-    -- use {
-    --     'nvim-treesitter/nvim-treesitter-context',
-    --     config = function()
-    --         require('aaron.config.treesitter-context') -- fix context on first line
-    --     end
-    -- }
+
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            require('aaron.config.treesitter-context') -- fix context on first line
+        end
+    }
 
     use {
         'numToStr/Comment.nvim',
@@ -42,6 +43,13 @@ M.setup = function(config)
 
     --------------- DEBUGGING -------------------
     use 'puremourning/vimspector'
+
+    -- Lua
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function() require("todo-comments").setup() end
+    }
 
     ------------- LANGUAGE SPECIFIC -------------
     -- MARKDOWN

@@ -30,7 +30,8 @@ map_tele("<leader>gr", "lsp_references")
 map_tele("<leader>ss", "lsp_document_symbols")
 
 -- GIT
-map_tele("<leader>sgd", "show_custom_functions")
+map_tele("<leader>og", "show_custom_functions")
+map_tele("<leader>on", "show_nipro_commands")
 
 map_tele("<leader>fb", "buffers")
 map_tele("<leader>fh", "help_tags")

@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.py",
         "*.rb",
         "*.lua",
-        "*.json",
+        -- "*.json",
         "*.md",
         "*.css"
     }
@@ -78,6 +78,7 @@ nvim_lsp.solargraph.setup({
     on_attach = on_attach,
     capabilities = capabilities_with_completion,
     -- cmd = {"nc", "localhost", "7658"},
+    -- cmd = vim.lsp.rpc.connect('127.0.0.1', 7658),
     cmd = {"solargraph", "stdio"},
     filetypes = {"ruby", "rakefile"},
     root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
@@ -145,8 +146,8 @@ nvim_lsp.tsserver.setup({
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        -- client.server_capabilities.document_formatting = false
+        -- client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.document_formatting = false
         on_attach(client, bufnr)
     end
 })

@@ -14,6 +14,8 @@ M.setup = function(config)
     -- expand surround e.g. cin) = clear inside next parenthesis
     use 'wellle/targets.vim'
 
+    use 'takac/vim-hardtime'
+
     use 'mbbill/undotree'
     use 'godlygeek/tabular'
     use {
@@ -29,5 +31,6 @@ M.setup = function(config)
     }
     use 'vim-utils/vim-man'
     use 'lambdalisue/suda.vim'
+    use 'svermeulen/vimpeccable'
 end
 return M

@@ -30,6 +30,6 @@ yabai -m rule --add label="launcher" app="^launcher$" manage=off
 yabai -m rule --add label="Mirth Connect Administrator Launcher" app="^Mirth Connect Administrator Launcher$" manage=off
 yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-yabai -m rule --add label="OpenGL renderer" title="OpenGL renderer" sticky=on layer=above manage=off
+yabai -m rule --add label="OpenGL renderer" title="OpenGL renderer" sticky=on
 yabai -m rule --add label="Simulator" app="^Simulator$" title=".*" manage=off
 yabai -m rule --add label="Preview" app="^Preview$" title=".*" manage=off
