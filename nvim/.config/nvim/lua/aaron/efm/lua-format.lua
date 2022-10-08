@@ -1,7 +1,5 @@
 return {
-    rootMarkers = {
-        ".luaconfig.yaml"
-    },
-    formatCommand = "lua-format -c ./luaconfig.yaml",
-    formatStdin = true
+    rootMarkers = { ".stylua.toml" },
+    formatCommand = "stylua --config-path ./.stylua.toml %",
+    formatStdin = false,
 }

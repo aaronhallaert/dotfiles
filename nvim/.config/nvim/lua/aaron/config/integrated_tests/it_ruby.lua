@@ -1,160 +1,226 @@
-local Job = require "plenary.job"
-local M = {}
+local TEST_STATES = {SUCCESS = "passed", FAILED = "failed", SKIPPED = "pending"}
 
-M.attach_to_ruby_buffer = function(bufnr, command, group, ns)
-    local state = {bufnr = bufnr, tests = {}}
-    vim.api.nvim_buf_create_user_command(bufnr, "TestLineDiag", function()
-        local line = vim.fn.line "."
-        for _, test in pairs(state.tests) do
-            if test.line_number == line then
-                local output = {}
-                table.insert(output, test.exception.class)
-                table.insert(output, "")
-                for s in test.exception.message:gmatch("[^\r\n]+") do
-                    table.insert(output, s)
+local state = {}
+local autocmd = nil
+
+local ns = vim.api.nvim_create_namespace("ContinuousRubyTesting")
+local group = vim.api.nvim_create_augroup("ContinuousRubyTesting",
+                  {clear = true})
+
+local clear_test_results = function()
+    vim.diagnostic.reset(ns, state.bufnr)
+    vim.api.nvim_buf_clear_namespace(state.bufnr, ns, 0, -1)
+
+    state.version = nil
+    state.seed = nil
+    state.tests = {}
+    state.diagnostics = {}
+end
+
+local notify_failure = function(test)
+    local description = {
+        "Test failed: " .. test.file_path .. ":" .. test.line_number - 1
+        -- "",
+        -- "Exception: " .. test.exception.class,
+        -- "",
+        -- "Message: "
+    }
+
+    -- for line in string.gmatch(test.exception.message, "[^\r\n]+") do
+    --     table.insert(description, line)
+    -- end
+
+    vim.notify(description, vim.log.levels.ERROR, {title = "RSpec"})
+end
+
+local on_exit_callback = function()
+    for _, test in pairs(state.tests) do
+        local severity = vim.diagnostic.severity.ERROR
+        local message = "Test Failed"
+
+        if test.status == TEST_STATES.SUCCESS then
+            severity = vim.diagnostic.severity.INFO
+            message = "Test Succeeded"
+        elseif test.status == TEST_STATES.SKIPPED then
+            severity = vim.diagnostic.severity.WARN
+            message = "Test Skipped"
+        end
+
+        if test.status == TEST_STATES.FAILED then notify_failure(test) end
+
+        table.insert(state.diagnostics, {
+            bufnr = state.bufnr,
+            lnum = test.line_number - 1,
+            col = 0,
+            severity = severity,
+            source = "rspec",
+            message = message,
+            user_data = {}
+        })
+    end
+
+    vim.diagnostic.set(ns, state.bufnr, state.diagnostics, {})
+end
+
+local buf_write_post_callback = function(bufnr, cmd)
+    state = {
+        bufnr = bufnr,
+        version = nil,
+        seed = nil,
+        tests = {},
+        diagnostics = {}
+    }
+
+    return function()
+        clear_test_results()
+
+        local append_data = function(_, data)
+            if not data then return end
+
+            for _, line in ipairs(data) do
+                if not string.find(line, "{") then return end
+
+                local decoded = vim.json.decode(line)
+
+                state.version = decoded.version
+                state.seed = decoded.seed
+
+                for _, test in pairs(decoded.examples) do
+                    state.tests[test.file_path .. ":" .. test.line_number] =
+                        test
+
+                    local text = {nil}
+                    if test.status == TEST_STATES.SUCCESS then
+                        text = {"✅"}
+                    elseif test.status == TEST_STATES.FAILED then
+                        text = {"❌"}
+                    elseif test.status == TEST_STATES.SKIPPED then
+                        text = {"⏭️"}
+                    else
+                        text = {"❓"}
+                    end
+
+                    vim.api.nvim_buf_set_extmark(state.bufnr, ns,
+                        test.line_number - 1, 0, {virt_text = {text}})
                 end
-                table.insert(output, "")
-                for _, s in ipairs(test.exception.backtrace) do
-                    s = s:gsub('/srv/', '')
-                    table.insert(output, s)
-                end
-
-                local width = vim.api.nvim_get_option("columns")
-                local height = vim.api.nvim_get_option("lines")
-
-                local win_height = math.ceil(height * 0.8 - 4)
-                local win_width = math.ceil(width * 0.8)
-
-                local row = math.ceil((height - win_height) / 2 - 1)
-                local col = math.ceil((width - win_width) / 2)
-
-                local opts = {
-                    style = "minimal",
-                    relative = "editor",
-                    width = win_width,
-                    height = win_height,
-                    row = row,
-                    col = col,
-                    border = "rounded"
-                }
-
-                local buffer = vim.api.nvim_create_buf(false, 'nomodified')
-                vim.api.nvim_buf_set_lines(buffer, 0, -1, false, output)
-                vim.api.nvim_open_win(buffer, true, opts)
-
             end
         end
 
+        vim.fn.jobstart(cmd, {
+            stdout_buffered = true,
+            on_stdout = append_data,
+            on_stderr = append_data,
+            on_exit = on_exit_callback
+        })
+    end
+end
+
+local testing_dialog = function()
+    local test_key = "./" .. vim.fn.expand("%") .. ":" .. vim.fn.line "."
+
+    local test = state.tests[test_key]
+    if not test or test.status ~= TEST_STATES.FAILED then return end
+
+    local message = {
+        "Test: " .. test.description,
+        "Location: " .. test.file_path .. ":" .. test.line_number,
+        "Runtime: " .. test.run_time,
+        "Seed: " .. state.seed,
+        "",
+        "Exception: " .. test.exception.class,
+        "Message:"
+    }
+
+    -- Splitting on new lines because the message array cannot contain any when
+    -- setting lines.
+    for line in string.gmatch(test.exception.message, "[^\r\n]+") do
+        table.insert(message, line)
+    end
+
+    table.insert(message, "")
+    table.insert(message, "Backtrace:")
+
+    if test.exception.backtrace ~= vim.NIL then
+        for _, line in ipairs(test.exception.backtrace) do
+            for backtrace in string.gmatch(line, "[^\r\n]+") do
+                table.insert(message, backtrace)
+            end
+        end
+    end
+
+    local width = vim.api.nvim_get_option("columns")
+    local height = vim.api.nvim_get_option("lines")
+
+    local win_height = math.ceil(height * 0.8 - 4)
+    local win_width = math.ceil(width * 0.8)
+
+    local row = math.ceil((height - win_height) / 2 - 1)
+    local col = math.ceil((width - win_width) / 2)
+
+    local opts = {
+        style = "minimal",
+        relative = "editor",
+        width = win_width,
+        height = win_height,
+        row = row,
+        col = col,
+        border = "rounded"
+    }
+
+    local buffer = vim.api.nvim_create_buf(false, 'nomodified')
+    vim.api.nvim_buf_set_lines(buffer, 0, -1, false, message)
+    vim.api.nvim_open_win(buffer, true, opts)
+end
+
+local attach_autocmd_to_buffer = function(bufnr, pattern, cmd)
+    vim.api.nvim_buf_create_user_command(bufnr, "ContinuousRubyTestingDialog",
+        testing_dialog, {})
+
+    vim.api.nvim_buf_create_user_command(bufnr, "ContinuousRubyTestingFailures",
+        function()
+            vim.diagnostic.setqflist({
+                ns = ns,
+                open = true,
+                title = "Failed tests:",
+                severity = vim.diagnostic.severity.ERROR
+            })
+        end, {})
+
+    vim.api.nvim_create_user_command("StopContinuousRubyTesting", function()
+        state.active = false
+
+        vim.api.nvim_del_autocmd(autocmd)
+        vim.api.nvim_del_user_command("StopContinuousRubyTesting")
+        vim.api.nvim_buf_del_user_command(bufnr, "ContinuousRubyTestingDialog")
+        vim.api
+            .nvim_buf_del_user_command(bufnr, "ContinuousRubyTestingFailures")
+
+        clear_test_results()
     end, {})
 
-    local splitted_command = {}
-    for str in command:gmatch("[^ ]+") do table.insert(splitted_command, str) end
-    -- local first_command = table.remove(splitted_command, 1)
-    local args = splitted_command
-
-    vim.api.nvim_create_autocmd("BufWritePost", {
-        pattern = "*.rb",
+    autocmd = vim.api.nvim_create_autocmd("BufWritePost", {
         group = group,
-        callback = function()
-            state.tests = {}
-
-            vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-            require('significant').start_animated_sign(1, 'dots4', 100, bufnr)
-
-            Job:new({
-                command = "bash",
-                args = args,
-                on_exit = function(j, res_value)
-                    if (res_value == 1 or res_value == 0) then
-                        local result = table.concat(j:result(), "\n")
-                        local decoded_output = vim.json.decode(result)
-                        local test_outputs = decoded_output.examples
-                        local failed = {}
-                        vim.schedule(function()
-                            require('significant').stop_animated_sign(1, bufnr)
-
-                            for _, test_output in ipairs(test_outputs) do
-                                table.insert(state.tests, test_output)
-                                if test_output.status == "passed" then
-                                    local text = {"✅"}
-                                    vim.api.nvim_buf_set_extmark(bufnr, ns,
-                                        test_output.line_number - 1, 0, {
-                                            virt_text = {text}
-                                        })
-
-                                end
-                                if test_output.status ~= "passed" then
-                                    local text = {"🔴"}
-                                    vim.api.nvim_buf_set_extmark(bufnr, ns,
-                                        test_output.line_number - 1, 0, {
-                                            virt_text = {text}
-                                        })
-
-                                    table.insert(failed, {
-                                        bufnr = bufnr,
-                                        lnum = test_output.line_number - 1,
-                                        col = 0,
-                                        severity = vim.diagnostic.severity.ERROR,
-                                        source = "rspec",
-                                        message = "Test Failed"
-                                    })
-                                end
-
-                                vim.diagnostic.set(ns, bufnr, failed, {})
-                            end
-                            vim.fn.sign_unplace("", {buffer = bufnr})
-                        end)
-                    else
-                        error(table.concat(j:result(), "\n"))
-                    end
-
-                end
-            }):start()
-            -- vim.fn.jobstart(command, {
-            --     -- pass stdout for every line
-            --     stdout_buffered = true,
-            --     -- consume every stdout line
-            --     on_stdout = function(_, data)
-            --         for _, line in ipairs(data) do
-            --             if string.find(line, "version") then
-            --                 local decoded_output = vim.json.decode(line)
-            --                 local test_outputs = decoded_output.examples
-            --                 local failed = {}
-            --                 for _, test_output in ipairs(test_outputs) do
-            --                     table.insert(state.tests, test_output)
-            --                     if test_output.status == "passed" then
-            --                         local text = {"✅"}
-            --                         vim.api.nvim_buf_set_extmark(bufnr, ns,
-            --                             test_output.line_number - 1, 0, {
-            --                                 virt_text = {text}
-            --                             })
-            --
-            --                     end
-            --                     if test_output.status ~= "passed" then
-            --                         local text = {"🔴"}
-            --                         vim.api.nvim_buf_set_extmark(bufnr, ns,
-            --                             test_output.line_number - 1, 0, {
-            --                                 virt_text = {text}
-            --                             })
-            --
-            --                         table.insert(failed, {
-            --                             bufnr = bufnr,
-            --                             lnum = test_output.line_number - 1,
-            --                             col = 0,
-            --                             severity = vim.diagnostic.severity.ERROR,
-            --                             source = "rspec",
-            --                             message = "Test Failed"
-            --                         })
-            --                     end
-            --
-            --                     vim.diagnostic.set(ns, bufnr, failed, {})
-            --
-            --                 end
-            --             end
-            --         end
-            --     end
-            -- })
-        end
+        pattern = pattern,
+        callback = buf_write_post_callback(bufnr, cmd)
     })
+
+    state.active = true
 end
-return M
+
+local get_test_cmd = function(file)
+    return "run_api.sh -ni -- spring rspec " .. file ..
+               " --format json --no-fail-fast"
+end
+
+vim.api.nvim_create_user_command("ContinuousRubyTesting", function()
+    if state.active then
+        vim.notify("ContinuousRubyTesting is already active",
+            vim.log.levels.INFO)
+        return
+    end
+
+    local bufnr = vim.api.nvim_get_current_buf()
+    local filename = vim.fn.expand("%")
+
+    attach_autocmd_to_buffer(bufnr, "*.rb", get_test_cmd(filename))
+end, {})

@@ -20,6 +20,17 @@ return require('packer').startup(function(use)
     require("aaron.plugins.workspaces").setup {use = use}
     require("aaron.plugins.search-info-helpers").setup {use = use}
 
+    use {
+        'aaronhallaert/continuous-testing.nvim',
+        config = function()
+            require("continuous-testing").setup {
+                test_command = {
+                    ruby_rspec = "run_api.sh -ni -- spring rspec %file --format json --no-fail-fast"
+                }
+            }
+        end
+    }
+
     -- Code Extensions
     use 'voldikss/vim-floaterm'
     use 'nvim-lua/plenary.nvim'

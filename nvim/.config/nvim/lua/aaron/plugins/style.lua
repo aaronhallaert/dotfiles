@@ -48,6 +48,11 @@ M.setup = function(config)
         config = function() require'colorizer'.setup {'*'} end
     }
 
+    use {
+        'rcarriga/nvim-notify',
+        config = function() vim.notify = require("notify") end
+    }
+
     -- use {
     --     'anuvyklack/windows.nvim',
     --     config = function()
