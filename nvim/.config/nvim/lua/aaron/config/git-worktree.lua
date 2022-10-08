@@ -5,12 +5,18 @@ local Job = require("plenary.job")
 
 Worktree.setup()
 
-vim.api.nvim_set_keymap('n', '<leader>wt',
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>wt",
     ':lua require("telescope").extensions.git_worktree.git_worktrees()<CR>',
-    {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>awt',
+    { noremap = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>awt",
     ':lua require("telescope").extensions.git_worktree.create_git_worktree()<CR>',
-    {noremap = true})
+    { noremap = true }
+)
 -- op = Operations.Switch, Operations.Create, Operations.Delete
 -- metadata = table of useful values (structure dependent on op)
 --      Switch
@@ -28,9 +34,10 @@ vim.api.nvim_set_keymap('n', '<leader>awt',
 -- end
 --
 Worktree.on_tree_change(function(op, _)
-    if op == (Worktree.Operations.Switch or Worktree.Operations.Create) and
-        string.find(vim.fn.getcwd(), "nephroflow%-api") then
-
+    if
+        op == (Worktree.Operations.Switch or Worktree.Operations.Create)
+        and string.find(vim.fn.getcwd(), "nephroflow%-api")
+    then
         local command = "run_api.sh -ni -- pkill ruby"
         local splitted_command = {}
         for str in command:gmatch("[^ ]+") do
@@ -45,7 +52,7 @@ Worktree.on_tree_change(function(op, _)
             on_exit = function(j, return_val)
                 print(vim.inspect(return_val))
                 print(vim.inspect(j:result()))
-            end
+            end,
         }):start()
     end
 end)

@@ -2,22 +2,24 @@ local M = {}
 M.setup = function(config)
     local use = config.use
 
-    use 'tpope/vim-obsession'
+    use("tpope/vim-obsession")
 
-    use 'renerocksai/calendar-vim'
+    use("renerocksai/calendar-vim")
 
-    use {
-        'renerocksai/telekasten.nvim',
+    use({
+        "renerocksai/telekasten.nvim",
         config = function()
             require("aaron.config.telekasten") -- markdown notes
-        end
-    }
+        end,
+    })
 
-    use {'nvim-treesitter/nvim-treesitter'}
+    use({ "nvim-treesitter/nvim-treesitter" })
 
-    use {
-        'mhinz/vim-startify',
-        config = function() require('aaron.config.startify') end
-    }
+    use({
+        "mhinz/vim-startify",
+        config = function()
+            require("aaron.config.startify")
+        end,
+    })
 end
 return M

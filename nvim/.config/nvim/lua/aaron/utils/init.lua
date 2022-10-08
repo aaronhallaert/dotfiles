@@ -2,7 +2,7 @@ local M = {}
 
 M.lsp_format_async = function()
     if type(vim.lsp.buf.format) == "function" then
-        vim.lsp.buf.format({async = true})
+        vim.lsp.buf.format({ async = true })
     elseif type(vim.lsp.buf.formatting) == "function" then
         vim.lsp.buf.formatting()
     end

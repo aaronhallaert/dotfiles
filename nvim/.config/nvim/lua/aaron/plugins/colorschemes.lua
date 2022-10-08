@@ -79,16 +79,15 @@ M.setup = function(config)
     --     end
     -- }
 
-    use {
-        'sainnhe/gruvbox-material',
-        commit = '9e30f2095e8ab80c68901e7aaee186cd3aa97168',
+    use({
+        "sainnhe/gruvbox-material",
+        commit = "9e30f2095e8ab80c68901e7aaee186cd3aa97168",
         config = function()
-            vim.api.nvim_command('colorscheme gruvbox-material')
-            vim.opt.background = 'dark'
-            vim.g.gruvbox_material_background = 'soft'
+            vim.api.nvim_command("colorscheme gruvbox-material")
+            vim.opt.background = "dark"
+            vim.g.gruvbox_material_background = "soft"
             vim.g.gruvbox_material_better_performance = 1
-        end
-    }
-
+        end,
+    })
 end
 return M

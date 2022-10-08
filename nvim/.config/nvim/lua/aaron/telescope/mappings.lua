@@ -7,10 +7,12 @@ local map_tele = function(key, f, options, buffer)
 
     local mode = "n"
     local rhs = string.format(
-                    "<cmd>lua require('aaron.telescope')['%s'](TelescopeMapArgs['%s'])<CR>",
-                    f, map_key)
+        "<cmd>lua require('aaron.telescope')['%s'](TelescopeMapArgs['%s'])<CR>",
+        f,
+        map_key
+    )
 
-    local map_options = {noremap = true, silent = true}
+    local map_options = { noremap = true, silent = true }
 
     if not buffer then
         vim.api.nvim_set_keymap(mode, key, rhs, map_options)
@@ -36,4 +38,3 @@ map_tele("<leader>on", "show_nipro_commands")
 map_tele("<leader>fb", "buffers")
 map_tele("<leader>fh", "help_tags")
 map_tele("<leader>fws", "lsp_workspace_symbols")
-

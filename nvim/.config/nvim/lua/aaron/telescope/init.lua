@@ -4,17 +4,17 @@ function M.search_dotfiles()
         hidden = true,
         prompt_prefix = " ⚙  ",
         prompt_title = "< dotfiles >",
-        cwd = "$HOME/dotfiles/nvim/.config/nvim"
+        cwd = "$HOME/dotfiles/nvim/.config/nvim",
     })
 end
 
 function M.search_dotfiles_words()
     require("telescope.builtin").live_grep({
-        find_command = 'rg',
+        find_command = "rg",
         hidden = true,
         prompt_prefix = " ⚙  ",
         prompt_title = "< dotfiles words >",
-        cwd = "$HOME/dotfiles/nvim/.config/nvim"
+        cwd = "$HOME/dotfiles/nvim/.config/nvim",
     })
 end
 
@@ -23,8 +23,8 @@ function M.search_gitwords()
         hidden = true,
         prompt_prefix = "   ",
         prompt_title = "< project words >",
-        find_command = 'rg',
-        cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+        find_command = "rg",
+        cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
     })
 end
 
@@ -33,13 +33,17 @@ function M.search_git_files()
         hidden = true,
         prompt_prefix = "   ",
         prompt_title = "< project files >",
-        find_command = 'rg'
+        find_command = "rg",
     })
 end
 
-function M.buffers() require("telescope.builtin").buffers() end
+function M.buffers()
+    require("telescope.builtin").buffers()
+end
 
-function M.help_tags() require("telescope.builtin").help_tags() end
+function M.help_tags()
+    require("telescope.builtin").help_tags()
+end
 
 function M.lsp_document_symbols()
     require("telescope.builtin").lsp_document_symbols()
@@ -49,9 +53,13 @@ function M.lsp_workspace_symbols()
     require("telescope.builtin").lsp_workspace_symbols()
 end
 
-function M.git_status() require("telescope.builtin").git_status() end
+function M.git_status()
+    require("telescope.builtin").git_status()
+end
 
-function M.lsp_references() require("telescope.builtin").lsp_references() end
+function M.lsp_references()
+    require("telescope.builtin").lsp_references()
+end
 
 function M.show_custom_functions()
     require("aaron.telescope.custom").show_custom_functions()

@@ -1,2 +1,2 @@
-require('pretty-fold').setup()
-require('fold-preview').setup()
+require("pretty-fold").setup()
+require("fold-preview").setup()

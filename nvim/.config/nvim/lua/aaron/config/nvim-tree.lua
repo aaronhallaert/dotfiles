@@ -1,7 +1,7 @@
 local nvim_tree = require("nvim-tree")
-local nvimrc = '$HOME/dotfiles/nvim/.config/nvim'
+local nvimrc = "$HOME/dotfiles/nvim/.config/nvim"
 
-vim.cmd('source' .. nvimrc .. '/plugin/nvimtree-config.vim')
+vim.cmd("source" .. nvimrc .. "/plugin/nvimtree-config.vim")
 
 nvim_tree.setup({
     -- disable_default_keybindings = true,
@@ -14,28 +14,35 @@ nvim_tree.setup({
     hijack_cursor = true,
     update_cwd = false,
     sync_root_with_cwd = false,
-    actions = {open_file = {resize_window = true}},
-    hijack_directories = {enable = true, auto_open = true},
+    actions = { open_file = { resize_window = true } },
+    hijack_directories = { enable = true, auto_open = true },
     diagnostics = {
         enable = false,
-        icons = {hint = "", info = "", warning = "", error = ""}
+        icons = { hint = "", info = "", warning = "", error = "" },
     },
-    update_focused_file = {enable = true, update_cwd = false, ignore_list = {}},
-    system_open = {cmd = nil, args = {}},
+    update_focused_file = {
+        enable = true,
+        update_cwd = false,
+        ignore_list = {},
+    },
+    system_open = { cmd = nil, args = {} },
     filters = {
         dotfiles = false,
         custom = {
-            "docker-compose", "tmp", "docker-compose.medsoc.yml",
-            "docker-compose.sam.yml", "docker-compose.vidal.yml",
-            "docker-compose.yml"
-        }
+            "docker-compose",
+            "tmp",
+            "docker-compose.medsoc.yml",
+            "docker-compose.sam.yml",
+            "docker-compose.vidal.yml",
+            "docker-compose.yml",
+        },
     },
     view = {
         width = 40,
         height = 30,
         hide_root_folder = false,
-        side = 'left',
-        mappings = {custom_only = false, list = {}}
+        side = "left",
+        mappings = { custom_only = false, list = {} },
     },
-    renderer = {highlight_opened_files = "all"}
+    renderer = { highlight_opened_files = "all" },
 })

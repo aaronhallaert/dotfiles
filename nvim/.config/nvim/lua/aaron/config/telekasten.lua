@@ -11,9 +11,9 @@ telekasten.setup({
     --                               and thus the telekasten syntax will not be loaded either
     auto_set_filetype = true,
 
-    dailies = home .. '/' .. 'daily',
-    weeklies = home .. '/' .. 'weekly',
-    templates = home .. '/' .. 'templates',
+    dailies = home .. "/" .. "daily",
+    weeklies = home .. "/" .. "weekly",
+    templates = home .. "/" .. "templates",
 
     -- image subdir for pasting
     -- subdir name
@@ -30,15 +30,15 @@ telekasten.setup({
 
     -- template for new notes (new_note, follow_link)
     -- set to `nil` or do not specify if you do not want a template
-    template_new_note = home .. '/' .. 'templates/new_note.md',
+    template_new_note = home .. "/" .. "templates/new_note.md",
 
     -- template for newly created daily notes (goto_today)
     -- set to `nil` or do not specify if you do not want a template
-    template_new_daily = home .. '/' .. 'templates/daily.md',
+    template_new_daily = home .. "/" .. "templates/daily.md",
 
     -- template for newly created weekly notes (goto_thisweek)
     -- set to `nil` or do not specify if you do not want a template
-    template_new_weekly = home .. '/' .. 'templates/weekly.md',
+    template_new_weekly = home .. "/" .. "templates/weekly.md",
 
     -- image link style
     -- wiki:     ![[image name]]
@@ -53,7 +53,7 @@ telekasten.setup({
         -- use monday as first day of week: 1 .. true, 0 .. false
         calendar_monday = 1,
         -- calendar mark: where to put mark for marked days: 'left', 'right', 'left-fit'
-        calendar_mark = 'left-fit'
+        calendar_mark = "left-fit",
     },
 
     -- telescope actions behavior
@@ -103,6 +103,5 @@ telekasten.setup({
     --     - same_as_current: put all new notes in the dir of the current note if
     --                        present or else in home
     --                        except for notes/with/subdirs/in/title.
-    new_note_location = "smart"
-
+    new_note_location = "smart",
 })

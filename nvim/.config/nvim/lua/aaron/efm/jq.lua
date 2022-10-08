@@ -1,4 +1,4 @@
 return {
     formatCommand = "jq .",
-    formatStdin = true
+    formatStdin = true,
 }

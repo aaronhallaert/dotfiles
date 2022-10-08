@@ -1,5 +1,8 @@
-require('litee.lib').setup({tree = {icon_set = "nerd"}, panel = {orientation = "right", panel_size = 50}})
-require('litee.gh').setup({
+require("litee.lib").setup({
+    tree = { icon_set = "nerd" },
+    panel = { orientation = "right", panel_size = 50 },
+})
+require("litee.gh").setup({
     -- deprecated, around for compatability for now.
     jump_mode = "invoking",
     -- remap the arrow keys to resize any litee.nvim windows.
@@ -39,6 +42,6 @@ require('litee.gh').setup({
         -- inside a gh.nvim panel, if possible, open the node's web URL in your
         -- browser. useful particularily for digging into external failed CI
         -- checks.
-        goto_web = "gx"
-    }
+        goto_web = "gx",
+    },
 })

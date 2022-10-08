@@ -1,8 +1,8 @@
 return {
     rootMarkers = {
         ".eslintrc.js",
-        "package.json"
+        "package.json",
     },
     formatCommand = "prettier --stdin-filepath ${INPUT}",
-    formatStdin = true
+    formatStdin = true,
 }
