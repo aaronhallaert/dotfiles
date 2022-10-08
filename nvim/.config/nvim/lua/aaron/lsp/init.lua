@@ -17,15 +17,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.ts",
         "*.py",
         "*.rb",
-        -- "*.json",
+        "*.lua",
         "*.md",
         "*.css",
     },
-})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-    command = "silent! !stylua --config-path ./.stylua.toml %",
-    pattern = { ".lua" },
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -44,48 +39,36 @@ local capabilities_with_completion =
         vim.lsp.protocol.make_client_capabilities()
     )
 
-local prettier = require("aaron.efm.prettier")
-local luaFormat = require("aaron.efm.lua-format")
+local efmls = require("efmls-configs")
+efmls.init({
+    -- Your custom attach function
+    on_attach = on_attach,
+
+    -- Enable formatting provided by efm langserver
+    init_options = {
+        documentFormatting = true,
+    },
+})
+
 local markdownlint = require("aaron.efm.markdownlint")
 local jq = require("aaron.efm.jq")
-local eslint = require("aaron.efm.eslint")
+local stylua = require("efmls-configs.formatters.stylua")
+local prettier = require("efmls-configs.formatters.prettier")
+local eslint = require("efmls-configs.linters.eslint")
 
--- General purpose language server
-nvim_lsp.efm.setup({
-    on_attach = on_attach,
-    -- lspconfig, disable lsp global options
-    init_options = { documentFormatting = true },
-    cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "5" },
-    filetypes = {
-        "json",
-        "markdown",
-        "lua",
-        "typescriptreact",
-        "typescript",
-        "javascriptreact",
-        "javascript",
-    },
-    -- lsp specific options
-    settings = {
-        rootMarkers = { ".git/" },
-        lintDebounce = 100,
-        languages = {
-            json = { jq },
-            markdown = { markdownlint, prettier },
-            lua = { luaFormat },
-            typescriptreact = { prettier, eslint },
-            typescript = { prettier, eslint },
-            javascript = { prettier, eslint },
-            javascriptreact = { prettier, eslint },
-        },
-    },
+efmls.setup({
+    json = { formatter = jq },
+    markdown = { linter = markdownlint, formatter = prettier },
+    javascript = { linter = eslint, formatter = prettier },
+    javascriptreact = { linter = eslint, formatter = prettier },
+    typescriptreact = { linter = eslint, formatter = prettier },
+    typescript = { linter = eslint, formatter = prettier },
+    lua = { formatter = stylua },
 })
 
 nvim_lsp.solargraph.setup({
     on_attach = on_attach,
     capabilities = capabilities_with_completion,
-    -- cmd = {"nc", "localhost", "7658"},
-    -- cmd = vim.lsp.rpc.connect('127.0.0.1', 7658),
     cmd = { "solargraph", "stdio" },
     filetypes = { "ruby", "rakefile" },
     root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
@@ -132,8 +115,6 @@ if not configs.ruby_lsp then
     }
 end
 
--- nvim_lsp.ruby_lsp.setup({on_attach = on_attach})
-
 nvim_lsp.rust_analyzer.setup({
     capabilities = capabilities_with_completion,
     on_attach = on_attach,
@@ -148,6 +129,7 @@ nvim_lsp.sumneko_lua.setup({
     filetypes = { "lua" },
     settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 })
+
 nvim_lsp.tsserver.setup({
     init_options = { documentFormatting = false },
     capabilities = capabilities_with_completion,

@@ -20,6 +20,11 @@ return require("packer").startup(function(use)
     require("aaron.plugins.workspaces").setup({ use = use })
     require("aaron.plugins.search-info-helpers").setup({ use = use })
 
+    use {
+      'creativenull/efmls-configs-nvim',
+
+      requires = { 'neovim/nvim-lspconfig' },
+    }
     use({
         "aaronhallaert/continuous-testing.nvim",
         config = function()
