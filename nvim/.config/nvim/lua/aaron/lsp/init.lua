@@ -53,6 +53,7 @@ efmls.init({
 local markdownlint = require("aaron.efm.markdownlint")
 local jq = require("aaron.efm.jq")
 local stylua = require("efmls-configs.formatters.stylua")
+-- local luacheck = require("efmls-configs.linters.luacheck")
 local prettier = require("efmls-configs.formatters.prettier")
 local eslint = require("efmls-configs.linters.eslint")
 

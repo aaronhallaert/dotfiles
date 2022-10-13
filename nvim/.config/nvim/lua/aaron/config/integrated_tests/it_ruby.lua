@@ -232,9 +232,7 @@ local attach_autocmd_to_buffer = function(bufnr, pattern, cmd)
 end
 
 local get_test_cmd = function(file)
-    return "run_api.sh -ni -- spring rspec "
-        .. file
-        .. " --format json --no-fail-fast"
+    return "run_api.sh -ni -- rspec " .. file .. " --format json --no-fail-fast"
 end
 
 vim.api.nvim_create_user_command("ContinuousRubyTesting", function()

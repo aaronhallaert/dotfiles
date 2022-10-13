@@ -3,10 +3,67 @@ local action_state = require("telescope.actions.state")
 
 local N = {}
 
-local function open_diff_view(commit)
-    vim.api.nvim_command(":Gvdiffsplit " .. commit)
+-- open diff for current file
+-- @param commit (string) commit or branch to diff with
+local function open_diff_view(
+    commit, --[[optional]]
+    file_name
+)
+    if file_name ~= nil and file_name ~= "" then
+        vim.api.nvim_command(":Gvdiffsplit " .. commit .. ":" .. file_name)
+    else
+        vim.api.nvim_command(":Gvdiffsplit " .. commit)
+    end
 end
 
+local function determine_file_name(commit_hash, current_file_name)
+    local command = "git log -M --diff-filter=R --follow --name-status --summary "
+        .. commit_hash
+        .. ".. -- "
+        .. current_file_name
+        .. " | grep ^R | tail -1 | cut -f2,2"
+
+    local handle = io.popen(command)
+    local output = handle:read("*a")
+    handle:close()
+
+    output = string.gsub(output, "\n", "")
+    if output == "" then
+        output = current_file_name
+    end
+    return output
+end
+
+-- returns the base branch of a branch (where fork_point is)
+local function base_branch()
+    local command =
+        'git show-branch | sed "s/].*//" | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*\\[//"'
+    -- local command =
+    --     'git show-branch | sed "s/].*//" | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*[//"'
+    local handle = io.popen(command)
+    local output = handle:read("*a")
+    handle:close()
+
+    output = string.gsub(output, "\n", "")
+    return output
+end
+
+-- returns the commit hash from the commit log
+local get_commit_hash = function(commit_log)
+    local splitted_commit = {}
+    local count = 1
+    for i in string.gmatch(commit_log, "%S+") do
+        splitted_commit[count] = i
+        count = count + 1
+    end
+    return splitted_commit[1]
+end
+
+-- Opens a Telescope window with all files changed on the current branch
+-- Only committed changes will be displayed
+--
+-- <CR> to open the file
+-- <C-d> to open a diff with the base branch
 local function changed_on_branch()
     local previewers = require("telescope.previewers")
     local pickers = require("telescope.pickers")
@@ -32,22 +89,24 @@ local function changed_on_branch()
                     }
                 end,
             }),
+            attach_mappings = function(_, map)
+                map("i", "<C-d>", function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    local file = selection.value
+                    vim.cmd(":edit " .. file)
+                    open_diff_view(base_branch())
+                end)
+
+                return true
+            end,
         })
         :find()
 end
 
-function Get_commit_hash(commit_log)
-    Splitted_commit = {}
-    Count = 1
-    for i in string.gmatch(commit_log, "%S+") do
-        Splitted_commit[Count] = i
-        Count = Count + 1
-    end
-    return Splitted_commit[1]
-end
-
--- Compare current file with file on a specific branch
--- Lists local branches
+-- Opens a Telescope window with a list of local branches
+--
+-- <CR> opens a diff for the current file with the selected branch
 local function diff_file_branch()
     -- local previewers = require('telescope.previewers')
     local pickers = require("telescope.pickers")
@@ -55,6 +114,7 @@ local function diff_file_branch()
     local finders = require("telescope.finders")
     local c_branch = vim.fn.system("git branch --show-current")
     c_branch = string.gsub(c_branch, "\n", "")
+    local file_name = vim.fn.expand("%")
     pickers
         .new({
             results_title = "Local branches :: " .. c_branch,
@@ -69,9 +129,11 @@ local function diff_file_branch()
                     actions.close(prompt_bufnr)
                     local selection = action_state.get_selected_entry()
                     local branch = selection.value
-                    print(branch)
 
-                    open_diff_view(branch)
+                    open_diff_view(
+                        branch,
+                        determine_file_name(branch, file_name)
+                    )
                 end)
 
                 return true
@@ -80,8 +142,10 @@ local function diff_file_branch()
         :find()
 end
 
--- Compare file with selected commit
--- Lists commit history of current file
+-- Opens a Telescope window with a list of previous commit logs with respect to selected lines
+--
+-- <CR> opens a diff for the current file with the selected commit
+-- <C-o> opens a the selected commit in the browser
 local function diff_file_log()
     local previewers = require("telescope.previewers")
     local pickers = require("telescope.pickers")
@@ -107,7 +171,7 @@ local function diff_file_log()
             -- finder = finders.new_oneshot_job({'git', 'log', location}),
             previewer = previewers.new_termopen_previewer({
                 get_command = function(entry)
-                    local commit_hash = Get_commit_hash(entry.value)
+                    local commit_hash = get_commit_hash(entry.value)
                     return {
                         "git",
                         "diff",
@@ -124,15 +188,16 @@ local function diff_file_log()
                     actions.close(prompt_bufnr)
                     local selection = action_state.get_selected_entry()
                     local commit_log = selection.value
+                    local commit_hash = get_commit_hash(commit_log)
 
-                    open_diff_view(Get_commit_hash(commit_log))
+                    open_diff_view(commit_hash)
                 end)
                 map("i", "<C-o>", function(prompt_bufnr)
                     actions.close(prompt_bufnr)
                     local selection = action_state.get_selected_entry()
                     local commit = selection.value
 
-                    vim.api.nvim_command(":GBrowse " .. Get_commit_hash(commit))
+                    vim.api.nvim_command(":GBrowse " .. get_commit_hash(commit))
                 end)
 
                 return true
@@ -141,13 +206,17 @@ local function diff_file_log()
         :find()
 end
 
-local function diff_entire_file_log()
+-- Opens a Telescope window with a list of git commits which changed the current file (renames included)
+--
+-- <CR> Opens a diff of the current file with the selected commit
+-- <C-e> Opens an entire git diff of the selected commit
+-- <C-o> Open the selected commit in the browser
+local function diff_file_commit()
     local previewers = require("telescope.previewers")
     local pickers = require("telescope.pickers")
     local sorters = require("telescope.sorters")
     local finders = require("telescope.finders")
     local file_name = vim.fn.expand("%")
-    print(file_name)
 
     pickers
         .new({
@@ -164,12 +233,18 @@ local function diff_entire_file_log()
             -- finder = finders.new_oneshot_job({'git', 'log', location}),
             previewer = previewers.new_termopen_previewer({
                 get_command = function(entry)
-                    local commit_hash = Get_commit_hash(entry.value)
+                    local commit_hash = get_commit_hash(entry.value)
+
+                    local prev_commit = string.format("%s~", commit_hash)
                     return {
                         "git",
                         "diff",
-                        string.format("%s~", commit_hash),
-                        commit_hash,
+                        prev_commit
+                            .. ":"
+                            .. determine_file_name(prev_commit, file_name),
+                        commit_hash
+                            .. ":"
+                            .. determine_file_name(commit_hash, file_name),
                     }
                 end,
             }),
@@ -179,7 +254,17 @@ local function diff_entire_file_log()
                     actions.close(prompt_bufnr)
                     local selection = action_state.get_selected_entry()
                     local commit_log = selection.value
-                    local commit_hash = Get_commit_hash(commit_log)
+                    local commit_hash = get_commit_hash(commit_log)
+                    local old_file_name =
+                        determine_file_name(commit_hash, file_name)
+
+                    open_diff_view(commit_hash, old_file_name)
+                end)
+                map("i", "<C-e>", function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    local commit_log = selection.value
+                    local commit_hash = get_commit_hash(commit_log)
 
                     local command = {
                         "git",
@@ -201,8 +286,9 @@ local function diff_entire_file_log()
                     actions.close(prompt_bufnr)
                     local selection = action_state.get_selected_entry()
                     local commit = selection.value
+                    local commit_hash = get_commit_hash(commit)
 
-                    vim.api.nvim_command(":GBrowse " .. Get_commit_hash(commit))
+                    vim.api.nvim_command(":GBrowse " .. commit_hash)
                 end)
 
                 return true
@@ -211,62 +297,9 @@ local function diff_entire_file_log()
         :find()
 end
 
--- Compare file with selected commit
--- Lists commit history
-local function diff_file_commit()
-    local previewers = require("telescope.previewers")
-    local pickers = require("telescope.pickers")
-    local sorters = require("telescope.sorters")
-    local finders = require("telescope.finders")
-    local c_branch = vim.fn.system("git branch --show-current")
-    local file_name = vim.fn.expand("%")
-    c_branch = string.gsub(c_branch, "\n", "")
-    pickers
-        .new({
-            results_title = "Last commits on current file compared to "
-                .. c_branch,
-            finder = finders.new_oneshot_job({
-                "git",
-                "log",
-                "--format=%C(auto)%h \t %as \t %C(green)%an -- %Creset %s",
-                "--",
-                file_name,
-            }),
-            -- finder = finders.new_oneshot_job({'git', 'cherry', '-v', 'master', c_branch}),
-            sorter = sorters.get_fuzzy_file(),
-            previewer = previewers.new_termopen_previewer({
-                get_command = function(entry)
-                    return {
-                        "git",
-                        "diff",
-                        Get_commit_hash(entry.value),
-                        "--",
-                        file_name,
-                    }
-                end,
-            }),
-            attach_mappings = function(_, map)
-                map("i", "<CR>", function(prompt_bufnr)
-                    actions.close(prompt_bufnr)
-                    local selection = action_state.get_selected_entry()
-                    local commit = selection.value
-
-                    open_diff_view(Get_commit_hash(commit))
-                end)
-                map("i", "<C-o>", function(prompt_bufnr)
-                    actions.close(prompt_bufnr)
-                    local selection = action_state.get_selected_entry()
-                    local commit = selection.value
-
-                    vim.api.nvim_command(":GBrowse " .. Get_commit_hash(commit))
-                end)
-
-                return true
-            end,
-        })
-        :find()
-end
-
+-- Opens a Telescope window with all reflog entries
+--
+-- <CR> checkout on the reflog entry
 local function checkout_reflog()
     -- local previewers = require('telescope.previewers')
     local pickers = require("telescope.pickers")
@@ -312,9 +345,8 @@ local git_functions = {
     { value = "Diff file with branch", func = diff_file_branch },
     { value = "Diff file with previous commit", func = diff_file_commit },
     { value = "Diff file with line history", func = diff_file_log },
-    { value = "Diff file with file history", func = diff_entire_file_log },
     { value = "Checkout from reflog", func = checkout_reflog },
-    { value = "Show (git add) changes on branch", func = changed_on_branch },
+    { value = "Show changes on branch", func = changed_on_branch },
 }
 
 local function execute_git_function(value)

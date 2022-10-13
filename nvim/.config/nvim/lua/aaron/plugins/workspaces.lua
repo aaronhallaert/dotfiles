@@ -13,8 +13,6 @@ M.setup = function(config)
         end,
     })
 
-    use({ "nvim-treesitter/nvim-treesitter" })
-
     use({
         "mhinz/vim-startify",
         config = function()

@@ -14,8 +14,6 @@ M.setup = function(config)
     -- expand surround e.g. cin) = clear inside next parenthesis
     use("wellle/targets.vim")
 
-    use("takac/vim-hardtime")
-
     use("mbbill/undotree")
     use("godlygeek/tabular")
     use({
@@ -34,5 +32,26 @@ M.setup = function(config)
     use("vim-utils/vim-man")
     use("lambdalisue/suda.vim")
     use("svermeulen/vimpeccable")
+    use({
+        "smjonas/live-command.nvim",
+        config = function()
+            require("live-command").setup({
+                commands = {
+                    Norm = { cmd = "norm" },
+                    G = { cmd = "g" },
+                    Reg = {
+                        cmd = "norm",
+                        -- This will transform ":5Reg a" into ":norm 5@a"
+                        args = function(opts)
+                            return (opts.count == -1 and "" or opts.count)
+                                .. "@"
+                                .. opts.args
+                        end,
+                        range = "",
+                    },
+                },
+            })
+        end,
+    })
 end
 return M

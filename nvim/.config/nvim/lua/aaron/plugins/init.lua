@@ -20,17 +20,34 @@ return require("packer").startup(function(use)
     require("aaron.plugins.workspaces").setup({ use = use })
     require("aaron.plugins.search-info-helpers").setup({ use = use })
 
-    use {
-      'creativenull/efmls-configs-nvim',
-
-      requires = { 'neovim/nvim-lspconfig' },
-    }
     use({
-        "aaronhallaert/continuous-testing.nvim",
+        "creativenull/efmls-configs-nvim",
+
+        requires = { "neovim/nvim-lspconfig" },
+    })
+
+    use({
+        "~/Developer/personal/customLuaPlugs/continuous-testing.nvim",
         config = function()
             require("continuous-testing").setup({
-                test_command = {
-                    ruby_rspec = "run_api.sh -ni -- spring rspec %file --format json --no-fail-fast",
+                notify = true, -- The default is false
+                framework_setup = {
+                    ruby = {
+                        test_tool = "rspec",
+                        test_cmd = "bundle exec rspec %file --format json --no-fail-fast",
+                    },
+                    typescript = {
+                        test_tool = "vitest",
+                        test_cmd = "yarn vitest run --root=src/main %file --reporter=verbose --reporter=json",
+                    },
+                },
+                project_override = {
+                    ["/Users/aaronhallaert/Developer/nephroflow/nephroflow-api"] = {
+                        ruby = {
+                            test_tool = "rspec",
+                            test_cmd = "run_api.sh -ni -- spring rspec %file --format json --no-fail-fast",
+                        },
+                    },
                 },
             })
         end,

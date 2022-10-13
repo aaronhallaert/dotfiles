@@ -65,9 +65,9 @@ then
         end
 
         if line then
-            return "bundle exec spring rspec " .. test_position
+            return "bundle exec rspec " .. test_position
         else
-            return "bundle exec spring rspec " .. test_file
+            return "bundle exec rspec " .. test_file
         end
     end
 
