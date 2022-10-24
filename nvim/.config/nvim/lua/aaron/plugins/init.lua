@@ -34,18 +34,25 @@ return require("packer").startup(function(use)
                 framework_setup = {
                     ruby = {
                         test_tool = "rspec",
-                        test_cmd = "bundle exec rspec %file --format json --no-fail-fast",
+                        test_cmd = "bundle exec rspec %file",
                     },
-                    typescript = {
+                    javascript = {
                         test_tool = "vitest",
-                        test_cmd = "yarn vitest run --root=src/main %file --reporter=verbose --reporter=json",
+                        test_cmd = "yarn vitest run %file",
+                        root_pattern = "tsconfig.json",
                     },
                 },
                 project_override = {
                     ["/Users/aaronhallaert/Developer/nephroflow/nephroflow-api"] = {
                         ruby = {
                             test_tool = "rspec",
-                            test_cmd = "run_api.sh -ni -- spring rspec %file --format json --no-fail-fast",
+                            test_cmd = "run_api.sh -ni -- spring rspec %file",
+                        },
+                    },
+                    ["/Users/aaronhallaert/Developer/nephroflow/link"] = {
+                        ruby = {
+                            test_tool = "rspec",
+                            test_cmd = "docker exec channel_host bundle exec rspec %file",
                         },
                     },
                 },

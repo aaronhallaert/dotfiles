@@ -37,11 +37,21 @@ M.setup = function(config)
             require("aaron.config.treesitter")
         end,
     })
+    use("nvim-treesitter/nvim-treesitter-textobjects")
 
     use({
         "nvim-treesitter/nvim-treesitter-context",
         config = function()
             require("aaron.config.treesitter-context") -- fix context on first line
+        end,
+    })
+    use("nvim-treesitter/playground")
+
+    use({
+        "j-hui/fidget.nvim",
+        event = "BufReadPre",
+        config = function()
+            require("fidget").setup({})
         end,
     })
 

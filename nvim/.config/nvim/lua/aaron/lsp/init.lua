@@ -55,15 +55,15 @@ local jq = require("aaron.efm.jq")
 local stylua = require("efmls-configs.formatters.stylua")
 -- local luacheck = require("efmls-configs.linters.luacheck")
 local prettier = require("efmls-configs.formatters.prettier")
-local eslint = require("efmls-configs.linters.eslint")
+-- local eslint = require("efmls-configs.linters.eslint")
 
 efmls.setup({
     json = { formatter = jq },
     markdown = { linter = markdownlint, formatter = prettier },
-    javascript = { linter = eslint, formatter = prettier },
-    javascriptreact = { linter = eslint, formatter = prettier },
-    typescriptreact = { linter = eslint, formatter = prettier },
-    typescript = { linter = eslint, formatter = prettier },
+    javascript = { formatter = prettier },
+    javascriptreact = { formatter = prettier },
+    typescriptreact = { formatter = prettier },
+    typescript = { formatter = prettier },
     lua = { formatter = stylua },
 })
 

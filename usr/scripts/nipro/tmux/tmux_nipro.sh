@@ -20,7 +20,8 @@ if [[ $? != 0 ]]; then
     ###############################
 
     ##### LINK DEV ENV #####
-    #./add_link.sh
+    $HOME/dotfiles/usr/scripts/nipro/tmux/add_link.sh
+    ###############################
 
 
     newly_created=true

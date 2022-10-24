@@ -23,7 +23,6 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
   size: 12.0
-  use_thin_strokes: false
 # GitHub Dark
 colors:
   primary:
