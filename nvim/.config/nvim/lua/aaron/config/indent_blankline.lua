@@ -1,7 +1,7 @@
 local indent_blankline = require("indent_blankline")
 
 vim.opt.list = true
-vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append("eol:")
 
 indent_blankline.setup({
     use_treesitter = true,

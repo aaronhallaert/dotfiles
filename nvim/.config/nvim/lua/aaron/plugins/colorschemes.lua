@@ -85,8 +85,8 @@ M.setup = function(config)
         config = function()
             vim.api.nvim_command("colorscheme gruvbox-material")
             vim.opt.background = "dark"
-            vim.g.gruvbox_material_background = "soft"
-            vim.g.gruvbox_material_better_performance = 1
+            vim.g.gruvbox_material_background = "hard"
+            vim.g.gruvbox_material_better_performance = 0
         end,
     })
 end

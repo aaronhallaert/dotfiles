@@ -9,20 +9,36 @@ env:
 scrolling:
   history: 10000
   multiplier: 3
-font:
+font: 
   normal:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
   bold:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold
   italic:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Italic
   bold_italic:
-    family: Hack Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold Italic
   size: 12.0
+
+# font:
+#   normal:
+#     family: Hack Nerd Font
+#     style: Regular
+#   bold:
+#     family: Hack Nerd Font
+#     style: Bold
+#   italic:
+#     family: Hack Nerd Font
+#     style: Italic
+#   bold_italic:
+#     family: Hack Nerd Font
+#     style: Bold Italic
+#   size: 12.0
+
 # GitHub Dark
 colors:
   primary:
@@ -166,12 +182,12 @@ colors:
   #   cyan:    '#85dacc'
   #   white:   '#fff1f3'
 #
-# key_bindings:
-#   - { key: J,        mods: Alt,     chars: "\x1bj"                       }
-#   - { key: K,        mods: Alt,     chars: "\x1bk"                       }
-#   - { key: H,        mods: Alt,     chars: "\x1bh"                       }
-#   - { key: L,        mods: Alt,     chars: "\x1bl"                       }
+key_bindings:
+  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
 # cursor:
 #   style: Block
 #   unfocused_hollow: true
-# live_config_reload: true 
+live_config_reload: true 

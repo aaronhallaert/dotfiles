@@ -1,3 +1,5 @@
+#!/bin/bash
+
 NAME=selfweb
 INTERACTIVE=TRUE
 COMMAND=""
