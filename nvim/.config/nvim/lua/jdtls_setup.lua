@@ -224,7 +224,7 @@ function M.setup()
     local root_dir = require("jdtls.setup").find_root(root_markers)
     local home = os.getenv("HOME")
 
-    local capabilities = require("cmp_nvim_lsp").update_capabilities(
+    local capabilities = require("cmp_nvim_lsp").default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
     )
     --local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -1,7 +1,7 @@
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost init.lua source <afile> | PackerCompile
+    autocmd BufWritePost init.lua ReloadConfig
   augroup end
 ]])
 

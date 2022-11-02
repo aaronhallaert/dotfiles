@@ -63,6 +63,15 @@ M.setup = function(config)
         end,
     })
 
+    -- Lua
+    use({
+        "narutoxy/silicon.lua",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("silicon").setup({})
+        end,
+    })
+
     -- use {
     --     'anuvyklack/windows.nvim',
     --     config = function()

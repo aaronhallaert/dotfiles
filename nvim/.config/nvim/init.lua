@@ -34,3 +34,20 @@ vim.cmd("source" .. nvimrc .. "/plugin/gitfugitive-config.vim")
 
 -- EXTRA FUNCTIONALITY
 vim.cmd("source" .. nvimrc .. "/plugin/telekasten-config.vim")
+
+function _G.ReloadConfig()
+    local cached_data = vim.fn.stdpath("cache")
+
+    io.popen("rm -rf " .. cached_data)
+    for name, _ in pairs(package.loaded) do
+        if name:match("^cnull") then
+            package.loaded[name] = nil
+        end
+    end
+
+    dofile(vim.env.MYVIMRC)
+
+    vim.cmd("PackerCompile")
+end
+
+vim.api.nvim_create_user_command("ReloadNvim", ReloadConfig, {})

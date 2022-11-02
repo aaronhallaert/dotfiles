@@ -87,6 +87,8 @@ M.setup = function(config)
 
     -- RUBY ON RAILS
     use("tpope/vim-rails")
+
+    use("ziontee113/query-secretary")
 end
 
 return M

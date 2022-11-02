@@ -4,7 +4,6 @@ vim.api.nvim_command("set undodir=~/.vim/undodir")
 vim.o.undofile = true
 
 vim.g.material_style = "darker"
--- vim.g.catppuccin_flavour = "frappe"
 
 vim.o.syntax = true
 vim.o.eol = true
