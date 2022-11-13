@@ -21,6 +21,14 @@ M.setup = function(config)
             require("aaron.config.luasnip")
         end,
     })
+
+    use({
+        "rafamadriz/friendly-snippets",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+            require("luasnip").filetype_extend("ruby", { "rails" })
+        end,
+    })
 end
 
 return M

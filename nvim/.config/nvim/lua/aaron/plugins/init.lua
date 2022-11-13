@@ -60,6 +60,8 @@ return require("packer").startup(function(use)
         end,
     })
 
+    use("vim-scripts/ReplaceWithRegister")
+
     -- Code Extensions
     use("voldikss/vim-floaterm")
     use("nvim-lua/plenary.nvim")
