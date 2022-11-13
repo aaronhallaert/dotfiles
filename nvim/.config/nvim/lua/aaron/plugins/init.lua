@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "~/Developer/personal/customLuaPlugs/continuous-testing.nvim",
+        "aaronhallaert/continuous-testing.nvim",
         config = function()
             require("continuous-testing").setup({
                 notify = true, -- The default is false
