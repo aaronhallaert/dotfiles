@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+branchname=$1
+folder=${branchname//\//-}
+echo "Creating worktree in folder ../$folder"
+git worktree add -b $branchname ../$folder

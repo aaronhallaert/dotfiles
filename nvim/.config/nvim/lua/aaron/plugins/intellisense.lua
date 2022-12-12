@@ -89,6 +89,12 @@ M.setup = function(config)
     use("tpope/vim-rails")
 
     use("ziontee113/query-secretary")
+    use({
+        "simrat39/rust-tools.nvim",
+        config = function()
+            require("rust-tools").setup()
+        end,
+    })
 end
 
 return M

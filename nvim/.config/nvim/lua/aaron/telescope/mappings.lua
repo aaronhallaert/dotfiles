@@ -22,6 +22,7 @@ local map_tele = function(key, f, options, buffer)
 end
 
 -- SEARCH
+map_tele("<leader>fo", "search_recent_files")
 map_tele("<leader>ff", "search_git_files")
 map_tele("<leader>fg", "search_gitwords")
 map_tele("<leader>fa", "find_all_patterns")

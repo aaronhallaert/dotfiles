@@ -34,6 +34,7 @@ export PATH="$HOME/dotfiles/usr/scripts/nipro:$PATH"
 export PATH="$HOME/dotfiles/usr/scripts/nipro/tmux:$PATH"
 export PATH="$HOME/dotfiles/usr/scripts/nipro/run:$PATH"
 export PATH="$HOME/dotfiles/usr/scripts/nipro/database:$PATH"
+export PATH="$HOME/dotfiles/usr/scripts/git_aliases:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

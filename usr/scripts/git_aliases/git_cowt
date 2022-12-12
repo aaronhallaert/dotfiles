@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+git fetch origin --prune
+cd $(git worktree list | grep dummy | cut -f 1 -d " ")
+
+selected_branch=""
+
+selected_branch=$(git branch -r | tee | sed 's/origin\///g' | fzf | tr -d '[*+] [:space:]')
+selected_branch_folder=${selected_branch//\//-}
+
+if [[ -z $selected_branch_folder ]]; then
+  return
+fi
+
+git worktree add $selected_branch_folder $selected_branch 
+
+cd $selected_branch_folder

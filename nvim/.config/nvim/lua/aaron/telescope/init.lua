@@ -87,6 +87,10 @@ function M.search_git_files()
     })
 end
 
+function M.search_recent_files()
+    require("telescope.builtin").oldfiles({ only_cwd = true })
+end
+
 function M.buffers()
     require("telescope.builtin").buffers()
 end

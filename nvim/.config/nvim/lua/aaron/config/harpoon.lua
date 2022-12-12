@@ -48,6 +48,22 @@ function _G.RunCommandInTerminal(
     require("harpoon.term").gotoTerminal(term)
 end
 
+function _G.Get_test_command( --[[optional]]line)
+    local test_file = vim.fn.getreg("%")
+    local test_line = vim.api.nvim_win_get_cursor(0)[1]
+    local test_position = test_file .. ":" .. test_line
+
+    if not line then
+        line = false
+    end
+
+    if line then
+        return "bundle exec rspec " .. test_position
+    else
+        return "bundle exec rspec " .. test_file
+    end
+end
+
 -- NEPHROFLOW/NEPHROFLOW API
 if
     string.find(
@@ -55,22 +71,6 @@ if
         "/Users/aaronhallaert/Developer/nephroflow/nephroflow%-api"
     )
 then
-    function _G.Get_test_command( --[[optional]]line)
-        local test_file = vim.fn.getreg("%")
-        local test_line = vim.api.nvim_win_get_cursor(0)[1]
-        local test_position = test_file .. ":" .. test_line
-
-        if not line then
-            line = false
-        end
-
-        if line then
-            return "bundle exec rspec " .. test_position
-        else
-            return "bundle exec rspec " .. test_file
-        end
-    end
-
     function _G.GetQFTestCommands()
         local result = ""
         local qflist = vim.fn.getqflist()
@@ -206,6 +206,20 @@ then
         "n",
         "stq",
         ":lua StopSimulator()<CR>",
+        { noremap = true }
+    )
+
+    vim.api.nvim_set_keymap(
+        "n",
+        "stl",
+        ':lua RunCommandInTerminal("run_link.sh -- " .. Get_test_command(true))<CR>',
+        { noremap = true }
+    )
+
+    vim.api.nvim_set_keymap(
+        "n",
+        "stf",
+        ':lua RunCommandInTerminal("run_link.sh -- " .. Get_test_command(false))<CR>',
         { noremap = true }
     )
 end

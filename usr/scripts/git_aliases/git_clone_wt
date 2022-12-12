@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+
+url=$1
+basename=${url##*/}
+name=${2:-${basename%.*}}
+
+git clone --no-checkout $url $name
+cd $name
+git switch --orphan dummy

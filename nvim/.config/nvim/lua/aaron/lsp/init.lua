@@ -119,7 +119,24 @@ end
 nvim_lsp.rust_analyzer.setup({
     capabilities = capabilities_with_completion,
     on_attach = on_attach,
-    settings = { ["rust-analyzer"] = { checkOnSave = { command = "clippy" } } },
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy",
+                -- extraArgs = {
+                --     "--",
+                -- "-W",
+                -- "clippy::unwrap_used",
+                -- "-W",
+                -- "clippy::expect_used",
+                -- "-W",
+                -- "clippy::pedantic",
+                -- "-W",
+                -- "clippy::nursery",
+                -- },
+            },
+        },
+    },
 })
 
 nvim_lsp.sumneko_lua.setup({

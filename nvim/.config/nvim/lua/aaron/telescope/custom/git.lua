@@ -152,9 +152,11 @@ local function diff_file_log()
     local sorters = require("telescope.sorters")
     local finders = require("telescope.finders")
     local file_name = vim.fn.expand("%")
+    local relative_file_name = vim.fn.expand("%:f")
     local s_start = vim.fn.getpos("'<")[2]
     local s_end = vim.fn.getpos("'>")[2]
-    local location = string.format("-L%d,%d:%s", s_start, s_end, file_name)
+    local location =
+        string.format("-L%d,%d:%s", s_start, s_end, relative_file_name)
 
     -- git log -L741,751:'app/models/patients/patient.rb' --format='%C(auto)%h \t %as \t %C(green)%an -- %Creset %s'
     pickers

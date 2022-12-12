@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+cd $(git worktree list | grep dummy | cut -f 1 -d " ")
+selected_worktree=$(git worktree list | fzf | cut -f 1 -d " ")
+
+if [[ -z $selected_worktree ]]; then
+  return
+fi
+
+cd $selected_worktree

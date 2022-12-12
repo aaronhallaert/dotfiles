@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
                     ["/Users/aaronhallaert/Developer/nephroflow/nephroflow-api"] = {
                         ruby = {
                             test_tool = "rspec",
-                            test_cmd = "run_api.sh -ni -- spring rspec %file",
+                            test_cmd = "run_api.sh -ni -- bundle exec rspec %file",
                         },
                     },
                     ["/Users/aaronhallaert/Developer/nephroflow/link"] = {

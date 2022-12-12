@@ -22,6 +22,19 @@ if ! [ -f "$folder/$selected_file_name" ]; then
     exit 1
 fi
 
-docker exec -it selfweb pkill -9 ruby
+run_api.sh -- 'pkill -9 ruby'
+echo "Dropping database"
+dropdb -h localhost -U postgres nephroflow_development 
+wait
+echo "Creating database"
+createdb -h localhost -U postgres nephroflow_development 
+wait
 echo "Restoring database from" $selected_file_name
-dropdb -h localhost -U postgres nephroflow_development && createdb -h localhost -U postgres nephroflow_development && pg_restore -h localhost -U postgres -d nephroflow_development --no-owner --role=postgres $folder/$selected_file_name
+pg_restore -h localhost -U postgres -d nephroflow_development --no-owner --role=postgres $folder/$selected_file_name
+wait
+
+# reseeding patients
+echo "Reseeding patients and users for avatars to work"
+run_api.sh -- 'rake dev:seed:200_patients'
+# run_api.sh -- 'rake dev:seed:100_users'
+
