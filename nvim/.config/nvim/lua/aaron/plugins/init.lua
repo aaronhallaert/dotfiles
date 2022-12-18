@@ -21,12 +21,6 @@ return require("packer").startup(function(use)
     require("aaron.plugins.search-info-helpers").setup({ use = use })
 
     use({
-        "creativenull/efmls-configs-nvim",
-
-        requires = { "neovim/nvim-lspconfig" },
-    })
-
-    use({
         "aaronhallaert/continuous-testing.nvim",
         config = function()
             require("continuous-testing").setup({
@@ -60,7 +54,7 @@ return require("packer").startup(function(use)
         end,
     })
 
-    use("vim-scripts/ReplaceWithRegister")
+    use("aduros/ai.vim")
 
     -- Code Extensions
     use("voldikss/vim-floaterm")

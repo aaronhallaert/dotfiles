@@ -11,9 +11,9 @@ nnoremap <leader>z :lua require('telekasten').panel()<CR>
 
 "--------------------------- TELEKASTEN ---------------------------
 "- gruvbox
-highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-highlight! tkBrackets ctermfg=gray guifg=gray
-highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
-highlight! link CalNavi CalRuler
-highlight! tkTagSep ctermfg=gray guifg=gray
-highlight! tkTag ctermfg=175 guifg=#d3869B
+" highlight! tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+" highlight! tkBrackets ctermfg=gray guifg=gray
+" highlight! tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
+" highlight! link CalNavi CalRuler
+" highlight! tkTagSep ctermfg=gray guifg=gray
+" highlight! tkTag ctermfg=175 guifg=#d3869B

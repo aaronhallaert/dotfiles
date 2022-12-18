@@ -53,5 +53,7 @@ M.setup = function(config)
             })
         end,
     })
+
+    use("vim-scripts/ReplaceWithRegister")
 end
 return M
