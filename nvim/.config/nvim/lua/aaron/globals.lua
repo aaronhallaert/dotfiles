@@ -128,6 +128,8 @@ vim.api.nvim_set_keymap(
 -- yank to clipboard
 vim.api.nvim_set_keymap("n", "<leader>y", '"+y', { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>Y", '"+Y', { noremap = true })
+-- paste from clipboard
 vim.api.nvim_set_keymap("n", "<leader>p", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>p", '"+p', { noremap = true })
 
@@ -140,6 +142,9 @@ vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 vim.api.nvim_set_keymap("n", "n", "nzz", { noremap = true })
 vim.api.nvim_set_keymap("n", "N", "Nzz", { noremap = true })
 vim.api.nvim_set_keymap("n", "J", "mzJ`z", { noremap = true })
+
+vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- autocomplete parenthesis Latex
 vim.api.nvim_create_augroup("LatexParenthesis", { clear = true })
@@ -181,3 +186,5 @@ vim.api.nvim_create_autocmd("VimResized", {
         vim.api.nvim_command("FloatermUpdate")
     end,
 })
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

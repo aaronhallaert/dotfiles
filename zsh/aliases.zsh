@@ -23,3 +23,5 @@ alias dcr="docker-compose run --rm --service-ports"
 alias cowt="source git_cowt"
 alias chwt="source git_chwt"
 alias rmwt="source git_rmwt"
+
+alias ta="tmux attach"
