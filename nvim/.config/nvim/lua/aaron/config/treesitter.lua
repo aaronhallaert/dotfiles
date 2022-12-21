@@ -1,5 +1,13 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = "all",
+    ensure_installed = {
+        "rust",
+        "lua",
+        "ruby",
+        "typescript",
+        "javascript",
+        "org",
+        "vim",
+    },
     ignore_install = { "phpdoc", "php" },
     highlight = {
         enable = true, -- false will disable the whole extension

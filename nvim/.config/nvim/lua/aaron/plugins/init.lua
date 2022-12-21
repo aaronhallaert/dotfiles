@@ -1,26 +1,35 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost init.lua ReloadConfig
-  augroup end
-]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        "https://github.com/folke/lazy.nvim.git",
+        lazypath,
+    })
+end
+vim.opt.runtimepath:prepend(lazypath)
 
-return require("packer").startup(function(use)
-    -- Packer itself
-    use("wbthomason/packer.nvim")
+local plugins = {}
 
-    require("aaron.plugins.vim-improvements").setup({ use = use })
-    require("aaron.plugins.colorschemes").setup({ use = use })
-    require("aaron.plugins.style").setup({ use = use })
-    require("aaron.plugins.icons").setup({ use = use })
-    require("aaron.plugins.git").setup({ use = use })
-    require("aaron.plugins.intellisense").setup({ use = use })
-    require("aaron.plugins.navigation").setup({ use = use })
-    require("aaron.plugins.completions").setup({ use = use })
-    require("aaron.plugins.workspaces").setup({ use = use })
-    require("aaron.plugins.search-info-helpers").setup({ use = use })
+table.insert(plugins, require("aaron.plugins.vim-improvements"))
+table.insert(plugins, require("aaron.plugins.colorschemes"))
+table.insert(plugins, require("aaron.plugins.style"))
+table.insert(plugins, require("aaron.plugins.icons"))
+table.insert(plugins, require("aaron.plugins.git"))
+table.insert(plugins, require("aaron.plugins.intellisense"))
+table.insert(plugins, require("aaron.plugins.navigation"))
+table.insert(plugins, require("aaron.plugins.completions"))
+table.insert(plugins, require("aaron.plugins.workspaces"))
+table.insert(plugins, require("aaron.plugins.search-info-helpers"))
 
-    use({
+table.insert(plugins, {
+    "aduros/ai.vim",
+    "voldikss/vim-floaterm",
+    "nvim-lua/plenary.nvim",
+    "nvim-lua/popup.nvim",
+    {
         "aaronhallaert/continuous-testing.nvim",
         config = function()
             require("continuous-testing").setup({
@@ -52,12 +61,7 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
+})
 
-    use("aduros/ai.vim")
-
-    -- Code Extensions
-    use("voldikss/vim-floaterm")
-    use("nvim-lua/plenary.nvim")
-    use("nvim-lua/popup.nvim")
-end)
+require("lazy").setup(plugins)

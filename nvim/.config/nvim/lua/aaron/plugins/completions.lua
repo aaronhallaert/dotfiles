@@ -1,34 +1,30 @@
-local M = {}
-M.setup = function(config)
-    local use = config.use
-    use({
+return {
+    {
         "hrsh7th/nvim-cmp",
         config = function()
             require("aaron.config.cmp") -- completion
         end,
-    })
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-emoji")
-    use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/cmp-path")
-    use("saadparwaiz1/cmp_luasnip")
-    -- use 'quangnguyen30192/cmp-nvim-ultisnips'
-    -- use 'Sirver/ultisnips'
-    use({
+    },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-emoji",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-path",
+    "saadparwaiz1/cmp_luasnip",
+    -- 'quangnguyen30192/cmp-nvim-ultisnips',
+    -- 'Sirver/ultisnips',
+    {
         "L3MON4D3/LuaSnip",
         config = function()
             require("aaron.config.luasnip")
         end,
-    })
+    },
 
-    use({
+    {
         "rafamadriz/friendly-snippets",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip").filetype_extend("ruby", { "rails" })
         end,
-    })
-end
-
-return M
+    },
+}

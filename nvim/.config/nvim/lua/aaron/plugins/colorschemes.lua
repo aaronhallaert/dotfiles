@@ -1,14 +1,29 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost colorschemes.lua ReloadNvim
-  augroup end
-]])
+return {
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        config = function()
+            local flavour = "macchiato" -- mocha, macchiato, frappe, latte
+            require("catppuccin").setup({
+                flavour = flavour,
+            })
+            vim.api.nvim_command("colorscheme catppuccin-" .. flavour)
 
-local M = {}
-M.setup = function(config)
-    local use = config.use
-
+            vim.api.nvim_command("hi OctoEditable guibg=#303446")
+            vim.api.nvim_command(
+                "hi OctoGreenFloat guifg=#238636 guibg=#303446"
+            )
+            vim.api.nvim_command("hi OctoRedFloat guifg=#da3633 guibg=#303446")
+            vim.api.nvim_command(
+                "hi OctoPurpleFloat guifg=#6f42c1 guibg=#303446"
+            )
+            vim.api.nvim_command(
+                "hi OctoYellowFloat guifg=#d3c846 guibg=#303446"
+            )
+            vim.api.nvim_command("hi OctoBlueFloat guifg=#58a6ff guibg=#303446")
+            vim.api.nvim_command("hi OctoGreyFloat guifg=#2a254c guibg=#303446")
+        end,
+    },
     -- use {
     --     'sam4llis/nvim-tundra',
     --     config = function()
@@ -85,41 +100,4 @@ M.setup = function(config)
     --         vim.api.nvim_command("colorscheme catppuccin")
     --     end
     -- }
-    use({
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-            local flavour = "macchiato" -- mocha, macchiato, frappe, latte
-            require("catppuccin").setup({
-                flavour = flavour,
-            })
-            vim.api.nvim_command("colorscheme catppuccin-" .. flavour)
-
-            vim.api.nvim_command("hi OctoEditable guibg=#303446")
-            vim.api.nvim_command(
-                "hi OctoGreenFloat guifg=#238636 guibg=#303446"
-            )
-            vim.api.nvim_command("hi OctoRedFloat guifg=#da3633 guibg=#303446")
-            vim.api.nvim_command(
-                "hi OctoPurpleFloat guifg=#6f42c1 guibg=#303446"
-            )
-            vim.api.nvim_command(
-                "hi OctoYellowFloat guifg=#d3c846 guibg=#303446"
-            )
-            vim.api.nvim_command("hi OctoBlueFloat guifg=#58a6ff guibg=#303446")
-            vim.api.nvim_command("hi OctoGreyFloat guifg=#2a254c guibg=#303446")
-        end,
-    })
-
-    -- use({
-    --     "sainnhe/gruvbox-material",
-    --     commit = "9e30f2095e8ab80c68901e7aaee186cd3aa97168",
-    --     config = function()
-    --         vim.api.nvim_command("colorscheme gruvbox-material")
-    --         vim.opt.background = "dark"
-    --         vim.g.gruvbox_material_background = "hard"
-    --         vim.g.gruvbox_material_better_performance = 0
-    --     end,
-    -- })
-end
-return M
+}

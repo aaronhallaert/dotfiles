@@ -1,28 +1,25 @@
-local M = {}
-M.setup = function(config)
-    local use = config.use
+return {
+    "tpope/vim-obsession",
 
-    use("tpope/vim-obsession")
+    "renerocksai/calendar-vim",
 
-    use("renerocksai/calendar-vim")
-
-    use({
+    {
         "renerocksai/telekasten.nvim",
         config = function()
             require("aaron.config.telekasten") -- markdown notes
         end,
-    })
+    },
 
-    -- use({
+    -- {
     --     "mhinz/vim-startify",
     --     config = function()
     --         require("aaron.config.startify")
     --     end,
-    -- })
+    -- },
 
-    use({
+    {
         "goolord/alpha-nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "kyazdani42/nvim-web-devicons" },
         config = function()
             require("alpha").setup(require("alpha.themes.startify").config)
             local status_ok, alpha = pcall(require, "alpha")
@@ -108,6 +105,5 @@ M.setup = function(config)
             dashboard.opts.opts.noautocmd = true
             alpha.setup(dashboard.opts)
         end,
-    })
-end
-return M
+    },
+}

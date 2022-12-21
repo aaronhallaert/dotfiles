@@ -1,38 +1,36 @@
-local M = {}
-M.setup = function(config)
-    local use = config.use
+return {
     -- replace capital with capital, normal with normal
-    use("tpope/vim-abolish")
+    "tpope/vim-abolish",
 
     -- change surrounding
-    use({
+    {
         "kylechui/nvim-surround",
         config = function()
             require("aaron.config.surround") -- change encapsulating syntax
         end,
-    })
+    },
     -- expand surround e.g. cin) = clear inside next parenthesis
-    use("wellle/targets.vim")
+    "wellle/targets.vim",
 
-    use("mbbill/undotree")
-    use("godlygeek/tabular")
-    use({
+    "mbbill/undotree",
+    "godlygeek/tabular",
+    {
         "mizlan/iswap.nvim",
         config = function()
             require("aaron.config.iswap") -- swapping arguments
         end,
-    })
-    use("anuvyklack/nvim-keymap-amend")
-    use({
+    },
+    "anuvyklack/nvim-keymap-amend",
+    {
         "windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup()
         end,
-    })
-    use("vim-utils/vim-man")
-    use("lambdalisue/suda.vim")
-    use("svermeulen/vimpeccable")
-    use({
+    },
+    "vim-utils/vim-man",
+    "lambdalisue/suda.vim",
+    "svermeulen/vimpeccable",
+    {
         "smjonas/live-command.nvim",
         config = function()
             require("live-command").setup({
@@ -52,8 +50,7 @@ M.setup = function(config)
                 },
             })
         end,
-    })
+    },
 
-    use("vim-scripts/ReplaceWithRegister")
-end
-return M
+    "vim-scripts/ReplaceWithRegister",
+}

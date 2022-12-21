@@ -1,15 +1,10 @@
-local M = {}
-
-M.setup = function(config)
-    local use = config.use
-    use("voldikss/vim-translator")
-    use("ron89/thesaurus_query.vim")
-    use("rhysd/vim-grammarous")
-    use("inkarkat/vim-ingo-library")
-    use("inkarkat/vim-SpellCheck")
-    use("RishabhRD/popfix")
-    use("RishabhRD/nvim-cheat.sh")
-    use("dbeniamine/cheat.sh-vim")
-end
-
-return M
+return {
+    "voldikss/vim-translator",
+    "ron89/thesaurus_query.vim",
+    "rhysd/vim-grammarous",
+    "inkarkat/vim-ingo-library",
+    "inkarkat/vim-SpellCheck",
+    "RishabhRD/popfix",
+    "RishabhRD/nvim-cheat.sh",
+    "dbeniamine/cheat.sh-vim",
+}
