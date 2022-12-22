@@ -1,30 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "--single-branch",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath,
-    })
-end
-vim.opt.runtimepath:prepend(lazypath)
-
-local plugins = {}
-
-table.insert(plugins, require("aaron.plugins.vim-improvements"))
-table.insert(plugins, require("aaron.plugins.colorschemes"))
-table.insert(plugins, require("aaron.plugins.style"))
-table.insert(plugins, require("aaron.plugins.icons"))
-table.insert(plugins, require("aaron.plugins.git"))
-table.insert(plugins, require("aaron.plugins.intellisense"))
-table.insert(plugins, require("aaron.plugins.navigation"))
-table.insert(plugins, require("aaron.plugins.completions"))
-table.insert(plugins, require("aaron.plugins.workspaces"))
-table.insert(plugins, require("aaron.plugins.search-info-helpers"))
-
-table.insert(plugins, {
+return {
     "aduros/ai.vim",
     "voldikss/vim-floaterm",
     "nvim-lua/plenary.nvim",
@@ -63,15 +37,4 @@ table.insert(plugins, {
             })
         end,
     },
-})
-
-local options = {
-    dev = {
-        -- directory where you store your local plugin projects
-        path = "~/Developer/personal/",
-        ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-        patterns = {}, -- For example {"folke"}
-    },
 }
-
-require("lazy").setup(plugins, options)
