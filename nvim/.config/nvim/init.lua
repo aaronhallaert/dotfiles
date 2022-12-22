@@ -25,7 +25,6 @@ vim.cmd("source" .. nvimrc .. "/plugin/vimtex-config.vim")
 vim.cmd("source" .. nvimrc .. "/plugin/translator-config.vim")
 vim.cmd("source" .. nvimrc .. "/plugin/thesaurus-config.vim")
 vim.cmd("source" .. nvimrc .. "/plugin/grammarous-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/quickscope-config.vim") -- highlight on f/F
 
 -- GIT/GITHUB
 -- require('aaron.config.litee')

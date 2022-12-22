@@ -12,7 +12,7 @@ alias git commit="git commit -S"
 alias wip="git commit -m 'wip' --no-verify"
 alias nipro="tmux_nipro.sh"
 alias nipro-repo="cd ~/Developer/nephroflow/\$(ls ~/Developer/nephroflow/ | fzf)"
-alias plugins="cd ~/.local/share/nvim/site/pack/packer/start/"
+alias plugins="cd ~/.local/share/nvim/lazy/"
 
 
 

@@ -45,9 +45,6 @@ return {
     -- outline file
     "simrat39/symbols-outline.nvim",
 
-    -- highlight f and F characters
-    "unblevable/quick-scope",
-
     -- show buffers in tabs
     {
         "akinsho/bufferline.nvim",

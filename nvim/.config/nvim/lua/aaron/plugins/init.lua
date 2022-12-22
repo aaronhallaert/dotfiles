@@ -31,6 +31,7 @@ table.insert(plugins, {
     "nvim-lua/popup.nvim",
     {
         "aaronhallaert/continuous-testing.nvim",
+        dev = true,
         config = function()
             require("continuous-testing").setup({
                 notify = true, -- The default is false
@@ -64,4 +65,13 @@ table.insert(plugins, {
     },
 })
 
-require("lazy").setup(plugins)
+local options = {
+    dev = {
+        -- directory where you store your local plugin projects
+        path = "~/Developer/personal/",
+        ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+        patterns = {}, -- For example {"folke"}
+    },
+}
+
+require("lazy").setup(plugins, options)

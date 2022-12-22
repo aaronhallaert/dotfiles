@@ -28,6 +28,7 @@ return {
     -- code understanding (highlight...)
     {
         "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
         config = function()
             require("aaron.config.treesitter")
         end,
