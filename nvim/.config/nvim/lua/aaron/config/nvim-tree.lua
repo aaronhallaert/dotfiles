@@ -37,6 +37,9 @@ nvim_tree.setup({
             "docker-compose.yml",
         },
     },
+    notify = {
+        threshold = vim.log.levels.ERROR,
+    },
     view = {
         width = 40,
         hide_root_folder = false,
