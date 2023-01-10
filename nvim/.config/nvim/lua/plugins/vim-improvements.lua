@@ -1,6 +1,12 @@
 return {
     -- replace capital with capital, normal with normal
     "tpope/vim-abolish",
+    {
+        "mrjones2014/legendary.nvim",
+        config = function()
+            require("aaron.config.legendary")
+        end,
+    },
 
     -- change surrounding
     {

@@ -28,9 +28,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = { "*.js", "*.jsx", "*.tsx", "*.ts" },
 })
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
     require("aaron.lsp.signature")
-    require("aaron.lsp.keymaps").setup({ bufnr = bufnr })
+    -- require("aaron.lsp.keymaps").setup({ bufnr = bufnr })
     require("aaron.lsp.ui").lspHighlights({ client = client })
 end
 
@@ -152,10 +152,10 @@ nvim_lsp.tsserver.setup({
     init_options = { documentFormatting = false },
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
-    on_attach = function(client, bufnr)
+    on_attach = function(client, _)
         -- client.resolved_capabilities.document_formatting = false
         client.server_capabilities.document_formatting = false
-        on_attach(client, bufnr)
+        on_attach(client)
     end,
 })
 nvim_lsp.stylelint_lsp.setup({
