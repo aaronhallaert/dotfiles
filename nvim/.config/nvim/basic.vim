@@ -70,7 +70,6 @@ onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 " set foldmethod=syntax
 " let g:markdown_folding=1
 " autocmd BufEnter * silent! lcd %:p:h
-" let g:startify_change_to_dir = 1
 
 " Cursor settings
 if &term =~ '^xterm'

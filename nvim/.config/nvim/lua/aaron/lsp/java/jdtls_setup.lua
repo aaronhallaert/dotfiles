@@ -293,13 +293,15 @@ function M.setup()
     if vim.fn.has("macunix") then
         config.cmd = {
             vim.fn.expand(
-                "$HOME/dotfiles/nvim/.config/nvim/lua/java-lsp-mac.sh"
+                "$HOME/dotfiles/nvim/.config/nvim/lua/aaron/lsp/java/java-lsp-mac.sh"
             ),
             workspace_folder,
         }
     else
         config.cmd = {
-            vim.fn.expand("$HOME/dotfiles/nvim/.config/nvim/lua/java-lsp.sh"),
+            vim.fn.expand(
+                "$HOME/dotfiles/nvim/.config/nvim/lua/aaron/lsp/java/java-lsp.sh"
+            ),
             workspace_folder,
         }
     end

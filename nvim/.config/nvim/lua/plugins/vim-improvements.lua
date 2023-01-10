@@ -12,7 +12,7 @@ return {
     {
         "kylechui/nvim-surround",
         config = function()
-            require("aaron.config.surround") -- change encapsulating syntax
+            require("nvim-surround").setup({})
         end,
     },
     -- expand surround e.g. cin) = clear inside next parenthesis

@@ -19,7 +19,7 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("aaron.config.mason")
+            require("mason").setup()
         end,
     },
     -- lsp for Java
@@ -55,7 +55,7 @@ return {
     {
         "numToStr/Comment.nvim",
         config = function()
-            require("aaron.config.comment") -- commenting code
+            require("Comment").setup()
         end,
     },
 

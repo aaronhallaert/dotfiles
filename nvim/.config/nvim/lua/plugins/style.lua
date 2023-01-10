@@ -3,7 +3,15 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("aaron.config.indent_blankline") -- indent characters
+            vim.opt.list = true
+            vim.opt.listchars:append("eol:")
+
+            require("indent_blankline").setup({
+                use_treesitter = true,
+                char_list = { "|", "¦", "┆", "┊" },
+                show_current_context = false,
+                show_current_context_start = false,
+            })
         end,
     },
 
@@ -11,7 +19,7 @@ return {
     {
         "declancm/cinnamon.nvim",
         config = function()
-            require("aaron.config.cinnamon") -- smooth scrolling
+            require("cinnamon").setup()
         end,
     },
 
@@ -42,7 +50,8 @@ return {
     {
         "anuvyklack/pretty-fold.nvim",
         config = function()
-            require("aaron.config.pretty-fold") -- folding
+            require("pretty-fold").setup()
+            require("fold-preview").setup()
         end,
     },
     "anuvyklack/fold-preview.nvim",

@@ -32,32 +32,30 @@ require("lazy").setup("plugins", options)
 
 ---------------------
 
--- require("aaron.config.integrated_tests")
-
 -- Extra file functionality
-vim.cmd("source" .. nvimrc .. "/plugin/suda-config.vim") -- edit in sudo mode
-vim.cmd("source" .. nvimrc .. "/plugin/undotree-config.vim") -- keep track of file history
-vim.cmd("source" .. nvimrc .. "/plugin/netrw-config.vim") -- project view
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/suda-config.vim") -- edit in sudo mode
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/undotree-config.vim") -- keep track of file history
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/netrw-config.vim") -- project view
 
 -- General Nvim Tools
-vim.cmd("source" .. nvimrc .. "/plugin/markdownprev-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/floaterm-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/vimwiki-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/markdownprev-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/floaterm-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimwiki-config.vim")
 
 -- Code Tools
-vim.cmd("source" .. nvimrc .. "/plugin/vimspector-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimspector-config.vim")
 
 -- Text writing
-vim.cmd("source" .. nvimrc .. "/plugin/spell/spell-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/vimtex-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/translator-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/thesaurus-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/grammarous-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/spell/spell-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimtex-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/translator-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/thesaurus-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/grammarous-config.vim")
 
 -- GIT/GITHUB
 -- require('aaron.config.litee')
-vim.cmd("source" .. nvimrc .. "/plugin/gitblame-config.vim")
-vim.cmd("source" .. nvimrc .. "/plugin/gitfugitive-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/gitblame-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/gitfugitive-config.vim")
 
 -- EXTRA FUNCTIONALITY
-vim.cmd("source" .. nvimrc .. "/plugin/telekasten-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/telekasten-config.vim")

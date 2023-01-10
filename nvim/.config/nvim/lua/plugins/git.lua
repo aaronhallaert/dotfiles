@@ -11,7 +11,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("aaron.config.gitsigns")
+            require("gitsigns").setup()
         end,
     },
     "tpope/vim-fugitive",

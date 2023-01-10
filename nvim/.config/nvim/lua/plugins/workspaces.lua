@@ -21,12 +21,6 @@ return {
         end,
     },
 
-    -- {
-    --     "mhinz/vim-startify",
-    --     config = function()
-    --         require("aaron.config.startify")
-    --     end,
-    -- },
     {
         "goolord/alpha-nvim",
         opts = function()
@@ -47,7 +41,7 @@ return {
                 dashboard.button(
                     "r",
                     " " .. " Recent files",
-                    ":Telescope oldfiles <CR>"
+                    ":lua require('telescope.builtin').oldfiles{only_cwd=true}<CR>"
                 ),
                 dashboard.button(
                     "g",
