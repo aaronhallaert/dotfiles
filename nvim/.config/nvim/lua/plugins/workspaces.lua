@@ -1,3 +1,14 @@
+local header = {
+    [[]],
+    [[]],
+    [[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
+    [[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
+    [[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
+    [[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
+    [[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
+    [[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
+}
+
 return {
     "tpope/vim-obsession",
 
@@ -16,94 +27,92 @@ return {
     --         require("aaron.config.startify")
     --     end,
     -- },
-
     {
         "goolord/alpha-nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require("alpha").setup(require("alpha.themes.startify").config)
-            local status_ok, alpha = pcall(require, "alpha")
-            if not status_ok then
-                return
-            end
-
+        opts = function()
             local dashboard = require("alpha.themes.dashboard")
-            dashboard.section.header.val = {
-                [[]],
-                [[]],
-                [[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
-                [[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
-                [[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
-                [[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
-                [[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
-                [[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
-            }
 
+            dashboard.section.header.val = header
             dashboard.section.buttons.val = {
                 dashboard.button(
-                    "d",
-                    "  Daily Note",
-                    ":Telekasten goto_today<CR>"
-                ),
-                dashboard.button(
                     "f",
-                    "  Find File",
-                    ":Telescope find_files<CR>"
+                    " " .. " Find file",
+                    ":Telescope find_files <CR>"
                 ),
                 dashboard.button(
-                    "e",
-                    "  New file",
+                    "n",
+                    " " .. " New file",
                     ":ene <BAR> startinsert <CR>"
                 ),
                 dashboard.button(
                     "r",
-                    "  Recent Files",
-                    ":lua require('telescope.builtin').oldfiles{only_cwd=true}<CR>"
+                    " " .. " Recent files",
+                    ":Telescope oldfiles <CR>"
+                ),
+                dashboard.button(
+                    "g",
+                    " " .. " Find text",
+                    ":Telescope live_grep <CR>"
+                ),
+                dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
+                dashboard.button(
+                    "s",
+                    "勒" .. " Restore Session",
+                    [[:lua require("persistence").load() <cr>]]
                 ),
                 dashboard.button(
                     "t",
-                    "  Find Text",
-                    ":Telescope live_grep<CR>"
+                    "♠" .. " Themes",
+                    ":Telescope colorscheme<CR>"
                 ),
-                dashboard.button(
-                    "c",
-                    "  Configuration",
-                    ":cd ~/dotfiles | e $MYVIMRC<CR>"
-                ),
-                dashboard.button("u", "  Update Plugins", ":PackerSync<CR>"),
                 dashboard.button(
                     "p",
-                    "🪐  Planets?",
+                    "Ꭾ" .. " Planets",
                     ":Telescope planets<CR>"
                 ),
-                dashboard.button("q", "  Quit Neovim", ":qa!<CR>"),
+                dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
+                dashboard.button("q", " " .. " Quit", ":qa<CR>"),
             }
 
-            local footer = function()
-                local version = " "
-                    .. vim.version().major
-                    .. "."
-                    .. vim.version().minor
-                    .. "."
-                    .. vim.version().patch
-                if packer_plugins == nil then
-                    return version
-                else
-                    local total_plugins = "   "
-                        .. #vim.tbl_keys(packer_plugins)
-                        .. " Plugins"
-                    return version .. total_plugins
-                end
+            for _, button in ipairs(dashboard.section.buttons.val) do
+                button.opts.hl = "AlphaButtons"
+                button.opts.hl_shortcut = "AlphaShortcut"
+            end
+            dashboard.section.footer.opts.hl = "Type"
+            dashboard.section.header.opts.hl = "AlphaHeader"
+            dashboard.section.buttons.opts.hl = "AlphaButtons"
+            dashboard.opts.layout[1].val = 8
+            return dashboard
+        end,
+        config = function(_, dashboard)
+            vim.b.miniindentscope_disable = true
+
+            -- close Lazy and re-open when the dashboard is ready
+            if vim.o.filetype == "lazy" then
+                vim.cmd.close()
+                vim.api.nvim_create_autocmd("User", {
+                    pattern = "AlphaReady",
+                    callback = function()
+                        require("lazy").show()
+                    end,
+                })
             end
 
-            dashboard.section.footer.val = footer()
+            require("alpha").setup(dashboard.opts)
 
-            dashboard.section.footer.opts.hl = "AlphaFooter"
-            dashboard.section.header.opts.hl = "AlphaHeader"
-            dashboard.section.buttons.opts.hl = "AlphaButton"
-
-            dashboard.opts.opts.noautocmd = true
-            alpha.setup(dashboard.opts)
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "LazyVimStarted",
+                callback = function()
+                    local stats = require("lazy").stats()
+                    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                    dashboard.section.footer.val = "⚡ Neovim loaded "
+                        .. stats.count
+                        .. " plugins in "
+                        .. ms
+                        .. "ms"
+                    pcall(vim.cmd.AlphaRedraw)
+                end,
+            })
         end,
     },
 }
