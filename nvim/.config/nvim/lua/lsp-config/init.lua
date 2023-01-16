@@ -2,8 +2,8 @@ local nvim_lsp = require("lspconfig")
 local configs = require("lspconfig.configs")
 local util = require("lspconfig.util")
 
-require("aaron.lsp.ui").init()
-require("aaron.lsp.handlers")
+require("lsp-config.ui").init()
+require("lsp-config.handlers")
 
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -29,15 +29,15 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 local on_attach = function(client)
-    require("aaron.lsp.signature")
+    require("lsp-config.signature")
     -- require("aaron.lsp.keymaps").setup({ bufnr = bufnr })
-    require("aaron.lsp.ui").lspHighlights({ client = client })
+    require("lsp-config.ui").lspHighlights({ client = client })
 end
 
 local capabilities_with_completion =
-    require("cmp_nvim_lsp").default_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-    )
+require("cmp_nvim_lsp").default_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+)
 
 local efmls = require("efmls-configs")
 efmls.init({
@@ -50,8 +50,8 @@ efmls.init({
     },
 })
 
-local markdownlint = require("aaron.config.efm.markdownlint")
-local jq = require("aaron.config.efm.jq")
+local markdownlint = require("plugins.config.efm.markdownlint")
+local jq = require("plugins.config.efm.jq")
 local stylua = require("efmls-configs.formatters.stylua")
 -- local luacheck = require("efmls-configs.linters.luacheck")
 local prettier = require("efmls-configs.formatters.prettier")

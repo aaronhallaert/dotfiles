@@ -34,7 +34,7 @@ pg_restore -h localhost -U postgres -d nephroflow_development --no-owner --role=
 wait
 
 # reseeding patients
-echo "Reseeding patients and users for avatars to work"
-run_api.sh -- 'rake dev:seed:200_patients'
+# echo "Reseeding patients and users for avatars to work"
+# run_api.sh -- 'rake dev:seed:200_patients'
 # run_api.sh -- 'rake dev:seed:100_users'
 

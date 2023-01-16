@@ -3,7 +3,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require("aaron.lsp")
+            require("lsp-config")
         end,
     },
 
@@ -30,7 +30,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            require("aaron.config.treesitter")
+            require("plugins.config.treesitter")
         end,
         lazy = false,
     },
@@ -39,7 +39,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         config = function()
-            require("aaron.config.treesitter-context") -- fix context on first line
+            require("plugins.config.treesitter-context") -- fix context on first line
         end,
     },
     "nvim-treesitter/playground",
@@ -77,7 +77,7 @@ return {
     "lervag/vimtex",
     {
         "iamcco/markdown-preview.nvim",
-        run = function()
+        build = function()
             vim.fn["mkdp#util#install"]()
         end,
     },
@@ -96,5 +96,11 @@ return {
     {
         "creativenull/efmls-configs-nvim",
         dependencies = { "neovim/nvim-lspconfig" },
+    },
+    {
+        "echasnovski/mini.nvim",
+        config = function()
+            require("mini.doc").setup()
+        end,
     },
 }

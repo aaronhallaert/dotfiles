@@ -33,14 +33,10 @@ require("lazy").setup("plugins", options)
 ---------------------
 
 -- Extra file functionality
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/suda-config.vim") -- edit in sudo mode
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/undotree-config.vim") -- keep track of file history
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/netrw-config.vim") -- project view
 
 -- General Nvim Tools
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/markdownprev-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/floaterm-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimwiki-config.vim")
 
 -- Code Tools
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimspector-config.vim")
@@ -49,13 +45,7 @@ vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimspector-config.vim")
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/spell/spell-config.vim")
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimtex-config.vim")
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/translator-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/thesaurus-config.vim")
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/grammarous-config.vim")
-
--- GIT/GITHUB
--- require('aaron.config.litee')
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/gitblame-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/gitfugitive-config.vim")
 
 -- EXTRA FUNCTIONALITY
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/telekasten-config.vim")

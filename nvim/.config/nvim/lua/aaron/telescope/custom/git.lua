@@ -37,7 +37,7 @@ end
 -- returns the base branch of a branch (where fork_point is)
 local function base_branch()
     local command =
-        'git show-branch | sed "s/].*//" | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*\\[//"'
+    'git show-branch | sed "s/].*//" | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*\\[//"'
     -- local command =
     --     'git show-branch | sed "s/].*//" | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*[//"'
     local handle = io.popen(command)
@@ -156,7 +156,7 @@ local function diff_file_log()
     local s_start = vim.fn.getpos("'<")[2]
     local s_end = vim.fn.getpos("'>")[2]
     local location =
-        string.format("-L%d,%d:%s", s_start, s_end, relative_file_name)
+    string.format("-L%d,%d:%s", s_start, s_end, relative_file_name)
 
     -- git log -L741,751:'app/models/patients/patient.rb' --format='%C(auto)%h \t %as \t %C(green)%an -- %Creset %s'
     pickers
@@ -218,7 +218,7 @@ local function diff_file_commit()
     local pickers = require("telescope.pickers")
     local sorters = require("telescope.sorters")
     local finders = require("telescope.finders")
-    local file_name = vim.fn.expand("%")
+    local file_name = vim.fn.expand("%:~:.")
 
     pickers
         .new({
@@ -258,7 +258,7 @@ local function diff_file_commit()
                     local commit_log = selection.value
                     local commit_hash = get_commit_hash(commit_log)
                     local old_file_name =
-                        determine_file_name(commit_hash, file_name)
+                    determine_file_name(commit_hash, file_name)
 
                     open_diff_view(commit_hash, old_file_name)
                 end)
@@ -280,7 +280,7 @@ local function diff_file_commit()
                     vim.api.nvim_win_set_height(0, 30) -- set the window height
                     local buf_handle = vim.api.nvim_win_get_buf(0) -- get the buffer handler
                     local jobID =
-                        vim.api.nvim_call_function("termopen", { "$SHELL" })
+                    vim.api.nvim_call_function("termopen", { "$SHELL" })
                     vim.api.nvim_buf_set_option(buf_handle, "modifiable", true)
                     vim.api.nvim_chan_send(jobID, table.concat(command, " "))
                 end)
@@ -387,6 +387,7 @@ function N.merge(M)
             })
             :find()
     end
+
     return M
 end
 

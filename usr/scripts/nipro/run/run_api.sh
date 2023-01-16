@@ -39,7 +39,7 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
 else
     if $INTERACTIVE; then
         echo "Attach and run interactively"
-        docker exec -it $NAME $COMMAND
+        if [ -t 1 ] ; then docker exec -it $NAME $COMMAND; else docker exec -i $NAME $COMMAND; fi
     else
         echo "Attach and run non-interactively"
         docker exec $NAME $COMMAND

@@ -180,12 +180,6 @@ vim.api.nvim_set_keymap(
 -- nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 vim.api.nvim_create_augroup("UpdateWinSize", { clear = true })
-vim.api.nvim_create_autocmd("VimResized", {
-    callback = function()
-        vim.api.nvim_command(":wincmd =")
-        vim.api.nvim_command("FloatermUpdate")
-    end,
-})
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 

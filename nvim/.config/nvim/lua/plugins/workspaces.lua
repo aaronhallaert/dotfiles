@@ -17,7 +17,7 @@ return {
     {
         "renerocksai/telekasten.nvim",
         config = function()
-            require("aaron.config.telekasten") -- markdown notes
+            require("plugins.config.telekasten") -- markdown notes
         end,
     },
 

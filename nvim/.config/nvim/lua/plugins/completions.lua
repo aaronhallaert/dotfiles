@@ -2,7 +2,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         config = function()
-            require("aaron.config.cmp") -- completion
+            require("plugins.config.cmp") -- completion
         end,
     },
     "hrsh7th/cmp-nvim-lsp",
@@ -16,7 +16,7 @@ return {
     {
         "L3MON4D3/LuaSnip",
         config = function()
-            require("aaron.config.luasnip")
+            require("plugins.config.luasnip")
         end,
     },
 

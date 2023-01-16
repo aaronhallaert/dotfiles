@@ -4,7 +4,7 @@ return {
     {
         "mrjones2014/legendary.nvim",
         config = function()
-            require("aaron.config.legendary")
+            require("plugins.config.legendary")
         end,
     },
 
@@ -18,12 +18,22 @@ return {
     -- expand surround e.g. cin) = clear inside next parenthesis
     "wellle/targets.vim",
 
-    "mbbill/undotree",
+    {
+        "mbbill/undotree",
+        config = function()
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>u",
+                ":UndotreeShow<CR>",
+                { noremap = true }
+            )
+        end,
+    },
     "godlygeek/tabular",
     {
         "mizlan/iswap.nvim",
         config = function()
-            require("aaron.config.iswap") -- swapping arguments
+            require("plugins.config.iswap") -- swapping arguments
         end,
     },
     "anuvyklack/nvim-keymap-amend",
@@ -34,7 +44,12 @@ return {
         end,
     },
     "vim-utils/vim-man",
-    "lambdalisue/suda.vim",
+    {
+        "lambdalisue/suda.vim",
+        config = function()
+            vim.g.suda_smart_edit = 1
+        end,
+    },
     "svermeulen/vimpeccable",
     {
         "smjonas/live-command.nvim",
