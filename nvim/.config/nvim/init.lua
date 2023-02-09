@@ -20,15 +20,39 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local options = {
+    spec = {
+        { import = "plugins" },
+    },
+    performance = {
+        cache = {
+            enabled = true,
+            -- disable_events = {},
+        },
+        defaults = { lazy = true },
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "rplugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
     dev = {
         -- directory where you store your local plugin projects
         path = "~/Developer/personal/",
         ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
         patterns = {}, -- For example {"folke"}
     },
+    debug = false,
 }
 
-require("lazy").setup("plugins", options)
+require("lazy").setup(options)
 
 ---------------------
 
@@ -37,9 +61,6 @@ vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/netrw-config.vim") -- project
 
 -- General Nvim Tools
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/markdownprev-config.vim")
-
--- Code Tools
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimspector-config.vim")
 
 -- Text writing
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/spell/spell-config.vim")

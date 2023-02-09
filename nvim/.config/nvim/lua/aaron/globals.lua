@@ -5,7 +5,7 @@ vim.o.undofile = true
 
 vim.g.material_style = "darker"
 
-vim.o.syntax = true
+-- vim.o.syntax = false
 vim.o.eol = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -26,9 +26,9 @@ vim.api.nvim_command("set colorcolumn=80")
 vim.api.nvim_command("highlight ColorColumn ctermbg=grey guibg=black")
 vim.o.ignorecase = true
 -- see Treesitter config for folding
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldlevel = 99
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldlevel = 99
 -- vim.o.clipboard = "unnamedplus"
 
 vim.api.nvim_command("filetype plugin indent on")
@@ -41,28 +41,28 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 
 --- Tab exception
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    group = vim.api.nvim_create_augroup("indentation", { clear = true }),
-    callback = function()
-        -- Override ftplugin indentation settings
-        vim.opt_local.expandtab = vim.opt_global.expandtab:get()
-        vim.opt_local.listchars = vim.opt_global.listchars:get()
-        vim.opt_local.shiftwidth = vim.opt_global.shiftwidth:get()
-        vim.opt_local.softtabstop = vim.opt_global.softtabstop:get()
-        vim.opt_local.tabstop = vim.opt_global.tabstop:get()
-        -- Run guess-indent
-        if vim.fn.exists(":GuessIndent") == 2 then
-            vim.api.nvim_command("silent GuessIndent auto_cmd")
-        end
-        -- Set whitespace characters for indentation with spaces
-        if vim.opt_local.expandtab:get() then
-            -- Switch to leadmultispace in Neovim 0.8
-            local ms = ":" .. string.rep(" ", vim.opt_local.tabstop:get() - 1)
-            vim.opt_local.listchars:remove("lead")
-            vim.opt_local.listchars:append({ multispace = ms })
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--     group = vim.api.nvim_create_augroup("indentation", { clear = true }),
+--     callback = function()
+--         -- Override ftplugin indentation settings
+--         vim.opt_local.expandtab = vim.opt_global.expandtab:get()
+--         vim.opt_local.listchars = vim.opt_global.listchars:get()
+--         vim.opt_local.shiftwidth = vim.opt_global.shiftwidth:get()
+--         vim.opt_local.softtabstop = vim.opt_global.softtabstop:get()
+--         vim.opt_local.tabstop = vim.opt_global.tabstop:get()
+--         -- Run guess-indent
+--         if vim.fn.exists(":GuessIndent") == 2 then
+--             vim.api.nvim_command("silent GuessIndent auto_cmd")
+--         end
+--         -- Set whitespace characters for indentation with spaces
+--         if vim.opt_local.expandtab:get() then
+--             -- Switch to leadmultispace in Neovim 0.8
+--             local ms = ":" .. string.rep(" ", vim.opt_local.tabstop:get() - 1)
+--             vim.opt_local.listchars:remove("lead")
+--             vim.opt_local.listchars:append({ multispace = ms })
+--         end
+--     end,
+-- })
 
 -- MAPPINGS
 -- Going to normal mode

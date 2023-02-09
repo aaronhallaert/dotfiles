@@ -16,6 +16,7 @@ return {
     -- telescope pickers
     {
         "nvim-telescope/telescope.nvim",
+        event = "VeryLazy",
         tag = "0.1.0",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -102,17 +103,10 @@ return {
     "simrat39/symbols-outline.nvim",
 
     -- show buffers in tabs
-    {
-        "akinsho/bufferline.nvim",
-        config = function()
-            require("bufferline").setup()
-
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>hf",
-                ":BufferLinePick<CR>",
-                { noremap = true }
-            )
-        end,
-    },
+    -- {
+    --     "akinsho/bufferline.nvim",
+    --     config = function()
+    --         -- require("bufferline").setup()
+    --     end,
+    -- },
 }

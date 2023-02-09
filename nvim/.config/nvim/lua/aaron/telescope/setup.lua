@@ -45,12 +45,20 @@ telescope.setup({
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         mappings = {
             i = {
+                ["<c-e>"] = function(prompt_bufnr)
+                    require("telescope.actions").select_default(prompt_bufnr)
+                    require("telescope.builtin").resume()
+                end,
                 ["<c-s>"] = actions.send_selected_to_qflist
                     + actions.open_qflist,
                 ["<c-a>"] = actions.add_selected_to_qflist
                     + actions.open_qflist,
             },
             n = {
+                ["<c-e>"] = function(prompt_bufnr)
+                    require("telescope.actions").select_default(prompt_bufnr)
+                    require("telescope.builtin").resume()
+                end,
                 ["<c-s>"] = actions.send_selected_to_qflist
                     + actions.open_qflist,
                 ["<c-a>"] = actions.add_selected_to_qflist

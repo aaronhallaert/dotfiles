@@ -42,6 +42,11 @@ return {
     {
         "aaronhallaert/continuous-testing.nvim",
         dev = true,
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "rcarriga/nvim-notify",
+        },
         config = function()
             require("continuous-testing").setup({
                 notify = true,

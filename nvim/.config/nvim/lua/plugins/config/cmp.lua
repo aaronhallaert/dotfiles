@@ -29,6 +29,10 @@ local kind_icons = {
 }
 
 cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
@@ -65,7 +69,7 @@ cmp.setup({
         format = function(entry, vim_item)
             -- Kind icons
             vim_item.kind =
-                string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             -- Source
             vim_item.menu = ({
                 buffer = "[Buffer]",

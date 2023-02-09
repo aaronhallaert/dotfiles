@@ -18,6 +18,7 @@ function M.search_dotfiles_words()
 end
 
 local finders = require("telescope.finders")
+local previewers = require("telescope.previewers")
 local pickers = require("telescope.pickers")
 local make_entry = require("telescope.make_entry")
 local flatten = vim.tbl_flatten
@@ -45,6 +46,7 @@ function M.find_all_patterns()
         .new({
             prompt_title = "Files containing all words",
             finder = live_grepper,
+            previewer = previewers.vim_buffer_cat.new({ title = "File" }),
         })
         :find()
 end

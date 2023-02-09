@@ -15,13 +15,14 @@ return {
     -- 'Sirver/ultisnips',
     {
         "L3MON4D3/LuaSnip",
+        event = "VeryLazy",
         config = function()
             require("plugins.config.luasnip")
         end,
     },
-
     {
         "rafamadriz/friendly-snippets",
+        event = "VeryLazy",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip").filetype_extend("ruby", { "rails" })

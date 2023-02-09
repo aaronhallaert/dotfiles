@@ -1,13 +1,6 @@
 return {
     -- replace capital with capital, normal with normal
     "tpope/vim-abolish",
-    {
-        "mrjones2014/legendary.nvim",
-        config = function()
-            require("plugins.config.legendary")
-        end,
-    },
-
     -- change surrounding
     {
         "kylechui/nvim-surround",
@@ -32,6 +25,7 @@ return {
     "godlygeek/tabular",
     {
         "mizlan/iswap.nvim",
+        event = "VeryLazy",
         config = function()
             require("plugins.config.iswap") -- swapping arguments
         end,
@@ -48,6 +42,12 @@ return {
         "lambdalisue/suda.vim",
         config = function()
             vim.g.suda_smart_edit = 1
+        end,
+    },
+    {
+        "echasnovski/mini.ai",
+        config = function()
+            require("mini.ai").setup()
         end,
     },
     "svermeulen/vimpeccable",

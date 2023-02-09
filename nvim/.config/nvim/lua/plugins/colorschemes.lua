@@ -2,6 +2,8 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
+        lazy = false,
+        priority = 1000,
         config = function()
             local flavour = "macchiato" -- mocha, macchiato, frappe, latte
             require("catppuccin").setup({
@@ -24,6 +26,18 @@ return {
             vim.api.nvim_command("hi OctoGreyFloat guifg=#2a254c guibg=#303446")
         end,
     },
+    -- {
+    --
+    --     "AlexvZyl/nordic.nvim",
+    --     config = function()
+    --         require("nordic").load()
+    --         require("nordic").setup({
+    --             telescope = {
+    --                 style = "flat",
+    --             },
+    --         })
+    --     end,
+    -- },
     -- use {
     --     'sam4llis/nvim-tundra',
     --     config = function()

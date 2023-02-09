@@ -3,6 +3,11 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "pwntester/octo.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+            "nvim-telescope/telescope.nvim",
+        },
         config = function()
             require("plugins.config.octo")
         end,
@@ -21,6 +26,7 @@ return {
     },
     {
         "tpope/vim-fugitive",
+        lazy = true,
         config = function()
             vim.api.nvim_set_keymap(
                 "n",
@@ -56,14 +62,25 @@ return {
             )
         end,
     },
-    "tpope/vim-rhubarb",
+    {
+        "tpope/vim-rhubarb",
+        dependencies = {
+            "tpope/vim-fugitive",
+        },
+    },
+
     {
         "ThePrimeagen/git-worktree.nvim",
+        lazy = true,
         config = function()
             require("plugins.config.git-worktree")
         end,
     },
 
     -- use 'github/copilot.vim'
-    { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" },
+    {
+        "sindrets/diffview.nvim",
+        lazy = true,
+        dependencies = "nvim-lua/plenary.nvim",
+    },
 }

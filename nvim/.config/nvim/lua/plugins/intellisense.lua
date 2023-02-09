@@ -23,7 +23,10 @@ return {
         end,
     },
     -- lsp for Java
-    "mfussenegger/nvim-jdtls",
+    {
+        "mfussenegger/nvim-jdtls",
+        lazy = true,
+    },
 
     -- code understanding (highlight...)
     {
@@ -34,15 +37,28 @@ return {
         end,
         lazy = false,
     },
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
 
     {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("plugins.config.treesitter-context") -- fix context on first line
-        end,
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            -- "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        opts = {
+            -- configurations go here
+            show_dirname = false,
+        },
     },
-    "nvim-treesitter/playground",
+    {
+        "nvim-treesitter/playground",
+        event = "VeryLazy",
+    },
 
     {
         "j-hui/fidget.nvim",
@@ -58,9 +74,41 @@ return {
             require("Comment").setup()
         end,
     },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    debounce = 75,
+                    keymap = {
+                        accept = "<C-l>",
+                        accept_word = false,
+                        accept_line = false,
+                        next = "<C-n>",
+                        prev = "<C-p>",
+                        dismiss = "<C-j>",
+                    },
+                },
+            })
+        end,
+    },
 
     --------------- DEBUGGING -------------------
-    "puremourning/vimspector",
+    -- {
+    --     "puremourning/vimspector",
+    --     config = function()
+    --         local nvimrc = "$HOME/dotfiles/nvim/.config/nvim"
+    --         vim.cmd(
+    --             "source"
+    --             .. nvimrc
+    --             .. "/lua/legacy-plugins/vimspector-config.vim"
+    --         )
+    --     end,
+    -- },
 
     -- Lua
     {

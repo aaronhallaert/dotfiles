@@ -3,6 +3,8 @@ require("nvim-treesitter.configs").setup({
         "rust",
         "lua",
         "ruby",
+        "tsx",
+        "bash",
         "typescript",
         "javascript",
         "org",
@@ -50,5 +52,16 @@ require("nvim-treesitter.configs").setup({
     },
 })
 
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd("syntax off")
+
+vim.api.nvim_create_autocmd(
+    { "BufEnter" },
+    { pattern = { "*" }, command = "normal zxzR" }
+)
+
+vim.api.nvim_create_autocmd(
+    { "BufReadPost,FileReadPost" },
+    { pattern = { "*" }, command = "normal zR" }
+)
