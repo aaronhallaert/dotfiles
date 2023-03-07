@@ -54,6 +54,7 @@ require("nvim-treesitter.configs").setup({
 
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
 -- vim.cmd("syntax on")
 
 -- vim.api.nvim_create_autocmd(
