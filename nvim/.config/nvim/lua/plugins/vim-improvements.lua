@@ -74,4 +74,11 @@ return {
     },
 
     "vim-scripts/ReplaceWithRegister",
+
+    {
+        "cbochs/portal.nvim",
+        config = function()
+            require("portal").setup()
+        end,
+    },
 }

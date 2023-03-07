@@ -1,4 +1,3 @@
-local navic = require("nvim-navic")
 local colors = {
     red = "#cdd6f4",
     grey = "#181825",

@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 
 JAR="$HOME/Library/java/jdt-language-server-1.7.0-202112161541/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar"
 

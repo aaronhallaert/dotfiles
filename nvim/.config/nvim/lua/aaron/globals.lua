@@ -118,12 +118,6 @@ vim.api.nvim_set_keymap(
     ":Rg binding.break<CR>",
     { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
-    "n",
-    "fiw",
-    ":Rg <C-R><C-W><CR>",
-    { noremap = true, silent = true }
-)
 
 -- yank to clipboard
 vim.api.nvim_set_keymap("n", "<leader>y", '"+y', { noremap = true })

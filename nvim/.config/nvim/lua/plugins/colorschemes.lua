@@ -6,26 +6,52 @@ return {
         priority = 1000,
         config = function()
             local flavour = "macchiato" -- mocha, macchiato, frappe, latte
-            require("catppuccin").setup({
-                flavour = flavour,
-            })
             vim.api.nvim_command("colorscheme catppuccin-" .. flavour)
 
-            vim.api.nvim_command("hi OctoEditable guibg=#303446")
-            vim.api.nvim_command(
-                "hi OctoGreenFloat guifg=#238636 guibg=#303446"
-            )
-            vim.api.nvim_command("hi OctoRedFloat guifg=#da3633 guibg=#303446")
-            vim.api.nvim_command(
-                "hi OctoPurpleFloat guifg=#6f42c1 guibg=#303446"
-            )
-            vim.api.nvim_command(
-                "hi OctoYellowFloat guifg=#d3c846 guibg=#303446"
-            )
-            vim.api.nvim_command("hi OctoBlueFloat guifg=#58a6ff guibg=#303446")
-            vim.api.nvim_command("hi OctoGreyFloat guifg=#2a254c guibg=#303446")
+            require("catppuccin").setup({
+                flavour = flavour,
+                highlight_overrides = {
+                    all = function()
+                        return {
+                            OctoEditable = { bg = "#303449" },
+                            OctoGreenFloat = { fg = "#238636", bg = "#303446" },
+                            OctoRedFloat = { fg = "#da3633", bg = "#303446" },
+                            OctoPurpleFloat = { fg = "#6f42c1", bg = "#303446" },
+                            OctoYellowFloat = { fg = "#d3c846", bg = "#303446" },
+                            OctoBlueFloat = { fg = "#58a6ff", bg = "#303446" },
+                            OctoGreyFloat = { fg = "#2a254c", bg = "#303446" },
+                            TelescopePromptBorder = { fg = "#C4CBED" },
+                            TelescopeResultsBorder = { fg = "#C4CBED" },
+                            TelescopePreviewBorder = { fg = "#C4CBED" },
+                        }
+                    end,
+                },
+            })
         end,
     },
+    -- {
+    --     "sainnhe/gruvbox-material",
+    --     -- commit = "9e30f2095e8ab80c68901e7aaee186cd3aa97168",
+    --     config = function()
+    --         -- vim.api.nvim_command("colorscheme gruvbox-material")
+    --         vim.opt.background = "dark"
+    --         vim.g.gruvbox_material_background = "hard"
+    --         vim.g.gruvbox_material_better_performance = 0
+    --         -- vim.api.nvim_command("hi OctoEditable guibg=#3c3836 guifg=#fbf1c7")
+    --         -- vim.api.nvim_command(
+    --         --     "hi OctoGreenFloat guifg=#b8bb26 guibg=#3c3836"
+    --         -- )
+    --         -- vim.api.nvim_command("hi OctoRedFloat guifg=#fb4934 guibg=#3c3836")
+    --         -- vim.api.nvim_command(
+    --         --     "hi OctoPurpleFloat guifg=#d3869b guibg=#3c3836"
+    --         -- )
+    --         -- vim.api.nvim_command(
+    --         --     "hi OctoYellowFloat guifg=#fabd2f guibg=#3c3836"
+    --         -- )
+    --         -- vim.api.nvim_command("hi OctoBlueFloat guifg=#83a598 guibg=#3c3836")
+    --         -- vim.api.nvim_command("hi OctoGreyFloat guifg=#928374 guibg=#3c3836")
+    --     end,
+    -- },
     -- {
     --
     --     "AlexvZyl/nordic.nvim",

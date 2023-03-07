@@ -26,6 +26,24 @@ local git_log_entry_maker = function(entry)
     }
 end
 
+M.git_log_grepper_on_content = function()
+    return finders.new_job(function(prompt)
+        local command = {
+            "git",
+            "log",
+            "--format=%C(auto)%h %as %C(green)%an _ %Creset %s",
+            "-S",
+        }
+        if prompt and prompt ~= "" then
+            table.insert(command, prompt)
+        else
+            table.insert(command, " ")
+        end
+
+        return vim.tbl_flatten(command)
+    end, git_log_entry_maker)
+end
+
 M.git_log_grepper_on_location = function(filename, start_line, end_line)
     local location = string.format("-L%d,%d:%s", start_line, end_line, filename)
 

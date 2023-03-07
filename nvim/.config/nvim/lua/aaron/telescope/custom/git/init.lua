@@ -154,6 +154,51 @@ local function diff_file_log()
         :find()
 end
 
+local function search_git_log()
+    -- local file_name = vim.fn.expand("%")
+    -- local relative_file_name = vim.fn.expand("%:~:.")
+
+    -- git log -L741,751:'app/models/patients/patient.rb' --format='%C(auto)%h \t %as \t %C(green)%an _ %Creset %s'
+    pickers
+        .new({
+            results_title = "Search git log",
+            finder = gu.git_log_grepper_on_content(),
+            -- finder = finders.new_oneshot_job({'git', 'log', location}),
+            previewer = previewers.new_termopen_previewer({
+                get_command = function(entry)
+                    local commit_hash = entry.opts.commit_hash
+                    return {
+                        "git",
+                        "diff",
+                        string.format("%s~", commit_hash),
+                        commit_hash,
+                    }
+                end,
+            }),
+            -- sorter = sorters.highlighter_only(),
+            attach_mappings = function(_, map)
+                map("i", "<CR>", function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    local commit_hash = selection.opts.commit_hash
+
+                    gu.open_diff_view(commit_hash)
+                end)
+                map("i", "<C-o>", function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+
+                    vim.api.nvim_command(
+                        ":GBrowse " .. selection.opts.commit_hash
+                    )
+                end)
+
+                return true
+            end,
+        })
+        :find()
+end
+
 -- Opens a Telescope window with a list of git commits which changed the current file (renames included)
 --
 -- <CR> Opens a diff of the current file with the selected commit
@@ -267,21 +312,22 @@ local function checkout_reflog()
         :find()
 end
 
-local function map_item(tbl, f)
-    local t = {}
-    for k, v in pairs(tbl) do
-        t[k] = f(v)
-    end
-    return t
-end
-
 local git_functions = {
+    { value = "Find in log", func = search_git_log },
     { value = "Diff file with branch", func = diff_file_branch },
     { value = "Diff file with previous commit", func = diff_file_commit },
     { value = "Diff file with line history", func = diff_file_log },
     { value = "Checkout from reflog", func = checkout_reflog },
     { value = "Show changes on branch", func = changed_on_branch },
 }
+
+local function map_item(git_functions_table, f)
+    local t = {}
+    for k, v in pairs(git_functions_table) do
+        t[k] = f(v)
+    end
+    return t
+end
 
 local function execute_git_function(value)
     for _, v in pairs(git_functions) do

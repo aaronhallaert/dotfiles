@@ -70,3 +70,10 @@ vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/grammarous-config.vim")
 
 -- EXTRA FUNCTIONALITY
 vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/telekasten-config.vim")
+
+vim.cmd([[
+augroup jdtls_lsp
+    au!
+    au FileType java lua require('lsp-config.java.jdtls_setup').setup()
+augroup END
+]])

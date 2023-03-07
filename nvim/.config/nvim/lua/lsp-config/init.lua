@@ -139,7 +139,7 @@ nvim_lsp.rust_analyzer.setup({
     },
 })
 
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities_with_completion,
     init_options = { documentFormatting = false },

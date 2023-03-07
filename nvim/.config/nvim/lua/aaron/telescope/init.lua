@@ -4,7 +4,7 @@ function M.search_dotfiles()
         hidden = true,
         prompt_prefix = " ⚙  ",
         prompt_title = "< dotfiles >",
-        cwd = "$HOME/dotfiles/nvim/.config/nvim",
+        cwd = "$HOME/dotfiles",
     })
 end
 
@@ -13,7 +13,7 @@ function M.search_dotfiles_words()
         find_command = "rg",
         prompt_prefix = " ⚙  ",
         prompt_title = "< dotfiles words >",
-        cwd = "$HOME/dotfiles/nvim/.config/nvim",
+        cwd = "$HOME/dotfiles",
     })
 end
 
@@ -53,10 +53,18 @@ end
 
 function M.search_gitwords()
     require("telescope.builtin").live_grep({
-        find_command = "rg",
+        find_command = "rg --vimgrep",
         prompt_prefix = "   ",
         prompt_title = "< project words >",
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+    })
+end
+
+function M.search_string_under_cursor()
+    require("telescope.builtin").grep_string({
+        find_command = "rg",
+        prompt_prefix = "   ",
+        prompt_title = "< word under cursor >",
     })
 end
 
@@ -71,7 +79,7 @@ function M.search_gitwords_not_hidden()
         },
         find_command = "rg",
         prompt_prefix = "   ",
-        prompt_title = "< project words >",
+        prompt_title = "< project words without hidden files >",
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
     })
 end
@@ -80,13 +88,19 @@ function M.find_registers()
     require("telescope.builtin").registers()
 end
 
-function M.search_git_files()
-    require("telescope.builtin").git_files({
-        find_command = "rg",
-        hidden = true,
+function M.search_project_files()
+    require("telescope.builtin").find_files({
         prompt_prefix = "   ",
+        hidden = true,
         prompt_title = "< project files >",
     })
+    -- Fallback on git_files
+    -- require("telescope.builtin").git_files({
+    --     find_command = "rg",
+    --     hidden = true,
+    --     prompt_prefix = "   ",
+    --     prompt_title = "< project files >",
+    -- })
 end
 
 function M.search_recent_files()

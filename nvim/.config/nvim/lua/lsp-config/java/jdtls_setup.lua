@@ -196,7 +196,7 @@ function M.setup()
           autocmd!
           autocmd BufWritePost *.java FormatWrite
         augroup end
-      ]],
+      ]]     ,
             true
         )
 
@@ -215,7 +215,7 @@ function M.setup()
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
           augroup END
-      ]],
+      ]]     ,
             false
         )
     end
@@ -330,7 +330,7 @@ function M.setup()
     -- end
 
     local extendedClientCapabilities =
-        require("jdtls").extendedClientCapabilities
+    require("jdtls").extendedClientCapabilities
     extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
     config.init_options = {
         -- bundles = bundles;
@@ -361,7 +361,7 @@ function M.setup()
                 attach_mappings = function(prompt_bufnr)
                     actions.goto_file_selection_edit:replace(function()
                         local selection =
-                            actions.get_selected_entry(prompt_bufnr)
+                        actions.get_selected_entry(prompt_bufnr)
                         actions.close(prompt_bufnr)
 
                         cb(selection.value)
