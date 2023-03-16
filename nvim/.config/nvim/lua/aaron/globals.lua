@@ -176,6 +176,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_create_augroup("UpdateWinSize", { clear = true })
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-l>", "<cmd>silent e #<CR>")
 
 vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()

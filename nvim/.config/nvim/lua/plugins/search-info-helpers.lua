@@ -13,9 +13,9 @@ return {
         end,
     },
     "rhysd/vim-grammarous",
-    "inkarkat/vim-ingo-library",
+    -- "inkarkat/vim-ingo-library",
     -- "inkarkat/vim-SpellCheck",
-    "RishabhRD/popfix",
+    -- "RishabhRD/popfix",
     "RishabhRD/nvim-cheat.sh",
     "dbeniamine/cheat.sh-vim",
 }

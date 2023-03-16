@@ -81,4 +81,12 @@ return {
             require("portal").setup()
         end,
     },
+
+    {
+        "Wansmer/treesj",
+        dependencies = { "nvim-treesitter" },
+        config = function()
+            require("treesj").setup({})
+        end,
+    },
 }
