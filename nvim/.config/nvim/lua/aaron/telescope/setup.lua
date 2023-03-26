@@ -32,7 +32,7 @@ telescope.setup({
         },
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        file_ignore_patterns = { "node_modules", "packer_compiled", ".git" },
+        file_ignore_patterns = { "node_modules", "packer_compiled", "%.git" },
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,

@@ -14,6 +14,10 @@ function M.search_dotfiles_words()
         prompt_prefix = " ⚙  ",
         prompt_title = "< dotfiles words >",
         cwd = "$HOME/dotfiles",
+        attach_mappings = function(_, map)
+            map("i", "<c-g>", require("telescope.actions").to_fuzzy_refine)
+            return true
+        end,
     })
 end
 
@@ -55,8 +59,12 @@ function M.search_gitwords()
     require("telescope.builtin").live_grep({
         find_command = "rg --vimgrep",
         prompt_prefix = "   ",
-        prompt_title = "< project words >",
+        prompt_title = "Live Grep",
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+        attach_mappings = function(_, map)
+            map("i", "<c-g>", require("telescope.actions").to_fuzzy_refine)
+            return true
+        end,
     })
 end
 
@@ -81,6 +89,10 @@ function M.search_gitwords_not_hidden()
         prompt_prefix = "   ",
         prompt_title = "< project words without hidden files >",
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+        attach_mappings = function(_, map)
+            map("i", "<c-g>", require("telescope.actions").to_fuzzy_refine)
+            return true
+        end,
     })
 end
 
