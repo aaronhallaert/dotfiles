@@ -86,7 +86,9 @@ return {
         "Wansmer/treesj",
         dependencies = { "nvim-treesitter" },
         config = function()
-            require("treesj").setup({})
+            require("treesj").setup({
+                use_default_keymaps = false,
+            })
         end,
     },
 }
