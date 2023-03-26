@@ -72,7 +72,7 @@ return {
                     ["/Users/aaronhallaert/Developer/nephroflow/link"] = {
                         ruby = {
                             test_tool = "rspec",
-                            test_cmd = "docker exec channel_host bundle exec rspec %file",
+                            test_cmd = "docker-compose run --rm link bundle exec rspec %file",
                         },
                     },
                 },
