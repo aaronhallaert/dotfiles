@@ -238,44 +238,26 @@ local M = {
 
             vim.api.nvim_set_keymap(
                 "n",
-                "g1",
+                "gj",
                 ':lua require("harpoon.ui").nav_file(1)<CR>',
                 { noremap = true }
             )
             vim.api.nvim_set_keymap(
                 "n",
-                "g2",
+                "gk",
                 ':lua require("harpoon.ui").nav_file(2)<CR>',
                 { noremap = true }
             )
             vim.api.nvim_set_keymap(
                 "n",
-                "g3",
+                "gl",
                 ':lua require("harpoon.ui").nav_file(3)<CR>',
                 { noremap = true }
             )
             vim.api.nvim_set_keymap(
                 "n",
-                "g4",
+                "g;",
                 ':lua require("harpoon.ui").nav_file(4)<CR>',
-                { noremap = true }
-            )
-            vim.api.nvim_set_keymap(
-                "n",
-                "g5",
-                ':lua require("harpoon.ui").nav_file(5)<CR>',
-                { noremap = true }
-            )
-            vim.api.nvim_set_keymap(
-                "n",
-                "g6",
-                ':lua require("harpoon.ui").nav_file(6)<CR>',
-                { noremap = true }
-            )
-            vim.api.nvim_set_keymap(
-                "n",
-                "g7",
-                ':lua require("harpoon.ui").nav_file(7)<CR>',
                 { noremap = true }
             )
 
