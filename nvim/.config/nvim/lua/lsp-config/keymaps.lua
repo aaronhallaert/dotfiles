@@ -7,6 +7,7 @@ M.setup = function(config)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
+
     -- Mappings/shortcuts.
     local opts = { noremap = true, silent = true }
 
@@ -65,12 +66,12 @@ M.setup = function(config)
         "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
         opts
     )
-    buf_set_keymap(
-        "n",
-        "<space>q",
-        "<cmd>lua vim.diagnostic.setloclist()<CR>",
-        opts
-    )
+    -- buf_set_keymap(
+    --     "n",
+    --     "<space>q",
+    --     "<cmd>lua vim.diagnostic.setloclist()<CR>",
+    --     opts
+    -- )
     buf_set_keymap(
         "n",
         "<localleader>ca",
