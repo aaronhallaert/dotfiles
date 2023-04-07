@@ -23,6 +23,7 @@ return {
         dependencies = {
             "tpope/vim-fugitive",
             "nvim-telescope/telescope.nvim",
+            -- "sindrets/diffview.nvim",
         },
     },
     {
@@ -104,7 +105,7 @@ return {
     -- use 'github/copilot.vim'
     {
         "sindrets/diffview.nvim",
-        lazy = true,
+        enabled = true,
         dependencies = "nvim-lua/plenary.nvim",
     },
 }

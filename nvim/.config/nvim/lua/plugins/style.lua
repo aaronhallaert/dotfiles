@@ -18,7 +18,9 @@ return {
         "Bekaboo/deadcolumn.nvim",
         config = function()
             require("deadcolumn").setup({
-                threshold = 0.75,
+                blending = {
+                    threshold = 0.75,
+                },
                 scope = "line",
                 modes = { "i", "ic", "ix", "R", "Rc", "Rx", "Rv", "Rvc", "Rvx" },
                 warning = {

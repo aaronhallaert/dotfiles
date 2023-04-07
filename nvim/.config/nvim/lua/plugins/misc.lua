@@ -1,6 +1,22 @@
 return {
     "aduros/ai.vim",
     {
+        "jackMort/ChatGPT.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("chatgpt").setup({
+                keymaps = {
+                    submit = "<C-s>",
+                },
+            })
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+    },
+    {
         "voldikss/vim-floaterm",
         config = function()
             vim.api.nvim_set_keymap(
@@ -28,6 +44,7 @@ return {
             vim.g.floaterm_width = 0.8
             vim.g.floaterm_height = 0.8
             vim.g.floaterm_wintitle = 0
+            vim.g.floaterm_autoclose = 1
 
             vim.api.nvim_create_autocmd("VimResized", {
                 callback = function()

@@ -1,0 +1,13 @@
+os:
+    editCommand: 'nvr'
+    editCommandTemplate: '{{editor}} -cc split -c "only" --remote-silent +{{line}} -- {{filename}}'
+promptToReturnFromSubprocess: false
+git:
+    commit:
+        signOff: true
+    merging:
+        args: "--no-ff"
+    pull:
+        mode: "ff-only"
+    log:
+        showSignature: true

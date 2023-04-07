@@ -26,8 +26,8 @@ telescope.setup({
                 results_width = 0.6,
             },
             vertical = { mirror = false },
-            width = 0.67,
-            height = 0.70,
+            width = 0.8,
+            height = 0.80,
             preview_cutoff = 120,
         },
         file_sorter = require("telescope.sorters").get_fzy_sorter,
@@ -74,6 +74,11 @@ telescope.setup({
             override_file_sorter = true,
         },
         ["ui-select"] = { require("telescope.themes").get_dropdown() },
+        advanced_git_search = {
+            git_flags = { "-c", "delta.side-by-side=false" },
+            git_diff_flags = {},
+            diff_plugin = "diffview",
+        },
     },
     pickers = {
         buffers = {

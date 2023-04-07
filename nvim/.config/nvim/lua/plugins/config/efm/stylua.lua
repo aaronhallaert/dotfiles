@@ -1,5 +1,5 @@
 return {
-    rootMarkers = { '.stylua.toml' },
-    formatCommand = "stylua --config-path ./.stylua.toml",
+    rootMarkers = { ".stylua.toml" },
+    formatCommand = "stylua --config-path .stylua.toml",
     formatStdin = true,
 }

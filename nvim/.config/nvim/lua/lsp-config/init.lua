@@ -145,7 +145,12 @@ nvim_lsp.lua_ls.setup({
     init_options = { documentFormatting = false },
     cmd = { "lua-language-server", "--stdio" },
     filetypes = { "lua" },
-    settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+    settings = {
+        Lua = {
+            format = { enable = false },
+            diagnostics = { globals = { "vim" } },
+        },
+    },
 })
 
 nvim_lsp.tsserver.setup({
