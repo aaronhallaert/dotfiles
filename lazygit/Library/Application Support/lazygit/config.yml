@@ -1,6 +1,6 @@
 os:
     editCommand: 'nvr'
-    editCommandTemplate: '{{editor}} -cc split -c "only" --remote-silent +{{line}} -- {{filename}}'
+    editCommandTemplate: '{{editor}} --servername /tmp/`tmux display-message -p "#S-#{window_index}-#I"` -cc split -c "only" --remote +{{line}} -- {{filename}}'
 promptToReturnFromSubprocess: false
 git:
     commit:
