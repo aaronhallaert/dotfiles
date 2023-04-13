@@ -41,6 +41,13 @@ return {
         "f-person/git-blame.nvim",
         config = function()
             vim.g.gitblame_date_format = "%r"
+
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>gb",
+                ":Git blame<CR>",
+                { noremap = true }
+            )
         end,
     },
     {
@@ -53,13 +60,6 @@ return {
         "tpope/vim-fugitive",
         lazy = true,
         config = function()
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>gb",
-                ":Git blame<CR>",
-                { noremap = true }
-            )
-
             vim.cmd([[
                 function! ShowCommit()
                     let baseCommit = system('git describe --all --contains ' . expand('<cword>'))

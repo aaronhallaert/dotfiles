@@ -11,17 +11,28 @@ return {
     -- expand surround e.g. cin) = clear inside next parenthesis
     "wellle/targets.vim",
 
-    {
-        "mbbill/undotree",
-        config = function()
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>u",
-                ":UndotreeShow<CR>",
-                { noremap = true }
-            )
-        end,
-    },
+    -- {
+    --     "mbbill/undotree",
+    --     config = function()
+    --         vim.api.nvim_set_keymap(
+    --             "n",
+    --             "<leader>u",
+    --             ":UndotreeShow<CR>",
+    --             { noremap = true }
+    --         )
+    --     end,
+    -- },
+    -- {
+    --     "nvim-telescope/telescope.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "debugloop/telescope-undo.nvim",
+    --     },
+    --     config = function()
+    --         require("telescope").load_extension("undo")
+    --         vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+    --     end,
+    -- },
     "godlygeek/tabular",
     {
         "mizlan/iswap.nvim",

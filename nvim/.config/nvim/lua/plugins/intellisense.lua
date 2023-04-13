@@ -6,6 +6,9 @@ return {
             require("lsp-config")
         end,
     },
+    {
+        "folke/neodev.nvim",
+    },
 
     -- diagnostic overview
     {

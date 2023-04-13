@@ -2,6 +2,7 @@ local nvim_lsp = require("lspconfig")
 local configs = require("lspconfig.configs")
 local util = require("lspconfig.util")
 
+require("neodev").setup()
 require("lsp-config.ui").init()
 require("lsp-config.handlers")
 
@@ -35,9 +36,9 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities_with_completion =
-require("cmp_nvim_lsp").default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
+    require("cmp_nvim_lsp").default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
 
 local efmls = require("efmls-configs")
 efmls.init({
@@ -149,6 +150,7 @@ nvim_lsp.lua_ls.setup({
         Lua = {
             format = { enable = false },
             diagnostics = { globals = { "vim" } },
+            workspace = { checkThirdParty = false },
         },
     },
 })
