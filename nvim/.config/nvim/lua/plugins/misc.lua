@@ -1,5 +1,4 @@
 return {
-    "aduros/ai.vim",
     {
         "voldikss/vim-floaterm",
         config = function()
