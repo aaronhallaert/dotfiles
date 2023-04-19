@@ -92,11 +92,14 @@ return {
 
     -- Lua
     {
-        "narutoxy/silicon.lua",
-        requires = { "nvim-lua/plenary.nvim" },
+        "krivahtoo/silicon.nvim",
         config = function()
-            require("silicon").setup({})
+            require("silicon").setup({
+                font = "JetBrainsMono Nerd Font=16",
+                theme = "Monokai Extended",
+            })
         end,
+        build = "./install.sh build",
     },
 
     -- {
