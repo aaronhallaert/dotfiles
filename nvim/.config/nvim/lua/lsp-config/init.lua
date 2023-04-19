@@ -65,7 +65,16 @@ efmls.setup({
     javascriptreact = { formatter = prettier },
     typescriptreact = { formatter = prettier },
     typescript = { formatter = prettier },
+    vue = { formatter = prettier },
     lua = { formatter = stylua },
+})
+
+nvim_lsp.volar.setup({
+    on_attach = on_attach,
+    cmd = { "vue-language-server", "--stdio" },
+    capabilities = capabilities_with_completion,
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    filetypes = { "vue" },
 })
 
 nvim_lsp.solargraph.setup({

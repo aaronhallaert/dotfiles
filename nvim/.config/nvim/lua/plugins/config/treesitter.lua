@@ -9,7 +9,6 @@ require("nvim-treesitter.configs").setup({
         "javascript",
         "org",
         "vim",
-        "help",
     },
     ignore_install = { "phpdoc", "php" },
     highlight = {

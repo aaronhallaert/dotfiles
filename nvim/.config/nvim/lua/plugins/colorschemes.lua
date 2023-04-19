@@ -1,4 +1,5 @@
 return {
+    "dundargoc/fakedonalds.nvim",
     {
         "catppuccin/nvim",
         name = "catppuccin",
