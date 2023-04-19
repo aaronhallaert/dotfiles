@@ -19,7 +19,14 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-plugins=(git)
+plugins+=(git)
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# plugins+=(zsh-vi-mode)
+# plugins+=(zsh-vi-search)
+
+autoload -U edit-command-line
+export EDITOR=nvim
+bindkey '\ev' edit-command-line
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,3 +92,4 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
+
