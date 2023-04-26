@@ -76,6 +76,7 @@ M.setup = function(config)
         "n",
         "<localleader>ca",
         "<cmd>lua vim.lsp.buf.code_action({ diagnostics = vim.lsp.diagnostic.get_line_diagnostics()})<CR>",
+        -- "<cmd>Lspsaga code_action<CR>",
         opts
     )
     buf_set_keymap("n", "<leader>is", "<Cmd>!eslint_d % --fix<CR>", opts)

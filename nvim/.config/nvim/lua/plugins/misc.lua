@@ -66,7 +66,7 @@ return {
                     ["/Users/aaronhallaert/Developer/nephroflow/nephroflow-api"] = {
                         ruby = {
                             test_tool = "rspec",
-                            test_cmd = "run_api.sh -- bundle exec rspec %file",
+                            test_cmd = "run_api -- bundle exec rspec %file",
                         },
                     },
                     ["/Users/aaronhallaert/Developer/nephroflow/link"] = {

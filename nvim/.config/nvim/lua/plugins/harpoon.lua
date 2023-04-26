@@ -31,15 +31,13 @@ local M = {
             vim.api.nvim_set_keymap(
                 "n",
                 "st1",
-                ':lua require("harpoon.term").sendCommand(1,1)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>'
-                ,
+                ':lua require("harpoon.term").sendCommand(1,1)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>',
                 { noremap = true }
             )
             vim.api.nvim_set_keymap(
                 "n",
                 "st2",
-                ':lua require("harpoon.term").sendCommand(1,2)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>'
-                ,
+                ':lua require("harpoon.term").sendCommand(1,2)<CR>:lua require("harpoon.term").gotoTerminal(1)<CR>i<CR><c-\\><c-n>',
                 { noremap = true }
             )
 
@@ -55,7 +53,7 @@ local M = {
                 require("harpoon.term").gotoTerminal(term)
             end
 
-            function _G.Get_test_command(--[[optional]] line)
+            function _G.Get_test_command(--[[optional]]line)
                 local test_file = vim.fn.getreg("%")
                 local test_line = vim.api.nvim_win_get_cursor(0)[1]
                 local test_position = test_file .. ":" .. test_line
@@ -72,10 +70,11 @@ local M = {
             end
 
             -- NEPHROFLOW/NEPHROFLOW API
-            if string.find(
-                vim.fn.getcwd(),
-                "/Users/aaronhallaert/Developer/nephroflow/nephroflow%-api"
-            )
+            if
+                string.find(
+                    vim.fn.getcwd(),
+                    "/Users/aaronhallaert/Developer/nephroflow/nephroflow%-api"
+                )
             then
                 function _G.GetQFTestCommands()
                     local result = ""
@@ -89,44 +88,44 @@ local M = {
                 vim.api.nvim_set_keymap(
                     "n",
                     "stf",
-                    ':lua RunCommandInTerminal("run_api.sh -- " .. Get_test_command(false))<CR>',
+                    ':lua RunCommandInTerminal("run_api -- " .. Get_test_command(false))<CR>',
                     { noremap = true }
                 )
                 vim.api.nvim_set_keymap(
                     "n",
                     "stl",
-                    ':lua RunCommandInTerminal("run_api.sh -- " .. Get_test_command(true))<CR>',
+                    ':lua RunCommandInTerminal("run_api -- " .. Get_test_command(true))<CR>',
                     { noremap = true }
                 )
                 vim.api.nvim_set_keymap(
                     "n",
                     "stt",
-                    ':lua RunCommandInTerminal("run_api.sh -- bundle exec rspec")<CR>',
+                    ':lua RunCommandInTerminal("run_api -- bundle exec rspec")<CR>',
                     { noremap = true }
                 )
                 vim.api.nvim_set_keymap(
                     "n",
                     "stq",
-                    ':lua RunCommandInTerminal("run_api.sh -- " .. GetQFTestCommands())<CR>',
+                    ':lua RunCommandInTerminal("run_api -- " .. GetQFTestCommands())<CR>',
                     { noremap = true }
                 )
 
                 vim.api.nvim_set_keymap(
                     "n",
                     "sts",
-                    ':lua RunCommandInTerminal("run_api.sh -- rails s", 2)<CR>',
+                    ':lua RunCommandInTerminal("run_api -- rails s", 2)<CR>',
                     { noremap = true }
                 )
                 vim.api.nvim_set_keymap(
                     "n",
                     "std",
-                    ':lua RunCommandInTerminal("run_api.sh -- pkill ruby && docker-compose down", 1)<CR>',
+                    ':lua RunCommandInTerminal("run_api -- pkill ruby && docker-compose down", 1)<CR>',
                     { noremap = true }
                 )
                 vim.api.nvim_set_keymap(
                     "n",
                     "stc",
-                    ':lua RunCommandInTerminal("run_api.sh -- bash", 2)<CR>',
+                    ':lua RunCommandInTerminal("run_api -- bash", 2)<CR>',
                     { noremap = true }
                 )
                 vim.api.nvim_set_keymap(
@@ -138,10 +137,11 @@ local M = {
             end
 
             -- NEPHROFLOW/ELECTRON_APPS
-            if string.find(
-                vim.fn.getcwd(),
-                "/Users/aaronhallaert/Developer/nephroflow/electron%-apps"
-            )
+            if
+                string.find(
+                    vim.fn.getcwd(),
+                    "/Users/aaronhallaert/Developer/nephroflow/electron%-apps"
+                )
             then
                 vim.api.nvim_set_keymap(
                     "n",
@@ -173,10 +173,11 @@ local M = {
             end
 
             -- NEPHROFLOW/LINK
-            if string.find(
-                vim.fn.getcwd(),
-                "/Users/aaronhallaert/Developer/nephroflow/link"
-            )
+            if
+                string.find(
+                    vim.fn.getcwd(),
+                    "/Users/aaronhallaert/Developer/nephroflow/link"
+                )
             then
                 function _G.RunSimulator()
                     require("harpoon.tmux").sendCommand(

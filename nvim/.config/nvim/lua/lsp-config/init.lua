@@ -165,12 +165,10 @@ nvim_lsp.lua_ls.setup({
 })
 
 nvim_lsp.tsserver.setup({
-    init_options = { documentFormatting = false },
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     on_attach = function(client, bufnr)
-        -- client.resolved_capabilities.document_formatting = false
-        client.server_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
         on_attach(client, bufnr)
     end,
 })

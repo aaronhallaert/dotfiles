@@ -38,7 +38,7 @@ Worktree.on_tree_change(function(op, _)
         op == (Worktree.Operations.Switch or Worktree.Operations.Create)
         and string.find(vim.fn.getcwd(), "nephroflow%-api")
     then
-        local command = "run_api.sh -ni -- pkill ruby"
+        local command = "run_api -n -- pkill ruby"
         local splitted_command = {}
         for str in command:gmatch("[^ ]+") do
             table.insert(splitted_command, str)

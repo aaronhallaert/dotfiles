@@ -77,7 +77,6 @@ alias luamake=/Users/aaronhallaert/Developer/programs/lua-language-server/3rd/lu
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 unsetopt AUTO_CD
 
 export GO111MODULE=on
@@ -93,3 +92,4 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
+eval "$(atuin init zsh)"

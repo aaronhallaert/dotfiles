@@ -5,11 +5,11 @@ local N = {}
 
 -- NIPRO COMMANDS
 local function start_api()
-    vim.fn.jobstart("tmux send-keys -t nipro:api.1 'run_api.sh -- rails s' C-m")
+    vim.fn.jobstart("tmux send-keys -t nipro:api.1 'run_api -- rails s' C-m")
 end
 
 local function open_api()
-    vim.fn.jobstart("tmux send-keys -t nipro:api.1 'run_api.sh -- bash' C-m")
+    vim.fn.jobstart("tmux send-keys -t nipro:api.1 'run_api -- bash' C-m")
 end
 
 local function stop_api()
@@ -32,7 +32,7 @@ end
 local function migrate_api_database()
     vim.fn.jobstart("tmux send-keys -t nipro:api.1 C-c")
     vim.fn.jobstart(
-        "tmux send-keys -t api -t 1 'run_api.sh -- rails db:migrate' C-m"
+        "tmux send-keys -t api -t 1 'run_api -- rails db:migrate' C-m"
     )
 end
 

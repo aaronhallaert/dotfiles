@@ -167,12 +167,12 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>f",
-    ":e <cfile><CR>",
-    { noremap = true, silent = true }
-)
+-- vim.api.nvim_set_keymap(
+--     "n",
+--     "<leader>f",
+--     ":e <cfile><CR>",
+--     { noremap = true, silent = true }
+-- )
 
 -- jumplist mutations
 -- nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
