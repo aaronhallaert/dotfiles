@@ -47,7 +47,13 @@ return {
         "glepnir/lspsaga.nvim",
         event = "LspAttach",
         config = function()
-            require("lspsaga").setup({})
+            require("lspsaga").setup({
+                lightbulb = {
+                    enable = true,
+                    sign = false,
+                    virtual_text = true,
+                },
+            })
         end,
         dependencies = { { "nvim-tree/nvim-web-devicons" } },
     },
@@ -59,8 +65,6 @@ return {
             require("plugins.config.lualine")
         end,
     },
-
-    "kosayoda/nvim-lightbulb",
 
     {
         "ray-x/lsp_signature.nvim",

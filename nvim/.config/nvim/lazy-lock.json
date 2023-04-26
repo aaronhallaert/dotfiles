@@ -49,7 +49,6 @@
   "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
   "nvim-jdtls": { "branch": "master", "commit": "aa04fc0e4d8acbfa43efc6a6f7162b01987257a1" },
   "nvim-keymap-amend": { "branch": "master", "commit": "b8bf9d820878d5497fdd11d6de55dea82872d98e" },
-  "nvim-lightbulb": { "branch": "master", "commit": "ca5b44a8efffb5fec1963ccd21f25ec04cc778b7" },
   "nvim-lspconfig": { "branch": "master", "commit": "eddaef928c1e1dd79a96f5db45f2fd7f2efe7ea0" },
   "nvim-navic": { "branch": "master", "commit": "199c2391246eaa0f76cc7768e13058cc78fe0091" },
   "nvim-notify": { "branch": "master", "commit": "159c6cf1be25a933f35e97499314c9faab55c98f" },
