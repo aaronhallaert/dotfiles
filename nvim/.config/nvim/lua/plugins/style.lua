@@ -2,6 +2,7 @@ return {
     -- This plugin adds indentation guides to all lines (including empty lines).
     {
         "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPre",
         config = function()
             vim.opt.list = true
             vim.opt.listchars:append("eol:")
@@ -33,15 +34,8 @@ return {
                 },
             })
         end,
+        event = "InsertEnter",
     },
-
-    -- smooth scrolling
-    -- {
-    --     "declancm/cinnamon.nvim",
-    --     config = function()
-    --         require("cinnamon").setup()
-    --     end,
-    -- },
 
     {
         "glepnir/lspsaga.nvim",
@@ -61,6 +55,7 @@ return {
     -- status line
     {
         "nvim-lualine/lualine.nvim",
+        event = "VimEnter",
         config = function()
             require("plugins.config.lualine")
         end,
@@ -71,10 +66,12 @@ return {
         config = function()
             require("lsp_signature").setup()
         end,
+        event = "LspAttach",
     },
 
     {
         "NMAC427/guess-indent.nvim",
+        event = "VeryLazy",
         config = function()
             require("guess-indent").setup()
         end,
@@ -82,18 +79,22 @@ return {
     -- 'pseewald/vim-anyfold'
     {
         "anuvyklack/pretty-fold.nvim",
+        event = "BufReadPre",
         config = function()
-            require("pretty-fold").setup()
+            require("pretty-fold").setup({})
             require("fold-preview").setup()
         end,
     },
-    "anuvyklack/fold-preview.nvim",
-
+    {
+        "anuvyklack/fold-preview.nvim",
+        event = "BufReadPre",
+    },
     {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup({ "*" })
         end,
+        event = "BufReadPre",
     },
 
     {
@@ -101,6 +102,7 @@ return {
         config = function()
             vim.notify = require("notify")
         end,
+        event = "VeryLazy",
     },
 
     -- Lua
@@ -113,22 +115,8 @@ return {
             })
         end,
         build = "./install.sh build",
+        event = "VeryLazy",
     },
 
-    -- {
-    --     'anuvyklack/windows.nvim',
-    --     config = function()
-    --         require("windows").setup({
-    --             animation = {
-    --                 duration = 300 -- ms
-    --             }
-    --         })
-    --     end
-    -- }
-
-    { "ElPiloto/significant.nvim" },
-
-    {
-        "roobert/tailwindcss-colorizer-cmp.nvim",
-    },
+    "roobert/tailwindcss-colorizer-cmp.nvim",
 }

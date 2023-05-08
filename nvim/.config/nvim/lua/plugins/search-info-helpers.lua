@@ -1,5 +1,8 @@
 return {
-    "voldikss/vim-translator",
+    {
+        "voldikss/vim-translator",
+        event = "VeryLazy",
+    },
     {
         "ron89/thesaurus_query.vim",
         config = function()
@@ -11,11 +14,21 @@ return {
                 { noremap = true }
             )
         end,
+        event = "VeryLazy",
     },
-    "rhysd/vim-grammarous",
+    {
+        "rhysd/vim-grammarous",
+        event = "VeryLazy",
+    },
     -- "inkarkat/vim-ingo-library",
     -- "inkarkat/vim-SpellCheck",
     -- "RishabhRD/popfix",
-    "RishabhRD/nvim-cheat.sh",
-    "dbeniamine/cheat.sh-vim",
+    {
+        "RishabhRD/nvim-cheat.sh",
+        event = "VeryLazy",
+    },
+    {
+        "dbeniamine/cheat.sh-vim",
+        event = "VeryLazy",
+    },
 }

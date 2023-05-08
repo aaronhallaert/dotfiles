@@ -19,12 +19,20 @@ return {
                 ":DiffCommitLine<CR>",
                 { noremap = true }
             )
+
+            require("advanced_git_search.fzf").setup({
+                git_flags = { "-c", "delta.side-by-side=false" },
+                git_diff_flags = {},
+                show_builtin_git_pickers = true,
+                diff_plugin = "diffview",
+            })
         end,
         dependencies = {
             "tpope/vim-fugitive",
             "nvim-telescope/telescope.nvim",
             -- "sindrets/diffview.nvim",
         },
+        event = "VeryLazy",
     },
     {
         "ruifm/gitlinker.nvim",
@@ -40,6 +48,7 @@ return {
                 },
             })
         end,
+        event = "VeryLazy",
     },
     {
         "pwntester/octo.nvim",
@@ -51,6 +60,7 @@ return {
         config = function()
             require("plugins.config.octo")
         end,
+        event = "VeryLazy",
     },
     {
         "f-person/git-blame.nvim",
@@ -64,12 +74,14 @@ return {
                 { noremap = true }
             )
         end,
+        event = "VeryLazy",
     },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
         end,
+        event = "VeryLazy",
     },
     {
         "tpope/vim-fugitive",
@@ -81,17 +93,8 @@ return {
                     execute "normal! :GBrowse ".baseCommit
                 endfunction
 
-                function! DiffPR()
-                    let baseCommit = system('git merge-base $(git show-branch | sed "s/].*//" | grep "\*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed "s/^.*\[//") $(git branch --show-current)')
-                    execute "normal! :Git difftool -y ".baseCommit
-                endfunction
-
                 " Open commit_hash under cursor in browser
                 nnoremap <leader>gbc :call ShowCommit()<CR>
-                " Open changed files diff of current branch in tabs
-                nnoremap <leader>dpr :call DiffPR()<CR>
-                " Compare current file with master branch
-                nnoremap <leader>df :Gvdiffsplit system("git branch -l master main \| sed 's/^* //'")<CR>
                 ]])
 
             vim.api.nvim_set_keymap(
@@ -101,20 +104,22 @@ return {
                 { noremap = true }
             )
         end,
+        event = "VeryLazy",
     },
     {
         "tpope/vim-rhubarb",
         dependencies = {
             "tpope/vim-fugitive",
         },
+        event = "VeryLazy",
     },
 
     {
         "ThePrimeagen/git-worktree.nvim",
-        lazy = true,
         config = function()
             require("plugins.config.git-worktree")
         end,
+        event = "VeryLazy",
     },
 
     -- use 'github/copilot.vim'
@@ -122,5 +127,6 @@ return {
         "sindrets/diffview.nvim",
         enabled = true,
         dependencies = "nvim-lua/plenary.nvim",
+        event = "VeryLazy",
     },
 }

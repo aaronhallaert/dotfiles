@@ -5,9 +5,11 @@ return {
         config = function()
             require("lsp-config")
         end,
+        event = "BufReadPre",
     },
     {
         "folke/neodev.nvim",
+        event = "BufReadPre",
     },
 
     -- diagnostic overview
@@ -16,6 +18,7 @@ return {
         config = function()
             require("trouble").setup()
         end,
+        event = "VeryLazy",
     },
 
     -- installing lsp servers, formatters, linters...
@@ -24,6 +27,7 @@ return {
         config = function()
             require("mason").setup()
         end,
+        event = "VeryLazy",
     },
     -- lsp for Java
     {
@@ -34,19 +38,21 @@ return {
     -- code understanding (highlight...)
     {
         "nvim-treesitter/nvim-treesitter",
+        event = "BufReadPre",
         build = ":TSUpdate",
         config = function()
             require("plugins.config.treesitter")
         end,
-        lazy = false,
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
+        event = "VeryLazy",
     },
 
     {
         "utilyre/barbecue.nvim",
+        event = "BufReadPre",
         name = "barbecue",
         version = "*",
         dependencies = {
@@ -76,6 +82,7 @@ return {
         config = function()
             require("Comment").setup()
         end,
+        event = "VeryLazy",
     },
     {
         "zbirenbaum/copilot.lua",
@@ -116,6 +123,7 @@ return {
     -- Lua
     {
         "folke/todo-comments.nvim",
+        event = "BufReadPre",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("todo-comments").setup()
@@ -124,19 +132,20 @@ return {
 
     ------------- LANGUAGE SPECIFIC -------------
     -- MARKDOWN
-    "mzlogin/vim-markdown-toc",
-    "lervag/vimtex",
+    { "mzlogin/vim-markdown-toc", event = "BufReadPre" },
+    { "lervag/vimtex", event = "BufReadPre" },
     {
         "iamcco/markdown-preview.nvim",
         build = function()
             vim.fn["mkdp#util#install"]()
         end,
+        event = "BufReadPre",
     },
 
     -- RUBY ON RAILS
-    "tpope/vim-rails",
+    { "tpope/vim-rails", event = "LspAttach" },
 
-    "ziontee113/query-secretary",
+    { "ziontee113/query-secretary", event = "VeryLazy" },
     -- {
     --     "simrat39/rust-tools.nvim",
     --     config = function()
@@ -147,11 +156,13 @@ return {
     {
         "creativenull/efmls-configs-nvim",
         dependencies = { "neovim/nvim-lspconfig" },
+        event = "VeryLazy",
     },
     {
         "echasnovski/mini.nvim",
         config = function()
             require("mini.doc").setup()
         end,
+        event = "VeryLazy",
     },
 }

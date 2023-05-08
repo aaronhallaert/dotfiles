@@ -1,17 +1,20 @@
 return {
 
     -- replace capital with capital, normal with normal
-    "tpope/vim-abolish",
+    { "tpope/vim-abolish", event = "VeryLazy" },
     -- change surrounding
     {
         "kylechui/nvim-surround",
+        event = "BufReadPre",
         config = function()
             require("nvim-surround").setup({})
         end,
     },
     -- expand surround e.g. cin) = clear inside next parenthesis
-    "wellle/targets.vim",
-
+    {
+        "wellle/targets.vim",
+        event = "BufReadPre",
+    },
     -- {
     --     "mbbill/undotree",
     --     config = function()
@@ -23,18 +26,7 @@ return {
     --         )
     --     end,
     -- },
-    -- {
-    --     "nvim-telescope/telescope.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "debugloop/telescope-undo.nvim",
-    --     },
-    --     config = function()
-    --         require("telescope").load_extension("undo")
-    --         vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-    --     end,
-    -- },
-    "godlygeek/tabular",
+    { "godlygeek/tabular", event = "VeryLazy" },
     {
         "mizlan/iswap.nvim",
         event = "VeryLazy",
@@ -45,13 +37,15 @@ return {
     "anuvyklack/nvim-keymap-amend",
     {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup()
         end,
     },
-    "vim-utils/vim-man",
+    { "vim-utils/vim-man", event = "VeryLazy" },
     {
         "lambdalisue/suda.vim",
+        event = "VeryLazy",
         config = function()
             vim.g.suda_smart_edit = 1
         end,
@@ -61,10 +55,11 @@ return {
         config = function()
             require("mini.ai").setup()
         end,
+        event = "InsertEnter",
     },
-    "svermeulen/vimpeccable",
     {
         "smjonas/live-command.nvim",
+        event = "VeryLazy",
         config = function()
             require("live-command").setup({
                 commands = {
@@ -85,18 +80,12 @@ return {
         end,
     },
 
-    "vim-scripts/ReplaceWithRegister",
-
-    {
-        "cbochs/portal.nvim",
-        config = function()
-            require("portal").setup()
-        end,
-    },
+    { "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 
     {
         "Wansmer/treesj",
         dependencies = { "nvim-treesitter" },
+        event = "VeryLazy",
         config = function()
             require("treesj").setup({
                 use_default_keymaps = false,

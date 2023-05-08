@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.ts",
         "*.py",
         "*.rb",
+        "*.rs",
         "*.lua",
         -- "*.md",
         "*.css",

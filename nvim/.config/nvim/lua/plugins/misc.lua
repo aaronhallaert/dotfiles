@@ -1,6 +1,7 @@
 return {
     {
         "voldikss/vim-floaterm",
+        event = "VeryLazy",
         config = function()
             vim.api.nvim_set_keymap(
                 "n",
@@ -37,8 +38,10 @@ return {
             })
         end,
     },
-    "nvim-lua/plenary.nvim",
-    "nvim-lua/popup.nvim",
+    {
+        "nvim-lua/plenary.nvim",
+        event = "VeryLazy",
+    },
     {
         "aaronhallaert/continuous-testing.nvim",
         dev = true,

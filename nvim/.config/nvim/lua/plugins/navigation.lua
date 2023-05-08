@@ -2,6 +2,7 @@ return {
     -- hop to word in file
     {
         "phaazon/hop.nvim",
+        event = "VeryLazy",
         config = function()
             require("hop").setup()
             vim.api.nvim_set_keymap(
@@ -12,7 +13,18 @@ return {
             )
         end,
     },
-
+    {
+        "ibhagwan/fzf-lua",
+        event = "VeryLazy",
+        config = function()
+            require("fzf-lua").setup({
+                winopts = {
+                    hl_border = "Normal",
+                },
+                fzf_layout = "default",
+            })
+        end,
+    },
     -- telescope pickers
     {
         "nvim-telescope/telescope.nvim",
@@ -29,13 +41,10 @@ return {
         end,
     },
 
-    -- search engine
-    { "junegunn/fzf", run = 'vim.fn["fzf#install"]' },
-    "junegunn/fzf.vim",
-
     -- file tree
     {
         "kyazdani42/nvim-tree.lua",
+        event = "VeryLazy",
         config = function()
             require("nvim-tree").setup({
                 -- disable_default_keybindings = true,
@@ -98,13 +107,5 @@ return {
     -- custom marks and commands
 
     -- outline file
-    "simrat39/symbols-outline.nvim",
-
-    -- show buffers in tabs
-    -- {
-    --     "akinsho/bufferline.nvim",
-    --     config = function()
-    --         -- require("bufferline").setup()
-    --     end,
-    -- },
+    { "simrat39/symbols-outline.nvim", event = "VeryLazy" },
 }

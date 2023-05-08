@@ -129,6 +129,7 @@ require("lualine").setup({
         disabled_filetypes = {
             statusline = {},
             winbar = {},
+            "alpha",
         },
         ignore_focus = {},
         always_divide_middle = true,

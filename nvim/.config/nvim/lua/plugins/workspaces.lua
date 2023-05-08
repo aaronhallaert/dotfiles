@@ -10,20 +10,21 @@ local header = {
 }
 
 return {
-    "tpope/vim-obsession",
+    -- "tpope/vim-obsession",
 
-    "renerocksai/calendar-vim",
+    -- "renerocksai/calendar-vim",
 
-    {
-        "renerocksai/telekasten.nvim",
-        enabled = false,
-        config = function()
-            require("plugins.config.telekasten") -- markdown notes
-        end,
-    },
+    -- {
+    --     "renerocksai/telekasten.nvim",
+    --     enabled = false,
+    --     config = function()
+    --         require("plugins.config.telekasten") -- markdown notes
+    --     end,
+    -- },
 
     {
         "goolord/alpha-nvim",
+        event = "VimEnter",
         opts = function()
             local dashboard = require("alpha.themes.dashboard")
 
