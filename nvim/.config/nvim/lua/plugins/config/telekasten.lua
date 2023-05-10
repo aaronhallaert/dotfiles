@@ -105,3 +105,47 @@ telekasten.setup({
     --                        except for notes/with/subdirs/in/title.
     new_note_location = "smart",
 })
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>zf",
+    ":lua require('telekasten').find_notes()<CR>",
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>zd",
+    ":lua require('telekasten').find_daily_notes()<CR>",
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>zg",
+    ":lua require('telekasten').search_notes()<CR>",
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>zz",
+    ":lua require('telekasten').follow_link()<CR>",
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>zt",
+    ":Telekasten goto_today<CR>",
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<localleader>cal",
+    ":lua require('telekasten').show_calendar()<CR>",
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>z",
+    ":lua require('telekasten').panel()<CR>",
+    { noremap = true, silent = true }
+)
+

@@ -108,18 +108,6 @@ return {
     },
 
     --------------- DEBUGGING -------------------
-    -- {
-    --     "puremourning/vimspector",
-    --     config = function()
-    --         local nvimrc = "$HOME/dotfiles/nvim/.config/nvim"
-    --         vim.cmd(
-    --             "source"
-    --             .. nvimrc
-    --             .. "/lua/legacy-plugins/vimspector-config.vim"
-    --         )
-    --     end,
-    -- },
-
     -- Lua
     {
         "folke/todo-comments.nvim",
@@ -133,11 +121,50 @@ return {
     ------------- LANGUAGE SPECIFIC -------------
     -- MARKDOWN
     { "mzlogin/vim-markdown-toc", event = "BufReadPre" },
-    { "lervag/vimtex", event = "BufReadPre" },
+    {
+        "lervag/vimtex",
+        config = function()
+            -- Set the default viewer for vimtex to Skim
+            vim.g.vimtex_view_general_viewer = "open -a Skim"
+
+            -- Set options for the general viewer command
+            -- vim.g.vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+
+            -- Check if SumatraPDF is available and configure vimtex to use it as the viewer
+            if vim.fn.executable("SumatraPDF.exe") == 1 then
+                vim.g.vimtex_view_general_viewer = "SumatraPDF.exe"
+                vim.g.latex_view_method = "SumatraPDF.exe"
+
+                -- Set options for the SumatraPDF viewer command
+                vim.g.vimtex_view_general_options = "-reuse-instance @pdf  -forward-search @tex @line"
+                    .. "-inverse-search"
+                    .. vim.fn.exepath(vim.fn.expand("$VIMRUNTIME\\gvim.exe"))
+                    .. "--servername"
+                    .. vim.fn.servername()
+                    .. '"%%f" -c "%%l"'
+
+                -- Set options for the latexmk command when using the SumatraPDF viewer
+                vim.g.vimtex_view_general_options_latexmk = "-reuse-instance"
+            end
+
+            -- Set the TeX flavor to LaTeX
+            vim.g.tex_flavor = "latex"
+
+            -- Set the compiler for vimtex to latexmk and enable continuous mode
+            vim.g.vimtex_compiler_latexmk = { continuous = 1 }
+        end,
+        event = "BufReadPre",
+    },
     {
         "iamcco/markdown-preview.nvim",
         build = function()
             vim.fn["mkdp#util#install"]()
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>md",
+                ":MarkdownPreview<CR>",
+                { noremap = true, silent = true }
+            )
         end,
         event = "BufReadPre",
     },

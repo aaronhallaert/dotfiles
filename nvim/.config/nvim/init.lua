@@ -55,21 +55,8 @@ local options = {
 require("lazy").setup(options)
 
 ---------------------
-
--- Extra file functionality
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/netrw-config.vim") -- project view
-
--- General Nvim Tools
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/markdownprev-config.vim")
-
 -- Text writing
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/spell/spell-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/vimtex-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/translator-config.vim")
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/grammarous-config.vim")
-
--- EXTRA FUNCTIONALITY
-vim.cmd("source" .. nvimrc .. "/lua/legacy-plugins/telekasten-config.vim")
+vim.cmd("source" .. nvimrc .. "/lua/spell/spell-config.vim")
 
 vim.cmd([[
 augroup jdtls_lsp

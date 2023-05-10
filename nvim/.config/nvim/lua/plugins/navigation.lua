@@ -15,7 +15,7 @@ return {
     },
     {
         "ibhagwan/fzf-lua",
-        event = "VeryLazy",
+        event = "BufReadPre",
         config = function()
             require("fzf-lua").setup({
                 winopts = {
@@ -25,6 +25,8 @@ return {
             })
         end,
     },
+    -- { "junegunn/fzf", run = { vim.fn["fzf#install()"] } },
+    -- "junegunn/fzf.vim",
     -- telescope pickers
     {
         "nvim-telescope/telescope.nvim",

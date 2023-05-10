@@ -106,17 +106,17 @@ return {
     },
 
     -- Lua
-    {
-        "krivahtoo/silicon.nvim",
-        config = function()
-            require("silicon").setup({
-                font = "JetBrainsMono Nerd Font=16",
-                theme = "Monokai Extended",
-            })
-        end,
-        build = "./install.sh build",
-        event = "VeryLazy",
-    },
+    -- {
+    --     "krivahtoo/silicon.nvim",
+    --     config = function()
+    --         require("silicon").setup({
+    --             font = "JetBrainsMono Nerd Font=16",
+    --             theme = "Monokai Extended",
+    --         })
+    --     end,
+    --     build = "./install.sh build",
+    --     event = "VeryLazy",
+    -- },
 
     "roobert/tailwindcss-colorizer-cmp.nvim",
 }

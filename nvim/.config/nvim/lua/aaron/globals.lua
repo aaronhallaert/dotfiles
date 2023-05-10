@@ -120,7 +120,7 @@ vim.api.nvim_set_keymap("n", "_", ":bp<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
     "n",
     "fdp",
-    ":Rg binding.break<CR>",
+    ":lua require('fzf-lua').grep({ search = 'binding.break' })<CR>",
     { noremap = true, silent = true }
 )
 
