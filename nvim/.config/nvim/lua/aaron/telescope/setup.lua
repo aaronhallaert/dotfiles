@@ -74,12 +74,12 @@ telescope.setup({
             override_file_sorter = true,
         },
         ["ui-select"] = { require("telescope.themes").get_dropdown() },
-        advanced_git_search = {
-            git_flags = { "-c", "delta.side-by-side=false" },
-            git_diff_flags = {},
-            show_builtin_git_pickers = true,
-            diff_plugin = "diffview",
-        },
+        -- advanced_git_search = {
+        --     git_flags = { "-c", "delta.side-by-side=false" },
+        --     git_diff_flags = {},
+        --     show_builtin_git_pickers = true,
+        --     diff_plugin = "diffview",
+        -- },
     },
     pickers = {
         buffers = {

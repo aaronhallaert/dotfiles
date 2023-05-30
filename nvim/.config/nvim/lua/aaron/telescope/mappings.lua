@@ -24,7 +24,7 @@ end
 
 -- SEARCH
 map_tele("<leader>fo", "search_recent_files")
-map_tele("<leader>ff", "search_project_files")
+-- map_tele("<leader>ff", "search_project_files")
 map_tele("<leader>fg", "search_gitwords")
 map_tele("<leader>fw", "search_gitwords_not_hidden")
 map_tele("fiw", "search_string_under_cursor")

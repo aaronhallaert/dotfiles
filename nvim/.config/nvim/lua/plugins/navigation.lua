@@ -23,6 +23,22 @@ return {
                 },
                 fzf_layout = "default",
             })
+
+            --Search shortcuts
+            vim.api.nvim_set_keymap(
+                "n",
+                "fdp",
+                ":lua require('fzf-lua').grep({ search = 'binding.break' })<CR>",
+                { noremap = true, silent = true }
+            )
+
+            -- Search shortcuts
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>ff",
+                ":FzfLua files<CR>",
+                { noremap = true, silent = true }
+            )
         end,
     },
     -- { "junegunn/fzf", run = { vim.fn["fzf#install()"] } },

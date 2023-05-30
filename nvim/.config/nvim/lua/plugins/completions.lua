@@ -10,6 +10,13 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         event = "InsertEnter",
     },
+
+    {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+            require("copilot_cmp").setup()
+        end,
+    },
     { "hrsh7th/cmp-buffer", event = "InsertEnter" },
     { "hrsh7th/cmp-emoji", event = "InsertEnter" },
     { "hrsh7th/cmp-cmdline", event = "InsertEnter" },

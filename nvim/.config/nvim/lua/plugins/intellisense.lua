@@ -64,6 +64,11 @@ return {
             show_dirname = false,
         },
     },
+    -- TODO: Revisit on nvim 0.10.0
+    -- {
+    --     "Bekaboo/dropbar.nvim",
+    -- },
+    --
     {
         "nvim-treesitter/playground",
         event = "VeryLazy",
@@ -91,8 +96,7 @@ return {
         config = function()
             require("copilot").setup({
                 suggestion = {
-                    enabled = true,
-                    auto_trigger = true,
+                    auto_trigger = false,
                     debounce = 75,
                     keymap = {
                         accept = "<C-a>",

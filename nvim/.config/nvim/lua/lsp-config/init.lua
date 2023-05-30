@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.rb",
         "*.rs",
         "*.lua",
+        "*.json",
         -- "*.md",
         "*.css",
     },
@@ -53,14 +54,14 @@ efmls.init({
 })
 
 local markdownlint = require("plugins.config.efm.markdownlint")
-local jq = require("plugins.config.efm.jq")
+-- local jq = require("plugins.config.efm.jq")
 local stylua = require("efmls-configs.formatters.stylua")
 -- local luacheck = require("efmls-configs.linters.luacheck")
 local prettier = require("efmls-configs.formatters.prettier")
 -- local eslint = require("efmls-configs.linters.eslint")
 
 efmls.setup({
-    json = { formatter = jq },
+    json = { formatter = prettier },
     markdown = { linter = markdownlint, formatter = prettier },
     javascript = { formatter = prettier },
     javascriptreact = { formatter = prettier },

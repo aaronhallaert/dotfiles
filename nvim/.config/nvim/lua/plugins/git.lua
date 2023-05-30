@@ -5,21 +5,6 @@ return {
         "aaronhallaert/advanced-git-search.nvim",
         dev = true,
         config = function()
-            require("telescope").load_extension("advanced_git_search")
-
-            vim.api.nvim_create_user_command(
-                "DiffCommitLine",
-                "lua require('telescope').extensions.advanced_git_search.diff_commit_line()",
-                { range = true }
-            )
-
-            vim.api.nvim_set_keymap(
-                "v",
-                "<leader>dcl",
-                ":DiffCommitLine<CR>",
-                { noremap = true }
-            )
-
             require("advanced_git_search.fzf").setup({
                 git_flags = { "-c", "delta.side-by-side=false" },
                 git_diff_flags = {},

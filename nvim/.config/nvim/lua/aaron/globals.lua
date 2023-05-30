@@ -116,14 +116,6 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("n", "+", ":bn<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "_", ":bp<CR>", { noremap = true })
 
--- Search shortcuts
-vim.api.nvim_set_keymap(
-    "n",
-    "fdp",
-    ":lua require('fzf-lua').grep({ search = 'binding.break' })<CR>",
-    { noremap = true, silent = true }
-)
-
 -- yank to clipboard
 vim.api.nvim_set_keymap("n", "<leader>y", '"+y', { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>y", '"+y', { noremap = true })
