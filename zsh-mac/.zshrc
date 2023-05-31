@@ -92,5 +92,5 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
-eval "$(atuin init zsh)"
+# eval "$(atuin init zsh)"
 alias grep="/opt/homebrew/bin/grep"
