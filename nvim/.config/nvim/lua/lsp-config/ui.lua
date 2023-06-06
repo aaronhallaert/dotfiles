@@ -1,16 +1,16 @@
 local M = {}
 
 M.init = function()
-    vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "Red" })
+    vim.fn.sign_define("DiagnosticSignError", { text = "󰅚", texthl = "Red" })
     vim.fn.sign_define(
         "DiagnosticSignWarn",
-        { text = "", texthl = "Yellow" }
+        { text = "", texthl = "Yellow" }
     )
     vim.fn.sign_define(
         "DiagnosticSignInformation",
         { text = "", texthl = "White" }
     )
-    vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "Aqua" })
+    vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", texthl = "Aqua" })
 
     vim.cmd("hi! link NormalFloat Normal")
     vim.cmd("hi! link FloatBorder DapUIFLoatBorder")

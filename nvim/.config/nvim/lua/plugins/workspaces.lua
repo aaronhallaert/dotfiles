@@ -42,7 +42,7 @@ return {
                 ),
                 dashboard.button(
                     "r",
-                    " " .. " Recent files",
+                    "󰄉 " .. " Recent files",
                     ":lua require('telescope.builtin').oldfiles{only_cwd=true}<CR>"
                 ),
                 dashboard.button(
@@ -53,7 +53,7 @@ return {
                 dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
                 dashboard.button(
                     "s",
-                    "勒" .. " Restore Session",
+                    "󰑓" .. " Restore Session",
                     [[:lua require("persistence").load() <cr>]]
                 ),
                 dashboard.button(
@@ -66,7 +66,7 @@ return {
                     "Ꭾ" .. " Planets",
                     ":Telescope planets<CR>"
                 ),
-                dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
+                dashboard.button("l", "󰒲" .. " Lazy", ":Lazy<CR>"),
                 dashboard.button("q", " " .. " Quit", ":qa<CR>"),
             }
 
