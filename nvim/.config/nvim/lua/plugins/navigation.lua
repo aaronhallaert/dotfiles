@@ -61,66 +61,149 @@ return {
 
     -- file tree
     {
-        "kyazdani42/nvim-tree.lua",
+        "nvim-neo-tree/neo-tree.nvim",
         event = "VeryLazy",
+        -- branch = "v2.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
         config = function()
-            require("nvim-tree").setup({
-                -- disable_default_keybindings = true,
-                disable_netrw = false,
-                hijack_netrw = false,
-                -- auto_close = false,
-                open_on_tab = false,
-                hijack_cursor = true,
-                update_cwd = false,
-                sync_root_with_cwd = false,
-                actions = { open_file = { resize_window = true } },
-                hijack_directories = { enable = true, auto_open = true },
-                diagnostics = {
-                    enable = false,
-                    icons = {
-                        hint = "",
-                        info = "",
-                        warning = "",
-                        error = "",
+            require("neo-tree").setup({
+                -- Add this section only if you've configured source selector.
+                source_selector = {
+                    winbar = true,
+                    statusline = true,
+                    sources = {
+                        {
+                            source = "filesystem",
+                            display_name = " 󰉓 Files ",
+                        },
+                        { source = "git_status", display_name = " 󰊢 Git " },
+                        { source = "buffers", display_name = "  Buffers " },
                     },
                 },
-                update_focused_file = {
-                    enable = true,
-                    update_cwd = false,
-                    ignore_list = {},
-                },
-                system_open = { cmd = nil, args = {} },
-                filters = {
-                    dotfiles = false,
-                    custom = {
-                        "docker-compose",
-                        "tmp",
-                        "docker-compose.medsoc.yml",
-                        "docker-compose.sam.yml",
-                        "docker-compose.vidal.yml",
-                        "docker-compose.yml",
+                filesystem = {
+                    follow_current_file = true,
+                    filtered_items = {
+                        visible = false, -- when true, they will just be displayed differently than normal items
+                        hide_dotfiles = false,
+                        hide_gitignored = true,
+                        hide_hidden = false, -- only works on Windows for hidden files/directories
                     },
                 },
-                notify = {
-                    threshold = vim.log.levels.ERROR,
+                window = {
+                    mappings = {
+                        ["?"] = "",
+                        ["/"] = "",
+                        ["<bs>"] = "close_node",
+                    },
                 },
-                view = {
-                    width = 40,
-                    hide_root_folder = false,
-                    side = "left",
-                    mappings = { custom_only = false, list = {} },
-                },
-                renderer = { highlight_opened_files = "all" },
-            })
 
+                -- Nerdfond v3 fix
+                default_component_configs = {
+                    icon = {
+                        folder_empty = "󰜌",
+                        folder_empty_open = "󰜌",
+                    },
+                    git_status = {
+                        symbols = {
+                            renamed = "󰁕",
+                            unstaged = "󰄱",
+                        },
+                    },
+                },
+                document_symbols = {
+                    kinds = {
+                        File = { icon = "󰈙", hl = "Tag" },
+                        Namespace = { icon = "󰌗", hl = "Include" },
+                        Package = { icon = "󰏖", hl = "Label" },
+                        Class = { icon = "󰌗", hl = "Include" },
+                        Property = { icon = "󰆧", hl = "@property" },
+                        Enum = { icon = "󰒻", hl = "@number" },
+                        Function = { icon = "󰊕", hl = "Function" },
+                        String = { icon = "󰀬", hl = "String" },
+                        Number = { icon = "󰎠", hl = "Number" },
+                        Array = { icon = "󰅪", hl = "Type" },
+                        Object = { icon = "󰅩", hl = "Type" },
+                        Key = { icon = "󰌋", hl = "" },
+                        Struct = { icon = "󰌗", hl = "Type" },
+                        Operator = { icon = "󰆕", hl = "Operator" },
+                        TypeParameter = { icon = "󰊄", hl = "Type" },
+                        StaticMethod = { icon = "󰠄 ", hl = "Function" },
+                    },
+                },
+            })
             vim.api.nvim_set_keymap(
                 "n",
                 "<leader>pv",
-                ":NvimTreeToggle<CR>",
+                ":Neotree toggle<CR>",
                 { noremap = true }
             )
         end,
     },
+    -- {
+    --     "kyazdani42/nvim-tree.lua",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("nvim-tree").setup({
+    --             -- disable_default_keybindings = true,
+    --             disable_netrw = false,
+    --             hijack_netrw = false,
+    --             -- auto_close = false,
+    --             open_on_tab = false,
+    --             hijack_cursor = true,
+    --             update_cwd = false,
+    --             sync_root_with_cwd = false,
+    --             actions = { open_file = { resize_window = true } },
+    --             hijack_directories = { enable = true, auto_open = true },
+    --             diagnostics = {
+    --                 enable = false,
+    --                 icons = {
+    --                     hint = "",
+    --                     info = "",
+    --                     warning = "",
+    --                     error = "",
+    --                 },
+    --             },
+    --             update_focused_file = {
+    --                 enable = true,
+    --                 update_cwd = false,
+    --                 ignore_list = {},
+    --             },
+    --             system_open = { cmd = nil, args = {} },
+    --             filters = {
+    --                 dotfiles = false,
+    --                 custom = {
+    --                     "docker-compose",
+    --                     "tmp",
+    --                     "docker-compose.medsoc.yml",
+    --                     "docker-compose.sam.yml",
+    --                     "docker-compose.vidal.yml",
+    --                     "docker-compose.yml",
+    --                 },
+    --             },
+    --             notify = {
+    --                 threshold = vim.log.levels.ERROR,
+    --             },
+    --             view = {
+    --                 width = 40,
+    --                 hide_root_folder = false,
+    --                 side = "left",
+    --                 mappings = { custom_only = false, list = {} },
+    --             },
+    --             renderer = { highlight_opened_files = "all" },
+    --         })
+    --
+    --         vim.api.nvim_set_keymap(
+    --             "n",
+    --             "<leader>pv",
+    --             ":NvimTreeToggle<CR>",
+    --             { noremap = true }
+    --         )
+    --     end,
+    -- },
 
     -- custom marks and commands
 
