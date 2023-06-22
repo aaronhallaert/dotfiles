@@ -1,4 +1,5 @@
 return {
+    "shortcuts/no-neck-pain.nvim",
     {
         "voldikss/vim-floaterm",
         event = "VeryLazy",
