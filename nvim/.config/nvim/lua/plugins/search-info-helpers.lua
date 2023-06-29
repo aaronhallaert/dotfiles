@@ -70,15 +70,4 @@ return {
         "rhysd/vim-grammarous",
         event = "VeryLazy",
     },
-    -- "inkarkat/vim-ingo-library",
-    -- "inkarkat/vim-SpellCheck",
-    -- "RishabhRD/popfix",
-    {
-        "RishabhRD/nvim-cheat.sh",
-        event = "VeryLazy",
-    },
-    {
-        "dbeniamine/cheat.sh-vim",
-        event = "VeryLazy",
-    },
 }

@@ -77,6 +77,7 @@ return {
     {
         "j-hui/fidget.nvim",
         event = "BufReadPre",
+        branch = "legacy",
         config = function()
             require("fidget").setup({})
         end,
@@ -176,7 +177,7 @@ return {
     -- RUBY ON RAILS
     { "tpope/vim-rails", event = "LspAttach" },
 
-    { "ziontee113/query-secretary", event = "VeryLazy" },
+    -- { "ziontee113/query-secretary", event = "VeryLazy" },
     -- {
     --     "simrat39/rust-tools.nvim",
     --     config = function()
@@ -189,11 +190,11 @@ return {
         dependencies = { "neovim/nvim-lspconfig" },
         event = "VeryLazy",
     },
-    {
-        "echasnovski/mini.nvim",
-        config = function()
-            require("mini.doc").setup()
-        end,
-        event = "VeryLazy",
-    },
+    -- {
+    --     "echasnovski/mini.nvim",
+    --     config = function()
+    --         require("mini.doc").setup()
+    --     end,
+    --     event = "VeryLazy",
+    -- },
 }

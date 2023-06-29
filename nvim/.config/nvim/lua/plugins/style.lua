@@ -78,18 +78,6 @@ return {
     },
     -- 'pseewald/vim-anyfold'
     {
-        "anuvyklack/pretty-fold.nvim",
-        event = "BufReadPre",
-        config = function()
-            require("pretty-fold").setup({})
-            require("fold-preview").setup()
-        end,
-    },
-    {
-        "anuvyklack/fold-preview.nvim",
-        event = "BufReadPre",
-    },
-    {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup({ "*" })

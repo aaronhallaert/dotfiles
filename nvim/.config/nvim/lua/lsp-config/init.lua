@@ -168,7 +168,7 @@ nvim_lsp.lua_ls.setup({
 
 nvim_lsp.tsserver.setup({
     capabilities = capabilities_with_completion,
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "yarn.lock"),
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         on_attach(client, bufnr)

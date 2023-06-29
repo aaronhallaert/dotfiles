@@ -34,7 +34,6 @@ return {
             require("plugins.config.iswap") -- swapping arguments
         end,
     },
-    "anuvyklack/nvim-keymap-amend",
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
