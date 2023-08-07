@@ -18,6 +18,7 @@ return {
         event = "BufReadPre",
         config = function()
             require("fzf-lua").setup({
+                "telescope",
                 winopts = {
                     hl_border = "Normal",
                 },

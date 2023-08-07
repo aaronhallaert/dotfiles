@@ -166,6 +166,8 @@ nvim_lsp.lua_ls.setup({
     },
 })
 
+-- nvim_lsp.sqlls.setup({ root_dir = nvim_lsp.util.root_pattern(".git") })
+
 nvim_lsp.tsserver.setup({
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "yarn.lock"),

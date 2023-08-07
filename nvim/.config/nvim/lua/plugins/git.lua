@@ -10,11 +10,24 @@ return {
                 git_diff_flags = {},
                 show_builtin_git_pickers = true,
                 diff_plugin = "diffview",
+                entry_default_author_or_date = "author",
             })
+
+            -- set g:terminal_color_0
+            -- vim.g.terminal_color_0 = "Black"
+            -- vim.g.terminal_color_1 = "#ed8796" -- Red
+            -- vim.g.terminal_color_2 = "#a6da95" -- Green
+            -- vim.g.terminal_color_3 = "#eed49f" -- Yellow
+            -- vim.g.terminal_color_4 = "#8aadf4" -- Blue
+            -- vim.g.terminal_color_5 = "#f5bde6" -- Magenta
+            -- vim.g.terminal_color_6 = "#91d7e3" -- Cyan
+            -- vim.g.terminal_color_7 = "#b8c0e0" -- Grey
+            -- vim.g.terminal_color_15 = "White"
         end,
         dependencies = {
             "tpope/vim-fugitive",
             "nvim-telescope/telescope.nvim",
+            { "m00qek/baleia.nvim", tag = "v1.3.0" },
             -- "sindrets/diffview.nvim",
         },
         event = "VeryLazy",

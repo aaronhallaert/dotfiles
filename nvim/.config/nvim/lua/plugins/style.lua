@@ -37,21 +37,6 @@ return {
         event = "InsertEnter",
     },
 
-    {
-        "glepnir/lspsaga.nvim",
-        event = "LspAttach",
-        config = function()
-            require("lspsaga").setup({
-                lightbulb = {
-                    enable = true,
-                    sign = false,
-                    virtual_text = true,
-                },
-            })
-        end,
-        dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    },
-
     -- status line
     {
         "nvim-lualine/lualine.nvim",

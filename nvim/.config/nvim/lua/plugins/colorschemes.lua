@@ -33,23 +33,23 @@ return {
     --     "sainnhe/gruvbox-material",
     --     -- commit = "9e30f2095e8ab80c68901e7aaee186cd3aa97168",
     --     config = function()
-    --         -- vim.api.nvim_command("colorscheme gruvbox-material")
+    --         vim.api.nvim_command("colorscheme gruvbox-material")
     --         vim.opt.background = "dark"
     --         vim.g.gruvbox_material_background = "hard"
     --         vim.g.gruvbox_material_better_performance = 0
-    --         -- vim.api.nvim_command("hi OctoEditable guibg=#3c3836 guifg=#fbf1c7")
-    --         -- vim.api.nvim_command(
-    --         --     "hi OctoGreenFloat guifg=#b8bb26 guibg=#3c3836"
-    --         -- )
-    --         -- vim.api.nvim_command("hi OctoRedFloat guifg=#fb4934 guibg=#3c3836")
-    --         -- vim.api.nvim_command(
-    --         --     "hi OctoPurpleFloat guifg=#d3869b guibg=#3c3836"
-    --         -- )
-    --         -- vim.api.nvim_command(
-    --         --     "hi OctoYellowFloat guifg=#fabd2f guibg=#3c3836"
-    --         -- )
-    --         -- vim.api.nvim_command("hi OctoBlueFloat guifg=#83a598 guibg=#3c3836")
-    --         -- vim.api.nvim_command("hi OctoGreyFloat guifg=#928374 guibg=#3c3836")
+    --         vim.api.nvim_command("hi OctoEditable guibg=#3c3836 guifg=#fbf1c7")
+    --         vim.api.nvim_command(
+    --             "hi OctoGreenFloat guifg=#b8bb26 guibg=#3c3836"
+    --         )
+    --         vim.api.nvim_command("hi OctoRedFloat guifg=#fb4934 guibg=#3c3836")
+    --         vim.api.nvim_command(
+    --             "hi OctoPurpleFloat guifg=#d3869b guibg=#3c3836"
+    --         )
+    --         vim.api.nvim_command(
+    --             "hi OctoYellowFloat guifg=#fabd2f guibg=#3c3836"
+    --         )
+    --         vim.api.nvim_command("hi OctoBlueFloat guifg=#83a598 guibg=#3c3836")
+    --         vim.api.nvim_command("hi OctoGreyFloat guifg=#928374 guibg=#3c3836")
     --     end,
     -- },
     -- {
