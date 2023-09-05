@@ -1,4 +1,4 @@
-NAME=channel_host
+NAME=link
 INTERACTIVE=TRUE
 COMMAND=""
 

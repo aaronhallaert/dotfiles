@@ -17,19 +17,6 @@ return {
                 { noremap = true, silent = true }
             )
 
-            -- Display translation in a window
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>w",
-                ":TranslateW<CR>",
-                { noremap = true, silent = true }
-            )
-            vim.api.nvim_set_keymap(
-                "v",
-                "<leader>w",
-                ":TranslateWV<CR>",
-                { noremap = true, silent = true }
-            )
             -- Replace the text with translation
             vim.api.nvim_set_keymap(
                 "n",
@@ -40,7 +27,7 @@ return {
             vim.api.nvim_set_keymap(
                 "v",
                 "<leader>r",
-                ":TranslateRV<CR>",
+                ":TranslateR<CR>",
                 { noremap = true, silent = true }
             )
             -- Translate the text in clipboard

@@ -189,12 +189,42 @@ nvim_lsp.stylelint_lsp.setup({
     },
 })
 
+nvim_lsp.ccls.setup({
+    on_attach = on_attach,
+    root_dir = nvim_lsp.util.root_pattern(".git"),
+    filetypes = {
+        "c",
+        "cpp",
+        "objc",
+        "objcpp",
+    },
+    --     command = "ccls",
+    --     filetypes = {
+    --         "c",
+    --         "cpp",
+    --         "objc",
+    --         "objcpp",
+    --     },
+    --     rootPatterns = {
+    --         ".ccls",
+    --         "compile_commands.json",
+    --         ".vim/",
+    --         ".git/",
+    --         ".hg/",
+    --     },
+    init_options = {
+        clang = {
+            extraArgs = { "-std=c++20" },
+        },
+    },
+})
+
 -- Default servers
 local servers = {
     "pylsp",
     "jsonls",
     "vimls",
-    "sourcekit",
+    -- "sourcekit",
     "gopls",
     "tailwindcss",
 }
