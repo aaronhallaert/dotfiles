@@ -109,31 +109,6 @@ local M = {
                     ':lua RunCommandInTerminal("run_api -- " .. GetQFTestCommands())<CR>',
                     { noremap = true }
                 )
-
-                vim.api.nvim_set_keymap(
-                    "n",
-                    "sts",
-                    ':lua RunCommandInTerminal("run_api -- rails s", 2)<CR>',
-                    { noremap = true }
-                )
-                vim.api.nvim_set_keymap(
-                    "n",
-                    "std",
-                    ':lua RunCommandInTerminal("run_api -- pkill ruby && docker-compose down", 1)<CR>',
-                    { noremap = true }
-                )
-                vim.api.nvim_set_keymap(
-                    "n",
-                    "stc",
-                    ':lua RunCommandInTerminal("run_api -- bash", 2)<CR>',
-                    { noremap = true }
-                )
-                vim.api.nvim_set_keymap(
-                    "n",
-                    "str",
-                    ':lua RunCommandInTerminal("restore_db.sh")<CR>',
-                    { noremap = true }
-                )
             end
 
             -- NEPHROFLOW/ELECTRON_APPS
