@@ -1,4 +1,10 @@
 return {
+    {
+        "RaafatTurki/hex.nvim",
+        config = function()
+            require("hex").setup()
+        end,
+    },
     -- code understanding (diagnostic + navigation)
     {
         "neovim/nvim-lspconfig",
