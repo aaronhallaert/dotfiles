@@ -31,7 +31,7 @@ local options = {
         defaults = { lazy = true },
         rtp = {
             disabled_plugins = {
-                "gzip",
+                -- "gzip",
                 "matchit",
                 "matchparen",
                 "netrwPlugin",
