@@ -189,33 +189,16 @@ nvim_lsp.stylelint_lsp.setup({
     },
 })
 
-nvim_lsp.ccls.setup({
+nvim_lsp.clangd.setup({
     on_attach = on_attach,
     root_dir = nvim_lsp.util.root_pattern(".git"),
-    filetypes = {
-        "c",
-        "cpp",
-        "objc",
-        "objcpp",
-    },
-    --     command = "ccls",
-    --     filetypes = {
-    --         "c",
-    --         "cpp",
-    --         "objc",
-    --         "objcpp",
-    --     },
-    --     rootPatterns = {
-    --         ".ccls",
-    --         "compile_commands.json",
-    --         ".vim/",
-    --         ".git/",
-    --         ".hg/",
-    --     },
-    init_options = {
-        clang = {
-            extraArgs = { "-std=c++20" },
+    capabilities = {
+        textDocument = {
+            completion = {
+                editsNearCursor = true,
+            },
         },
+        offsetEncoding = { "utf-16" },
     },
 })
 
