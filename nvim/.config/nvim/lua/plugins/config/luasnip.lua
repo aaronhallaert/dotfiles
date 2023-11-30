@@ -7,13 +7,13 @@ require("luasnip.loaders.from_vscode").lazy_load({
 })
 
 vim.api.nvim_set_keymap(
-    "i",
+    "n",
     "<C-n>",
     '<Esc>:lua require("luasnip").jump(1)<CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
-    "i",
+    "n",
     "<C-p>",
     '<Esc>:lua require("luasnip").jump(-1)<CR>',
     { noremap = true }
@@ -87,9 +87,11 @@ ls.add_snippets("all", {
             [[
     {}
     ]],
-            { f(function()
-                return os.date("%D - %H:%M")
-            end) }
+            {
+                f(function()
+                    return os.date("%D - %H:%M")
+                end),
+            }
         )
     ),
 })
