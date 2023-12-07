@@ -14,8 +14,8 @@ set $alt Mod1
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-gaps inner 6
-gaps outer 6
+# gaps inner 6
+# gaps outer 6
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -120,8 +120,8 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:web"
-set $ws2 "2:code"
+set $ws1 "1:code"
+set $ws2 "2:web"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"

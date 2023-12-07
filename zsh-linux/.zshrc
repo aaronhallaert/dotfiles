@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Set list of themes to pick from when loading at random
@@ -140,6 +140,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/dotfiles/usr/scripts"
+export PATH="$PATH:$HOME/dotfiles/usr/scripts"
 
 source "$HOME/dotfiles/zsh/aliases.zsh"
-source "$HOME/dotfiles/zsh/keys"
+# source "$HOME/dotfiles/zsh/keys"
+source ~/powerlevel10k/powerlevel10k.zsh-theme

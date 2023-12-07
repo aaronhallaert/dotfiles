@@ -1,5 +1,6 @@
 local M = {
     {
+        enabled = false,
         "ThePrimeagen/harpoon",
         event = "VeryLazy",
         config = function()
