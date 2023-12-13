@@ -18,12 +18,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # gaps inner 6
 # gaps outer 6
 
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
 
-#wokspace $ws1 output DP-0
-#wokspace $ws2 output HDMI-0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -50,8 +49,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+bindsym Control+$mod+l exec "i3lock -c 000000 ; systemctl suspend"
+
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id wezterm
 bindsym $alt+Return exec --no-startup-id xfce4-terminal
 bindsym $alt+r exec --no-startup-id nitrogen --restore &
 bindsym $mod+P exec --no-startup-id flameshot gui
@@ -133,10 +134,10 @@ set $ws9 "9"
 set $ws10 "10"
 
 
-workspace $ws1 output eDP-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+workspace $ws1 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws2 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws3 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws4 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+workspace $ws4 output eDP-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws5 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws6 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
 workspace $ws7 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
@@ -174,8 +175,9 @@ bindsym $mod+m exec --no-startup-id shutdown now
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Control+r exec "xrandr --auto"
+bindsym $mod+Control+r exec "xrandr --auto"
+bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

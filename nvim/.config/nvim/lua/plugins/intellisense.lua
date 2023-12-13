@@ -98,6 +98,7 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
+        enabled = false,
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
@@ -177,7 +178,25 @@ return {
                 { noremap = true, silent = true }
             )
         end,
-        event = "BufReadPre",
+        config = function()
+            vim.g.mkdp_filetypes = { "markdown", "plantuml" }
+        end,
+        -- event = "BufReadPre",
+        ft = { "markdown", "plantuml" },
+    },
+    {
+        "aklt/plantuml-syntax",
+    },
+    {
+        "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+    },
+    {
+        "Civitasv/cmake-tools.nvim",
+        config = function()
+            require("cmake-tools").setup({
+                cmake_kits_path = "/home/aaron/.local/share/CMakeTools/cmake-tools-kits.json",
+            })
+        end,
     },
 
     -- RUBY ON RAILS

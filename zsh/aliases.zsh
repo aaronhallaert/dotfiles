@@ -16,9 +16,9 @@ alias plugins="cd ~/.local/share/nvim/lazy/"
 
 
 
-alias dcd="docker-compose down"
-alias dcu="docker-compose up"
-alias dcr="docker-compose run --rm --service-ports"
+alias dcd="docker compose down"
+alias dcu="docker compose up"
+alias dcr="docker compose run --rm --service-ports"
 
 alias cowt="source git_cowt"
 alias chwt="source git_chwt"

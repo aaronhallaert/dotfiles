@@ -200,6 +200,12 @@ nvim_lsp.clangd.setup({
         },
         offsetEncoding = { "utf-16" },
     },
+    cmd = {
+        "/usr/bin/clangd",
+        "--compile-commands-dir=./build",
+        "--query-driver=/home/aaron/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.1/bin/i686-linux*",
+        "--clang-tidy",
+    },
 })
 
 -- Default servers
@@ -218,3 +224,26 @@ for _, lsp in ipairs(servers) do
         root_dir = nvim_lsp.util.root_pattern(".git"),
     })
 end
+
+require("sonarlint").setup({
+    server = {
+        cmd = {
+            "sonarlint-language-server",
+            -- Ensure that sonarlint-language-server uses stdio channel
+            "-stdio",
+            "-analyzers",
+            "/home/aaron/.local/share/nvim/mason/packages/sonarlint-language-server/extension/analyzers/sonarcfamily.jar",
+        },
+        -- All settings are optional
+        settings = {
+            -- The default for sonarlint is {}, this is just an example
+            sonarlint = {},
+        },
+        autostart = true,
+        on_attach = on_attach,
+    },
+    filetypes = {
+        -- Tested and working
+        "cpp",
+    },
+})
