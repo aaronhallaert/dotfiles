@@ -15,9 +15,13 @@ set $alt Mod1
 # exec --no-startup-id setxkbmap -layout us
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# gaps inner 6
-# gaps outer 6
+exec_always --no-startup-id compton -b
+exec_always --no-startup-id xmodmap ~/.Xmodmap
+gaps outer 6
+gaps inner 6
 
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -55,6 +59,7 @@ bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer
 floating_modifier $mod
 
 bindsym Control+$mod+l exec "i3lock -c 000000 ; systemctl suspend"
+bindsym Control+$mod+s exec "systemctl suspend"
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id wezterm
@@ -71,7 +76,7 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu'
+bindsym $mod+space exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h focus left
@@ -142,8 +147,8 @@ set $ws10 "10"
 workspace $ws1 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws2 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws3 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws4 output eDP-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws5 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+workspace $ws4 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+workspace $ws5 output eDP-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
 workspace $ws6 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
 workspace $ws7 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
 workspace $ws8 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5

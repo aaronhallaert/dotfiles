@@ -208,6 +208,25 @@ nvim_lsp.clangd.setup({
     },
 })
 
+nvim_lsp.pylsp.setup({
+    on_attach = on_attach,
+    capabilities = capabilities_with_completion,
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    maxLineLength = 100,
+                },
+                -- flake8 = {
+                --     enabled = true,
+                --     config = ".flake8",
+                --     maxLineLength = 100,
+                -- },
+            },
+        },
+    },
+})
+
 -- Default servers
 local servers = {
     "pylsp",
