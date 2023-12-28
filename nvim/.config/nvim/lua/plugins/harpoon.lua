@@ -1,7 +1,7 @@
 local M = {
     {
-        enabled = false,
-        "ThePrimeagen/harpoon",
+        "aaronhallaert/harpoon",
+        branch = "fix/nil_check",
         event = "VeryLazy",
         config = function()
             local harpoon = require("harpoon")
