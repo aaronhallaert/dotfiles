@@ -3,7 +3,7 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "aaronhallaert/advanced-git-search.nvim",
-        dev = true,
+        -- dev = true,
         config = function()
             require("advanced_git_search.fzf").setup({
                 git_flags = { "-c", "delta.side-by-side=false" },

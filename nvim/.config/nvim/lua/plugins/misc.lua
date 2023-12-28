@@ -44,8 +44,24 @@ return {
         event = "VeryLazy",
     },
     {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "rouge8/neotest-rust",
+        },
+        config = function()
+            require("neotest").setup({
+                adapters = {
+                    require("neotest-rust"),
+                },
+            })
+        end,
+    },
+    {
         "aaronhallaert/continuous-testing.nvim",
-        dev = true,
+        -- dev = true,
         event = "VeryLazy",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",

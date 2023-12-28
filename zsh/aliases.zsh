@@ -14,6 +14,8 @@ alias nipro="tmux_nipro.sh"
 alias nipro-repo="cd ~/Developer/nephroflow/\$(ls ~/Developer/nephroflow/ | fzf)"
 alias plugins="cd ~/.local/share/nvim/lazy/"
 
+alias devup="devcontainer up --workspace-folder ./"
+
 
 
 alias dcd="docker compose down"

@@ -12,6 +12,9 @@ function! DisableSyntaxOnWidth() abort
 endfunction
 
 
+" set shell=/usr/bin/zsh
+set shell=/usr/bin/zsh
+
 " Jump to the next or previous line that has the same level or a lower
 " level of indentation than the current line.
 "

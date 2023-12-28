@@ -1,4 +1,4 @@
-local nvimrc = "$HOME/dotfiles/nvim/.config/nvim"
+local nvimrc = "$HOME/.config/nvim"
 vim.cmd("source" .. nvimrc .. "/basic.vim")
 require("aaron.ui")
 require("aaron.globals")
