@@ -1,78 +1,80 @@
 local nvim_lsp = require("lspconfig")
-local configs = require("lspconfig.configs")
-local util = require("lspconfig.util")
 
 require("neodev").setup()
-require("lsp-config.ui").init()
+require("lsp-config.auto")
+require("lsp-config.ui")
 require("lsp-config.handlers")
 
--- Format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        require("aaron.utils").lsp_format()
-    end,
-    pattern = {
-        "*.js",
-        "*.jsx",
-        "*.tsx",
-        "*.ts",
-        "*.py",
-        "*.rb",
-        "*.rs",
-        "*.lua",
-        "*.json",
-        -- "*.md",
-        "*.css",
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "efm",
+        "tailwindcss",
     },
 })
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-    command = "silent! !eslint_d % --fix",
-    pattern = { "*.js", "*.jsx", "*.tsx", "*.ts" },
-})
-
-local on_attach = function(client, bufnr)
-    require("lsp-config.signature")
-    require("lsp-config.keymaps").setup({ bufnr = bufnr })
-    require("lsp-config.ui").lspHighlights({ client = client })
-end
 
 local capabilities_with_completion =
     require("cmp_nvim_lsp").default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
     )
 
-local efmls = require("efmls-configs")
-efmls.init({
-    -- Your custom attach function
-    on_attach = on_attach,
+---------------------
+-- Default handlers --
+---------------------
+local servers = {
+    "jsonls",
+    "vimls",
+    "gopls",
+    "tailwindcss",
+}
+for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup({
+        capabilities = capabilities_with_completion,
+        root_dir = nvim_lsp.util.root_pattern(".git"),
+    })
+end
 
-    -- Enable formatting provided by efm langserver
-    init_options = {
-        documentFormatting = true,
+-----------------------
+-- Complex handlers  --
+-- * efmls           --
+-- * rust            --
+-- * clangd          --
+-- * sonarlint       --
+-----------------------
+require("lsp-config.handlers.efmls")
+require("lsp-config.handlers.sonarlint")
+require("lsp-config.handlers.rust_analyzer").setup(
+    nvim_lsp,
+    capabilities_with_completion
+)
+require("lsp-config.handlers.clangd").setup(nvim_lsp)
+
+---------------------
+-- Basic handlers  --
+-- * lua_ls        --
+-- * volar         --
+-- * solargraph    --
+-- * tsserver      --
+-- * stylelint_lsp --
+-- * pylsp         --
+---------------------
+
+nvim_lsp.lua_ls.setup({
+    capabilities = capabilities_with_completion,
+    init_options = { documentFormatting = false },
+    cmd = { "lua-language-server", "--stdio" },
+    filetypes = { "lua" },
+    settings = {
+        Lua = {
+            format = { enable = false },
+            diagnostics = { globals = { "vim" } },
+            workspace = { checkThirdParty = false },
+        },
     },
 })
 
-local markdownlint = require("plugins.config.efm.markdownlint")
--- local jq = require("plugins.config.efm.jq")
-local stylua = require("efmls-configs.formatters.stylua")
--- local luacheck = require("efmls-configs.linters.luacheck")
-local prettier = require("efmls-configs.formatters.prettier")
--- local eslint = require("efmls-configs.linters.eslint")
-
-efmls.setup({
-    json = { formatter = prettier },
-    markdown = { linter = markdownlint, formatter = prettier },
-    javascript = { formatter = prettier },
-    javascriptreact = { formatter = prettier },
-    typescriptreact = { formatter = prettier },
-    typescript = { formatter = prettier },
-    vue = { formatter = prettier },
-    lua = { formatter = stylua },
-})
-
 nvim_lsp.volar.setup({
-    on_attach = on_attach,
     cmd = { "vue-language-server", "--stdio" },
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
@@ -80,7 +82,6 @@ nvim_lsp.volar.setup({
 })
 
 nvim_lsp.solargraph.setup({
-    on_attach = on_attach,
     capabilities = capabilities_with_completion,
     cmd = { "solargraph", "stdio" },
     filetypes = { "ruby", "rakefile" },
@@ -98,110 +99,15 @@ nvim_lsp.solargraph.setup({
     },
 })
 
-if not configs.ruby_lsp then
-    local enabled_features = {
-        "documentHighlights",
-        "documentSymbols",
-        "foldingRanges",
-        "selectionRanges",
-        -- "semanticHighlighting",
-        "formatting",
-        "codeActions",
-    }
-
-    configs.ruby_lsp = {
-        default_config = {
-            cmd = { "ruby-lsp" },
-            filetypes = { "ruby" },
-            root_dir = util.root_pattern("Gemfile", ".git"),
-            init_options = { enabledFeatures = enabled_features },
-            settings = {},
-        },
-        commands = {
-            FormatRuby = {
-                function()
-                    vim.lsp.buf.format({ name = "ruby_lsp", async = true })
-                end,
-                description = "Format using ruby-lsp",
-            },
-        },
-    }
-end
-
-local rust_analyzer_config = {
-    checkOnSave = {
-        command = "clippy",
-        -- extraArgs = {
-        --     "--",
-        -- "-W",
-        -- "clippy::unwrap_used",
-        -- "-W",
-        -- "clippy::expect_used",
-        -- "-W",
-        -- "clippy::pedantic",
-        -- "-W",
-        -- "clippy::nursery",
-        -- },
-    },
-}
-
-if
-    string.find(
-        vim.fn.getcwd(),
-        "/workspaces/confero%-digital%-audio%-distribution"
-    )
-then
-    rust_analyzer_config = {
-        runnables = {
-            command = "~/workspaces/confero-digital-audio-distribution/gst-cargo",
-        },
-        cargo = {
-            extraEnv = {
-                PKG_CONFIG_PATH = "$PKG_CONFIG_PATH:/target/gstreamer-build/meson-uninstalled",
-                LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:/target/gstreamer-build",
-            },
-        },
-        checkOnSave = {
-            command = "clippy",
-        },
-    }
-end
-
-nvim_lsp.rust_analyzer.setup({
-    capabilities = capabilities_with_completion,
-    on_attach = on_attach,
-    settings = {
-        ["rust-analyzer"] = rust_analyzer_config,
-    },
-})
-
-nvim_lsp.lua_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities_with_completion,
-    init_options = { documentFormatting = false },
-    cmd = { "lua-language-server", "--stdio" },
-    filetypes = { "lua" },
-    settings = {
-        Lua = {
-            format = { enable = false },
-            diagnostics = { globals = { "vim" } },
-            workspace = { checkThirdParty = false },
-        },
-    },
-})
-
--- nvim_lsp.sqlls.setup({ root_dir = nvim_lsp.util.root_pattern(".git") })
-
 nvim_lsp.tsserver.setup({
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "yarn.lock"),
-    on_attach = function(client, bufnr)
+    on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
-        on_attach(client, bufnr)
     end,
 })
+
 nvim_lsp.stylelint_lsp.setup({
-    on_attach = on_attach,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     filetypes = { "css" },
     settings = {
@@ -213,27 +119,7 @@ nvim_lsp.stylelint_lsp.setup({
     },
 })
 
-nvim_lsp.clangd.setup({
-    on_attach = on_attach,
-    root_dir = nvim_lsp.util.root_pattern(".git"),
-    capabilities = {
-        textDocument = {
-            completion = {
-                editsNearCursor = true,
-            },
-        },
-        offsetEncoding = { "utf-16" },
-    },
-    cmd = {
-        "/usr/bin/clangd",
-        "--compile-commands-dir=./build",
-        "--query-driver=/home/aaron/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.1/bin/i686-linux*",
-        "--clang-tidy",
-    },
-})
-
 nvim_lsp.pylsp.setup({
-    on_attach = on_attach,
     capabilities = capabilities_with_completion,
     settings = {
         pylsp = {
@@ -241,52 +127,7 @@ nvim_lsp.pylsp.setup({
                 pycodestyle = {
                     maxLineLength = 100,
                 },
-                -- flake8 = {
-                --     enabled = true,
-                --     config = ".flake8",
-                --     maxLineLength = 100,
-                -- },
             },
         },
-    },
-})
-
--- Default servers
-local servers = {
-    "pylsp",
-    "jsonls",
-    "vimls",
-    -- "sourcekit",
-    "gopls",
-    "tailwindcss",
-}
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup({
-        capabilities = capabilities_with_completion,
-        on_attach = on_attach,
-        root_dir = nvim_lsp.util.root_pattern(".git"),
-    })
-end
-
-require("sonarlint").setup({
-    server = {
-        cmd = {
-            "sonarlint-language-server",
-            -- Ensure that sonarlint-language-server uses stdio channel
-            "-stdio",
-            "-analyzers",
-            "/home/aaron/.local/share/nvim/mason/packages/sonarlint-language-server/extension/analyzers/sonarcfamily.jar",
-        },
-        -- All settings are optional
-        settings = {
-            -- The default for sonarlint is {}, this is just an example
-            sonarlint = {},
-        },
-        autostart = true,
-        on_attach = on_attach,
-    },
-    filetypes = {
-        -- Tested and working
-        "cpp",
     },
 })

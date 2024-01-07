@@ -119,7 +119,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
@@ -225,3 +225,13 @@ bindsym $mod+r mode "resize"
 
 for_window [class=".*"] border pixel 1
 exec --no-startup-id nitrogen --restore
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Show the sup-mail scratchpad window, if any.
+# bindsym $mod+s [title="^Sup ::"] scratchpad show
+exec_always --no-startup-id dunst

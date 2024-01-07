@@ -5,14 +5,6 @@ return {
             require("hex").setup()
         end,
     },
-    -- code understanding (diagnostic + navigation)
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("lsp-config")
-        end,
-        event = "BufReadPre",
-    },
     {
         "folke/neodev.nvim",
         event = "BufReadPre",
@@ -28,12 +20,19 @@ return {
     },
 
     -- installing lsp servers, formatters, linters...
+    -- code understanding (diagnostic + navigation)
     {
-        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason").setup()
+            require("mason-lspconfig").setup()
+            require("lsp-config")
         end,
-        event = "VeryLazy",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+        },
+        event = "BufReadPre",
     },
     -- lsp for Java
     {
