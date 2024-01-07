@@ -143,12 +143,4 @@ function M.lsp_references()
     require("telescope.builtin").lsp_references()
 end
 
-function M.show_custom_functions()
-    require("aaron.telescope.custom").show_custom_functions()
-end
-
-function M.show_nipro_commands()
-    require("aaron.telescope.custom").show_nipro_commands()
-end
-
 return M
