@@ -3,6 +3,7 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "aaronhallaert/advanced-git-search.nvim",
+        branch = "feat/gitlinker",
         -- dev = true,
         config = function()
             require("advanced_git_search.fzf").setup({
@@ -33,7 +34,8 @@ return {
         event = "VeryLazy",
     },
     {
-        "ruifm/gitlinker.nvim",
+        "aaronhallaert/gitlinker.nvim",
+        -- dev = true,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("gitlinker").setup({
@@ -46,7 +48,7 @@ return {
                 },
             })
         end,
-        event = "VeryLazy",
+        -- event = "VeryLazy",
     },
     {
         "pwntester/octo.nvim",
