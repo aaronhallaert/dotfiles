@@ -4,17 +4,19 @@ M.setup = function(nvim_lsp, capabilities)
     local rust_analyzer_config = {
         checkOnSave = {
             command = "clippy",
-            -- extraArgs = {
-            --     "--",
-            -- "-W",
-            -- "clippy::unwrap_used",
-            -- "-W",
-            -- "clippy::expect_used",
-            -- "-W",
-            -- "clippy::pedantic",
-            -- "-W",
-            -- "clippy::nursery",
-            -- },
+            extraArgs = {
+                "--",
+                "-D",
+                "warnings",
+                "-W",
+                "clippy::unwrap_used",
+                "-W",
+                "clippy::expect_used",
+                "-W",
+                "clippy::pedantic",
+                "-W",
+                "clippy::nursery",
+            },
         },
     }
 
@@ -48,4 +50,3 @@ M.setup = function(nvim_lsp, capabilities)
     })
 end
 return M
-

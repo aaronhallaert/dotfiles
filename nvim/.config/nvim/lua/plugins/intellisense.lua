@@ -32,7 +32,7 @@ return {
             "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
         },
-        event = "BufReadPre",
+        -- event = "BufReadPre",
     },
     -- lsp for Java
     {
