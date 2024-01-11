@@ -183,7 +183,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # shutdown pc
-bindsym $mod+m exec --no-startup-id shutdown now
+bindsym $mod+Control+m exec --no-startup-id shutdown now
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
