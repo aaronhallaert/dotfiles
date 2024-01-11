@@ -25,7 +25,6 @@
   "friendly-snippets": { "branch": "main", "commit": "ebf6d6e83494cdd88a54a429340256f4dbb6a052" },
   "fzf-lua": { "branch": "main", "commit": "335f908b912504015fefeeccacb4c325029d2bfc" },
   "git-blame.nvim": { "branch": "master", "commit": "a36b277e527f9d34efe16c3636555ce0e0c0464c" },
-  "gitlinker.nvim": { "branch": "master", "commit": "0fff4352deaf7eaf2ea2b861c100f465299483ab" },
   "gitsigns.nvim": { "branch": "main", "commit": "bce4576a9047085a528c479a7fe1e2f6b787b6c1" },
   "guess-indent.nvim": { "branch": "main", "commit": "b8ae749fce17aa4c267eec80a6984130b94f80b2" },
   "harpoon": { "branch": "fix/nil_check", "commit": "f27550d73b7686f56bdfe25e630320e0633d0af5" },

@@ -35,7 +35,7 @@ return {
     },
     {
         "aaronhallaert/gitlinker.nvim",
-        -- dev = true,
+        dev = true,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("gitlinker").setup({
