@@ -10,7 +10,6 @@ require("mason-lspconfig").setup({
         "lua_ls",
         "rust_analyzer",
         "efm",
-        "tailwindcss",
     },
 })
 
@@ -26,7 +25,7 @@ local servers = {
     "jsonls",
     "vimls",
     "gopls",
-    "tailwindcss",
+    -- "tailwindcss",
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({
@@ -101,7 +100,11 @@ nvim_lsp.solargraph.setup({
 
 nvim_lsp.tsserver.setup({
     capabilities = capabilities_with_completion,
-    root_dir = nvim_lsp.util.root_pattern("pnpm-lock.yaml", "yarn.lock"),
+    root_dir = nvim_lsp.util.root_pattern(
+        "pnpm-lock.yaml",
+        "yarn.lock",
+        "package.json"
+    ),
     on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
     end,
