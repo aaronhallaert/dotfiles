@@ -83,6 +83,8 @@ vim.api.nvim_set_keymap("n", "<leader>j", ":wincmd j<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
 
+vim.api.nvim_set_keymap("n", "<leader>to", ":tabo<CR>", { noremap = true })
+
 -- vim.api.nvim_set_keymap("n", "<leader>vs", ":vsplit<CR>", { noremap = true })
 -- vim.api.nvim_set_keymap("n", "<leader>hs", ":split<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":close<CR>", { noremap = true })

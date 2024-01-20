@@ -159,3 +159,4 @@ export CMAKE_ROOT="/opt/cmake-3.28.1-linux-x86_64/share/cmake-3.28/"
 export BOOST_ROOT=/opt/boost_1_84_0
 export BOOST_INCLUDEDIR=/opt/boost_1_84_0/include
 export BOOST_LIBRARYDIR=/opt/boost_1_84_0/lib
+export VALGRIND_LIB="/usr/local/libexec/valgrind"
