@@ -1,0 +1,8 @@
+profile {
+	output eDP-1 disable
+	output "Goldstar Company Ltd LG Ultra HD 0x00001D6B (DP-1)" mode 3840x2160 position 1920,0 scale 1.5
+}
+
+profile {
+	output eDP-1 enable
+}

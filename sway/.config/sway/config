@@ -8,13 +8,15 @@ font pango:JetBrainsMono Nerd Font 8
 set $mod Mod4
 set $alt Mod1
 
-gaps inner 10
-gaps outer 10
+gaps inner 15
+gaps outer 15
+
+default_border none
+# Remap capslock to home/control with keyd (https://github.com/rvaiya/keyd)
 
 exec_always --no-startup-id kanshi
+exec_always --no-startup-id swaybg -i $HOME/Documents/wallpapers/Velo-Grey.png
 exec_always --no-startup-id dunst
-exec_always --no-startup-id xmodmap ~/.Xmodmap
-
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -45,7 +47,9 @@ bindsym Control+$mod+s exec "systemctl suspend"
 bindsym $mod+Return exec --no-startup-id wezterm
 bindsym $alt+Return exec --no-startup-id xfce4-terminal
 bindsym $alt+r exec --no-startup-id nitrogen --restore &
-bindsym $mod+P exec --no-startup-id flameshot gui
+
+bindsym $mod+p       exec $HOME/dotfiles/usr/scripts/screenshot.sh
+bindsym $mod+Shift+p exec $HOME/dotfiles/usr/scripts/partial-screenshot.sh
 bindsym $mod+n exec --no-startup-id thunar
 
 # kill focused window
