@@ -3,7 +3,7 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "aaronhallaert/advanced-git-search.nvim",
-        branch = "feat/gitlinker",
+        -- branch = "feat/gitlinker",
         -- dev = true,
         config = function()
             require("advanced_git_search.fzf").setup({
@@ -27,28 +27,12 @@ return {
         end,
         dependencies = {
             "tpope/vim-fugitive",
+            "tommcdo/vim-fubitive",
             "nvim-telescope/telescope.nvim",
             { "m00qek/baleia.nvim", tag = "v1.3.0" },
             -- "sindrets/diffview.nvim",
         },
         event = "VeryLazy",
-    },
-    {
-        "aaronhallaert/gitlinker.nvim",
-        dev = true,
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("gitlinker").setup({
-                opts = {
-                    add_current_line_on_normal_mode = false,
-                    action_callback = function(url)
-                        require("gitlinker.actions").copy_to_clipboard(url)
-                        require("gitlinker.actions").open_in_browser(url)
-                    end,
-                },
-            })
-        end,
-        -- event = "VeryLazy",
     },
     {
         "pwntester/octo.nvim",

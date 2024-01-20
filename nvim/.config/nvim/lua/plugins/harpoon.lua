@@ -68,6 +68,13 @@ local M = {
                     ':lua RunCommandInTerminal("./gst-cargo nextest run --no-capture -- " .. vim.fn.expand("<cword>"))<CR>',
                     { noremap = true, silent = true }
                 )
+            else
+                vim.api.nvim_set_keymap(
+                    "n",
+                    "stl",
+                    ':lua RunCommandInTerminal("cargo nextest run --no-capture -- " .. vim.fn.expand("<cword>"))<CR>',
+                    { noremap = true, silent = true }
+                )
             end
 
             -- NAVIGATION

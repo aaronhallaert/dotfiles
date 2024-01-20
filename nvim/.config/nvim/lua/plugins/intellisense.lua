@@ -183,6 +183,19 @@ return {
         -- event = "BufReadPre",
         ft = { "markdown", "plantuml" },
     },
+
+    {
+        "vinnymeller/swagger-preview.nvim",
+        build = "npm install -g swagger-ui-watcher",
+        config = function()
+            require("swagger-preview").setup({
+                -- The port to run the preview server on
+                port = 8111,
+                -- The host to run the preview server on
+                host = "localhost",
+            })
+        end,
+    },
     {
         "aklt/plantuml-syntax",
     },
