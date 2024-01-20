@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["sway/workspaces"],
   "modules-center": ["custom/spotify"],
-  "modules-right": ["network", "custom/vpn", "pulseaudio", "battery", "clock"],
+  "modules-right": ["tray", "network", "custom/vpn", "pulseaudio", "battery", "clock"],
   // Modules configuration
   "sway/workspaces": {
     "disable-scroll": true,
