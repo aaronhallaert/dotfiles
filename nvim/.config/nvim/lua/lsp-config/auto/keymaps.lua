@@ -14,13 +14,18 @@ M.setup = function(config)
     -- LuaFormatter off
     buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "H", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap(
+        "n",
+        "H",
+        "<Cmd>lua vim.lsp.buf.hover({focusable = true})<CR>",
+        opts
+    )
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
     buf_set_keymap(
         "n",
-        "<localleader>ca",
+        "<leader>a",
         "<cmd>lua vim.lsp.buf.code_action({ diagnostics = vim.lsp.diagnostic.get_line_diagnostics()})<CR>",
         -- "<cmd>Lspsaga code_action<CR>",
         opts
