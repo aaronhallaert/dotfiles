@@ -1,6 +1,6 @@
 {
   "position": "top",
-  "modules-left": ["sway/workspaces"],
+  "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["custom/spotify"],
   "modules-right": ["tray", "network", "custom/vpn", "pulseaudio", "battery", "clock"],
   // Modules configuration

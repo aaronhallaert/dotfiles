@@ -26,6 +26,17 @@ tooltip {
     border-radius: 15px;
 }
 
+#mode {
+    background: #a4b9ef;
+    color: #1E1E28;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+}
+
 #workspaces button {
     padding-left: 10px;
     padding-right: 10px;
