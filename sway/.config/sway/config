@@ -3,6 +3,8 @@ bar {
 }
 
 # xwayland enable
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec systemctl --user import-environment
 font pango:JetBrainsMono Nerd Font 8
 
 set $mod Mod4
@@ -46,7 +48,6 @@ bindsym Control+$mod+s exec "systemctl suspend"
 # start a terminal
 bindsym $mod+Return exec --no-startup-id wezterm
 bindsym $alt+Return exec --no-startup-id xfce4-terminal
-bindsym $alt+r exec --no-startup-id nitrogen --restore &
 
 bindsym $mod+p       exec $HOME/dotfiles/usr/scripts/screenshot.sh
 bindsym $mod+Shift+p exec $HOME/dotfiles/usr/scripts/partial-screenshot.sh
@@ -60,7 +61,7 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id wofi --show drun
 
 # change focus
 bindsym $mod+h focus left
@@ -165,12 +166,9 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # shutdown pc
 bindsym $mod+Control+m exec --no-startup-id shutdown now
+bindsym $mod+Control+l exec "systemctl suspend ; swaylock -c 000000"
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-# bindsym $mod+Shift+r restart
-bindsym $mod+Control+r exec "xrandr --auto"
-bindsym $mod+Control+t exec "scr-tvc.sh"
 bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
