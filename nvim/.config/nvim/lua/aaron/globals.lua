@@ -65,6 +65,8 @@ vim.o.smartindent = true
 -- })
 
 -- MAPPINGS
+vim.api.nvim_set_keymap("c", "<C-p>", "<Nop>", { noremap = true })
+vim.api.nvim_set_keymap("c", "<C-n>", "<Nop>", { noremap = true })
 -- Going to normal mode
 vim.api.nvim_set_keymap("i", "kj", "<Esc>", { noremap = true })
 vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
