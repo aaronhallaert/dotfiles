@@ -129,16 +129,16 @@ set $ws9 "9"
 set $ws10 "10"
 
 
-workspace $ws1 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws2 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws3 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws4 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws5 output eDP-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
-workspace $ws6 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
-workspace $ws7 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
-workspace $ws8 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
-workspace $ws9 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
-workspace $ws10 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
+# workspace $ws1 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+# workspace $ws2 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+# workspace $ws3 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+# workspace $ws4 output DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+# workspace $ws5 output eDP-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5 HDMI-0 HDMI-1
+# workspace $ws6 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
+# workspace $ws7 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
+# workspace $ws8 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
+# workspace $ws9 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
+# workspace $ws10 output HDMI-0 HDMI-1 DP-0 DP-1 DP-2 DP-3 DP-4 DP-5
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -203,7 +203,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show, resize set 1000 900
 
 # Show the sup-mail scratchpad window, if any.
 # bindsym $mod+s [title="^Sup ::"] scratchpad show

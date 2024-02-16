@@ -5,8 +5,8 @@ profile {
 
 profile {
 	output eDP-1 disable
-	output "Dell Inc. DELL P2422H 2X1BPW3" mode 1920x1080 position 1920,0
-	output "Dell Inc. DELL P2422H 29W7PW3" mode 1920x1080 position 3840,0
+	output "Dell Inc. DELL P2422H 2X1BPW3" mode 1920x1080 position 3840,0
+	output "Dell Inc. DELL P2422H 29W7PW3" mode 1920x1080 position 5760,0
 }
 
 profile {
