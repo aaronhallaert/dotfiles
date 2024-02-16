@@ -97,7 +97,7 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
-        enabled = false,
+        enabled = true,
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
