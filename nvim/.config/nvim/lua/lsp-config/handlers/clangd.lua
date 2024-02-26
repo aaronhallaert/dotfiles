@@ -5,21 +5,13 @@ M.setup = function(nvim_lsp)
         "/usr/bin/clangd",
         "--clang-tidy",
     }
-    if
-        string.find(
-            vim.fn.getcwd(),
-            "/home/aaron/Developer/televic/build%_scripts/repositories/plixus%_apps"
-        )
-    then
-        cmd = {
-            "/usr/bin/clangd",
-            "--query-driver=/home/aaron/developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.1/bin/i686-linux*",
-            "--clang-tidy",
-        }
-    end
 
     nvim_lsp.clangd.setup({
-        root_dir = nvim_lsp.util.root_pattern("CMakeLists.txt"),
+        root_dir = nvim_lsp.util.root_pattern(
+            "CMakeLists.txt"
+            -- "compile_commands.json"
+        ),
+        single_file_support = true,
         capabilities = {
             textDocument = {
                 completion = {
