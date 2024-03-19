@@ -2,20 +2,16 @@ local M = {}
 
 M.setup = function(nvim_lsp, capabilities)
     local rust_analyzer_config = {
-        checkOnSave = {
+        checkOnSave = true,
+        check = {
             command = "clippy",
             extraArgs = {
-                "--",
-                "-D",
-                "warnings",
-                "-W",
-                "clippy::unwrap_used",
-                "-W",
-                "clippy::expect_used",
-                "-W",
-                "clippy::pedantic",
-                "-W",
-                "clippy::nursery",
+                -- "--",
+                -- "-Dwarnings",
+                -- "-Wclippy::expect_used",
+                -- "-Wclippy::unwrap_used",
+                -- "-Wclippy::pedantic",
+                -- "-Wclippy::nursery",
             },
         },
     }
@@ -44,6 +40,10 @@ M.setup = function(nvim_lsp, capabilities)
 
     nvim_lsp.rust_analyzer.setup({
         capabilities = capabilities,
+        -- on_attach = function(client, bufnr)
+        -- vim.lsp.inlay_hint.enable(bufnr, true)
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- end,
         settings = {
             ["rust-analyzer"] = rust_analyzer_config,
         },
