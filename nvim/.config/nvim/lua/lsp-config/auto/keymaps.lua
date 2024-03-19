@@ -3,6 +3,7 @@ local M = {}
 M.setup = function(config)
     config = config or {}
     local bufnr = config.bufnr
+    local client = config.client
 
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -65,6 +66,22 @@ M.setup = function(config)
         "<cmd>lua require('aaron.utils').lsp_format_async()<CR>",
         opts
     )
+
+    -- local function desc(description)
+    --     return {
+    --         noremap = true,
+    --         silent = true,
+    --         buffer = bufnr,
+    --         desc = description,
+    --     }
+    -- end
+
+    -- if client.server_capabilities.inlayHintProvider then
+    --     vim.keymap.set("n", "<space>h", function()
+    --         local current_setting = vim.lsp.inlay_hint.is_enabled(bufnr)
+    --         vim.lsp.inlay_hint.enable(bufnr, not current_setting)
+    --     end, desc("[lsp] toggle inlay hints"))
+    -- end
 end
 
 return M

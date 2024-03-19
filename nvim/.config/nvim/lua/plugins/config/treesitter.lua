@@ -10,10 +10,13 @@ require("nvim-treesitter.configs").setup({
         "org",
         "vim",
     },
+    auto_install = true,
+    sync_install = false,
     ignore_install = { "phpdoc", "php" },
     highlight = {
         enable = true, -- false will disable the whole extension
         additional_vim_regex_highlighting = { "org" },
+        disable = { "json" },
     },
     textobjects = {
         select = {

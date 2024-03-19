@@ -1,6 +1,10 @@
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
-        require("lsp-config.auto.keymaps").setup({ bufnr = ev.buf })
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        require("lsp-config.auto.keymaps").setup({
+            bufnr = ev.buf,
+            client = client,
+        })
         require("lsp-config.auto.signature")
         -- require("lsp-config.auto.ui").lspHighlights({ client = client })
     end,

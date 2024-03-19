@@ -103,12 +103,12 @@ local M = {
                 ':lua require("harpoon.ui").nav_file(3)<CR>',
                 { noremap = true }
             )
-            vim.api.nvim_set_keymap(
-                "n",
-                "g;",
-                ':lua require("harpoon.ui").nav_file(4)<CR>',
-                { noremap = true }
-            )
+            -- vim.api.nvim_set_keymap(
+            --     "n",
+            --     "g;",
+            --     ':lua require("harpoon.ui").nav_file(4)<CR>',
+            --     { noremap = true }
+            -- )
 
             vim.api.nvim_set_keymap(
                 "n",

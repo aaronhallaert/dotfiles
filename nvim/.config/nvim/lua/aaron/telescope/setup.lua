@@ -55,6 +55,7 @@ telescope.setup({
                     + actions.open_qflist,
                 ["<c-a>"] = actions.add_selected_to_qflist
                     + actions.open_qflist,
+                ["<C-g>"] = require("telescope.actions").to_fuzzy_refine,
             },
             n = {
                 ["<c-e>"] = function(prompt_bufnr)
@@ -74,12 +75,17 @@ telescope.setup({
             override_file_sorter = true,
         },
         ["ui-select"] = { require("telescope.themes").get_dropdown() },
-        -- advanced_git_search = {
-        --     git_flags = { "-c", "delta.side-by-side=false" },
-        --     git_diff_flags = {},
-        --     show_builtin_git_pickers = true,
-        --     diff_plugin = "diffview",
-        -- },
+        advanced_git_search = {
+            git_flags = { "-c", "delta.side-by-side=false" },
+            git_diff_flags = {},
+            show_builtin_git_pickers = true,
+            diff_plugin = "diffview",
+            keymaps = {
+                toggle_date_author = "<C-w>",
+                open_commit_in_browser = "<C-o>",
+                copy_commit_hash = "<C-y>",
+            },
+        },
     },
     pickers = {
         buffers = {
@@ -93,5 +99,4 @@ telescope.setup({
 })
 
 -- telescope.load_extension("fzy_native")
--- telescope.load_extension("advanced_git_search")
 telescope.load_extension("ui-select")

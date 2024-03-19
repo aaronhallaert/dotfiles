@@ -36,7 +36,7 @@ return {
                 dashboard.button(
                     "f",
                     " " .. " Find file",
-                    ":Telescope find_files <CR>"
+                    ":Telescope find_files<CR>"
                 ),
                 dashboard.button(
                     "n",
@@ -51,7 +51,7 @@ return {
                 dashboard.button(
                     "g",
                     " " .. " Find text",
-                    ":Telescope live_grep <CR>"
+                    ":Telescope live_grep<CR>"
                 ),
                 dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
                 dashboard.button(

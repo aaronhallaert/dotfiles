@@ -4,15 +4,16 @@ return {
     {
         "aaronhallaert/advanced-git-search.nvim",
         -- branch = "feat/gitlinker",
-        -- dev = true,
+        dev = true,
         config = function()
-            require("advanced_git_search.fzf").setup({
-                git_flags = { "-c", "delta.side-by-side=false" },
-                git_diff_flags = {},
-                show_builtin_git_pickers = true,
-                diff_plugin = "diffview",
-                entry_default_author_or_date = "author",
-            })
+            require("telescope").load_extension("advanced_git_search")
+            -- require("advanced_git_search.fzf").setup({
+            --     git_flags = { "-c", "delta.side-by-side=false" },
+            --     git_diff_flags = {},
+            --     show_builtin_git_pickers = true,
+            --     diff_plugin = "diffview",
+            --     entry_default_author_or_date = "author",
+            -- })
 
             -- set g:terminal_color_0
             -- vim.g.terminal_color_0 = "Black"
