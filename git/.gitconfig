@@ -1,0 +1,10 @@
+[alias]
+    clone-for-worktrees="!sh $HOME/dotfiles/usr/scripts/git_aliases/git_clone_wt"
+[user]
+	name = Aaron Hallaert
+	email = hallaertaaron@gmail.com
+[merge]
+	conflictstyle = diff3
+
+[includeIf "gitdir:~/Developer/televic/"]
+    path = ~/.gitconfig-work
