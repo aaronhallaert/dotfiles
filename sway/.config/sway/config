@@ -17,7 +17,8 @@ default_border none
 # Remap capslock to home/control with keyd (https://github.com/rvaiya/keyd)
 
 exec_always --no-startup-id kanshi
-exec_always --no-startup-id swaybg -i $HOME/Documents/wallpapers/Velo-Grey.png
+exec_always --no-startup-id swaymsg "output * bg ~/wallpaper.jpg fill"
+
 exec_always --no-startup-id dunst
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -166,7 +167,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # shutdown pc
 bindsym $mod+Control+m exec --no-startup-id shutdown now
-bindsym $mod+Control+l exec "systemctl suspend ; swaylock -c 000000"
+bindsym $mod+Control+l exec "systemctl suspend ; swaylock -i ~/lockscreen_wallpaper.jpg"
 # reload the configuration file
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exit
