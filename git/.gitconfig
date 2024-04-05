@@ -5,6 +5,8 @@
 	email = hallaertaaron@gmail.com
 [merge]
 	conflictstyle = diff3
+[rerere]
+    enabled = true
 
 [includeIf "gitdir:~/Developer/televic/"]
     path = ~/.gitconfig-work
