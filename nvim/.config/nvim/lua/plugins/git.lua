@@ -3,10 +3,9 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "aaronhallaert/advanced-git-search.nvim",
-        -- branch = "feat/gitlinker",
         dev = true,
+        cmd = { "AdvancedGitSearch" },
         config = function()
-            require("telescope").load_extension("advanced_git_search")
             -- require("advanced_git_search.fzf").setup({
             --     git_flags = { "-c", "delta.side-by-side=false" },
             --     git_diff_flags = {},
@@ -14,6 +13,18 @@ return {
             --     diff_plugin = "diffview",
             --     entry_default_author_or_date = "author",
             -- })
+
+            require("telescope").setup({
+                extensions = {
+                    advanced_git_search = {
+                        git_flags = { "-c", "delta.side-by-side=false" },
+                        git_diff_flags = {},
+                        show_builtin_git_pickers = true,
+                        diff_plugin = "diffview",
+                    },
+                },
+            })
+            require("telescope").load_extension("advanced_git_search")
 
             -- set g:terminal_color_0
             -- vim.g.terminal_color_0 = "Black"
@@ -29,11 +40,9 @@ return {
         dependencies = {
             "tpope/vim-fugitive",
             "tommcdo/vim-fubitive",
-            "nvim-telescope/telescope.nvim",
-            { "m00qek/baleia.nvim", tag = "v1.3.0" },
+            -- "nvim-telescope/telescope.nvim",
             -- "sindrets/diffview.nvim",
         },
-        event = "VeryLazy",
     },
     {
         "pwntester/octo.nvim",

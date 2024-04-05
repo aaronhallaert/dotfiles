@@ -28,7 +28,7 @@ return {
     -- },
     {
         "ibhagwan/fzf-lua",
-        event = "BufReadPre",
+        -- event = "BufReadPre",
         config = function()
             require("fzf-lua").setup({
                 "telescope",

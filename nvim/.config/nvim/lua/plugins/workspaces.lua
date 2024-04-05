@@ -36,7 +36,7 @@ return {
                 dashboard.button(
                     "f",
                     " " .. " Find file",
-                    ":Telescope find_files<CR>"
+                    ":FzfLua files<CR>"
                 ),
                 dashboard.button(
                     "n",

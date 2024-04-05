@@ -5,7 +5,6 @@
   "LuaSnip": { "branch": "master", "commit": "8efa4e402a24df6a4713a2ec653147c49e8f73de" },
   "ReplaceWithRegister": { "branch": "master", "commit": "832efc23111d19591d495dc72286de2fb0b09345" },
   "alpha-nvim": { "branch": "main", "commit": "234822140b265ec4ba3203e3e0be0e0bb826dff5" },
-  "baleia.nvim": { "branch": "main", "commit": "fb3aff021b2b64ef820d0230d2c22ebfaf71bb6a" },
   "barbecue": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },
   "catppuccin": { "branch": "main", "commit": "85e93601e0f0b48aa2c6bbfae4d0e9d7a1898280" },
   "cmake-tools.nvim": { "branch": "master", "commit": "6c248e17f7b797b13d0208f761ddf32498896eb4" },
