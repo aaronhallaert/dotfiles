@@ -77,6 +77,15 @@ local M = {
                 )
             end
 
+            if string.find(vim.fn.getcwd(), "plixus%_apps") then
+                vim.api.nvim_set_keymap(
+                    "n",
+                    "stf",
+                    ':lua RunCommandInTerminal("cd /home/aaron/Developer/televic/build_scripts && ./build_pc.sh")<CR>',
+                    { noremap = true, silent = true }
+                )
+            end
+
             -- NAVIGATION
             vim.api.nvim_set_keymap(
                 "n",
