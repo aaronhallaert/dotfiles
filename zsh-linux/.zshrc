@@ -166,3 +166,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # make sure snap applications can open when sway is running with `dbus-run-session`
 # export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 eval "$(zoxide init zsh)"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
