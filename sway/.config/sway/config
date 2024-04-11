@@ -1,10 +1,12 @@
+# xwayland enable
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec systemctl --user import-environment
+
+
 bar { 
      swaybar_command waybar
 }
 
-# xwayland enable
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec systemctl --user import-environment
 font pango:JetBrainsMono Nerd Font 8
 
 set $mod Mod4
@@ -19,7 +21,12 @@ default_border none
 exec_always --no-startup-id kanshi
 exec_always --no-startup-id swaymsg "output * bg ~/wallpaper.jpg fill"
 
-exec_always --no-startup-id dunst
+# exec_always --no-startup-id dunst
+
+# Notification Daemon
+exec swaync
+exec swaync-client -R
+exec swaync-client -rs
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -43,6 +50,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 
 bindsym Control+$mod+s exec "systemctl suspend"
 

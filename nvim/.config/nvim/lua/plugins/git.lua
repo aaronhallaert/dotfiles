@@ -100,6 +100,7 @@ return {
         "tpope/vim-rhubarb",
         dependencies = {
             "tpope/vim-fugitive",
+            "tommcdo/vim-fubitive",
         },
         event = "VeryLazy",
     },
