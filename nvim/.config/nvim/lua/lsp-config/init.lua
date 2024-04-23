@@ -128,7 +128,7 @@ nvim_lsp.pylsp.setup({
         pylsp = {
             plugins = {
                 pycodestyle = {
-                    maxLineLength = 100,
+                    maxLineLength = 120,
                 },
             },
         },
