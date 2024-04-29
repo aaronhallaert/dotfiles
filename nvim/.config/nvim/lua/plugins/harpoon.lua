@@ -20,78 +20,52 @@ local M = {
             local keymaps = {
                 ["stl"] = {
                     default = {
-                        {
-                            filetype = "rust",
-                            cmd = "cargo nextest run --no-capture -- %word",
-                        },
-                        {
-                            filetype = "python",
-                            cmd = "pytest %file -k %word",
-                        },
+                        ["rust"] = "cargo nextest run --no-capture -- %word",
+                        ["python"] = "pytest %file -k %word",
                     },
                     overrides = {
                         {
                             pattern = "/workspaces/confero%-digital%-audio%-distribution",
                             actions = {
-                                filetype = "rust",
-                                cmd = "./gst-cargo nextest run --no-capture -- %word",
+                                ["rust"] = "./gst-cargo nextest run --no-capture -- %word",
                             },
                         },
                         {
                             pattern = "plixus%_apps",
                             actions = {
-                                {
-                                    filetype = "cpp",
-                                    cmd = "cd /home/aaron/Developer/televic/build_scripts && ./build_pc.sh",
-                                },
+                                ["cpp"] = "cd /home/aaron/Developer/televic/build_scripts && ./build_pc.sh",
                             },
                         },
                         {
                             pattern = "confero%-audio%-configurator",
                             actions = {
-                                {
-                                    filetype = "python",
-                                    cmd = "pytest %file -k %word --run-apps --dev",
-                                },
+                                ["python"] = "pytest %file -k %word --run-apps --dev",
                             },
                         },
                     },
                 },
                 ["stf"] = {
                     default = {
-                        {
-                            filetype = "rust",
-                            cmd = "cargo nextest run --no-capture",
-                        },
-                        {
-                            filetype = "python",
-                            cmd = "pytest %file",
-                        },
+                        ["rust"] = "cargo nextest run --no-capture",
+                        ["python"] = "pytest %file",
                     },
                     overrides = {
                         {
                             pattern = "/workspaces/confero%-digital%-audio%-distribution",
                             actions = {
-                                filetype = "rust",
-                                cmd = "./gst-cargo nextest run --no-capture",
+                                ["rust"] = "./gst-cargo nextest run --no-capture",
                             },
                         },
                         {
                             pattern = "plixus%_apps",
                             actions = {
-                                {
-                                    filetype = "cpp",
-                                    cmd = "cd /home/aaron/Developer/televic/build_scripts && ./build_pc.sh",
-                                },
+                                ["cpp"] = "cd /home/aaron/Developer/televic/build_scripts && ./build_pc.sh",
                             },
                         },
                         {
                             pattern = "confero%-audio%-configurator",
                             actions = {
-                                {
-                                    filetype = "python",
-                                    cmd = "pytest %file --run-apps --dev",
-                                },
+                                ["python"] = "pytest %file --run-apps --dev",
                             },
                         },
                     },

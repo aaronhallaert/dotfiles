@@ -16,12 +16,10 @@ M.select_term = function(index)
 
     if index > term_list:length() or term_list.items[index] == nil then
         M.create_terminal()
-        vim.print("Creating terminal", index)
         -- just append the newly open terminal
         term_list:add()
     else
         -- find in list
-        vim.print("Selecting terminal", index)
         term_list:select(index)
     end
 end
@@ -58,16 +56,13 @@ M.run_command_in_terminal = function(
     )
 end
 
----@class Action
----@field filetype string
----@field cmd string
 
 ---@class KeymapOverride
 ---@field pattern string
----@field actions Action[]
+---@field actions table<string,string>
 
 ---@class Keymap
----@field default Action[]
+---@field default table<string,string>
 ---@field overrides KeymapOverride[]
 
 ---@class Keymaps
@@ -82,40 +77,32 @@ M.apply_keymaps = function(keymaps)
         vim.keymap.set("n", keys, function()
             local cwd = vim.fn.getcwd()
 
-            local matched_mapping = nil
+            local matched_actions = nil
             --- search the correct mapping
             for _, mapping in ipairs(mappings.overrides) do
                 if string.find(cwd, mapping.pattern) then
-                    matched_mapping = mapping
-                    goto mapping_found
+                    matched_actions = mapping.actions
+                    goto actions_found
                 end
             end
-            ::mapping_found::
+            ::actions_found::
 
-            local final_mapping = vim.tbl_extend("force", mappings.default, matched_mapping or {})
+            local final_actions = vim.tbl_extend("force", mappings.default, matched_actions or {})
 
-            if final_mapping == nil then
+            if final_actions == nil then
                 vim.notify("No keymaps found for current directory: ".. cwd, vim.log.levels.ERROR)
                 return
             end
 
             local current_filetype = vim.bo.filetype
-            local matched_action = nil
-            --- search the correct action
-            for _, action in ipairs(final_mapping.actions) do
-                if action.filetype == current_filetype then
-                    matched_action = action
-                    goto action_found
-                end
-            end
-            ::action_found::
+            local final_action = final_actions[current_filetype]
 
-            if matched_action == nil then
+            if final_action == nil then
                 vim.notify("No keymaps found for current filetype "..current_filetype, vim.log.levels.ERROR)
                 return
             end
 
-            local cmd = string.gsub(matched_action.cmd, "%%file", vim.fn.expand("%"))
+            local cmd = string.gsub(final_action, "%%file", vim.fn.expand("%"))
             cmd = string.gsub(cmd, "%%word", vim.fn.expand("<cword>"))
             cmd = string.gsub(cmd, "%%line", vim.fn.line("."))
 
@@ -138,7 +125,7 @@ vim.api.nvim_create_autocmd({ "BufDelete", "BufUnload" }, {
     callback = M.remove_closed_terms,
 })
 
-vim.keymap.set("n", "<leader>gt", function()
+vim.keymap.set("n", "gt", function()
     M.select_term(1)
 end)
 
