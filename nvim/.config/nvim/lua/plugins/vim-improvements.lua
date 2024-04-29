@@ -91,4 +91,31 @@ return {
             })
         end,
     },
+
+    {
+        "phelipetls/jsonpath.nvim",
+        config = function()
+            local ns = vim.api.nvim_create_namespace("jsonpath")
+            local json_path = require("jsonpath")
+            vim.api.nvim_create_autocmd(
+                { "BufEnter", "BufWritePost", "CursorMoved" },
+                {
+                    pattern = "*.json",
+                    callback = function()
+                        vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+                        vim.api.nvim_buf_set_extmark(
+                            0,
+                            ns,
+                            vim.fn.line(".") - 1,
+                            0,
+                            {
+                                virt_text_pos = "right_align",
+                                virt_text = { { json_path.get(), "Search" } },
+                            }
+                        )
+                    end,
+                }
+            )
+        end,
+    },
 }
