@@ -218,6 +218,7 @@ bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show, resize set 1000 900
+bindsym $mod+equal scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 # bindsym $mod+s [title="^Sup ::"] scratchpad show
