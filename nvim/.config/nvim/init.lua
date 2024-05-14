@@ -34,7 +34,7 @@ local options = {
                 -- "gzip",
                 "matchit",
                 "matchparen",
-                "netrwPlugin",
+                -- "netrwPlugin",
                 "tarPlugin",
                 "tohtml",
                 "tutor",
