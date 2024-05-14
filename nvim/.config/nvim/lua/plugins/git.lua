@@ -42,6 +42,7 @@ return {
     },
     {
         "pwntester/octo.nvim",
+        enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
@@ -70,6 +71,19 @@ return {
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
+            vim.api.nvim_set_keymap(
+                "n",
+                "cp",
+                ":Gitsigns preview_hunk<CR>",
+                { noremap = true }
+            )
+
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>cr",
+                ":Gitsigns reset_hunk<CR>",
+                { noremap = true }
+            )
         end,
         event = "VeryLazy",
     },
