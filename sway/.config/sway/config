@@ -1,11 +1,6 @@
-# xwayland enable
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+xwayland enable
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec systemctl --user import-environment
-
-
-bar { 
-     swaybar_command waybar
-}
 
 font pango:JetBrainsMono Nerd Font 8
 
@@ -74,6 +69,7 @@ bindsym $mod+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+space exec --no-startup-id wofi --show drun
+bindsym $mod+Control+f exec --no-startup-id $HOME/Programs/rofi-file-selector/rofi-file-selector.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -222,3 +218,7 @@ bindsym $mod+equal scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 # bindsym $mod+s [title="^Sup ::"] scratchpad show
+
+bar { 
+swaybar_command /home/aaron/.config/sway/scripts/start_waybar.sh
+}
