@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["custom/spotify"],
-  "modules-right": ["tray", "network", "custom/vpn", "pulseaudio", "battery", "clock", "custom/notification"],
+  "modules-right": ["network", "custom/vpn", "pulseaudio", "battery", "clock", "custom/notification", "tray"],
   // Modules configuration
   "sway/workspaces": {
     "disable-scroll": true,
@@ -33,7 +33,7 @@
     "exec": "$HOME/dotfiles/usr/scripts/spotify.sh"
   },
   "clock": {
-    "format": "<span foreground='#C6AAE8'> </span>{:%a %d %H:%M}",
+    "format": "  {:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "battery": {
@@ -41,27 +41,27 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon}</span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon}</span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format": "{icon} {capacity}%",
+    "format-warning": "{icon} {capacity}%",
+    "format-critical": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon}  {time}",
+    "format-full": " {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{time}"
   },
   "network": {
-    "format-wifi": "<span size='13000' foreground='#F2CECF'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#F2CECF'>󰤭 </span> Disconnected",
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰤭  Disconnected",
     "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "<span size='13000' foreground='#F2CECF'> </span>Disconnected",
+    "format-disconnected": "  Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "format": "<span size='13000' foreground='#EBDDAA'>{icon}</span>{volume}%",
-    "format-muted": "<span size='14000' foreground='#EBDDAA'> </span>Muted",
+    "format": "{icon} {volume}%",
+    "format-muted": " Muted",
     "format-icons": {
       "headphone": " ",
       "hands-free": " ",
