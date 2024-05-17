@@ -1,5 +1,5 @@
 {
-  "position": "top",
+  "position": "bottom",
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["custom/spotify"],
   "modules-right": ["network", "custom/vpn", "pulseaudio", "battery", "clock", "custom/notification", "tray"],
