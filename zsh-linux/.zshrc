@@ -180,6 +180,6 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 2 ]; then
+if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec env XDG_CURRENT_DESKTOP=sway dbus-run-session /usr/local/bin/sway > /home/aaron/log/sway.log 2>&1
 fi
