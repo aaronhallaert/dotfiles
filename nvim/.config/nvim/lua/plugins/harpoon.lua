@@ -39,7 +39,7 @@ local M = {
                         {
                             pattern = "confero%-audio%-configurator",
                             actions = {
-                                ["python"] = "pytest %file -k %word --run-apps --dev",
+                                ["python"] = "pytest %file -k %word --run-app=yes --run-core-mock=yes --dev",
                             },
                         },
                     },

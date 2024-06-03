@@ -6,7 +6,7 @@
 [merge]
 	conflictstyle = diff3
 [rerere]
-    enabled = true
+    enabled = false
 
 [includeIf "gitdir:~/Developer/televic/"]
     path = ~/.gitconfig-work

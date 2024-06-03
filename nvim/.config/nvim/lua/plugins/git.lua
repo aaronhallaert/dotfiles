@@ -14,6 +14,7 @@ return {
         cmd = { "AdvancedGitSearch" },
         config = function()
             require("advanced_git_search.fzf").setup({
+                browse_command = "GBrowse",
                 git_flags = { "-c", "delta.side-by-side=false" },
                 git_diff_flags = {},
                 show_builtin_git_pickers = true,

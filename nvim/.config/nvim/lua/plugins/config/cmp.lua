@@ -56,6 +56,10 @@ cmp.setup({
     }),
 
     sources = cmp.config.sources({
+        {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        },
         { name = "copilot" }, -- { name = 'vsnip' }, -- For vsnip users.
         { name = "nvim_lsp" }, -- { name = 'vsnip' }, -- For vsnip users.
         -- {name = 'orgmode'}, -- { name = 'luasnip' }, -- For luasnip users.
@@ -64,6 +68,7 @@ cmp.setup({
         { name = "emoji" },
         { name = "path" },
         -- { name = 'snippy' }, -- For snippy users.
+        --
     }, { { name = "buffer" } }),
 
     formatting = {

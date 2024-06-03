@@ -6,8 +6,16 @@ return {
         end,
     },
     {
+        enabled =false,
         "folke/neodev.nvim",
         event = "BufReadPre",
+    },
+    {
+        "folke/lazydev.nvim",
+        event = "BufReadPre",
+        config = function()
+            require("lazydev").setup()
+        end
     },
 
     -- diagnostic overview
@@ -121,11 +129,11 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         enabled = true,
-        dependencies = { "zbirenbaum/copilot.lua" },
+        dependencies = { "zbirenbaum/copilot.lua", "nvim-lua/plenary.nvim" },
         config = function()
             require("CopilotChat").setup({
-                show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
-                debug = true, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+                show_help = true, -- Show help text for CopilotChatInPlace, default: yes
+                debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
                 disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
                 -- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
                 prompts = { -- Set dynamic prompts for CopilotChat commands
@@ -290,6 +298,59 @@ return {
         "creativenull/efmls-configs-nvim",
         dependencies = { "neovim/nvim-lspconfig" },
         event = "VeryLazy",
+    },
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            local dap = require("dap")
+            dap.adapters.cppdbg = {
+                id = "cppdbg",
+                type = "executable",
+                command = "/home/aaron/Programs/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+            }
+            dap.configurations.cpp = {
+                {
+                    name = "Launch file",
+                    type = "cppdbg",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input(
+                            "Path to executable: ",
+                            vim.fn.getcwd() .. "/",
+                            "file"
+                        )
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopAtEntry = true,
+                },
+            }
+
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>dc",
+                "<cmd>lua require('dap').continue()<cr>",
+                { noremap = true, silent = true }
+            )
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>dp",
+                "<cmd>lua require('dap').toggle_breakpoint()<cr>",
+                { noremap = true, silent = true }
+            )
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>ds",
+                "<cmd>lua require('dap').step_over()<cr>",
+                { noremap = true, silent = true }
+            )
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        config = function()
+            require("dapui").setup()
+        end,
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     },
     -- {
     --     "echasnovski/mini.nvim",

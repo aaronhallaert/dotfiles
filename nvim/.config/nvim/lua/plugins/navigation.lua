@@ -32,6 +32,9 @@ return {
         config = function()
             require("fzf-lua").setup({
                 "telescope",
+                devicons = {
+                    enable = true,
+                },
                 winopts = {
                     hl_border = "Normal",
                 },
@@ -54,6 +57,9 @@ return {
                 { noremap = true, silent = true }
             )
         end,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
     },
     -- { "junegunn/fzf", run = { vim.fn["fzf#install()"] } },
     -- "junegunn/fzf.vim",
@@ -61,7 +67,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         event = "VeryLazy",
-        tag = "0.1.2",
+        tag = "0.1.7",
         dependencies = {
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzy-native.nvim", lazy = false },
@@ -74,6 +80,19 @@ return {
     },
 
     -- file tree
+    {
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup({
+                default_file_explorer = false,
+                view_options = {
+                    show_hidden = true,
+                },
+            })
+        end,
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
     {
         "nvim-neo-tree/neo-tree.nvim",
         event = "VeryLazy",
@@ -99,7 +118,9 @@ return {
                     },
                 },
                 filesystem = {
-                    follow_current_file = true,
+                    follow_current_file = {
+                        enabled = true,
+                    },
                     filtered_items = {
                         visible = false, -- when true, they will just be displayed differently than normal items
                         hide_dotfiles = false,

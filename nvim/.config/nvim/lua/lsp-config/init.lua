@@ -1,6 +1,5 @@
 local nvim_lsp = require("lspconfig")
 
-require("neodev").setup()
 require("lsp-config.auto")
 require("lsp-config.ui")
 require("lsp-config.handlers")
