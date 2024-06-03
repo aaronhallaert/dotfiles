@@ -1,23 +1,43 @@
 return {
     "shortcuts/no-neck-pain.nvim",
     {
-        "kdheepak/lazygit.nvim",
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        -- setting the keybinding for LazyGit with 'keys' is recommended in
-        -- order to load the plugin when the command is run for the first time
-        keys = {
-            { "<leader>tg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-        },
+        "voldikss/vim-floaterm",
+        event = "VeryLazy",
+        config = function()
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>tg",
+                ":FloatermNew lazygit<CR>",
+                { noremap = true }
+            )
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>ts",
+                ":FloatermNew spt<CR>",
+                { noremap = true }
+            )
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>td",
+                ":FloatermNew lazydocker<CR>",
+                { noremap = true }
+            )
+
+            vim.o.timeoutlen = 500
+            vim.g.floaterm_gitcommit = "floaterm"
+            vim.g.floaterm_autoinsert = 1
+            vim.g.floaterm_width = 0.8
+            vim.g.floaterm_height = 0.8
+            vim.g.floaterm_wintitle = 0
+            vim.g.floaterm_autoclose = 1
+
+            vim.api.nvim_create_autocmd("VimResized", {
+                callback = function()
+                    vim.api.nvim_command(":wincmd =")
+                    vim.api.nvim_command("FloatermUpdate")
+                end,
+            })
+        end,
     },
     {
         "nvim-lua/plenary.nvim",
