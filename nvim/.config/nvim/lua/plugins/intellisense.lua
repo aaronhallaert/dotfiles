@@ -6,7 +6,7 @@ return {
         end,
     },
     {
-        enabled =false,
+        enabled = false,
         "folke/neodev.nvim",
         event = "BufReadPre",
     },
@@ -15,7 +15,7 @@ return {
         event = "BufReadPre",
         config = function()
             require("lazydev").setup()
-        end
+        end,
     },
 
     -- diagnostic overview
@@ -111,10 +111,10 @@ return {
         config = function()
             require("copilot").setup({
                 suggestion = {
-                    auto_trigger = false,
+                    auto_trigger = true,
                     debounce = 75,
                     keymap = {
-                        accept = "<C-a>",
+                        accept = "<C-l>",
                         accept_word = false,
                         accept_line = false,
                         next = "<C-]>",

@@ -52,7 +52,7 @@ cmp.setup({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
-        ["<C-l>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-l>"] = cmp.mapping.confirm({ select = false }),
     }),
 
     sources = cmp.config.sources({
@@ -60,7 +60,7 @@ cmp.setup({
             name = "lazydev",
             group_index = 0, -- set group index to 0 to skip loading LuaLS completions
         },
-        { name = "copilot" }, -- { name = 'vsnip' }, -- For vsnip users.
+        -- { name = "copilot" }, -- { name = 'vsnip' }, -- For vsnip users.
         { name = "nvim_lsp" }, -- { name = 'vsnip' }, -- For vsnip users.
         -- {name = 'orgmode'}, -- { name = 'luasnip' }, -- For luasnip users.
         { name = "luasnip" }, -- For luasnip users.
@@ -72,6 +72,8 @@ cmp.setup({
     }, { { name = "buffer" } }),
 
     formatting = {
+        fields = { "abbr", "kind", "menu" },
+        expandable_indicator = true,
         format = function(entry, vim_item)
             -- Kind icons
             vim_item.kind =
