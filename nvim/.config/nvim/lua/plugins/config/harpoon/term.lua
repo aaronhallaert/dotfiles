@@ -12,8 +12,6 @@ end
 
 ---@param index number: The index of the terminal to select.
 M.select_term = function(index)
-    vim.print("termlist:", term_list:length())
-
     if index > term_list:length() or term_list.items[index] == nil then
         M.create_terminal()
         -- just append the newly open terminal
