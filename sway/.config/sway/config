@@ -34,13 +34,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym F7 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym F8 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym F9 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym XF86AudioStop exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
-bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym F7 exec playerctl -a previous
+bindsym F8 exec playerctl -a play-pause
+bindsym F9 exec playerctl -a previous
+
+bindsym XF86AudioPlay exec playerctl -a play-pause
+bindsym XF86AudioStop exec playerctl -a stop
+bindsym XF86AudioPrev exec playerctl -a next
+bindsym XF86AudioNext exec playerctl -a previous
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 
@@ -178,7 +179,21 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # shutdown pc
 bindsym $mod+Control+m exec --no-startup-id shutdown now
-bindsym $mod+Control+l exec "systemctl suspend ; swaylock -i ~/lockscreen_wallpaper.jpg"
+
+set $pause playerctl -a pause 
+set $lock swaylock -f -i ~/lockscreen_wallpaper.jpg
+bindsym $mod+Control+l exec systemctl suspend
+
+exec_always killall swayidle ; swayidle -w \
+        timeout 299 'exec $pause' \
+        timeout 300 'exec $lock' \
+        timeout 301 'swaymsg "output * dpms off"' \
+             resume 'swaymsg "output * dpms on"' \
+        timeout 600 'systemctl suspend' \
+             resume 'swaymsg "output * dpms on"' \
+        before-sleep '$pause ; $lock'
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exit
