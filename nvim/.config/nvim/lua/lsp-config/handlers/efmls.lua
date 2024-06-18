@@ -1,11 +1,13 @@
 local markdownlint = require("plugins.config.efm.markdownlint")
 local stylua = require("efmls-configs.formatters.stylua")
 local prettier = require("efmls-configs.formatters.prettier")
+local black = require("efmls-configs.formatters.black")
 -- local jq = require("plugins.config.efm.jq")
 -- local luacheck = require("efmls-configs.linters.luacheck")
 -- local eslint = require("efmls-configs.linters.eslint")
 --
 local languages = {
+    python = { black },
     json = { prettier },
     markdown = { markdownlint, prettier },
     javascript = { prettier },
@@ -28,4 +30,3 @@ require("lspconfig").efm.setup({
         documentRangeFormatting = true,
     },
 })
-

@@ -21,7 +21,8 @@ local capabilities_with_completion =
 -- Default handlers --
 ---------------------
 local servers = {
-    "jsonls",
+    -- "jsonls",
+    "bashls",
     "vimls",
     "gopls",
     -- "tailwindcss",
@@ -57,6 +58,13 @@ require("lsp-config.handlers.clangd").setup(nvim_lsp)
 -- * stylelint_lsp --
 -- * pylsp         --
 ---------------------
+
+nvim_lsp.jsonls.setup({
+    capabilities = capabilities_with_completion,
+    init_options = { provideFormatter = false },
+    filetypes = { "json" },
+    root_dir = nvim_lsp.util.root_pattern(".git"),
+})
 
 nvim_lsp.lua_ls.setup({
     capabilities = capabilities_with_completion,
@@ -122,7 +130,10 @@ nvim_lsp.stylelint_lsp.setup({
 })
 
 nvim_lsp.pylsp.setup({
-    capabilities = capabilities_with_completion,
+    on_attach = function(client)
+        -- capabilities_with_completion(client)
+        client.server_capabilities.documentFormattingProvider = false
+    end,
     settings = {
         pylsp = {
             plugins = {
