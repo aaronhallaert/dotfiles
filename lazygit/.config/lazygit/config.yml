@@ -1,11 +1,5 @@
 os:
-    # editPreset: 'nvim'
-    # editCommand: 'nvr'
-    # editCommandTemplate: '{{editor}} --servername /tmp/`tmux display-message -p "#S-#{window_index}-#I"` -cc split -c "only" --remote +{{line}} -- {{filename}}'
-    edit: 'nvr --servername /tmp/`tmux display-message -p "#S-#{window_index}-#I"` -cc split -c "only" --remote -- {{filename}}'
-    editAtLine: 'nvr --servername /tmp/`tmux display-message -p "#S-#{window_index}-#I"` -cc split -c "only" --remote +{{line}} -- {{filename}}'
-    editInTerminal: true
-    openDirInEditor: 'nvr {{dir}}'
+    editPreset: "nvim"
 promptToReturnFromSubprocess: false
 git:
     commit:
