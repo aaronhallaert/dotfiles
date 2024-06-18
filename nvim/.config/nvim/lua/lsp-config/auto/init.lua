@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.json",
         -- "*.md",
         "*.css",
-        -- "*.cpp",
-        -- "*.hpp",
+        "*.cpp",
+        "*.hpp",
     },
 })
 
