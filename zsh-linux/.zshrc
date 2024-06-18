@@ -139,6 +139,7 @@ source "$HOME/dotfiles/zsh/aliases.zsh"
 # source "$HOME/dotfiles/zsh/keys"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
+export PATH="/home/aaron/.local/bin:$PATH"
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/aaron/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
