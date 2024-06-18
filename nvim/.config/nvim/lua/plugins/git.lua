@@ -13,26 +13,23 @@ return {
         dev = true,
         cmd = { "AdvancedGitSearch" },
         config = function()
-            require("advanced_git_search.fzf").setup({
+            local config = {
                 browse_command = "GBrowse",
                 git_flags = { "-c", "delta.side-by-side=false" },
                 git_diff_flags = {},
                 show_builtin_git_pickers = true,
                 diff_plugin = "diffview",
                 entry_default_author_or_date = "author",
-            })
+            }
 
-            -- require("telescope").setup({
-            --     extensions = {
-            --         advanced_git_search = {
-            --             git_flags = { "-c", "delta.side-by-side=false" },
-            --             git_diff_flags = {},
-            --             show_builtin_git_pickers = true,
-            --             diff_plugin = "diffview",
-            --         },
-            --     },
-            -- })
-            -- require("telescope").load_extension("advanced_git_search")
+            -- require("advanced_git_search.fzf").setup(config)
+
+            require("telescope").setup({
+                extensions = {
+                    advanced_git_search = config,
+                },
+            })
+            require("telescope").load_extension("advanced_git_search")
         end,
         dependencies = {
             "tpope/vim-fugitive",
