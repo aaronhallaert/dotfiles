@@ -36,12 +36,12 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 bindsym F7 exec playerctl -a previous
 bindsym F8 exec playerctl -a play-pause
-bindsym F9 exec playerctl -a previous
+bindsym F9 exec playerctl -a next
 
 bindsym XF86AudioPlay exec playerctl -a play-pause
 bindsym XF86AudioStop exec playerctl -a stop
-bindsym XF86AudioPrev exec playerctl -a next
-bindsym XF86AudioNext exec playerctl -a previous
+bindsym XF86AudioPrev exec playerctl -a previous
+bindsym XF86AudioNext exec playerctl -a next
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 
@@ -180,18 +180,9 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # shutdown pc
 bindsym $mod+Control+m exec --no-startup-id shutdown now
 
-set $pause playerctl -a pause 
-set $lock swaylock -f -i ~/lockscreen_wallpaper.jpg
 bindsym $mod+Control+l exec systemctl suspend
 
-exec_always killall swayidle ; swayidle -w \
-        timeout 299 'exec $pause' \
-        timeout 300 'exec $lock' \
-        timeout 301 'swaymsg "output * dpms off"' \
-             resume 'swaymsg "output * dpms on"' \
-        timeout 600 'systemctl suspend' \
-             resume 'swaymsg "output * dpms on"' \
-        before-sleep '$pause ; $lock'
+exec_always /home/aaron/.config/sway/scripts/swayidle.sh &
 
 
 # reload the configuration file

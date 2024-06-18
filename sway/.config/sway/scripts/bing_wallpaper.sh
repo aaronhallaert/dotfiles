@@ -24,8 +24,8 @@ else
   index=$1
 fi
 
-# wluri=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$index\&mkt\=en-US -s | jq '.url' --raw-output | shuf -n 1)
-wluri=$(curl https://bing.biturl.top -s | jq '.url' --raw-output | shuf -n 1)
+wluri=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$index\&mkt\=en-US -s | jq '.url' --raw-output | shuf -n 1)
+# wluri=$(curl https://bing.biturl.top -s | jq '.url' --raw-output | shuf -n 1)
 
 curl "$wluri" -s > $wlpath
 
