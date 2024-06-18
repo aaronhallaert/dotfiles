@@ -16,6 +16,8 @@ default_border none
 exec_always --no-startup-id kanshi
 exec_always --no-startup-id swaymsg "output * bg ~/wallpaper.jpg fill"
 
+exec_always clipmon &
+
 # exec_always --no-startup-id dunst
 
 # Notification Daemon
