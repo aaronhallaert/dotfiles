@@ -3,6 +3,7 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "aaronhallaert/bitbucket.nvim",
+        enabled = false,
         dev = true,
         config = function()
             require("bitbucket").setup()

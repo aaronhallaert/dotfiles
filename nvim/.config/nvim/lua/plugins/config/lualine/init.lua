@@ -170,8 +170,8 @@ require("lualine").setup({
             space,
         },
         lualine_y = {
-            require("bitbucket.lualine").component_pr_reviewing,
-            require("bitbucket.lualine").component_pr_mine,
+            -- require("bitbucket.lualine").component_pr_reviewing,
+            -- require("bitbucket.lualine").component_pr_mine,
             space,
             encoding,
             fileformat,

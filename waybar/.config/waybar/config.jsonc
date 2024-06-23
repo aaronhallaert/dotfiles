@@ -1,6 +1,6 @@
 {
   "position": "bottom",
-  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode"],
   "modules-center": ["custom/spotify"],
   "modules-right": ["network", "custom/vpn", "pulseaudio", "battery", "clock", "custom/notification", "tray"],
   // Modules configuration
@@ -12,6 +12,15 @@
       "default": "",
       "urgent": "",
       "focused": ""
+    }
+  }, 
+  "hyprland/workspaces": {
+    "all-outputs": false,
+    "format": "{icon} {id}",
+    "format-icons": {
+      "default": "",
+      "urgent": "",
+      "active": ""
     }
   }, 
   "custom/vpn": {
