@@ -14,6 +14,7 @@ return {
         dev = true,
         cmd = { "AdvancedGitSearch" },
         config = function()
+            ---@type advanced_git_search.Config
             local config = {
                 browse_command = "GBrowse",
                 git_flags = { "-c", "delta.side-by-side=false" },
@@ -23,7 +24,7 @@ return {
                 entry_default_author_or_date = "author",
             }
 
-            -- require("advanced_git_search.fzf").setup(config)
+            require("advanced_git_search.fzf").setup(config)
 
             require("telescope").setup({
                 extensions = {

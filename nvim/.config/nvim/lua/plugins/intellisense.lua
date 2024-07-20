@@ -12,7 +12,7 @@ return {
     },
     {
         "folke/lazydev.nvim",
-        event = "BufReadPre",
+        ft = "lua",
         config = function()
             require("lazydev").setup()
         end,

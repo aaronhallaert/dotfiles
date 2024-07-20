@@ -2,7 +2,7 @@
   "position": "bottom",
   "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode"],
   "modules-center": ["custom/spotify"],
-  "modules-right": ["network", "custom/vpn", "pulseaudio", "battery", "clock", "custom/notification", "tray"],
+  "modules-right": ["network", "pulseaudio", "battery", "clock", "custom/notification", "tray"],
   // Modules configuration
   "sway/workspaces": {
     "disable-scroll": true,

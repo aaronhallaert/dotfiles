@@ -20,5 +20,5 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 source <(fzf --zsh)
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec env WLR_NO_HARDWARE_CURSORS=1 Hyprland
+  exec Hyprland > ~/tmp/hyprland.log 2>&1
 fi
