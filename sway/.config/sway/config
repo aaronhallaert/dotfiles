@@ -16,7 +16,8 @@ default_border none
 exec_always --no-startup-id kanshi
 exec_always --no-startup-id swaymsg "output * bg ~/wallpaper.jpg fill"
 
-exec_always clipmon &
+exec_always --no-startup-id clipmon
+exec_always --no-startup-id playerctld daemon
 
 # exec_always --no-startup-id dunst
 
@@ -36,14 +37,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym F7 exec playerctl -a previous
-bindsym F8 exec playerctl -a play-pause
-bindsym F9 exec playerctl -a next
+bindsym F7 exec playerctl -p playerctld previous
+bindsym F8 exec playerctl -p playerctld play-pause
+bindsym F9 exec playerctl -p playerctld next
 
-bindsym XF86AudioPlay exec playerctl -a play-pause
-bindsym XF86AudioStop exec playerctl -a stop
-bindsym XF86AudioPrev exec playerctl -a previous
-bindsym XF86AudioNext exec playerctl -a next
+bindsym XF86AudioPlay exec playerctl -p playerctld play-pause
+bindsym XF86AudioStop exec playerctl -p playerctld stop
+bindsym XF86AudioPrev exec playerctl -p playerctld previous
+bindsym XF86AudioNext exec playerctl -p playerctld next
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 
@@ -72,7 +73,7 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+space exec --no-startup-id wofi --show drun
+bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id $HOME/Developer/personal/wofi-bluetooth/wofi-bluetooth
 bindsym $mod+Shift+f exec --no-startup-id $HOME/Programs/rofi-file-selector/rofi-file-selector.sh
 

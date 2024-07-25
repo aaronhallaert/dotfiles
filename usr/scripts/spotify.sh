@@ -1,7 +1,6 @@
 #!/bin/sh
 
-tooltip="$(playerctl -p spotify metadata title) - $(playerctl -p spotify metadata artist)"
-class="class"
+tooltip="$(playerctl -p playerctld metadata title) - $(playerctl -p playerctld metadata artist)"
 percentage="100"
 
 echo "{\"text\": \" $tooltip\", \"tooltip\": \"$tooltip\", \"percentage\": $percentage }"
