@@ -31,7 +31,7 @@
   "custom/spotify": {
     "format": "<span font='JetBrainsMono Nerd Font weight=325 Italic'>{}</span>",
     "interval": 1,
-    "exec-if": "pgrep playerctld",
+    "exec-if": "playerctl -p playerctld metadata",
     "on-click": "playerctl -p playerctld play-pause",
     "on-scroll-up": "playerctl -p playerctld previous",
     "on-scroll-down": "playerctl -p playerctld next",

@@ -1,6 +1,8 @@
-xwayland enable
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec systemctl --user import-environment
+
+xwayland enable
+for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 font pango:JetBrainsMono Nerd Font 8
 

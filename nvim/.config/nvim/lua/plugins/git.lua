@@ -24,7 +24,7 @@ return {
                 entry_default_author_or_date = "author",
             }
 
-            require("advanced_git_search.fzf").setup(config)
+            -- require("advanced_git_search.fzf").setup(config)
 
             require("telescope").setup({
                 extensions = {

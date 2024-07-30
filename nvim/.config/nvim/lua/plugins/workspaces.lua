@@ -26,10 +26,49 @@ return {
         "jamestthompson3/nvim-remote-containers",
     },
     {
+        "juansalvatore/git-dashboard-nvim",
+        dev = true,
+        opts = {
+            use_git_username_as_author = true,
+            basepoints = {},
+        },
+    },
+    -- {
+    --     "nvimdev/dashboard-nvim",
+    --     event = "VimEnter",
+    --     dependencies = {
+    --         {
+    --             "juansalvatore/git-dashboard-nvim",
+    --             dependencies = { "nvim-lua/plenary.nvim" },
+    --         },
+    --     },
+    --     opts = function()
+    --         local git_dashboard = require("git-dashboard-nvim").heatmap()
+    --
+    --         local opts = {
+    --             config = {
+    --                 header = git_dashboard,
+    --                 center = {
+    --                     { action = "", desc = "", icon = "", key = "n" },
+    --                 },
+    --                 footer = function()
+    --                     return {}
+    --                 end,
+    --             },
+    --         }
+    --
+    --         -- extra dashboard nvim config ...
+    --
+    --         return opts
+    --     end,
+    -- },
+    {
         "goolord/alpha-nvim",
+        enabled = true,
         event = "VimEnter",
         opts = function()
             local dashboard = require("alpha.themes.dashboard")
+            -- local git_dashboard = require("git-dashboard-nvim").heatmap()
 
             dashboard.section.header.val = header
             dashboard.section.buttons.val = {

@@ -46,7 +46,7 @@ local M = {
                 },
                 ["stf"] = {
                     default = {
-                        ["rust"] = "cargo nextest run --no-capture",
+                        ["rust"] = "cargo nextest run",
                         ["python"] = "pytest %file",
                     },
                     overrides = {

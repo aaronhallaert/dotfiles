@@ -17,5 +17,6 @@ require("sonarlint").setup({
     filetypes = {
         -- Tested and working
         "cpp",
+        "hpp",
     },
 })

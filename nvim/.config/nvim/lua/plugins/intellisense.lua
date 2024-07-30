@@ -42,6 +42,14 @@ return {
         },
         -- event = "BufReadPre",
     },
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        enabled = false,
+        event = "VeryLazy",
+        config = function()
+            require("tiny-inline-diagnostic").setup()
+        end,
+    },
     -- lsp for Java
     {
         "mfussenegger/nvim-jdtls",
@@ -236,6 +244,25 @@ return {
             vim.g.vimtex_compiler_latexmk = { continuous = 1 }
         end,
         event = "BufReadPre",
+    },
+    {
+        "MeanderingProgrammer/markdown.nvim",
+        name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "echasnovski/mini.nvim",
+        }, -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        config = function()
+            require("render-markdown").setup({})
+        end,
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        config = function()
+            require("markview").setup({})
+        end,
     },
     {
         "iamcco/markdown-preview.nvim",

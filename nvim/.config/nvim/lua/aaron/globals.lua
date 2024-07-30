@@ -141,6 +141,18 @@ vim.api.nvim_set_keymap("n", "J", "mzJ`z", { noremap = true })
 vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { noremap = true })
 
+vim.api.nvim_create_user_command("Compare", function()
+    -- vsplit and focus new window
+    vim.api.nvim_command("vsplit")
+    vim.api.nvim_command("wincmd l")
+    vim.api.nvim_command("enew")
+    vim.api.nvim_command("diffthis")
+    vim.api.nvim_command("split")
+    vim.api.nvim_command("wincmd j")
+    vim.api.nvim_command("enew")
+    vim.api.nvim_command("diffthis")
+end, {})
+
 -- autocomplete parenthesis Latex
 vim.api.nvim_create_augroup("LatexParenthesis", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
