@@ -7,7 +7,7 @@ REMOTE_BASE = "backup/televic-dell"
 LOG_FILE = "/home/aaron/tmp/gdrive-backup-rsync.log"
 IGNORE_FILE = ".rcloneignore"
 
-DIRS = ["/home/aaron/Documents", "/home/aaron/Pictures"]
+DIRS = ["/home/aaron/Documents", "/home/aaron/Pictures", "/home/aaron/Videos"]
 
 logger = logging.getLogger(__name__)
 
@@ -37,10 +37,11 @@ def backup(directory: str):
 
 def main():
     logging.basicConfig(
-        format='%(asctime)s %(levelname)-8s %(message)s',
+        format="%(asctime)s %(levelname)-8s %(message)s",
         filename=LOG_FILE,
         level=logging.INFO,
-        datefmt='%Y-%m-%d %H:%M:%S')
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 
     if not os.path.exists(LOG_FILE):
         print("creating log file")
