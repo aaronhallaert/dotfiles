@@ -42,12 +42,12 @@ end
 -- * sonarlint       --
 -----------------------
 require("lsp-config.handlers.efmls")
-require("lsp-config.handlers.sonarlint")
 require("lsp-config.handlers.rust_analyzer").setup(
     nvim_lsp,
     capabilities_with_completion
 )
 require("lsp-config.handlers.clangd").setup(nvim_lsp)
+require("lsp-config.handlers.sonarlint")
 
 ---------------------
 -- Basic handlers  --

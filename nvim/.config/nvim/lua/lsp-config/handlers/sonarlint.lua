@@ -7,16 +7,17 @@ require("sonarlint").setup({
             "-analyzers",
             "/home/aaron/.local/share/nvim/mason/packages/sonarlint-language-server/extension/analyzers/sonarcfamily.jar",
         },
-        -- All settings are optional
         settings = {
             -- The default for sonarlint is {}, this is just an example
-            sonarlint = {},
+            sonarlint = {
+                pathToCompileCommands = "compile_commands.json",
+            },
         },
         autostart = true,
     },
     filetypes = {
         -- Tested and working
         "cpp",
-        "hpp",
+        -- "hpp",
     },
 })
