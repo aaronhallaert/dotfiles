@@ -33,4 +33,4 @@ killall swaybg || true
 
 swaymsg "output $output bg $wlpath fill"
 
-convert $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath
+magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath

@@ -27,7 +27,8 @@ return {
     },
     {
         "juansalvatore/git-dashboard-nvim",
-        dev = true,
+        enabled = false,
+        dev = false,
         opts = {
             use_git_username_as_author = true,
             basepoints = {},
