@@ -25,7 +25,11 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 source <(fzf --zsh)
 
+# if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+#   exec sway
+# fi
+
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec sway
+  exec env XDG_CURRENT_DESKTOP=sway dbus-run-session /usr/bin/sway > /home/aaron/log/sway.log 2>&1
 fi
 source ~/powerlevel10k/powerlevel10k.zsh-theme

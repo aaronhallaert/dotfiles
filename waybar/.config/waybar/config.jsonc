@@ -1,9 +1,22 @@
 {
   "position": "bottom",
-  "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode"],
-  "modules-center": ["custom/spotify"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock", "custom/notification", "tray"],
-  // Modules configuration
+  "modules-left": [
+    "hyprland/workspaces",
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "custom/spotify"
+  ],
+  "modules-right": [
+    "group/customprivacy",
+    "network",
+    "pulseaudio",
+    "battery",
+    "clock",
+    "custom/notification",
+    "tray",
+  ],
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
@@ -13,7 +26,14 @@
       "urgent": "",
       "focused": ""
     }
-  }, 
+  },
+  "group/customprivacy": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/camera",
+      "privacy",
+    ]
+  },
   "hyprland/workspaces": {
     "all-outputs": false,
     "format": "{icon} {id}",
@@ -22,11 +42,38 @@
       "urgent": "",
       "active": ""
     }
-  }, 
+  },
+  "privacy": {
+    "icon-spacing": 5,
+    "icon-size": 14,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 18
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 18
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 18
+      }
+    ]
+  },
   "custom/vpn": {
     "format": "{}",
     "interval": 1,
     "exec": "$HOME/dotfiles/usr/scripts/waybar-vpn.sh"
+  },
+  "custom/camera": {
+    "interval": 1,
+    "exec": "$HOME/dotfiles/usr/scripts/waybar-camera.sh",
+    "return-type": "json"
   },
   "custom/spotify": {
     "format": "<span font='JetBrainsMono Nerd Font weight=325 Italic'>{}</span>",
@@ -57,7 +104,13 @@
     "format-plugged": " {capacity}%",
     "format-alt": "{icon}  {time}",
     "format-full": " {capacity}%",
-    "format-icons": [" ", " ", " ", " ", " "],
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ],
     "tooltip-format": "{time}"
   },
   "network": {
@@ -78,11 +131,14 @@
       "phone": " ",
       "portable": " ",
       "car": " ",
-      "default": [" ", " "]
+      "default": [
+        " ",
+        " "
+      ]
     }
   },
   "tray": {
-    "spacing": 10,
+    "spacing": 10
   },
   "custom/notification": {
     "tooltip": false,
@@ -103,5 +159,5 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-  },
+  }
 }
