@@ -1,15 +1,22 @@
 #!/bin/bash
 
 apt update 
-apt install stow nodejs npm -y
+apt install stow nodejs npm
 
-wget https://github.com/git/git/archive/refs/tags/v2.46.0.tar.gz
-tar -zxf git-2.46.0.tar.gz
-cd git-2.46.0
-make configure
-./configure --prefix=/usr
-make all doc info
-sudo make install install-doc install-html install-info
+echo "Current git version: $(git --version)"
+echo "Install git 2.46.0? (y/n)"
+
+read git
+if [ $git == "y" ]
+then
+    wget https://github.com/git/git/archive/refs/tags/v2.46.0.tar.gz
+    tar -zxf v2.46.0.tar.gz
+    cd git-2.46.0
+    make configure
+    ./configure --prefix=/usr
+    make all doc info
+    sudo make install install-doc install-html install-info
+fi
 
 cd $HOME
 
@@ -42,5 +49,10 @@ cd $HOME
 if ! command -v fzf &> /dev/null
 then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install -y
+    ~/.fzf/install --bin
+    ln -s $HOME/.fzf/bin/fzf /usr/bin/fzf
 fi
+
+cd ~/dotfiles
+rm -rf ~/.config/nvim && stow nvim
+rm -rf ~/.config/lazygit && stow lazygit
