@@ -2,8 +2,11 @@
 import os
 import logging
 
+
+hostname = os.uname().nodename
+remote_base = "backup/" + hostname
+
 REMOTE = "gdrive"
-REMOTE_BASE = "backup/televic-dell"
 LOG_FILE = "/home/aaron/tmp/gdrive-backup-rsync.log"
 IGNORE_FILE = ".rcloneignore"
 
@@ -15,7 +18,7 @@ logger = logging.getLogger(__name__)
 def backup(directory: str):
     logger.info("Backing up " + directory)
     directory_name = os.path.basename(directory)
-    remote_loc = os.path.join(REMOTE_BASE, directory_name)
+    remote_loc = os.path.join(remote_base, directory_name)
 
     command = f"rclone sync -v {directory} {REMOTE}:{remote_loc}"
 

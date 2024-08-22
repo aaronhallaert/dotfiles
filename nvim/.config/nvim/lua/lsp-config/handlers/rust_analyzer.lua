@@ -38,6 +38,24 @@ M.setup = function(nvim_lsp, capabilities)
         }
     end
 
+    if string.find(vim.fn.getcwd(), "/workspaces/confero%-cam%-compositor") then
+        vim.print("Setting up rust-analyzer for confero-cam-compositor")
+        rust_analyzer_config = {
+            runnables = {
+                command = "~/workspaces/confero-cam-compositor/gst-cargo",
+            },
+            cargo = {
+                extraEnv = {
+                    PKG_CONFIG_PATH = "$PKG_CONFIG_PATH:/target/gstreamer-build/meson-uninstalled",
+                    LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:/target/gstreamer-build",
+                },
+            },
+            checkOnSave = {
+                command = "clippy",
+            },
+        }
+    end
+
     nvim_lsp.rust_analyzer.setup({
         capabilities = capabilities,
         -- on_attach = function(client, bufnr)

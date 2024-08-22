@@ -246,19 +246,29 @@ return {
         event = "BufReadPre",
     },
     {
-        "MeanderingProgrammer/markdown.nvim",
-        name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "echasnovski/mini.nvim",
-        }, -- if you use the mini.nvim suite
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        "mistweaverco/kulala.nvim",
         config = function()
-            require("render-markdown").setup({})
+            -- Setup is required, even if you don't pass any options
+            require("kulala").setup({
+                default_view = "headers_body",
+            })
         end,
     },
+    -- {
+    --     "MeanderingProgrammer/markdown.nvim",
+    --     name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    --     dependencies = {
+    --         "nvim-treesitter/nvim-treesitter",
+    --         "echasnovski/mini.nvim",
+    --     }, -- if you use the mini.nvim suite
+    --     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    --     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    --     config = function()
+    --         require("render-markdown").setup({})
+    --     end,
+    -- },
     {
+        enabled = false,
         "OXY2DEV/markview.nvim",
         config = function()
             require("markview").setup({})

@@ -4,6 +4,7 @@ M.setup = function(nvim_lsp)
     local cmd = {
         "/usr/bin/clangd",
         "--clang-tidy",
+        "--query-driver=/home/aaron/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.7/bin/i686-linux-g++",
     }
 
     nvim_lsp.clangd.setup({

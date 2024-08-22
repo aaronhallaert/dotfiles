@@ -11,7 +11,7 @@ return {
     },
     {
         "aaronhallaert/advanced-git-search.nvim",
-        dev = true,
+        dev = false,
         cmd = { "AdvancedGitSearch" },
         config = function()
             ---@type advanced_git_search.Config
@@ -24,14 +24,18 @@ return {
                 entry_default_author_or_date = "author",
             }
 
-            -- require("advanced_git_search.fzf").setup(config)
+            local fzf_adv = false
 
-            require("telescope").setup({
-                extensions = {
-                    advanced_git_search = config,
-                },
-            })
-            require("telescope").load_extension("advanced_git_search")
+            if fzf_adv then
+                require("advanced_git_search.fzf").setup(config)
+            else
+                require("telescope").setup({
+                    extensions = {
+                        advanced_git_search = config,
+                    },
+                })
+                require("telescope").load_extension("advanced_git_search")
+            end
         end,
         dependencies = {
             "tpope/vim-fugitive",
