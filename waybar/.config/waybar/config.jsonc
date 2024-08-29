@@ -3,6 +3,7 @@
   "modules-left": [
     "hyprland/workspaces",
     "sway/workspaces",
+    "custom/mirror",
     "sway/mode"
   ],
   "modules-center": [
@@ -73,6 +74,15 @@
   "custom/camera": {
     "interval": 1,
     "exec": "$HOME/dotfiles/usr/scripts/waybar-camera.sh",
+    "return-type": "json"
+  },
+  "custom/mirror": {
+    "format": "<span font='JetBrainsMono Nerd Font weight=325 Italic'>{} </span>",
+    "interval": 1,
+    "on-click": "pkill wl-mirror",
+    "on-click-right": "wl-present custom",
+    "exec-if": "pgrep wl-mirror",
+    "exec": "$HOME/dotfiles/usr/scripts/wl-mirror.sh",
     "return-type": "json"
   },
   "custom/spotify": {

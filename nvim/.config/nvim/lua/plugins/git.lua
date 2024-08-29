@@ -11,7 +11,7 @@ return {
     },
     {
         "aaronhallaert/advanced-git-search.nvim",
-        dev = false,
+        dev = true,
         cmd = { "AdvancedGitSearch" },
         config = function()
             ---@type advanced_git_search.Config

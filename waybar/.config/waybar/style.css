@@ -21,7 +21,11 @@ tooltip {
 	border-color: #a4b9ef;
 	}
 
-#customprivacy {
+#custom-mirror {
+    color: #F9C096;
+}
+
+#custom-privacy {
     margin-top: 5px;
     margin-bottom: 5px;
     padding-right: 10px;

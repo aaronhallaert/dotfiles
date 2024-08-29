@@ -2,7 +2,6 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 exec systemctl --user import-environment
 
 xwayland enable
-for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 font pango:JetBrainsMono Nerd Font 8
 
@@ -235,3 +234,31 @@ bindsym $mod+equal scratchpad show
 bar { 
 swaybar_command /home/aaron/.config/sway/scripts/start_waybar.sh
 }
+
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Left move workspace to output left
+bindsym $mod+Control+Shift+Down move workspace to output down
+bindsym $mod+Control+Shift+Up move workspace to output up
+
+## Presenter mode requires wl-mirror (wl-present)
+
+for_window [title="^Wayland Output Mirror .*$"] move window to workspace 10
+
+mode "present" {
+    # command starts mirroring
+    bindsym m mode "default"; exec wl-present mirror; 
+    # these commands modify an already running mirroring window
+    bindsym o mode "default"; exec wl-present set-output
+    bindsym r mode "default"; exec wl-present set-region
+    bindsym Shift+r mode "default"; exec wl-present unset-region
+    bindsym s mode "default"; exec wl-present set-scaling
+    bindsym f mode "default"; exec wl-present toggle-freeze
+    bindsym c mode "default"; exec wl-present custom
+
+    bindsym q mode "default"; exec pkill wl-mirror
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "present"
