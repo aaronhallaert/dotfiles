@@ -34,8 +34,16 @@ def backup(directory: str):
     logger.info("executing...")
     logger.info(command)
     logger.info("...")
-    os.system(command)
-    logger.info("...finished")
+    result = os.system(command)
+    if result != 0:
+        os.system(
+            f"notify-send -u critical 'Google Drive' 'Backup failed for {directory_name}' -i /home/aaron/Documents/gdrive_icon.png"
+        )
+        return
+
+    os.system(
+        f"notify-send 'Google Drive' 'Backup complete for {directory_name}' -i /home/aaron/Documents/gdrive_icon.png"
+    )
 
 
 def main():

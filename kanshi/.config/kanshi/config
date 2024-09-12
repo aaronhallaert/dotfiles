@@ -4,7 +4,7 @@ profile home_deprecated {
 }
 
 profile home {
-	output eDP-1 enable
+	output eDP-1 disable
 	output "LG Electronics LG ULTRAFINE 402NTEP4R692" mode 3840x2160 position 1920,0 scale 1.5
 }
 

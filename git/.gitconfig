@@ -12,3 +12,5 @@
 
 [includeIf "gitdir:~/Developer/televic/"]
     path = ~/.gitconfig-work
+[safe]
+	directory = /home/aaron/Developer/televic/confero-cam-compositor

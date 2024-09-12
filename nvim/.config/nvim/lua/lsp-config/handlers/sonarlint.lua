@@ -5,7 +5,7 @@ require("sonarlint").setup({
             -- Ensure that sonarlint-language-server uses stdio channel
             "-stdio",
             "-analyzers",
-            "/home/aaron/.local/share/nvim/mason/packages/sonarlint-language-server/extension/analyzers/sonarcfamily.jar",
+            vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarcfamily.jar"),
         },
         settings = {
             -- The default for sonarlint is {}, this is just an example

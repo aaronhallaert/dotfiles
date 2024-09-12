@@ -8,9 +8,6 @@
 set -e
 
 # set $SWAYSOCK if it's not set (for systemd or cron)
-if [ -z "$SWAYSOCK" ]; then
-  export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
-fi
 
 wlpath=${WALLPAPER_PATH:-"$HOME/wallpaper.jpg"}
 lswlpath=${LOCK_SCREEN_WALLPAPER_PATH:-"$HOME/lockscreen_wallpaper.jpg"}
@@ -29,8 +26,18 @@ wluri=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$i
 
 curl "$wluri" -s > $wlpath
 
-killall swaybg || true
+if [ "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
+    # hyprctl hyprpaper preload "$wlpath"
+    hyprctl hyprpaper unload all
+    hyprctl hyprpaper preload "$wlpath"
+    hyprctl hyprpaper wallpaper "DP-2,$wlpath"
+else
+    if [ -z "$SWAYSOCK" ]; then
+      export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
+    fi
+    killall swaybg || true
+    swaymsg "output $output bg $wlpath fill"
+fi
 
-swaymsg "output $output bg $wlpath fill"
 
 magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath

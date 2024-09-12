@@ -53,6 +53,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# bindkey "^G" push-line
 
 
 # Load Angular CLI autocompletion.

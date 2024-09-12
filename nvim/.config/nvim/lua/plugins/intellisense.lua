@@ -39,6 +39,7 @@ return {
         dependencies = {
             "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
+            "https://gitlab.com/schrieveslaach/sonarlint.nvim",
         },
         -- event = "BufReadPre",
     },

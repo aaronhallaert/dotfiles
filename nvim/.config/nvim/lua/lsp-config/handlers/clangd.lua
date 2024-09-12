@@ -4,7 +4,10 @@ M.setup = function(nvim_lsp)
     local cmd = {
         "/usr/bin/clangd",
         "--clang-tidy",
-        "--query-driver=/home/aaron/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.7/bin/i686-linux-g++",
+        "--query-driver="
+            .. vim.fn.expand(
+                "$HOME/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.7/bin/i686-linux-g++"
+            ),
     }
 
     nvim_lsp.clangd.setup({
@@ -21,7 +24,7 @@ M.setup = function(nvim_lsp)
             },
             offsetEncoding = { "utf-16" },
         },
-        on_new_config = function(new_config, new_cwd)
+        on_new_config = function(new_config)
             local status, cmake = pcall(require, "cmake-tools")
             if status then
                 cmake.clangd_on_new_config(new_config)
