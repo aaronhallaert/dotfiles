@@ -12,6 +12,12 @@ end
 
 -- This is where you actually apply your config choices
 
+if os.getenv("XDG_CURRENT_DESKTOP") == "Hyprland" then
+    config.enable_wayland = false
+else
+    config.enable_wayland = true
+end
+
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("JetBrains Mono")
 config.enable_tab_bar = false
