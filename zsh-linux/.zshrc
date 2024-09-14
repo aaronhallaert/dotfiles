@@ -5,14 +5,6 @@ source $ZSH/oh-my-zsh.sh
 
 plugins=(git)
 
-
-# User configuration
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 

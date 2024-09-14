@@ -1,3 +1,9 @@
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
 source "$HOME/dotfiles/zsh/aliases.zsh"
 
 export PATH="$PATH:$HOME/go/bin/"
