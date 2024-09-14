@@ -25,6 +25,7 @@ local servers = {
     "bashls",
     "vimls",
     "gopls",
+    "svelte",
     -- "tailwindcss",
 }
 for _, lsp in ipairs(servers) do
