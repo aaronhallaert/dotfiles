@@ -30,7 +30,7 @@ if [ "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
     # hyprctl hyprpaper preload "$wlpath"
     hyprctl hyprpaper unload all
     hyprctl hyprpaper preload "$wlpath"
-    hyprctl hyprpaper wallpaper "DP-2,$wlpath"
+    hyprctl hyprpaper wallpaper ",$wlpath"
 else
     if [ -z "$SWAYSOCK" ]; then
       export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
