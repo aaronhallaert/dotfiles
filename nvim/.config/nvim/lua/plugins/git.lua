@@ -3,7 +3,7 @@ return {
     -- use 'ldelossa/litee.nvim'
     {
         "aaronhallaert/bitbucket.nvim",
-        enabled = false,
+        enabled = true,
         dev = true,
         config = function()
             require("bitbucket").setup()
@@ -46,7 +46,7 @@ return {
     },
     {
         "pwntester/octo.nvim",
-        enabled = false,
+        enabled = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",

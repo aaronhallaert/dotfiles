@@ -26,6 +26,7 @@ local servers = {
     "vimls",
     "gopls",
     "svelte",
+    "groovyls",
     -- "tailwindcss",
 }
 for _, lsp in ipairs(servers) do
@@ -48,7 +49,7 @@ require("lsp-config.handlers.rust_analyzer").setup(
     capabilities_with_completion
 )
 require("lsp-config.handlers.clangd").setup(nvim_lsp)
-require("lsp-config.handlers.sonarlint")
+require("lsp-config.handlers.sonarlint").setup()
 
 ---------------------
 -- Basic handlers  --
