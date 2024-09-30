@@ -3,10 +3,19 @@ os:
 promptToReturnFromSubprocess: false
 git:
     commit:
-        signOff: true
+        signOff: false
     merging:
         args: "--no-ff"
     pull:
         mode: "ff-only"
     log:
         showSignature: true
+
+customCommands:
+  - key: '<c-l>'
+    context: 'commits'
+    command: nvim -c 'lua require("lazy").load({plugins = {"diffview.nvim"}})' -c 'DiffviewOpen {{.SelectedLocalCommit.Hash}}'
+    subprocess: yes
+
+services:
+    'bitbucket.televic.com': 'bitbucketServer:bitbucket.televic.com'
