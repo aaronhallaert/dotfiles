@@ -5,6 +5,8 @@ alias dotf="cd ~/dotfiles"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias vi="nvim"
+
+alias ape="source ~/.virtualenvs/\$(ls ~/.virtualenvs | fzf)/bin/activate"
 # alias cat="bat"
 alias gp="git pull"
 alias gP="git push"
