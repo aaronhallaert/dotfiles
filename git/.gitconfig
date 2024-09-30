@@ -14,3 +14,7 @@
     path = ~/.gitconfig-work
 [safe]
 	directory = /home/aaron/Developer/televic/confero-cam-compositor
+
+# set nvim as git difftool
+[diff]
+    tool = nvimdiff
