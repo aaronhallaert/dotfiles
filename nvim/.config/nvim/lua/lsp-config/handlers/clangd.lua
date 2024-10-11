@@ -5,7 +5,7 @@ M.setup = function(nvim_lsp)
         "clangd",
         "--query-driver="
             .. vim.fn.expand(
-                "$HOME/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.9/bin/i686-linux-g++"
+                "$HOME/Developer/televic/build_scripts/toolchains/televic_pc_sdk_2023.02.9/opt/ext-toolchain/bin/i686-linux-g++"
             ),
         "--clang-tidy=false",
     }

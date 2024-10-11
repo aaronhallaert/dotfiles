@@ -1,29 +1,20 @@
-profile home_deprecated {
+profile {
 	output eDP-1 disable
-	output "Goldstar Company Ltd LG Ultra HD 0x00001D6B" mode 3840x2160 position 1920,0 scale 1.5
+	output "Dell Inc. DELL P2422H 2X1BPW3" mode 1920x1080 position 1920,0 scale 1
 }
 
-profile home {
+
+profile {
 	output eDP-1 disable
 	output "LG Electronics LG ULTRAFINE 402NTEP4R692" mode 3840x2160 position 1920,0 scale 1.5
 }
 
-profile work {
+profile {
 	output eDP-1 disable
-	output "Dell Inc. DELL P2422H 2X1BPW3" mode 1920x1080 position 3840,0
-	output "Dell Inc. DELL P2422H 29W7PW3" mode 1920x1080 position 5760,0
+	output "Samsung Electric Company LS27D80xU HK7X700312" mode 3840x2160 position 1920,0 scale 1.5
 }
 
-profile work_1 {
-	output eDP-1 enable mode 1920x1080 position 1920,0 scale 1
-	output "Dell Inc. DELL P2422H 2X1BPW3" mode 1920x1080 position 3840,0
-}
 
-profile work_2 {
-	output eDP-1 enable mode 1920x1080 position 1920,0 scale 1
-	output "Dell Inc. DELL P2422H 29W7PW3" mode 1920x1080 position 3840,0
-}
-
-profile detached {
-	output eDP-1 enable mode 1920x1080 position 1920,0 scale 1
+profile Laptop {
+	output eDP-1 enable scale 1
 }
