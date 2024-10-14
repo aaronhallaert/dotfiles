@@ -1,0 +1,11 @@
+[Unit]
+Description=GDrive background sync
+
+[Service]
+ExecStart=/home/aaron/dotfiles/bin/bin/gdrive-backup.py
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+
+[Install]
+WantedBy=default.target

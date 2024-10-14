@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer to trigger Bing wallpaper changer
+
+[Timer]
+OnCalendar=09:55
+Persistent=true
+
+[Install]
+WantedBy=timers.target

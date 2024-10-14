@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer to trigger GDrive background sync
+
+[Timer]
+OnCalendar=09:55,11:45,16:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
