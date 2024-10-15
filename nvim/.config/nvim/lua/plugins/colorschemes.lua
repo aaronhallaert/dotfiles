@@ -1,6 +1,7 @@
 return {
     {
         "catppuccin/nvim",
+        enabled = true,
         name = "catppuccin",
         event = "VimEnter",
         priority = 1000,

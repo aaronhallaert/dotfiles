@@ -26,6 +26,7 @@ return {
     -- 'Sirver/ultisnips',
     {
         "L3MON4D3/LuaSnip",
+        enabled = false,
         event = "VeryLazy",
         config = function()
             require("plugins.config.luasnip")
@@ -33,6 +34,7 @@ return {
     },
     {
         "rafamadriz/friendly-snippets",
+        enabled = false,
         event = "VeryLazy",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()

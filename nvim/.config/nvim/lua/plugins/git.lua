@@ -130,8 +130,6 @@ return {
     --     end,
     --     event = "VeryLazy",
     -- },
-
-    -- use 'github/copilot.vim'
     {
         "sindrets/diffview.nvim",
         enabled = true,

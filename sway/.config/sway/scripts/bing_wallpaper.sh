@@ -26,18 +26,9 @@ wluri=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$i
 
 curl "$wluri" -s > $wlpath
 
-if [ "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
-    # hyprctl hyprpaper preload "$wlpath"
-    hyprctl hyprpaper unload all
-    hyprctl hyprpaper preload "$wlpath"
-    hyprctl hyprpaper wallpaper ",$wlpath"
-else
-    if [ -z "$SWAYSOCK" ]; then
-      export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
-    fi
-    killall swaybg || true
-    swaymsg "output $output bg $wlpath fill"
-fi
+hyprctl hyprpaper unload all
+hyprctl hyprpaper preload "$wlpath"
+hyprctl hyprpaper wallpaper ",$wlpath"
 
 
 magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath

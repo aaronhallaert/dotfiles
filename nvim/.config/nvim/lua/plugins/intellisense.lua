@@ -54,6 +54,7 @@ return {
     -- lsp for Java
     {
         "mfussenegger/nvim-jdtls",
+        enabled = false,
         lazy = true,
     },
 
@@ -68,12 +69,14 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        enabled = false,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         event = "VeryLazy",
     },
 
     {
         "utilyre/barbecue.nvim",
+        enabled = false,
         event = "BufReadPre",
         name = "barbecue",
         version = "*",
@@ -87,12 +90,14 @@ return {
         },
     },
     -- TODO: Revisit on nvim 0.10.0
-    -- {
-    --     "Bekaboo/dropbar.nvim",
-    -- },
+    {
+        "Bekaboo/dropbar.nvim",
+    },
     --
     {
         "nvim-treesitter/playground",
+        enabled = false,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         event = "VeryLazy",
     },
 
@@ -202,6 +207,7 @@ return {
     -- Lua
     {
         "folke/todo-comments.nvim",
+        enabled = false,
         event = "BufReadPre",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
@@ -211,9 +217,9 @@ return {
 
     ------------- LANGUAGE SPECIFIC -------------
     -- MARKDOWN
-    { "mzlogin/vim-markdown-toc", event = "BufReadPre" },
     {
         "lervag/vimtex",
+        enabled = false,
         config = function()
             -- Set the default viewer for vimtex to Skim
             vim.g.vimtex_view_general_viewer = "open -a Skim"
@@ -248,6 +254,7 @@ return {
     },
     {
         "mistweaverco/kulala.nvim",
+        enabled = false,
         config = function()
             -- Setup is required, even if you don't pass any options
             require("kulala").setup({
@@ -269,8 +276,8 @@ return {
     --     end,
     -- },
     {
-        enabled = false,
         "OXY2DEV/markview.nvim",
+        enabled = false,
         config = function()
             require("markview").setup({})
         end,
@@ -322,7 +329,7 @@ return {
     },
 
     -- RUBY ON RAILS
-    { "tpope/vim-rails", event = "LspAttach" },
+    { "tpope/vim-rails", enabled = false, event = "LspAttach" },
 
     -- { "ziontee113/query-secretary", event = "VeryLazy" },
     -- {
@@ -390,11 +397,4 @@ return {
         end,
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     },
-    -- {
-    --     "echasnovski/mini.nvim",
-    --     config = function()
-    --         require("mini.doc").setup()
-    --     end,
-    --     event = "VeryLazy",
-    -- },
 }

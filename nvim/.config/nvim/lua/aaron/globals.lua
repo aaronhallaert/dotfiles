@@ -117,9 +117,6 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 )
 
-vim.api.nvim_set_keymap("n", "+", ":bn<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "_", ":bp<CR>", { noremap = true })
-
 -- yank to clipboard
 vim.api.nvim_set_keymap("n", "<leader>y", '"+y', { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>y", '"+y', { noremap = true })

@@ -1,6 +1,7 @@
 return {
     {
         "voldikss/vim-translator",
+        enabled = false,
         config = function()
             vim.g.translator_target_lang = "en"
             -- Echo translation in the cmdline
@@ -42,6 +43,7 @@ return {
     },
     {
         "ron89/thesaurus_query.vim",
+        enabled = false,
         config = function()
             vim.g.tq_map_keys = 0
             vim.api.nvim_set_keymap(
@@ -55,6 +57,7 @@ return {
     },
     {
         "rhysd/vim-grammarous",
+        enabled = false,
         event = "VeryLazy",
     },
 }

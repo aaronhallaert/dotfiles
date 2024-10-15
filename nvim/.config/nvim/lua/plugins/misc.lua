@@ -45,6 +45,7 @@ return {
     },
     {
         "nvim-neotest/neotest",
+        enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
@@ -61,6 +62,7 @@ return {
     },
     {
         "aaronhallaert/continuous-testing.nvim",
+        enabled = false,
         -- dev = true,
         event = "VeryLazy",
         dependencies = {

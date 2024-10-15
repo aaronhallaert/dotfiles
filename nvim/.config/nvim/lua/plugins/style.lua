@@ -8,10 +8,10 @@ return {
             vim.opt.list = true
             vim.opt.listchars:append("eol:")
 
-            require('ibl').setup({
+            require("ibl").setup({
                 indent = {
                     char = { "|", "¦", "┆", "┊" },
-                }
+                },
             })
         end,
     },

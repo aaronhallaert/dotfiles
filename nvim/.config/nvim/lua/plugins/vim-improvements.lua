@@ -12,6 +12,7 @@ return {
     },
     -- expand surround e.g. cin) = clear inside next parenthesis
     {
+        enabled = false,
         "wellle/targets.vim",
         event = "BufReadPre",
     },
@@ -38,16 +39,24 @@ return {
     { "godlygeek/tabular", event = "VeryLazy" },
     {
         "mizlan/iswap.nvim",
+        enabled = false,
         event = "VeryLazy",
         config = function()
             require("plugins.config.iswap") -- swapping arguments
         end,
     },
     {
+        enabled = false,
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup()
+        end,
+    },
+    {
+        "echasnovski/mini.pairs",
+        config = function()
+            require("mini.pairs").setup()
         end,
     },
     { "vim-utils/vim-man", event = "VeryLazy" },
@@ -92,6 +101,7 @@ return {
 
     {
         "Wansmer/treesj",
+        enabled = false,
         dependencies = { "nvim-treesitter" },
         event = "VeryLazy",
         config = function()

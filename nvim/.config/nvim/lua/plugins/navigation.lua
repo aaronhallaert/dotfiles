@@ -81,6 +81,7 @@ return {
 
     -- file tree
     {
+        enabled = false,
         "stevearc/oil.nvim",
         config = function()
             require("oil").setup({
