@@ -1,1 +1,4 @@
 *.log
+systemd/.config/systemd/default.target.wants/*
+systemd/.config/systemd/graphical-session.target.wants/*
+systemd/.config/systemd/timers.target.wants/*
