@@ -6,6 +6,7 @@ ExecStart=/home/aaron/dotfiles/sway/.config/sway/scripts/bing_wallpaper.sh
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+FailureAction=none
 
 [Install]
 WantedBy=default.target
