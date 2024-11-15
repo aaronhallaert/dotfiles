@@ -103,6 +103,7 @@ return {
 
     {
         "j-hui/fidget.nvim",
+        enabled = false,
         event = "BufReadPre",
         branch = "legacy",
         config = function()
@@ -353,10 +354,19 @@ return {
                 type = "executable",
                 command = "/home/aaron/Programs/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
             }
+            dap.adapters.gdb = {
+                type = "executable",
+                command = "gdb",
+                args = {
+                    "--interpreter=dap",
+                    "--eval-command",
+                    "set print pretty on",
+                },
+            }
             dap.configurations.cpp = {
                 {
                     name = "Launch file",
-                    type = "cppdbg",
+                    type = "gdb",
                     request = "launch",
                     program = function()
                         return vim.fn.input(
@@ -394,6 +404,13 @@ return {
         "rcarriga/nvim-dap-ui",
         config = function()
             require("dapui").setup()
+
+            vim.api.nvim_set_keymap(
+                "n",
+                "<leader>dt",
+                "<cmd>lua require('dapui').toggle()<cr>",
+                { noremap = true, silent = true }
+            )
         end,
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     },

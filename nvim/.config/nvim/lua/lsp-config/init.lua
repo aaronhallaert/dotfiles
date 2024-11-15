@@ -22,6 +22,7 @@ local capabilities_with_completion =
 ---------------------
 local servers = {
     -- "jsonls",
+    "angularls",
     "bashls",
     "vimls",
     "gopls",

@@ -69,27 +69,5 @@ return {
         end,
         event = "BufReadPre",
     },
-
-    {
-        "rcarriga/nvim-notify",
-        config = function()
-            vim.notify = require("notify")
-        end,
-        event = "VeryLazy",
-    },
-
-    -- Lua
-    -- {
-    --     "krivahtoo/silicon.nvim",
-    --     config = function()
-    --         require("silicon").setup({
-    --             font = "JetBrainsMono Nerd Font=16",
-    --             theme = "Monokai Extended",
-    --         })
-    --     end,
-    --     build = "./install.sh build",
-    --     event = "VeryLazy",
-    -- },
-
     "roobert/tailwindcss-colorizer-cmp.nvim",
 }
