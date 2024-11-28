@@ -5,11 +5,13 @@ export const substitutes = {
   "com.raggesilver.BlackBox-symbolic": "terminal-symbolic",
   "org.wezfurlong.wezterm-symbolic": "terminal-symbolic",
   "audio-headset-bluetooth": "audio-headphones-symbolic",
+  "audio-headphones-bluetooth": "audio-headphones-symbolic",
   "audio-card-analog-usb": "audio-speakers-symbolic",
   "audio-card-analog-pci": "audio-card-symbolic",
   "preferences-system": "emblem-system-symbolic",
   "com.github.Aylur.ags-symbolic": "controls-symbolic",
   "com.github.Aylur.ags": "controls-symbolic",
+  "spotify-symbolic": "spotify",
 }
 
 export default {
@@ -110,7 +112,7 @@ export default {
     recording: "media-record-symbolic",
   },
   notifications: {
-    noisy: "org.gnome.Settings-notifications-symbolic",
+    noisy: "preferences-system-notifications-symbolic",
     silent: "notifications-disabled-symbolic",
     message: "chat-bubbles-symbolic",
   },

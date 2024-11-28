@@ -183,7 +183,7 @@ const options = mkOptions(OPTIONS, {
     },
     width: opt(380),
     position: opt<"left" | "center" | "right">("right"),
-    networkSettings: opt("gtk-launch gnome-control-center"),
+    networkSettings: opt("nm-connection-editor"),
     media: {
       monochromeIcon: opt(true),
       coverSize: opt(100),

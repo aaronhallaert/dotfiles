@@ -14,6 +14,11 @@ profile {
 	output "Samsung Electric Company LS27D80xU HK7X700312" mode 3840x2160 position 1920,0 scale 1.5
 }
 
+profile {
+	output eDP-1 disable
+	output "Samsung Electric Company LS27D80xU HK7X700312" mode 3840x2160 position 1920,0 scale 1.5
+	output "Dell Inc. DELL P2422H 2X1BPW3" mode 1920x1080 position 0,0 scale 1
+}
 
 profile Laptop {
 	output eDP-1 enable scale 1

@@ -13,12 +13,15 @@ import Verification from "widget/powermenu/Verification"
 import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
+import Weather from "service/weather"
+// import ScreenCorners from "widget/bar/ScreenCorners"
 
 App.config({
   onConfigParsed: () => {
     setupQuickSettings()
     setupDateMenu()
     init()
+    Weather
   },
   closeWindowDelay: {
     launcher: options.transition.value,
