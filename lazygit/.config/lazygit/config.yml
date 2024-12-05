@@ -14,7 +14,7 @@ git:
 customCommands:
   - key: '<c-l>'
     context: 'commits'
-    command: nvim -c 'lua require("lazy").load({plugins = {"diffview.nvim"}})' -c 'DiffviewOpen {{.SelectedLocalCommit.Hash}}'
+    command: '[ -z "$NVIM" ] && (nvim -c "lua require(\"lazy\").load({plugins = {\"diffview.nvim\"}})" -c "DiffviewOpen {{.SelectedLocalCommit.Hash}}") || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote-send "<C-\><C-N>:DiffviewOpen {{.SelectedLocalCommit.Hash}}<cr>")'
     subprocess: yes
 
 services:
