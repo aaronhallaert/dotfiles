@@ -58,7 +58,7 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 bindsym Control+$mod+s exec "systemctl suspend"
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id wezterm
+bindsym $mod+Return exec --no-startup-id kitty
 bindsym $alt+Return exec --no-startup-id xfce4-terminal
 
 bindsym $mod+p       exec $HOME/dotfiles/usr/scripts/screenshot.sh
