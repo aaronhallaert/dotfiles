@@ -4,6 +4,8 @@ else
   export EDITOR='nvim'
 fi
 
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 source "$HOME/dotfiles/zsh/aliases.zsh"
 
 export PATH="$PATH:$HOME/go/bin/"
