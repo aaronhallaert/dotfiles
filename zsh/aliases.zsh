@@ -6,6 +6,8 @@ alias lg="lazygit"
 alias ld="lazydocker"
 alias vi="nvim"
 
+alias wts="git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"\$(tmux list-windows | grep \$(basename %))\" ] && tmux neww -n \$(basename %) -c %'"
+
 alias ape="source ~/.virtualenvs/\$(ls ~/.virtualenvs | fzf)/bin/activate"
 # alias cat="bat"
 alias gp="git pull"
