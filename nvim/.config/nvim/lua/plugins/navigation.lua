@@ -41,14 +41,6 @@ return {
                 fzf_layout = "default",
             })
 
-            --Search shortcuts
-            vim.api.nvim_set_keymap(
-                "n",
-                "fdp",
-                ":lua require('fzf-lua').grep({ search = 'binding.break' })<CR>",
-                { noremap = true, silent = true }
-            )
-
             -- Search shortcuts
             vim.api.nvim_set_keymap(
                 "n",
@@ -56,6 +48,21 @@ return {
                 ":FzfLua files<CR>",
                 { noremap = true, silent = true }
             )
+
+            vim.keymap.set("n", "<leader>fg", function()
+                require("fzf-lua").live_grep({
+                    cmd = require("aaron.utils.search").rg_gitwords({
+                        hidden = true,
+                    }),
+                })
+            end)
+            vim.keymap.set("n", "fiw", function()
+                require("fzf-lua").grep_cword({
+                    cmd = require("aaron.utils.search").rg_gitwords({
+                        hidden = true,
+                    }),
+                })
+            end)
         end,
         dependencies = {
             "nvim-tree/nvim-web-devicons", -- optional dependency

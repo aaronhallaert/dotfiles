@@ -26,7 +26,7 @@ return {
     -- 'Sirver/ultisnips',
     {
         "L3MON4D3/LuaSnip",
-        enabled = false,
+        enabled = true,
         event = "VeryLazy",
         config = function()
             require("plugins.config.luasnip")
