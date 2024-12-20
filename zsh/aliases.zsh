@@ -5,6 +5,7 @@ alias dotf="cd ~/dotfiles"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias vi="nvim"
+alias tlvim="NVIM_APPNAME=nvim-tlv nvim"
 
 alias wts="git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"\$(tmux list-windows | grep \$(basename %))\" ] && tmux neww -n \$(basename %) -c %'"
 
