@@ -3,7 +3,7 @@ os:
 promptToReturnFromSubprocess: false
 git:
     commit:
-        signOff: true
+        signOff: false
     merging:
         args: "--no-ff"
     pull:
