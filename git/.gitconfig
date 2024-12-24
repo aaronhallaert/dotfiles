@@ -9,6 +9,8 @@
     enabled = false
 [fetch]
 	prune = true
+[commit]
+    gpgSign = true
 
 [includeIf "gitdir:~/Developer/televic/"]
     path = ~/.gitconfig-work
