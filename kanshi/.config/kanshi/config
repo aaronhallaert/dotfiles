@@ -5,7 +5,8 @@ profile {
 
 
 profile {
-	output eDP-1 enable position 1920,1440 scale 1
+	output eDP-1 disable
+	# output eDP-1 enable position 1920,1440 scale 1
 	output "LG Electronics LG ULTRAFINE 402NTEP4R692" mode 3840x2160 position 1920,0 scale 1.5
 }
 
