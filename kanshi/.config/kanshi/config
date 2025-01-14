@@ -25,3 +25,7 @@ profile {
 profile Laptop {
 	output eDP-1 enable scale 1
 }
+
+profile {
+	output "Samsung Electric Company LS27D80xU HK7X700312" mode 3840x2160 position 1920,0 scale 1.5
+}
