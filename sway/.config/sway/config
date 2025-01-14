@@ -23,7 +23,7 @@ exec_always --no-startup-id playerctld daemon
 # exec_always --no-startup-id dunst
 
 # Notification Daemon
-exec swaync
+exec pidof swaync || swaync
 exec swaync-client -R
 exec swaync-client -rs
 
