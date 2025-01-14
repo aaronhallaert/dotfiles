@@ -9,9 +9,12 @@ M.setup = function(nvim_lsp)
         -- "--query-driver="
         --     .. vim.fn.expand("$HOME")
         --     .. "/Developer/televic/build_scripts_6/toolchains/mmu-glibc-x86_64-cortexa9hf-neon-toolchain-6.6.x/sysroots/x86_64-tcssdk-linux/usr/bin/arm-tcs-linux-gnueabi/arm-tcs-linux-gnueabi-g++",
+        -- "--query-driver="
+        --     .. vim.fn.expand("$HOME")
+        --     .. "/.local/share/build_scripts/**/*g++",
         "--query-driver="
             .. vim.fn.expand("$HOME")
-            .. "/.local/share/build_scripts/**/*g++",
+            .. "/**/*g++",
 
         "--clang-tidy=false",
     }
