@@ -3,7 +3,7 @@ Description=Bing wallpaper changer
 After=hyprpaper.service
 
 [Service]
-ExecStart=/home/aaron/dotfiles/sway/.config/sway/scripts/bing_wallpaper.sh
+ExecStart=/home/aaron/dotfiles/sway/.config/sway/scripts/bing_wallpaper.sh 0
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment="PATH=/usr/local/bin:/usr/bin:/bin"
