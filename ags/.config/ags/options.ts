@@ -83,6 +83,7 @@ const options = mkOptions(OPTIONS, {
         "colorpicker",
         "screenrecord",
         "hyprshade",
+        "pomodoroTimer",
         "system-info",
         "system",
         "battery",

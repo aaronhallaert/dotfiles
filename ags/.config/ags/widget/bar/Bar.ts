@@ -13,6 +13,7 @@ import Messages from "./buttons/Messages"
 import Hyprshade from "./buttons/Hyprshade"
 import SystemInfo from "./buttons/SystemInfo"
 import options from "options"
+import PomodoroTimer from "./buttons/PomodoroTimer"
 
 const { start, center, end } = options.bar.layout
 const { transparent, position } = options.bar
@@ -32,6 +33,7 @@ const widget = {
   workspaces: Workspaces,
   screenrecord: ScreenRecord,
   hyprshade: Hyprshade,
+  pomodoroTimer: PomodoroTimer,
   messages: Messages,
   ["system-info"]: SystemInfo,
   expander: () => Widget.Box({ expand: true }),
