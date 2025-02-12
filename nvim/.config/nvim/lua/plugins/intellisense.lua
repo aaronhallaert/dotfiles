@@ -414,4 +414,13 @@ return {
         end,
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     },
+    {
+        'nvim-flutter/flutter-tools.nvim',
+        lazy = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+        config = true,
+    }
 }

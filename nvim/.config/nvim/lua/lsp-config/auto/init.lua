@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         require("aaron.utils").lsp_format()
     end,
     pattern = {
-        "*.js",
+        -- "*.js",
         "*.jsx",
         "*.tsx",
         "*.ts",
@@ -27,6 +27,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         -- "*.md",
         "*.css",
         "*.cpp",
+        "*.dart",
         "*.hpp",
         "*.svelte",
     },

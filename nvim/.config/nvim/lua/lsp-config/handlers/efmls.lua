@@ -15,7 +15,7 @@ local languages = {
     typescriptreact = { prettier },
     typescript = { prettier },
     vue = { prettier },
-    -- lua = { stylua },
+    lua = { stylua },
 }
 
 require("lspconfig").efm.setup({
