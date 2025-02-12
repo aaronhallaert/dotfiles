@@ -3,6 +3,9 @@ source "$HOME/dotfiles/zsh-linux-common/.zsh-common"
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
+
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# source /home/aaron/.oh-my-zsh/custom/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 plugins=(git)
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -16,8 +19,6 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-source <(fzf --zsh)
 
 # if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
 #   exec sway
@@ -42,3 +43,8 @@ export NVM_DIR="$HOME/.nvm"
 source <(ng completion script)
 
 alias tlvim="NVIM_APPNAME=nvim-tlv nvim"
+
+export PATH="$HOME/.local/share/flutter/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+source <(fzf --zsh)
