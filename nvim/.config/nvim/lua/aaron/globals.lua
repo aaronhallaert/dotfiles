@@ -75,16 +75,9 @@ vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<localleader>j", ":cnext<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<localleader>k", ":cprev<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<localleader>q", ":copen<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-j>", ":lnext<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-k>", ":lprev<CR>", { noremap = true })
 
 -- WINDOWS
 --- Movement
-vim.api.nvim_set_keymap("n", "<leader>h", ":wincmd h<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>j", ":wincmd j<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>to", ":tabo<CR>", { noremap = true })
 
 -- vim.api.nvim_set_keymap("n", "<leader>vs", ":vsplit<CR>", { noremap = true })
@@ -186,7 +179,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_augroup("UpdateWinSize", { clear = true })
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<C-l>", "<cmd>silent e #<CR>")
+vim.keymap.set("n", "<C-;>", "<cmd>silent e #<CR>")
 
 vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()

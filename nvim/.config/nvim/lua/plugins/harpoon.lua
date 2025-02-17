@@ -100,7 +100,7 @@ local M = {
                 harpoon:list():next()
             end)
 
-            vim.keymap.set("n", "<C-h>", function()
+            vim.keymap.set("n", "<leader>h", function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
             end)
         end,
