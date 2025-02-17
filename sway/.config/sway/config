@@ -184,6 +184,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Control+m exec --no-startup-id shutdown now
 
 bindsym $mod+Control+l exec systemctl suspend
+# bindsym $mod+Control+l exec swaylock -f -i ~/lockscreen_wallpaper.jpg
 
 exec_always /home/aaron/.config/sway/scripts/swayidle.sh &
 

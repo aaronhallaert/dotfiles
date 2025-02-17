@@ -2,12 +2,6 @@ return {
     -- use 'ldelossa/gh.nvim'
     -- use 'ldelossa/litee.nvim'
     {
-        "aaronhallaert/git-dev.nvim",
-        dev = true,
-        event = "VeryLazy",
-        opts = {},
-    },
-    {
         "aaronhallaert/bitbucket.nvim",
         enabled = true,
         dev = true,
