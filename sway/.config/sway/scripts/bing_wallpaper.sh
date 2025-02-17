@@ -26,9 +26,21 @@ wluri=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$i
 
 curl "$wluri" -s > $wlpath
 
-hyprctl hyprpaper unload all
-hyprctl hyprpaper preload "$wlpath"
-hyprctl hyprpaper wallpaper ",$wlpath"
-
-
 magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath
+
+if command -v hyprctl &> /dev/null
+then
+    hyprctl hyprpaper unload all
+    hyprctl hyprpaper preload "$wlpath"
+    hyprctl hyprpaper wallpaper ",$wlpath"
+else
+    echo "hyprctl command not found, skipping wallpaper update."
+fi
+
+# if swaybg is installed, set the wallpaper with sway
+if command -v swaymsg &> /dev/null
+then
+    swaymsg output "*" bg "$wlpath" fill
+else
+    echo "swaymsg command not found, skipping wallpaper update."
+fi
