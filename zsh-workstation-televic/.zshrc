@@ -17,3 +17,14 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source <(fzf --zsh)
+
+eval "$(zoxide init zsh)"
+
+
+# cargo env
+export PATH="$PATH:$HOME/.cargo/bin"
+source $HOME/.cargo/env
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+plugins=(git)
