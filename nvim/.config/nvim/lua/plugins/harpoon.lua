@@ -99,10 +99,6 @@ local M = {
             vim.keymap.set("n", "gn", function()
                 harpoon:list():next()
             end)
-
-            vim.keymap.set("n", "<leader>h", function()
-                harpoon.ui:toggle_quick_menu(harpoon:list())
-            end)
         end,
     },
 }
