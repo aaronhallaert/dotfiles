@@ -120,7 +120,7 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
-        enabled = true,
+        enabled = false,
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
@@ -143,7 +143,7 @@ return {
 
     {
         "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = true,
+        enabled = false,
         dependencies = { "zbirenbaum/copilot.lua", "nvim-lua/plenary.nvim" },
         config = function()
             require("CopilotChat").setup({
@@ -415,12 +415,12 @@ return {
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     },
     {
-        'nvim-flutter/flutter-tools.nvim',
+        "nvim-flutter/flutter-tools.nvim",
         lazy = false,
         dependencies = {
-            'nvim-lua/plenary.nvim',
-            'stevearc/dressing.nvim', -- optional for vim.ui.select
+            "nvim-lua/plenary.nvim",
+            "stevearc/dressing.nvim", -- optional for vim.ui.select
         },
         config = true,
-    }
+    },
 }
