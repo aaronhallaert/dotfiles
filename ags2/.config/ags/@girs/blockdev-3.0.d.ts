@@ -273,6 +273,7 @@ declare module 'gi://BlockDev?version=3.0' {
             WRITECACHE,
             DEVICES,
             SHARED,
+            CONFIG,
         }
 
         export namespace LVMVDOCompressionState {
@@ -1732,6 +1733,14 @@ declare module 'gi://BlockDev?version=3.0' {
         ): boolean;
         function lvm_cache_pool_name(vg_name: string, cached_lv: string): string;
         function lvm_cache_stats(vg_name: string, cached_lv: string): LVMCacheStats;
+        function lvm_config_get(
+            section: string | null,
+            setting: string | null,
+            type: string,
+            values_only: boolean,
+            global_config: boolean,
+            extra?: ExtraArg[] | null,
+        ): string;
         function lvm_delete_lv_tags(vg_name: string, lv_name: string, tags: string[]): boolean;
         function lvm_delete_pv_tags(device: string, tags: string[]): boolean;
         function lvm_delete_vg_tags(vg_name: string, tags: string[]): boolean;
@@ -3356,6 +3365,8 @@ declare module 'gi://BlockDev?version=3.0' {
             features: FSFeatureFlags;
             partition_id: string;
             partition_type: string;
+            min_size: number;
+            max_size: number;
 
             // Constructors
 

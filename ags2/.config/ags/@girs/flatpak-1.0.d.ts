@@ -898,6 +898,7 @@ declare module 'gi://Flatpak?version=1.0' {
              * @param name name of the app/runtime to fetch
              * @param arch which architecture to fetch (default: current architecture)
              * @param branch which branch to fetch (default: 'master')
+             * @param progress progress callback
              * @param cancellable a #GCancellable
              * @returns The ref for the newly installed app or %NULL on failure
              */
@@ -907,6 +908,7 @@ declare module 'gi://Flatpak?version=1.0' {
                 name: string,
                 arch?: string | null,
                 branch?: string | null,
+                progress?: ProgressCallback | null,
                 cancellable?: Gio.Cancellable | null,
             ): InstalledRef;
             /**
@@ -917,10 +919,15 @@ declare module 'gi://Flatpak?version=1.0' {
              * Install an application or runtime from an flatpak bundle file.
              * See flatpak-build-bundle(1) for how to create bundles.
              * @param file a #GFile that is an flatpak bundle
+             * @param progress progress callback
              * @param cancellable a #GCancellable
              * @returns The ref for the newly installed app or %NULL on failure
              */
-            install_bundle(file: Gio.File, cancellable?: Gio.Cancellable | null): InstalledRef;
+            install_bundle(
+                file: Gio.File,
+                progress?: ProgressCallback | null,
+                cancellable?: Gio.Cancellable | null,
+            ): InstalledRef;
             /**
              * This is an old deprecated function, you should use
              * #FlatpakTransaction and flatpak_transaction_add_install()
@@ -942,6 +949,7 @@ declare module 'gi://Flatpak?version=1.0' {
              * @param arch which architecture to fetch (default: current architecture)
              * @param branch which branch to fetch (default: 'master')
              * @param subpaths A list of subpaths to fetch, or %NULL for everything
+             * @param progress progress callback
              * @param cancellable a #GCancellable
              * @returns The ref for the newly installed app or %NULL on failure
              */
@@ -953,6 +961,7 @@ declare module 'gi://Flatpak?version=1.0' {
                 arch?: string | null,
                 branch?: string | null,
                 subpaths?: string[] | null,
+                progress?: ProgressCallback | null,
                 cancellable?: Gio.Cancellable | null,
             ): InstalledRef;
             /**
@@ -1299,6 +1308,7 @@ declare module 'gi://Flatpak?version=1.0' {
              * @param name name of the app or runtime to uninstall
              * @param arch architecture of the app or runtime to uninstall; if  %NULL, flatpak_get_default_arch() is assumed
              * @param branch name of the branch of the app or runtime to uninstall;  if %NULL, `master` is assumed
+             * @param progress the callback
              * @param cancellable a #GCancellable
              * @returns %TRUE on success
              */
@@ -1307,6 +1317,7 @@ declare module 'gi://Flatpak?version=1.0' {
                 name: string,
                 arch?: string | null,
                 branch?: string | null,
+                progress?: ProgressCallback | null,
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
@@ -1320,6 +1331,7 @@ declare module 'gi://Flatpak?version=1.0' {
              * @param name name of the app or runtime to uninstall
              * @param arch architecture of the app or runtime to uninstall; if  %NULL, flatpak_get_default_arch() is assumed
              * @param branch name of the branch of the app or runtime to uninstall;  if %NULL, `master` is assumed
+             * @param progress the callback
              * @param cancellable a #GCancellable
              * @returns %TRUE on success
              */
@@ -1329,6 +1341,7 @@ declare module 'gi://Flatpak?version=1.0' {
                 name: string,
                 arch?: string | null,
                 branch?: string | null,
+                progress?: ProgressCallback | null,
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
@@ -1348,6 +1361,7 @@ declare module 'gi://Flatpak?version=1.0' {
              * @param name name of the app or runtime to update
              * @param arch architecture of the app or runtime to update (default: current architecture)
              * @param branch name of the branch of the app or runtime to update (default: master)
+             * @param progress the callback
              * @param cancellable a #GCancellable
              * @returns The ref for the newly updated app or %NULL on failure
              */
@@ -1357,12 +1371,14 @@ declare module 'gi://Flatpak?version=1.0' {
                 name: string,
                 arch?: string | null,
                 branch?: string | null,
+                progress?: ProgressCallback | null,
                 cancellable?: Gio.Cancellable | null,
             ): InstalledRef;
             /**
              * Updates the local copy of appstream for `remote_name` for the specified `arch`.
              * @param remote_name the name of the remote
              * @param arch Architecture to update, or %NULL for the local machine arch
+             * @param progress progress callback
              * @param out_changed Set to %TRUE if the contents of the appstream changed, %FALSE if nothing changed
              * @param cancellable a #GCancellable
              * @returns %TRUE on success, or %FALSE on error
@@ -1370,6 +1386,7 @@ declare module 'gi://Flatpak?version=1.0' {
             update_appstream_full_sync(
                 remote_name: string,
                 arch?: string | null,
+                progress?: ProgressCallback | null,
                 out_changed?: boolean | null,
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
@@ -1406,6 +1423,7 @@ declare module 'gi://Flatpak?version=1.0' {
              * @param arch architecture of the app or runtime to update (default: current architecture)
              * @param branch name of the branch of the app or runtime to update (default: master)
              * @param subpaths A list of subpaths to fetch, or %NULL for everything
+             * @param progress the callback
              * @param cancellable a #GCancellable
              * @returns The ref for the newly updated app or %NULL on failure
              */
@@ -1416,6 +1434,7 @@ declare module 'gi://Flatpak?version=1.0' {
                 arch?: string | null,
                 branch?: string | null,
                 subpaths?: string[] | null,
+                progress?: ProgressCallback | null,
                 cancellable?: Gio.Cancellable | null,
             ): InstalledRef;
             /**

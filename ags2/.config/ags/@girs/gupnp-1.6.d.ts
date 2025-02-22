@@ -1860,7 +1860,7 @@ declare module 'gi://GUPnP?version=1.6' {
          * [class`GUPnP`.DeviceProxy] and [class`GUPnP`.Device] to create resource proxy and resource
          * objects.
          *
-         * Register UPnP type - [alias`GLib`.Type] pairs to have resource or resource proxy
+         * Register UPnP type - [alias`GObject`.Type] pairs to have resource or resource proxy
          * objects created with the specified #GType whenever an object for a resource
          * of the specified UPnP type is requested. The #GType needs
          * to be derived from the relevant resource or resource proxy type (e.g.
@@ -3613,6 +3613,15 @@ declare module 'gi://GUPnP?version=1.6' {
              * @returns %TRUE if the value could be read successfully
              */
             get_value(): [boolean, unknown];
+            /**
+             * Get the value of the current parameter.
+             *
+             * Converts the value to the given type, similar to the other
+             * finish_action functions.
+             * @param type The type to convert the value to
+             * @returns %TRUE if the value could be read successfully
+             */
+            get_value_as(type: GObject.GType): [boolean, unknown];
             /**
              * Move `self` to the next out value of the iterated action
              * @returns %TRUE if the next value was available

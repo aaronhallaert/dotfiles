@@ -1559,7 +1559,7 @@ declare module 'gi://HarfBuzz?version=0.0' {
          * @param buffer An #hb_buffer_t
          * @param source source #hb_buffer_t
          * @param start start index into source buffer to copy.  Use 0 to copy from start of buffer.
-         * @param end end index into source buffer to copy.  Use @HB_FEATURE_GLOBAL_END to copy to end of buffer.
+         * @param end end index into source buffer to copy.  Use @UINT_MAX (or ((unsigned int) -1)) to copy to end of buffer.
          */
         function buffer_append(buffer: buffer_t, source: buffer_t, start: number, end: number): void;
         /**
@@ -2502,16 +2502,18 @@ declare module 'gi://HarfBuzz?version=0.0' {
          */
         function face_make_immutable(face: face_t): void;
         /**
-         * Fetches a pointer to the binary blob that contains the
-         * specified face. Returns an empty blob if referencing face data is not
-         * possible.
+         * Fetches a pointer to the binary blob that contains the specified face.
+         * If referencing the face data is not possible, this function creates a blob
+         * out of individual table blobs if hb_face_get_table_tags() works with this
+         * face, otherwise it returns an empty blob.
          * @param face A face object
          * @returns A pointer to the blob for @face
          */
         function face_reference_blob(face: face_t): blob_t;
         /**
          * Fetches a reference to the specified table within
-         * the specified face.
+         * the specified face. Returns an empty blob if referencing table data is not
+         * possible.
          * @param face A face object
          * @param tag The #hb_tag_t of the table to query
          * @returns A pointer to the @tag table within @face
@@ -4905,6 +4907,13 @@ declare module 'gi://HarfBuzz?version=0.0' {
          */
         function ot_shape_plan_collect_lookups(shape_plan: shape_plan_t, table_tag: tag_t): set_t;
         /**
+         * Fetches the list of OpenType feature tags enabled for a shaping plan, if possible.
+         * @param shape_plan A shaping plan
+         * @param start_offset The index of first feature to retrieve
+         * @returns Total number of feature tagss.
+         */
+        function ot_shape_plan_get_feature_tags(shape_plan: shape_plan_t, start_offset: number): [number, tag_t[]];
+        /**
          * Converts an #hb_language_t to an #hb_tag_t.
          * @param language an #hb_language_t to convert.
          */
@@ -5724,36 +5733,6 @@ declare module 'gi://HarfBuzz?version=0.0' {
             features?: feature_t[] | null,
             shaper_list?: string[] | null,
         ): bool_t;
-        /**
-         * See hb_shape_full() for basic details. If `shaper_list` is not `NULL`, the specified
-         * shapers will be used in the given order, otherwise the default shapers list
-         * will be used.
-         *
-         * In addition, justify the shaping results such that the shaping results reach
-         * the target advance width/height, depending on the buffer direction.
-         *
-         * If the advance of the buffer shaped with hb_shape_full() is already known,
-         * put that in *advance. Otherwise set *advance to zero.
-         *
-         * This API is currently experimental and will probably change in the future.
-         * @param font a mutable #hb_font_t to use for shaping
-         * @param buffer an #hb_buffer_t to shape
-         * @param features an array of user    specified #hb_feature_t or `NULL`
-         * @param shaper_list a `NULL`-terminated    array of shapers to use or `NULL`
-         * @param min_target_advance Minimum advance width/height to aim for.
-         * @param max_target_advance Maximum advance width/height to aim for.
-         * @param advance Input/output advance width/height of the buffer.
-         * @returns false if all shapers failed, true otherwise XSince: EXPERIMENTAL
-         */
-        function shape_justify(
-            font: font_t,
-            buffer: buffer_t,
-            features: feature_t[] | null,
-            shaper_list: string[] | null,
-            min_target_advance: number,
-            max_target_advance: number,
-            advance: number,
-        ): [bool_t, number, tag_t, number];
         /**
          * Retrieves the list of shapers supported by HarfBuzz.
          * @returns an array of    constant strings

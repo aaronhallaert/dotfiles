@@ -149,7 +149,7 @@ declare module 'gi://AstalWp?version=0.1' {
             /**
              * The AstalWndpoint object representing the default speaker
              */
-            get defaultMic(): Endpoint;
+            get defaultSpeaker(): Endpoint;
             /**
              * A list of AstalWpEndpoint objects
              */

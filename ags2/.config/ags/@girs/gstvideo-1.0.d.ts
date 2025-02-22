@@ -2624,7 +2624,7 @@ declare module 'gi://GstVideo?version=1.0' {
         function buffer_add_video_sei_user_data_unregistered_meta(
             buffer: Gst.Buffer,
             uuid: number,
-            data: number,
+            data: number | null,
             size: number,
         ): VideoSEIUserDataUnregisteredMeta;
         /**

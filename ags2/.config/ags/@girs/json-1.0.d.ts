@@ -2979,7 +2979,11 @@ declare module 'gi://Json?version=1.0' {
              * @param pspec a property description
              * @returns a node containing the serialized property
              */
-            serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Node;
+            serialize_property(
+                property_name: string,
+                value: GObject.Value | any,
+                pspec: GObject.ParamSpec,
+            ): Node | null;
             /**
              * Calls the [vfunc`Json`.Serializable.set_property] implementation
              * on the `JsonSerializable` instance, which will set the property
@@ -3039,7 +3043,11 @@ declare module 'gi://Json?version=1.0' {
              * @param value the value of the property to serialize
              * @param pspec a property description
              */
-            vfunc_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Node;
+            vfunc_serialize_property(
+                property_name: string,
+                value: GObject.Value | any,
+                pspec: GObject.ParamSpec,
+            ): Node | null;
             /**
              * Calls the [vfunc`Json`.Serializable.set_property] implementation
              * on the `JsonSerializable` instance, which will set the property

@@ -1493,6 +1493,7 @@ declare module 'gi://OSTree?version=1.0' {
              *    (Since: 2021.4)
              */
             STAGE,
+            KEXEC,
         }
 
         export namespace SysrootUpgraderPullFlags {
@@ -13171,6 +13172,12 @@ declare module 'gi://OSTree?version=1.0' {
                 opts: SysrootDeployTreeOpts | null,
                 cancellable?: Gio.Cancellable | null,
             ): [boolean, Deployment];
+            /**
+             * Prepare the specified deployment for a kexec.
+             * @param deployment Deployment to prepare a kexec for
+             * @param cancellable Cancellable
+             */
+            deployment_kexec_load(deployment: Deployment, cancellable?: Gio.Cancellable | null): boolean;
             /**
              * Entirely replace the kernel arguments of `deployment` with the
              * values in `new_kargs`.

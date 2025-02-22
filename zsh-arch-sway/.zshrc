@@ -48,3 +48,5 @@ export PATH="$HOME/.local/share/flutter/bin:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 source <(fzf --zsh)
+
+alias wsa="bash -c 'socat TCP-LISTEN:9999,fork EXEC:/home/aaron/open-url.sh' &; ssh -t workstation-aaron 'export SSH_HOST=`hostname -i | cut -d ' ' -f1`; zsh'; pkill socat"

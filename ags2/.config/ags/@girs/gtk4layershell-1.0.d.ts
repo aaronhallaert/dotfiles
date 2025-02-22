@@ -154,7 +154,7 @@ declare module 'gi://Gtk4LayerShell?version=1.0' {
          * NOTE: this function does not return ownership of the string. Do not free the returned string.
          * Future calls into the library may invalidate the returned string.
          * @param window A layer surface.
-         * @returns a reference to the namespace property. If namespace is unset, returns the default namespace ("gtk4-layer-shell"). Never returns %NULL.
+         * @returns a reference to the namespace property. If namespace is unset, returns the default namespace("gtk4-layer-shell"). Never returns %NULL.
          */
         function get_namespace(window: Gtk.Window): string;
         /**
@@ -207,7 +207,7 @@ declare module 'gi://Gtk4LayerShell?version=1.0' {
          */
         function set_keyboard_mode(window: Gtk.Window, mode: KeyboardMode | null): void;
         /**
-         * Set the "layer" on which the surface appears (controls if it is over top of or below other surfaces). The layer may
+         * Set the "layer" on which the surface appears(controls if it is over top of or below other surfaces). The layer may
          * be changed on-the-fly in the current version of the layer shell protocol, but on compositors that only support an
          * older version the `window` is remapped so the change can take effect.
          *
@@ -218,7 +218,7 @@ declare module 'gi://Gtk4LayerShell?version=1.0' {
         function set_layer(window: Gtk.Window, layer: Layer | null): void;
         /**
          * Set the margin for a specific `edge` of a `window`. Effects both surface's distance from
-         * the edge and its exclusive zone size (if auto exclusive zone enabled).
+         * the edge and its exclusive zone size(if auto exclusive zone enabled).
          *
          * Default is 0 for each #GtkLayerShellEdge
          * @param window A layer surface.
@@ -232,7 +232,7 @@ declare module 'gi://Gtk4LayerShell?version=1.0' {
          *
          * Default is %NULL
          * @param window A layer surface.
-         * @param monitor The output this layer surface will be placed on (%NULL to let the compositor decide).
+         * @param monitor The output this layer surface will be placed on(%NULL to let the compositor decide).
          */
         function set_monitor(window: Gtk.Window, monitor: Gdk.Monitor): void;
         /**

@@ -4,7 +4,7 @@
   "theme.scheme": "dark",
   "font.size": 10,
   "bar.workspaces.workspaces": 0,
-  "bar.taskbar.iconSize": 18,
+  "bar.taskbar.iconSize": 0,
   "quicksettings.avatar.image": "/home/aaron/Documents/resized.jpg",
   "bar.transparent": false,
   "theme.blur": 7,
@@ -24,11 +24,11 @@
   "bar.battery.bar": "hidden",
   "quicksettings.media.coverSize": 100,
   "quicksettings.avatar.size": 70,
-  "bar.flatButtons": true,
+  "bar.flatButtons": false,
   "bar.position": "top",
   "bar.corners": true,
   "bar.launcher.label.colored": false,
-  "bar.battery.blocks": 10,
-  "bar.battery.width": 50,
+  "bar.battery.blocks": 7,
+  "bar.battery.width": 60,
   "launcher.width": 0
 }

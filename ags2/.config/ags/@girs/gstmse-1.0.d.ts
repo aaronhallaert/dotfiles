@@ -1316,7 +1316,7 @@ declare module 'gi://GstMse?version=1.0' {
              * ignored.
              *
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
-             * @param start the append window end
+             * @param start the append window start
              * @returns `TRUE` on success, `FALSE` otherwise
              */
             set_append_window_start(start: Gst.ClockTime): boolean;

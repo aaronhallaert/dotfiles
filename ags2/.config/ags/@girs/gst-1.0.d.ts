@@ -4131,7 +4131,7 @@ declare module 'gi://Gst?version=1.0' {
             search_data?: any | null,
         ): any | null;
         /**
-         * Return a max num of log2.
+         * Returns smallest integral value not less than log2(v).
          * @param v a #guint32 value.
          * @returns a computed #guint val.
          */

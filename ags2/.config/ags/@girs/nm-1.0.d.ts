@@ -2730,24 +2730,27 @@ declare module 'gi://NM?version=1.0' {
             WPA3_SUITE_B_192,
         }
         /**
-         * %_NM_VERSION_INFO_CAPABILITY_UNUSED: a dummy capability. It has no meaning,
-         *   don't use it.
-         * Currently no enum values are defined. These capabilities are exposed
-         * on D-Bus in the "VersionInfo" bit field.
+         * The numeric values represent the bit index of the capability. These capabilities
+         * can be queried in the "VersionInfo" D-Bus property.
          */
 
         /**
-         * %_NM_VERSION_INFO_CAPABILITY_UNUSED: a dummy capability. It has no meaning,
-         *   don't use it.
-         * Currently no enum values are defined. These capabilities are exposed
-         * on D-Bus in the "VersionInfo" bit field.
+         * The numeric values represent the bit index of the capability. These capabilities
+         * can be queried in the "VersionInfo" D-Bus property.
          */
         export namespace VersionInfoCapability {
             export const $gtype: GObject.GType<VersionInfoCapability>;
         }
 
         enum VersionInfoCapability {
-            UNUSED,
+            /**
+             * Contains the fix to a bug that
+             *   caused that routes in table other than main were not removed on reapply nor
+             *   on connection down.
+             *   https://issues.redhat.com/browse/RHEL-66262
+             *   https://issues.redhat.com/browse/RHEL-67324
+             */
+            TABLE,
         }
         /**
          * A selector for traffic priority maps; these map Linux SKB priorities
@@ -7636,7 +7639,7 @@ declare module 'gi://NM?version=1.0' {
              * Expose version info and capabilities of NetworkManager. If non-empty,
              * the first element is NM_VERSION, which encodes the version of the
              * daemon as "(major << 16 | minor << 8 | micro)". The following elements
-             * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
+             * is a bitfields of %NMVersionInfoCapability. If a bit is set, then
              * the running NetworkManager has the respective capability.
              */
             get version_info(): number[];
@@ -7644,7 +7647,7 @@ declare module 'gi://NM?version=1.0' {
              * Expose version info and capabilities of NetworkManager. If non-empty,
              * the first element is NM_VERSION, which encodes the version of the
              * daemon as "(major << 16 | minor << 8 | micro)". The following elements
-             * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
+             * is a bitfields of %NMVersionInfoCapability. If a bit is set, then
              * the running NetworkManager has the respective capability.
              */
             get versionInfo(): number[];
@@ -8866,7 +8869,7 @@ declare module 'gi://NM?version=1.0' {
             /**
              * If available, the first element in the array is NM_VERSION which
              * encodes the daemon version as "(major << 16 | minor << 8 | micro)".
-             * The following elements are a bitfield of %NMVersionInfoCapabilities
+             * The following elements are a bitfield of %NMVersionInfoCapability
              * that indicate that the daemon supports a certain capability.
              * @returns the   list of capabilities reported by the server or %NULL   if the capabilities are unknown.
              */

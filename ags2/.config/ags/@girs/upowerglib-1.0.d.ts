@@ -1238,12 +1238,12 @@ declare module 'gi://UPowerGlib?version=1.0' {
             get hasStatistics(): boolean;
             set hasStatistics(val: boolean);
             /**
-             * The icon name, following the Icon Naming Speficiation
+             * The icon name, following the Icon Naming Specification
              */
             get icon_name(): string;
             set icon_name(val: string);
             /**
-             * The icon name, following the Icon Naming Speficiation
+             * The icon name, following the Icon Naming Specification
              */
             get iconName(): string;
             set iconName(val: string);
@@ -1262,12 +1262,12 @@ declare module 'gi://UPowerGlib?version=1.0' {
             get isPresent(): boolean;
             set isPresent(val: boolean);
             /**
-             * If the device has a rechargable battery.
+             * If the device has a rechargeable battery.
              */
             get is_rechargeable(): boolean;
             set is_rechargeable(val: boolean);
             /**
-             * If the device has a rechargable battery.
+             * If the device has a rechargeable battery.
              */
             get isRechargeable(): boolean;
             set isRechargeable(val: boolean);

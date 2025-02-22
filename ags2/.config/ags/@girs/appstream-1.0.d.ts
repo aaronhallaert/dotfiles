@@ -126,6 +126,10 @@ declare module 'gi://AppStream?version=1.0' {
              * A Linglong bundle
              */
             LINGLONG,
+            /**
+             * A systemd-sysupdate bundle
+             */
+            SYSUPDATE,
         }
         /**
          * The type of chassis a computing device is built into.
@@ -2418,7 +2422,7 @@ declare module 'gi://AppStream?version=1.0' {
         ): boolean;
         /**
          * Searches the known list of registered XDG category names.
-         * See https://specifications.freedesktop.org/menu-spec/menu-spec-1.0.html#category-registry
+         * See https://specifications.freedesktop.org/menu-spec/latest/category-registry.html
          * for a reference.
          * @param category_name a XDG category name, e.g. "ProjectManagement"
          * @returns %TRUE if the category name is valid
@@ -2485,14 +2489,14 @@ declare module 'gi://AppStream?version=1.0' {
          * @param a First version number
          * @param b Second version number
          * @param flags Flags, e.g. %AS_VERCMP_FLAG_NONE
-         * @returns >>0 if a is newer than b;     0 if a and b are the same version;     <<0 if b is newer than a
+         * @returns an integer > 0 if a is newer than b;     0 if a and b are the same version;     < 0 if b is newer than a
          */
         function vercmp(a: string, b: string, flags: VercmpFlags | null): number;
         /**
          * Compare alpha and numeric segments of two software versions.
          * @param a First version number
          * @param b Second version number
-         * @returns >>0 if a is newer than b;     0 if a and b are the same version;     <<0 if b is newer than a
+         * @returns an integer > 0 if a is newer than b;     0 if a and b are the same version;     < 0 if b is newer than a
          */
         function vercmp_simple(a: string, b: string): number;
         /**
@@ -6218,7 +6222,7 @@ declare module 'gi://AppStream?version=1.0' {
              * Set the current display length for the given side kind.
              * The size needs to be in device-independent pixels, see the
              * AppStream documentation for more information:
-             * https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-relations-display_length
+             * https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-relations-display_length
              * @param side the #AsDisplaySideKind to select.
              * @param value_dip the length value in device-independt pixels.
              */
