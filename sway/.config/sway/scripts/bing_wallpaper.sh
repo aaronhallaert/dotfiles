@@ -33,14 +33,19 @@ then
     hyprctl hyprpaper unload all
     hyprctl hyprpaper preload "$wlpath"
     hyprctl hyprpaper wallpaper ",$wlpath"
+
+    exit 0
 else
     echo "hyprctl command not found, skipping wallpaper update."
+    exit 1
 fi
 
 # if swaybg is installed, set the wallpaper with sway
 if command -v swaymsg &> /dev/null
 then
     swaymsg output "*" bg "$wlpath" fill
+    exit 0
 else
     echo "swaymsg command not found, skipping wallpaper update."
+    exit 1
 fi

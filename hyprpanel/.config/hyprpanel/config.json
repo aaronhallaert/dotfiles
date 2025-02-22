@@ -2,8 +2,6 @@
   "bar.customModules.updates.pollingInterval": 1440000,
   "theme.font.size": "1rem",
   "theme.font.weight": 400,
-  "bar.workspaces.show_numbered": false,
-  "bar.workspaces.monitorSpecific": false,
   "theme.bar.menus.background": "#1a1b26",
   "theme.bar.background": "#1e2030",
   "theme.bar.buttons.media.icon": "#bb9af7",
@@ -397,11 +395,10 @@
   "theme.bar.buttons.radius": "0.6em",
   "theme.bar.buttons.padding_x": "0.8rem",
   "bar.layouts": {
-    "0": {
-      "left": ["dashboard", "workspaces", "windowtitle"],
-      "middle": ["notifications", "clock"],
+    "*": {
+      "left": ["dashboard", "workspaces"],
+      "middle": ["notifications", "clock", "media"],
       "right": [
-        "media",
         "systray",
         "hyprsunset",
         "hypridle",
@@ -411,16 +408,6 @@
         "battery",
         "power"
       ]
-    },
-    "1": {
-      "left": ["dashboard", "workspaces", "windowtitle"],
-      "middle": ["media"],
-      "right": ["volume", "clock", "notifications"]
-    },
-    "2": {
-      "left": ["dashboard", "workspaces", "windowtitle"],
-      "middle": ["media"],
-      "right": ["volume", "clock", "notifications"]
     }
   },
   "theme.bar.buttons.windowtitle.enableBorder": false,
@@ -438,11 +425,15 @@
   "bar.network.label": true,
   "bar.media.show_active_only": true,
   "menus.dashboard.shortcuts.left.shortcut4.command": "ags -i main toggle launcher",
-  "menus.dashboard.directories.left.directory3.command": "bash -c \"xdg-open $HOME/projects/\"",
+  "menus.dashboard.directories.left.directory3.command": "bash -c \"xdg-open $HOME/Developer/\"",
   "bar.customModules.weather.unit": "metric",
-  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": false,
+  "bar.workspaces.numbered_active_indicator": "highlight",
+  "bar.workspaces.monitorSpecific": false,
+  "bar.workspaces.show_icons": true,
   "bar.workspaces.workspaceMask": false,
   "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showAllActive": false,
   "bar.workspaces.showApplicationIcons": false,
   "bar.workspaces.ignored": "-.*",
   "bar.windowtitle.class_name": false
