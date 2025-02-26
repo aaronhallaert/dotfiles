@@ -49,4 +49,8 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 source <(fzf --zsh)
 
-alias wsa="bash -c 'socat TCP-LISTEN:9999,fork EXEC:/home/aaron/open-url.sh' &; ssh -t workstation-aaron 'export SSH_HOST=`hostname -i | cut -d ' ' -f1`; zsh'; pkill socat"
+alias wsa="ssh -R 43022:localhost:22 workstation-aaron"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
