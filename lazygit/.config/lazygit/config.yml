@@ -21,11 +21,11 @@ git:
         showSignature: true
 
 customCommands:
-  - key: '<c-l>'
+  - key: '<c-f>'
     context: 'commits'
     command: '[ -z "$NVIM" ] && (nvim -c "lua require(\"lazy\").load({plugins = {\"diffview.nvim\"}})" -c "DiffviewOpen {{.SelectedLocalCommit.Hash}}") || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote-send "<C-\><C-N>:DiffviewOpen {{.SelectedLocalCommit.Hash}}<cr>")'
     subprocess: yes
-  - key: '<c-l>'
+  - key: '<c-o>'
     context: 'worktrees'
     command: 'tmux neww -n {{.SelectedWorktree.Name}} -c {{.SelectedWorktree.Path}}'
     subprocess: yes
