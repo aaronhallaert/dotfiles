@@ -28,3 +28,11 @@ source $HOME/.cargo/env
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 plugins=(git)
+
+xdg-open() {
+  if [[ -n $WAYLAND_DISPLAY || -n $DISPLAY ]]; then
+      command xdg-open "$@"
+  else
+      ssh -p 43022 localhost env WAYLAND_DISPLAY=wayland-1 xdg-open "$@"
+  fi
+}
