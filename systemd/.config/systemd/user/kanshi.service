@@ -1,12 +1,11 @@
 [Unit]
 Description=Kanshi display manager
-After=graphical-session.target
 
 [Service]
 ExecStart=/usr/local/bin/kanshi
 Restart=always
 RestartSec=5
-Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 
 [Install]

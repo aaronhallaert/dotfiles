@@ -1,10 +1,10 @@
 [Unit]
-Description=Hyprpaper
-Wants=bing_wallpaper.service
+Description=Hyprpanel
 After=kanshi.service
 
 [Service]
-ExecStart=hyprpaper
+ExecStart=hyprpanel
+ExecStop=hyprpanel -q
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment="PATH=/usr/local/bin:/usr/bin:/bin"

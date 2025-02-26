@@ -424,6 +424,8 @@
   "bar.bluetooth.label": false,
   "bar.network.label": true,
   "bar.media.show_active_only": true,
+  "bar.media.show_label": true,
+  "bar.media.rightClick": "playerctl play-pause",
   "menus.dashboard.shortcuts.left.shortcut4.command": "ags -i main toggle launcher",
   "menus.dashboard.directories.left.directory3.command": "bash -c \"xdg-open $HOME/Developer/\"",
   "bar.customModules.weather.unit": "metric",
