@@ -69,6 +69,19 @@ nvim_lsp.jsonls.setup({
     root_dir = nvim_lsp.util.root_pattern(".git"),
 })
 
+nvim_lsp.bitbake_language_server.setup({
+    capabilities = capabilities_with_completion,
+    cmd = { "language-server-bitbake", "--stdio" },
+    filetypes = { "bitbake" },
+    settings = {
+        bitbake = {
+            pathToBuildFolder = "${workspaceFolder}/build",
+            pathToEnvScript = "${workspaceFolder}/openembedded-core/oe-init-build-env",
+            pathToBitbakeFolder = "${workspaceFolder}/bitbake",
+        },
+    },
+})
+
 nvim_lsp.lua_ls.setup({
     capabilities = capabilities_with_completion,
     init_options = { documentFormatting = false },
