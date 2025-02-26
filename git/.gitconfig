@@ -1,5 +1,6 @@
 [alias]
     clone-for-worktrees="!sh $HOME/dotfiles/usr/scripts/git_aliases/git_clone_wt"
+    branch-picker="!f() { git branch $@ --format=\"%(refname:short)\" | fzf | sed \"s/origin\\///g\"; }; f"
 [user]
 	name = Aaron Hallaert
 	email = hallaertaaron@gmail.com
