@@ -33,6 +33,6 @@ xdg-open() {
   if [[ -n $WAYLAND_DISPLAY || -n $DISPLAY ]]; then
       command xdg-open "$@"
   else
-      ssh -p 43022 localhost env WAYLAND_DISPLAY=wayland-1 xdg-open "$@"
+      ssh -p 43022 localhost env WAYLAND_DISPLAY=wayland-1 xdg-open \"$@\"
   fi
 }
