@@ -373,6 +373,7 @@
   "bar.launcher.autoDetectIcon": true,
   "bar.battery.hideLabelWhenFull": false,
   "bar.notifications.show_total": false,
+  "bar.notifications.active_monitor": true,
   "bar.notifications.hideCountWhenZero": true,
   "theme.bar.transparent": false,
   "theme.bar.opacity": 50,
@@ -395,7 +396,7 @@
   "theme.bar.buttons.radius": "0.6em",
   "theme.bar.buttons.padding_x": "0.8rem",
   "bar.layouts": {
-    "*": {
+    "1": {
       "left": ["dashboard", "workspaces"],
       "middle": ["notifications", "clock", "media"],
       "right": [
@@ -408,6 +409,11 @@
         "battery",
         "power"
       ]
+    },
+    "*": {
+      "left": ["dashboard", "workspaces"],
+      "middle": ["clock"],
+      "right": ["volume", "battery", "power"]
     }
   },
   "theme.bar.buttons.windowtitle.enableBorder": false,
