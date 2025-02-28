@@ -3,8 +3,8 @@ Description=Hyprpanel
 After=kanshi.service
 
 [Service]
-ExecStart=hyprpanel
-ExecStop=hyprpanel -q
+ExecStart=ags run --directory /home/aaron/dotfiles/HyprPanel
+ExecStop=pkill ags
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment="PATH=/usr/local/bin:/usr/bin:/bin"
