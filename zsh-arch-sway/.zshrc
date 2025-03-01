@@ -1,14 +1,37 @@
 source "$HOME/dotfiles/zsh-linux-common/.zsh-common"
 
-eval "$(starship init zsh)"
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
+
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# source /home/aaron/.oh-my-zsh/custom/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+plugins=(git)
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+#   exec sway
+# fi
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec env XDG_CURRENT_DESKTOP=sway dbus-run-session /usr/bin/sway > /home/aaron/log/sway.log 2>&1
 fi
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
 # bindkey "^G" push-line
 
