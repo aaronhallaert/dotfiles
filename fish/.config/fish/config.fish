@@ -9,6 +9,8 @@ set -gx fish_cursor_replace_one underscore
 # Path
 set -x fish_user_paths
 fish_add_path /bin
+fish_add_path $HOME/dotfiles/usr/scripts
+fish_add_path $HOME/dotfiles/usr/scripts/screens
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.luarocks/bin
@@ -97,8 +99,6 @@ alias vimpager 'nvim - -c "lua require(\'util\').colorize()"'
 abbr vd "VIM=~/projects/neovim nvim --luamod-dev"
 abbr sv sudoedit
 abbr vudo sudoedit
-alias lazyvim "NVIM_APPNAME=lazyvim nvim"
-abbr lv lazyvim
 alias bt "coredumpctl -1 gdb -A '-ex \"bt\" -q -batch' 2>/dev/null | awk '/Program terminated with signal/,0' | bat -l cpp --no-pager --style plain"
 
 # Dev
@@ -109,7 +109,12 @@ abbr du gdu
 abbr dotf "cd ~/dotfiles"
 abbr wsa "ssh -R 43022:localhost:22 workstation-aaron"
 
+abbr wts "git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"\$(tmux list-windows | grep \$(basename %))\" ] && tmux neww -n \$(basename %) -c %'"
+
 abbr lg lazygit
+abbr lg lazydocker
+
+abbr tlvim "NVIM_APPNAME=nvim-tlv nvim"
 abbr gl 'git l --color | devmoji --log --color | less -rXF'
 abbr gs "git status"
 abbr gb "git checkout -b"
