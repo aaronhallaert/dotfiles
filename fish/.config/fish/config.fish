@@ -73,6 +73,9 @@ set -x OPENCV_LOG_LEVEL ERROR
 abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
 abbr j just
 
+abbr kas 'SHELL=bash kas'
+abbr toolbox 'SHELL=bash toolbox'
+
 # Dnf
 abbr dnfi 'sudo dnf install'
 abbr dnfs 'sudo dnf search'
