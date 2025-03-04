@@ -79,6 +79,7 @@ abbr dnfs 'sudo dnf search'
 abbr dnfr 'sudo dnf remove'
 abbr dnfu 'sudo dnf upgrade --refresh'
 
+abbr celar 'clear'
 # Tmux
 abbr t tmux
 abbr tc 'tmux attach'
@@ -87,6 +88,9 @@ abbr tad 'tmux attach -d -t'
 abbr ts 'tmux new -s'
 abbr tl 'tmux ls'
 abbr tk 'tmux kill-session -t'
+abbr two 'tmux kill-window -a'
+abbr tpo 'tmux kill-pane -a'
+abbr tsc 'tmux kill-window -a; tmux kill-pane -a'
 abbr mux tmuxinator
 
 # Files & Directories
@@ -118,6 +122,7 @@ abbr dotf "cd ~/dotfiles"
 abbr wsa "ssh -R 43022:localhost:22 workstation-aaron"
 
 abbr wts "git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"\$(tmux list-windows | grep \$(basename %))\" ] && tmux neww -n \$(basename %) -c %'"
+abbr wto "git worktree remove $(git worktree list | awk -v pwd="$(pwd)" '$1 != pwd {print $1}')"
 
 abbr lg lazygit
 abbr ld lazydocker
