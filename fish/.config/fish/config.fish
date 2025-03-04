@@ -93,7 +93,8 @@ abbr tl 'tmux ls'
 abbr tk 'tmux kill-session -t'
 abbr two 'tmux kill-window -a'
 abbr tpo 'tmux kill-pane -a'
-abbr tsc 'tmux kill-window -a; tmux kill-pane -a'
+abbr tso 'tmux kill-session -a'
+abbr too 'tmux kill-session -a; tmux kill-window -a; tmux kill-pane -a'
 abbr mux tmuxinator
 
 # Files & Directories
