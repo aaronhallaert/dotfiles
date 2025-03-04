@@ -123,7 +123,7 @@ abbr lg lazygit
 abbr ld lazydocker
 
 abbr tlvim "NVIM_APPNAME=nvim-tlv nvim"
-abbr gl 'git l --color | devmoji --log --color | less -rXF'
+abbr gl 'lazygit log'
 abbr gs "git status"
 abbr gb "git checkout -b"
 abbr gm "git branch -l main | rg main > /dev/null 2>&1 && git checkout main || git checkout master"
@@ -166,3 +166,38 @@ abbr jb "journalctl -b"
 abbr jf "journalctl --follow"
 abbr jg "journalctl -b --grep"
 abbr ju "journalctl --unit"
+abbr reload "source ~/.config/fish/config.fish"
+
+
+# nvm
+# ~/.config/fish/functions/nvm.fish
+function nvm
+  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+
+# ~/.config/fish/functions/nvm_find_nvmrc.fish
+function nvm_find_nvmrc
+  bass source ~/.nvm/nvm.sh --no-use ';' nvm_find_nvmrc
+end
+
+# ~/.config/fish/functions/load_nvm.fish
+function load_nvm --on-variable="PWD"
+  set -l default_node_version (nvm version default)
+  set -l node_version (nvm version)
+  set -l nvmrc_path (nvm_find_nvmrc)
+  if test -n "$nvmrc_path"
+    set -l nvmrc_node_version (nvm version (cat $nvmrc_path))
+    if test "$nvmrc_node_version" = "N/A"
+      nvm install (cat $nvmrc_path)
+    else if test "$nvmrc_node_version" != "$node_version"
+      nvm use $nvmrc_node_version
+    end
+  else if test "$node_version" != "$default_node_version"
+    echo "Reverting to default Node version"
+    nvm use default
+  end
+end
+
+# ~/.config/fish/config.fish
+# You must call it on initialization or listening to directory switching won't work
+load_nvm > /dev/stderr
