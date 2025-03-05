@@ -21,3 +21,5 @@
 # set nvim as git difftool
 [diff]
     tool = nvimdiff
+[color]
+	ui = auto
