@@ -3,3 +3,5 @@ systemd/.config/systemd/default.target.wants/*
 systemd/.config/systemd/graphical-session.target.wants/*
 systemd/.config/systemd/timers.target.wants/*
 systemd/.config/systemd/user/default.target.wants
+
+fish/.config/fish/fish_variables
