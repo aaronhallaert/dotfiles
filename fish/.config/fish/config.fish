@@ -124,7 +124,18 @@ abbr windows systemctl reboot --boot-loader-entry=auto-windows
 
 abbr du gdu
 abbr dotf "cd ~/dotfiles"
-abbr wsa "ssh -R 43022:localhost:22 workstation-aaron"
+function wsa
+    if pgrep -x "kitty" > /dev/null
+        # Rename the tab if Kitty is running
+        kitty @ set-tab-title "Workstation"
+    end
+    ssh -R 43022:localhost:22 workstation-aaron
+
+    if pgrep -x "kitty" > /dev/null
+        # Rename the tab if Kitty is running
+        kitty @ set-tab-title "Laptop"
+    end
+end
 
 abbr wts "git worktree list | awk -v pwd=\"(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"(tmux list-windows | grep (basename %))\" ] && tmux neww -n (basename %) -c %'"
 abbr wto "git worktree list | awk -v pwd=\"(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % git worktree remove %"
