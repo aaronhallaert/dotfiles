@@ -51,7 +51,7 @@ zoxide init fish | source
 # Emacs
 # set -l emacs_path /Applications/Emacs.app/Contents/MacOS
 # set -Ux EMACS $emacs_path/Emacs
-fish_add_path ~/.emacs.d/bin
+# fish_add_path ~/.emacs.d/bin
 # alias emacs $EMACS
 
 # Go
@@ -126,8 +126,8 @@ abbr du gdu
 abbr dotf "cd ~/dotfiles"
 abbr wsa "ssh -R 43022:localhost:22 workstation-aaron"
 
-abbr wts "git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"\$(tmux list-windows | grep \$(basename %))\" ] && tmux neww -n \$(basename %) -c %'"
-abbr wto "git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % git worktree remove %"
+abbr wts "git worktree list | awk -v pwd=\"(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"(tmux list-windows | grep (basename %))\" ] && tmux neww -n (basename %) -c %'"
+abbr wto "git worktree list | awk -v pwd=\"(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % git worktree remove %"
 
 abbr lg lazygit
 abbr ld lazydocker
