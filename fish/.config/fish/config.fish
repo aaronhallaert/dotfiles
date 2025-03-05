@@ -10,6 +10,7 @@ set -gx fish_cursor_default block
 set -gx fish_cursor_insert line blink
 set -gx fish_cursor_visual block
 set -gx fish_cursor_replace_one underscore
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # fix gpg from tty
 set -gx GPG_TTY (tty)
@@ -126,7 +127,7 @@ abbr dotf "cd ~/dotfiles"
 abbr wsa "ssh -R 43022:localhost:22 workstation-aaron"
 
 abbr wts "git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % sh -c '[ -z \"\$(tmux list-windows | grep \$(basename %))\" ] && tmux neww -n \$(basename %) -c %'"
-abbr wto "git worktree remove $(git worktree list | awk -v pwd="$(pwd)" '$1 != pwd {print $1}')"
+abbr wto "git worktree list | awk -v pwd=\"\$(pwd)\" '\$1 != pwd {print \$1}' | xargs -I % git worktree remove %"
 
 abbr lg lazygit
 abbr ld lazydocker
