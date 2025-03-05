@@ -2,7 +2,7 @@ export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-fzf --fish | source
+starship init fish | source
 
 # Cursor styles
 set -gx fish_vi_force_cursor 1
@@ -178,37 +178,17 @@ abbr jg "journalctl -b --grep"
 abbr ju "journalctl --unit"
 abbr reload "source ~/.config/fish/config.fish"
 
-
-# nvm
-# ~/.config/fish/functions/nvm.fish
-function nvm
-  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+function node
+    load_nvm > /dev/stderr
+    bass node $argv
 end
 
-# ~/.config/fish/functions/nvm_find_nvmrc.fish
-function nvm_find_nvmrc
-  bass source ~/.nvm/nvm.sh --no-use ';' nvm_find_nvmrc
+function npm
+    load_nvm > /dev/stderr
+    bass npm $argv
 end
 
-# ~/.config/fish/functions/load_nvm.fish
-function load_nvm --on-variable="PWD"
-  set -l default_node_version (nvm version default)
-  set -l node_version (nvm version)
-  set -l nvmrc_path (nvm_find_nvmrc)
-  if test -n "$nvmrc_path"
-    set -l nvmrc_node_version (nvm version (cat $nvmrc_path))
-    if test "$nvmrc_node_version" = "N/A"
-      nvm install (cat $nvmrc_path)
-    else if test "$nvmrc_node_version" != "$node_version"
-      nvm use $nvmrc_node_version
-    end
-  else if test "$node_version" != "$default_node_version"
-    echo "Reverting to default Node version"
-    nvm use default
-  end
+function npx
+    load_nvm > /dev/stderr
+    bass npx $argv
 end
-
-# ~/.config/fish/config.fish
-# You must call it on initialization or listening to directory switching won't work
-load_nvm > /dev/stderr
-starship init fish | source
