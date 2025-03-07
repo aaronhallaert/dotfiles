@@ -155,6 +155,15 @@ return {
                     Explain = "Explain how it works.",
                     Tests = "Briefly explain how the selected code works, then generate unit tests.",
                 },
+                mappings = {
+                    reset = {
+                        callback = function()
+                            require("CopilotChat").reset()
+                        end,
+                        normal = "",
+                        insert = "",
+                    },
+                },
             })
         end,
         build = function()
