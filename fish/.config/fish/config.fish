@@ -188,6 +188,31 @@ abbr jf "journalctl --follow"
 abbr jg "journalctl -b --grep"
 abbr ju "journalctl --unit"
 abbr reload "source ~/.config/fish/config.fish"
+abbr fzf "set chosen_file (fzf)"
+
+function send_to
+    if set -q chosen_file
+        if test (count $argv) -eq 0
+            echo "Error: No remote host provided"
+            return 1
+        end
+
+        set remote_host $argv[1]
+        echo "Sending $chosen_file to $remote_host"
+        read -P "Are you sure you want to send this file? [y/N] " -l -n 1 confirmation
+        if test "$confirmation" = "y" -o "$confirmation" = "Y"
+            if $remote_host contains "laptop"
+                rsync -avhe 'ssh' $chosen_file $remote_host:~/Downloads/workstation/
+            else
+                rsync -avhe 'ssh' $chosen_file $remote_host:~/
+            end
+        else
+            echo "Operation canceled"
+        end
+    else
+        echo "No file selected"
+    end
+end
 
 function node
     load_nvm > /dev/stderr
@@ -203,3 +228,6 @@ function npx
     load_nvm > /dev/stderr
     bass npx $argv
 end
+
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
