@@ -196,7 +196,6 @@ abbr jf "journalctl --follow"
 abbr jg "journalctl -b --grep"
 abbr ju "journalctl --unit"
 abbr reload "source ~/.config/fish/config.fish"
-abbr fzf "set chosen_file (fzf)"
 
 function send_to
     if set -q chosen_file
@@ -209,10 +208,10 @@ function send_to
         echo "Sending $chosen_file to $remote_host"
         read -P "Are you sure you want to send this file? [y/N] " -l -n 1 confirmation
         if test "$confirmation" = "y" -o "$confirmation" = "Y"
-            if $remote_host contains "laptop"
+            if string match -q "*laptop*" $remote_host
                 rsync -avhe 'ssh' $chosen_file $remote_host:~/Downloads/workstation/
             else
-                rsync -avhe 'ssh' $chosen_file $remote_host:~/
+                rsync -avhe 'ssh' $chosen_file $remote_host:/home/root/
             end
         else
             echo "Operation canceled"
