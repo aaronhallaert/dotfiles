@@ -1,3 +1,5 @@
+gui:
+  nerdFontsVersion: "3"
 os:
     editPreset: "nvim"
     copyToClipboardCmd: >
