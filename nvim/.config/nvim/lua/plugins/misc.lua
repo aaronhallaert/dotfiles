@@ -1,5 +1,95 @@
 return {
     {
+        "3rd/image.nvim",
+        enabled = false,
+        config = function()
+            require("image").setup({
+                backend = "kitty",
+                processor = "magick_rock", -- or "magick_cli"
+                integrations = {
+                    markdown = {
+                        enabled = true,
+                        clear_in_insert_mode = false,
+                        download_remote_images = true,
+                        only_render_image_at_cursor = false,
+                        floating_windows = false, -- if true, images will be rendered in floating markdown windows
+                        filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+                    },
+                    neorg = {
+                        enabled = true,
+                        filetypes = { "norg" },
+                    },
+                    typst = {
+                        enabled = true,
+                        filetypes = { "typst" },
+                    },
+                    html = {
+                        enabled = false,
+                    },
+                    css = {
+                        enabled = false,
+                    },
+                },
+                max_width = nil,
+                max_height = nil,
+                max_width_window_percentage = nil,
+                max_height_window_percentage = 50,
+                window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+                window_overlap_clear_ft_ignore = {
+                    "cmp_menu",
+                    "cmp_docs",
+                    "snacks_notif",
+                    "scrollview",
+                    "scrollview_sign",
+                },
+                editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
+                tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+                hijack_file_patterns = {
+                    "*.png",
+                    "*.jpg",
+                    "*.jpeg",
+                    "*.gif",
+                    "*.webp",
+                    "*.avif",
+                }, -- render image files as images when opened
+            })
+        end,
+    },
+
+    {
+        "3rd/diagram.nvim",
+        enabled = false,
+        dependencies = {
+            "3rd/image.nvim",
+        },
+        opts = { -- you can just pass {}, defaults below
+            renderer_options = {
+                mermaid = {
+                    background = nil, -- nil | "transparent" | "white" | "#hex"
+                    theme = nil, -- nil | "default" | "dark" | "forest" | "neutral"
+                    scale = 1, -- nil | 1 (default) | 2  | 3 | ...
+                    width = nil, -- nil | 800 | 400 | ...
+                    height = nil, -- nil | 600 | 300 | ...
+                },
+                plantuml = {
+                    charset = nil,
+                },
+                d2 = {
+                    theme_id = nil,
+                    dark_theme_id = nil,
+                    scale = nil,
+                    layout = nil,
+                    sketch = nil,
+                },
+                gnuplot = {
+                    size = nil, -- nil | "800,600" | ...
+                    font = nil, -- nil | "Arial,12" | ...
+                    theme = nil, -- nil | "light" | "dark" | custom theme string
+                },
+            },
+        },
+    },
+    {
         "amitds1997/remote-nvim.nvim",
         version = "*", -- Pin to GitHub releases
         dependencies = {
@@ -28,6 +118,14 @@ return {
                     wo = { wrap = true }, -- Wrap notifications
                 },
             },
+            picker = { enabled = true },
+            explorer = {
+                enabled = true,
+                replace_netrw = true,
+                follow_file = true,
+                hidden = true,
+                ignored = true,
+            },
         },
         keys = {
             {
@@ -36,6 +134,86 @@ return {
                     Snacks.notifier.hide()
                 end,
                 desc = "Dismiss All Notifications",
+            },
+            {
+                "<leader>pv",
+                function()
+                    Snacks.explorer()
+                end,
+                desc = "Dismiss All Notifications",
+            },
+            -- Grep
+            {
+                "<leader>sb",
+                function()
+                    Snacks.picker.lines()
+                end,
+                desc = "Buffer Lines",
+            },
+            {
+                "<leader>sB",
+                function()
+                    Snacks.picker.grep_buffers()
+                end,
+                desc = "Grep Open Buffers",
+            },
+            {
+                "<leader>sg",
+                function()
+                    Snacks.picker.grep({ hidden = true })
+                end,
+                desc = "Grep",
+            },
+            {
+                "fiw",
+                function()
+                    Snacks.picker.grep_word()
+                end,
+                desc = "Visual selection or word",
+                mode = { "n", "x" },
+            },
+            -- find
+            {
+                "<leader>fb",
+                function()
+                    Snacks.picker.buffers()
+                end,
+                desc = "Buffers",
+            },
+            {
+                "<leader>fc",
+                function()
+                    Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+                end,
+                desc = "Find Config File",
+            },
+            {
+                "<leader>ff",
+                function()
+                    Snacks.picker.files()
+                end,
+                desc = "Find Files",
+            },
+            {
+                "<leader>fg",
+                function()
+                    Snacks.picker.git_files()
+                end,
+                desc = "Find Git Files",
+            },
+            {
+                "<leader>fp",
+                function()
+                    Snacks.picker.projects()
+                end,
+                desc = "Projects",
+            },
+            {
+                "<leader>fr",
+                function()
+                    Snacks.picker.recent()
+                end,
+                desc = "Recent",
             },
             {
                 "<leader>bd",

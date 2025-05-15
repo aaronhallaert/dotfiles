@@ -28,6 +28,7 @@ return {
     -- },
     {
         "ibhagwan/fzf-lua",
+        enabled = false,
         -- event = "BufReadPre",
         config = function()
             require("fzf-lua").setup({
@@ -35,8 +36,8 @@ return {
                 devicons = {
                     enable = true,
                 },
-                winopts = {
-                    hl_border = "Normal",
+                hls = {
+                    border = "Normal",
                 },
                 fzf_layout = "default",
             })
@@ -81,7 +82,7 @@ return {
             "nvim-telescope/telescope-ui-select.nvim",
         },
         config = function()
-            require("aaron.telescope.setup") -- search
+            require("aaron.telescope.setup")    -- search
             require("aaron.telescope.mappings") -- search
         end,
     },
@@ -103,6 +104,7 @@ return {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
+        enabled = false,
         event = "VeryLazy",
         -- branch = "v2.x",
         dependencies = {
