@@ -5,10 +5,11 @@
 # 0 * * * * ~/.config/sway/scripts/bing_wallpaper.sh
 
 # exit on error
-set -e
+# set -e
 
 # set $SWAYSOCK if it's not set (for systemd or cron)
 
+WLPATH_TEMP=${WALLPAPER_PATH:-"$HOME/wallpaper-tmp.jpg"}
 wlpath=${WALLPAPER_PATH:-"$HOME/wallpaper.jpg"}
 lswlpath=${LOCK_SCREEN_WALLPAPER_PATH:-"$HOME/lockscreen_wallpaper.jpg"}
 output=${WALLPAPER_OUTPUT:-"*"}
@@ -21,15 +22,28 @@ else
   index=$1
 fi
 
-wluri=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$index\&mkt\=en-US -s | jq '.url' --raw-output | shuf -n 1)
+FULL_RESPONSE=$(curl https://bing.biturl.top/\?resolution\=3840\&format\=json\&index\=$index\&mkt\=en-US -s)
+
+if [[ $? -gt 0 ]]
+then
+    echo "No connection"
+    exit 1
+fi
+
+wluri=$(echo "${FULL_RESPONSE}" | jq '.url' --raw-output | shuf -n 1)
 # wluri=$(curl https://bing.biturl.top -s | jq '.url' --raw-output | shuf -n 1)
 
-curl "$wluri" -s > $wlpath
+
+curl "$wluri" -s > ${WLPATH_TEMP}
+
+cp "${WLPATH_TEMP}" "${wlpath}"
 
 magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath
 
 if command -v hyprctl &> /dev/null
 then
+    set -e
+
     hyprctl hyprpaper unload all
     hyprctl hyprpaper preload "$wlpath"
     hyprctl hyprpaper wallpaper ",$wlpath"
