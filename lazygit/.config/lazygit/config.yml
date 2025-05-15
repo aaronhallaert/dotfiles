@@ -39,4 +39,6 @@ customCommands:
     subprocess: yes
 
 services:
-    'bitbucket.televic.com': 'bitbucketServer:bitbucket.televic.com'
+    'github-rail': 'github:www.github.com'
+    'televic-github': 'github:www.github.com'
+    # bitbucket.televic.com: bitbucketServer:bitbucket.televic.com
