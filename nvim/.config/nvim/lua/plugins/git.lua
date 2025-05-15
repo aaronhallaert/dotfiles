@@ -24,10 +24,13 @@ return {
                 entry_default_author_or_date = "author",
             }
 
-            local fzf_adv = false
+            ---@type "fzf" | "telescope" | "snacks"
+            local ags_type = "snacks"
 
-            if fzf_adv then
+            if ags_type == "fzf" then
                 require("advanced_git_search.fzf").setup(config)
+            elseif ags_type == "snacks" then
+                require("advanced_git_search.snacks").setup(config)
             else
                 require("telescope").setup({
                     extensions = {
