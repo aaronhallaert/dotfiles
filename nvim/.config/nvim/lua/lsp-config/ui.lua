@@ -1,10 +1,13 @@
-vim.fn.sign_define("DiagnosticSignError", { text = "󰅚", texthl = "Red" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "Yellow" })
-vim.fn.sign_define(
-    "DiagnosticSignInformation",
-    { text = "", texthl = "White" }
-)
-vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", texthl = "Aqua" })
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "󰌶",
+        },
+    },
+})
 
 vim.cmd("hi! link NormalFloat Normal")
 vim.cmd("hi! link FloatBorder DapUIFLoatBorder")
@@ -36,4 +39,3 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = opts.border or border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-

@@ -121,7 +121,7 @@ nvim_lsp.solargraph.setup({
     },
 })
 
-nvim_lsp.tsserver.setup({
+nvim_lsp.ts_ls.setup({
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern(
         "pnpm-lock.yaml",
