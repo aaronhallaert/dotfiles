@@ -52,15 +52,21 @@ return {
 
             vim.keymap.set("n", "<leader>fg", function()
                 require("fzf-lua").live_grep({
+                    cmd = require("aaron.utils.search").rg_gitwords(),
+                })
+            end)
+            vim.keymap.set("n", "<leader>fng", function()
+                require("fzf-lua").live_grep({
                     cmd = require("aaron.utils.search").rg_gitwords({
                         hidden = true,
+                        ignore = true,
                     }),
                 })
             end)
             vim.keymap.set("n", "fiw", function()
                 require("fzf-lua").grep_cword({
                     cmd = require("aaron.utils.search").rg_gitwords({
-                        hidden = true,
+                        hidden = false,
                     }),
                 })
             end)

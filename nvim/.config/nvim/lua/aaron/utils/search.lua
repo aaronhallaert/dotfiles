@@ -4,15 +4,19 @@ local ripgrep = {
     "rg",
 }
 
----@param opts table
+---@param opts? table
 ---@return string
 M.rg_gitwords = function(opts)
-    opts = opts or { hidden = false }
+    opts = opts or { hidden = false, ignore = false }
 
     local command = ripgrep
 
     if opts.hidden then
         table.insert(command, "--hidden")
+    end
+
+    if opts.ignore then
+        table.insert(command, "--no-ignore")
     end
 
     local extends = {
