@@ -1,3 +1,4 @@
+set fish_greeting
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
@@ -21,6 +22,7 @@ fish_add_path /bin
 fish_add_path $HOME/dotfiles/usr/scripts
 fish_add_path $HOME/dotfiles/usr/scripts/screens
 fish_add_path ~/.cargo/bin
+fish_add_path ~/go/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.luarocks/bin
 fish_add_path ~/Library/Python/3.{8,9}/bin
@@ -73,6 +75,12 @@ set -x OPENCV_LOG_LEVEL ERROR
 #
 abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
 abbr j just
+
+abbr ape "source ~/.virtualenvs/\$(bash -c 'ls ~/.virtualenvs' | fzf)/bin/activate.fish"
+abbr vpnu "openvpn3 session-start --config ~/Documents/televic.ovpn"
+abbr vpnd "openvpn3 session-manage --disconnect --path \$(openvpn3 sessions-list | grep Path | cut -d ':' -f2 | tr -d ' ')"
+
+
 
 abbr kas 'SHELL=bash kas'
 abbr toolbox 'SHELL=bash toolbox'
@@ -213,6 +221,7 @@ function send_to
         echo "No file selected"
     end
 end
+abbr devup "devcontainer up --workspace-folder ./"
 
 function node
     load_nvm > /dev/stderr
