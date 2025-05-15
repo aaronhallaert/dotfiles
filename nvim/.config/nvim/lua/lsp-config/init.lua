@@ -28,6 +28,7 @@ local servers = {
     "gopls",
     "svelte",
     "groovyls",
+    "azure_pipelines_ls",
     -- "tailwindcss",
 }
 for _, lsp in ipairs(servers) do
