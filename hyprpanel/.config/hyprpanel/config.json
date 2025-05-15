@@ -396,6 +396,34 @@
   "theme.bar.buttons.radius": "0.6em",
   "theme.bar.buttons.padding_x": "0.8rem",
   "bar.layouts": {
+    "3": {
+      "left": ["dashboard", "workspaces"],
+      "middle": ["notifications", "clock", "media"],
+      "right": [
+        "systray",
+        "hyprsunset",
+        "hypridle",
+        "volume",
+        "network",
+        "bluetooth",
+        "battery",
+        "power"
+      ]
+    },
+    "0": {
+      "left": ["dashboard", "workspaces"],
+      "middle": ["notifications", "clock", "media"],
+      "right": [
+        "systray",
+        "hyprsunset",
+        "hypridle",
+        "volume",
+        "network",
+        "bluetooth",
+        "battery",
+        "power"
+      ]
+    },
     "1": {
       "left": ["dashboard", "workspaces"],
       "middle": ["notifications", "clock", "media"],
