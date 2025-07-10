@@ -85,7 +85,7 @@ return {
                 dashboard.button(
                     "f",
                     " " .. " Find file",
-                    ":FzfLua files<CR>"
+                    ":lua Snacks.picker.files()<CR>"
                 ),
                 dashboard.button(
                     "n",
@@ -95,7 +95,7 @@ return {
                 dashboard.button(
                     "r",
                     "󰄉 " .. " Recent files",
-                    ":lua require('telescope.builtin').oldfiles{only_cwd=true}<CR>"
+                    ":lua Snacks.picker.recent()<CR>"
                 ),
                 dashboard.button(
                     "g",

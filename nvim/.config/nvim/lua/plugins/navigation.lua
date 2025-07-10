@@ -80,6 +80,7 @@ return {
     -- telescope pickers
     {
         "nvim-telescope/telescope.nvim",
+        enabled = false,
         event = "VeryLazy",
         tag = "0.1.7",
         dependencies = {
@@ -88,7 +89,7 @@ return {
             "nvim-telescope/telescope-ui-select.nvim",
         },
         config = function()
-            require("aaron.telescope.setup")    -- search
+            require("aaron.telescope.setup") -- search
             require("aaron.telescope.mappings") -- search
         end,
     },
@@ -110,7 +111,7 @@ return {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
-        enabled = false,
+        enabled = true,
         event = "VeryLazy",
         -- branch = "v2.x",
         dependencies = {
