@@ -1,4 +1,5 @@
 local M = {}
+vim.lsp.enable("clangd", false)
 
 M.setup = function(nvim_lsp)
     local cmd = {

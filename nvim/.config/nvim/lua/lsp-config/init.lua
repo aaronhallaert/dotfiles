@@ -63,14 +63,14 @@ require("lsp-config.handlers.sonarlint").setup()
 -- * pylsp         --
 ---------------------
 
-nvim_lsp.jsonls.setup({
+vim.lsp.config.jsonls = {
     capabilities = capabilities_with_completion,
     init_options = { provideFormatter = false },
     filetypes = { "json" },
     root_dir = nvim_lsp.util.root_pattern(".git"),
-})
+}
 
-nvim_lsp.bitbake_language_server.setup({
+vim.lsp.config.bitbake_language_server = {
     capabilities = capabilities_with_completion,
     cmd = { "language-server-bitbake", "--stdio" },
     filetypes = { "bitbake" },
@@ -81,9 +81,9 @@ nvim_lsp.bitbake_language_server.setup({
             pathToBitbakeFolder = "${workspaceFolder}/bitbake",
         },
     },
-})
+}
 
-nvim_lsp.lua_ls.setup({
+vim.lsp.config.lua_ls = {
     capabilities = capabilities_with_completion,
     init_options = { documentFormatting = false },
     cmd = { "lua-language-server", "--stdio" },
@@ -95,16 +95,16 @@ nvim_lsp.lua_ls.setup({
             workspace = { checkThirdParty = false },
         },
     },
-})
+}
 
-nvim_lsp.volar.setup({
+vim.lsp.config.volar = {
     cmd = { "vue-language-server", "--stdio" },
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     filetypes = { "vue" },
-})
+}
 
-nvim_lsp.solargraph.setup({
+vim.lsp.config.solargraph = {
     capabilities = capabilities_with_completion,
     cmd = { "solargraph", "stdio" },
     filetypes = { "ruby", "rakefile" },
@@ -120,9 +120,9 @@ nvim_lsp.solargraph.setup({
             symbols = true,
         },
     },
-})
+}
 
-nvim_lsp.ts_ls.setup({
+vim.lsp.config.ts_ls = {
     capabilities = capabilities_with_completion,
     root_dir = nvim_lsp.util.root_pattern(
         "pnpm-lock.yaml",
@@ -132,9 +132,9 @@ nvim_lsp.ts_ls.setup({
     on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
     end,
-})
+}
 
-nvim_lsp.stylelint_lsp.setup({
+vim.lsp.config.stylelint_lsp = {
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     filetypes = { "css" },
     settings = {
@@ -144,9 +144,9 @@ nvim_lsp.stylelint_lsp.setup({
             configFile = ".stylelintrc.json",
         },
     },
-})
+}
 
-nvim_lsp.pylsp.setup({
+vim.lsp.config.pylsp = {
     on_attach = function(client)
         -- capabilities_with_completion(client)
         client.server_capabilities.documentFormattingProvider = false
@@ -159,5 +159,5 @@ nvim_lsp.pylsp.setup({
                 },
             },
         },
-    },
-})
+    }
+}
