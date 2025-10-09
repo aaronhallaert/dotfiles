@@ -68,6 +68,80 @@ return {
         end,
     },
     {
+      "folke/sidekick.nvim",
+      enabled = true,
+      opts = {
+        -- add any options here
+        cli = {
+          mux = {
+            backend = "tmux",
+            enabled = true,
+          },
+        },
+      },
+      -- stylua: ignore
+      keys = {
+        {
+          "<tab>",
+          function()
+            -- if there is a next edit, jump to it, otherwise apply it if any
+            if not require("sidekick").nes_jump_or_apply() then
+              return "<Tab>" -- fallback to normal tab
+            end
+          end,
+          expr = true,
+          desc = "Goto/Apply Next Edit Suggestion",
+        },
+        {
+          "<c-space>",
+          function() require("sidekick.cli").toggle() end,
+          desc = "Sidekick Toggle",
+          mode = { "n", "t", "i", "x" },
+        },
+        {
+          "<leader>aa",
+          function() require("sidekick.cli").toggle() end,
+          desc = "Sidekick Toggle CLI",
+        },
+        {
+          "<leader>as",
+          function() require("sidekick.cli").select() end,
+          -- Or to select only installed tools:
+          -- require("sidekick.cli").select({ filter = { installed = true } })
+          desc = "Select CLI",
+        },
+        {
+          "<leader>at",
+          function() require("sidekick.cli").send({ msg = "{this}" }) end,
+          mode = { "x", "n" },
+          desc = "Send This",
+        },
+        {
+          "<leader>af",
+          function() require("sidekick.cli").send({ msg = "{file}" }) end,
+          desc = "Send File",
+        },
+        {
+          "<leader>av",
+          function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+          mode = { "x" },
+          desc = "Send Visual Selection",
+        },
+        {
+          "<leader>ap",
+          function() require("sidekick.cli").prompt() end,
+          mode = { "n", "x" },
+          desc = "Sidekick Select Prompt",
+        },
+        -- Example of a keybinding to open Claude directly
+        {
+          "<leader>ac",
+          function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
+          desc = "Sidekick Toggle Claude",
+        },
+      },
+    },
+    {
         "nvim-treesitter/nvim-treesitter-textobjects",
         enabled = false,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
@@ -140,79 +214,6 @@ return {
             })
         end,
     },
-
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = true,
-        dependencies = { "zbirenbaum/copilot.lua", "nvim-lua/plenary.nvim" },
-        config = function()
-            require("CopilotChat").setup({
-                show_help = true, -- Show help text for CopilotChatInPlace, default: yes
-                debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
-                disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
-                -- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
-                prompts = { -- Set dynamic prompts for CopilotChat commands
-                    Explain = "Explain how it works.",
-                    Tests = "Briefly explain how the selected code works, then generate unit tests.",
-                },
-                mappings = {
-                    reset = {
-                        callback = function()
-                            require("CopilotChat").reset()
-                        end,
-                        normal = "",
-                        insert = "",
-                    },
-                },
-            })
-        end,
-        build = function()
-            vim.notify(
-                "Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim."
-            )
-        end,
-        event = "VeryLazy",
-        keys = {
-            {
-                "<leader>cce",
-                "<cmd>CopilotChatExplain<cr>",
-                desc = "CopilotChat - Explain code",
-            },
-            {
-                "<leader>cct",
-                "<cmd>CopilotChatTests<cr>",
-                desc = "CopilotChat - Generate tests",
-            },
-            {
-                "<leader>ccT",
-                "<cmd>CopilotChatVsplitToggle<cr>",
-                desc = "CopilotChat - Toggle Vsplit", -- Toggle vertical split
-            },
-            {
-                "<leader>ccv",
-                ":CopilotChatVisual",
-                mode = "x",
-                desc = "CopilotChat - Open in vertical split",
-            },
-            {
-                "<leader>ccx",
-                ":CopilotChatInPlace<cr>",
-                mode = "x",
-                desc = "CopilotChat - Run in-place code",
-            },
-            {
-                "<leader>ccf",
-                "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
-                desc = "CopilotChat - Fix diagnostic",
-            },
-            {
-                "<leader>ccr",
-                "<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
-                desc = "CopilotChat - Reset chat history and clear buffer",
-            },
-        },
-    },
-
     --------------- DEBUGGING -------------------
     -- Lua
     {
