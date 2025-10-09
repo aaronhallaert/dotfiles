@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(nvim_lsp, capabilities)
+M.setup = function(capabilities)
     local rust_analyzer_config = {
         checkOnSave = true,
         check = {
@@ -56,7 +56,7 @@ M.setup = function(nvim_lsp, capabilities)
         }
     end
 
-    nvim_lsp.rust_analyzer.setup({
+    vim.lsp.config.rust_analyzer = {
         capabilities = capabilities,
         -- on_attach = function(client, bufnr)
         -- vim.lsp.inlay_hint.enable(bufnr, true)
@@ -65,6 +65,6 @@ M.setup = function(nvim_lsp, capabilities)
         settings = {
             ["rust-analyzer"] = rust_analyzer_config,
         },
-    })
+    }
 end
 return M

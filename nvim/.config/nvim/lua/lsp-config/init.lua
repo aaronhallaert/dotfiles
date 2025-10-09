@@ -1,8 +1,8 @@
-local nvim_lsp = require("lspconfig")
+-- local nvim_lsp = require("lspconfig")
 
-require("lsp-config.auto")
-require("lsp-config.ui")
-require("lsp-config.handlers")
+-- require("lsp-config.auto")
+-- require("lsp-config.ui")
+-- require("lsp-config.handlers")
 
 require("mason-lspconfig").setup({
     ensure_installed = {
@@ -27,14 +27,15 @@ local servers = {
     "vimls",
     "gopls",
     "svelte",
+    "marksman",
     "groovyls",
     "azure_pipelines_ls",
     -- "tailwindcss",
 }
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup({
+    vim.lsp.config(lsp, {
         capabilities = capabilities_with_completion,
-        root_dir = nvim_lsp.util.root_pattern(".git"),
+        root_markers = { ".git" },
     })
 end
 
@@ -47,10 +48,9 @@ end
 -----------------------
 require("lsp-config.handlers.efmls")
 require("lsp-config.handlers.rust_analyzer").setup(
-    nvim_lsp,
     capabilities_with_completion
 )
-require("lsp-config.handlers.clangd").setup(nvim_lsp)
+require("lsp-config.handlers.clangd").setup()
 require("lsp-config.handlers.sonarlint").setup()
 
 ---------------------
@@ -67,7 +67,7 @@ vim.lsp.config.jsonls = {
     capabilities = capabilities_with_completion,
     init_options = { provideFormatter = false },
     filetypes = { "json" },
-    root_dir = nvim_lsp.util.root_pattern(".git"),
+    root_markers = { ".git" },
 }
 
 vim.lsp.config.bitbake_language_server = {
@@ -100,7 +100,7 @@ vim.lsp.config.lua_ls = {
 vim.lsp.config.volar = {
     cmd = { "vue-language-server", "--stdio" },
     capabilities = capabilities_with_completion,
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    root_markers = {"package.json"},
     filetypes = { "vue" },
 }
 
@@ -108,7 +108,7 @@ vim.lsp.config.solargraph = {
     capabilities = capabilities_with_completion,
     cmd = { "solargraph", "stdio" },
     filetypes = { "ruby", "rakefile" },
-    root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
+    root_markers = {"Gemfile", ".git"},
     settings = {
         solargraph = {
             formatting = true,
@@ -124,18 +124,14 @@ vim.lsp.config.solargraph = {
 
 vim.lsp.config.ts_ls = {
     capabilities = capabilities_with_completion,
-    root_dir = nvim_lsp.util.root_pattern(
-        "pnpm-lock.yaml",
-        "yarn.lock",
-        "package.json"
-    ),
+    root_markers = {"pnpm-lock.yaml","yarn.lock", "package.json"},
     on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
     end,
 }
 
 vim.lsp.config.stylelint_lsp = {
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    root_markers = { "package.json" },
     filetypes = { "css" },
     settings = {
         stylelintplus = {
@@ -159,5 +155,5 @@ vim.lsp.config.pylsp = {
                 },
             },
         },
-    }
+    },
 }

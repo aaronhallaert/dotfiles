@@ -18,7 +18,7 @@ local languages = {
     lua = { stylua },
 }
 
-require("lspconfig").efm.setup({
+vim.lsp.config.efm = {
     filetypes = vim.tbl_keys(languages),
     settings = {
         rootMarkers = { ".git/" },
@@ -29,4 +29,4 @@ require("lspconfig").efm.setup({
         documentFormatting = true,
         documentRangeFormatting = true,
     },
-})
+}
