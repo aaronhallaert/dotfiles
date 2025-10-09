@@ -95,7 +95,7 @@ return {
                 dashboard.button(
                     "r",
                     "󰄉 " .. " Recent files",
-                    ":lua Snacks.picker.recent()<CR>"
+                    ":lua Snacks.picker.recent({ hidden = true, filter = { cwd = true } })<CR>"
                 ),
                 dashboard.button(
                     "g",
