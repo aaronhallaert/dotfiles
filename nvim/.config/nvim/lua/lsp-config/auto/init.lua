@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.jsx",
         "*.tsx",
         "*.ts",
-        "*.py",
+        -- "*.py",
         "*.rb",
         "*.rs",
         "*.lua",
