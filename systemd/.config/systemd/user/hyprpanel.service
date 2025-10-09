@@ -1,9 +1,9 @@
 [Unit]
 Description=Hyprpanel
-After=kanshi.service
+; After=kanshi.service
 
 [Service]
-ExecStart=ags run --directory /home/aaron/dotfiles/HyprPanel
+ExecStart=ags run --directory /home/aaron/dotfiles/HyprPanel --gtk 3
 ExecStop=pkill ags
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/%U
