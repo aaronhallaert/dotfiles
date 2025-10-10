@@ -1,5 +1,5 @@
 local M = {}
-vim.lsp.enable("clangd", false)
+vim.lsp.enable("clangd")
 
 M.setup = function()
     local cmd = {
