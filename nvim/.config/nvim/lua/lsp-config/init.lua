@@ -1,8 +1,8 @@
 -- local nvim_lsp = require("lspconfig")
 
--- require("lsp-config.auto")
--- require("lsp-config.ui")
--- require("lsp-config.handlers")
+require("lsp-config.auto")
+require("lsp-config.ui")
+require("lsp-config.handlers")
 
 require("mason-lspconfig").setup({
     ensure_installed = {
@@ -47,9 +47,7 @@ end
 -- * sonarlint       --
 -----------------------
 require("lsp-config.handlers.efmls")
-require("lsp-config.handlers.rust_analyzer").setup(
-    capabilities_with_completion
-)
+require("lsp-config.handlers.rust_analyzer").setup(capabilities_with_completion)
 require("lsp-config.handlers.clangd").setup()
 require("lsp-config.handlers.sonarlint").setup()
 
@@ -100,7 +98,7 @@ vim.lsp.config.lua_ls = {
 vim.lsp.config.volar = {
     cmd = { "vue-language-server", "--stdio" },
     capabilities = capabilities_with_completion,
-    root_markers = {"package.json"},
+    root_markers = { "package.json" },
     filetypes = { "vue" },
 }
 
@@ -108,7 +106,7 @@ vim.lsp.config.solargraph = {
     capabilities = capabilities_with_completion,
     cmd = { "solargraph", "stdio" },
     filetypes = { "ruby", "rakefile" },
-    root_markers = {"Gemfile", ".git"},
+    root_markers = { "Gemfile", ".git" },
     settings = {
         solargraph = {
             formatting = true,
@@ -124,7 +122,7 @@ vim.lsp.config.solargraph = {
 
 vim.lsp.config.ts_ls = {
     capabilities = capabilities_with_completion,
-    root_markers = {"pnpm-lock.yaml","yarn.lock", "package.json"},
+    root_markers = { "pnpm-lock.yaml", "yarn.lock", "package.json" },
     on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
     end,

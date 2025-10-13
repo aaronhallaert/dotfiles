@@ -18,11 +18,10 @@ local languages = {
     lua = { stylua },
 }
 
-vim.lsp.config.efm = {
+local efmls_config = {
     filetypes = vim.tbl_keys(languages),
     settings = {
         rootMarkers = { ".git/" },
-
         languages = languages,
     },
     init_options = {
@@ -30,3 +29,11 @@ vim.lsp.config.efm = {
         documentRangeFormatting = true,
     },
 }
+
+vim.lsp.config(
+    "efm",
+    vim.tbl_extend("force", efmls_config, {
+        rootMarkers = { ".git/" },
+        cmd = { "efm-langserver" },
+    })
+)
