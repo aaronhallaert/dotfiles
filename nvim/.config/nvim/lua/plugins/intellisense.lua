@@ -79,6 +79,9 @@ return {
           },
         },
       },
+      config = function ()
+          vim.g.sidekick_nes = false
+      end,
       -- stylua: ignore
       keys = {
         {
@@ -199,6 +202,9 @@ return {
         event = "InsertEnter",
         config = function()
             require("copilot").setup({
+                  nes = {
+                    enabled = false,
+                },
                 suggestion = {
                     auto_trigger = true,
                     debounce = 75,
