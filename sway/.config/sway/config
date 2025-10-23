@@ -244,6 +244,8 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 
 for_window [title="^Wayland Output Mirror .*$"] move window to workspace 10
 
+for_window [app_id="^zen$" title="^Extension: \(Bitwarden Password Manager\) - Bitwarden — Zen Browser$"] resize set 20 ppt 60 ppt, floating enable, move position center
+
 mode "present" {
     # command starts mirroring
     bindsym m mode "default"; exec wl-present mirror; 
