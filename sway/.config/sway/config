@@ -14,7 +14,7 @@ gaps outer 15
 default_border none
 # Remap capslock to home/control with keyd (https://github.com/rvaiya/keyd)
 
-exec_always --no-startup-id kanshi
+exec_always systemctl --user restart kanshi
 exec_always --no-startup-id swaymsg "output * bg ~/wallpaper.jpg fill"
 
 exec_always --no-startup-id clipmon
@@ -225,7 +225,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show, resize set 1000 900
+bindsym $mod+minus scratchpad show, resize set 80 ppt 80 ppt, move position center
 bindsym $mod+equal scratchpad show
 
 # Show the sup-mail scratchpad window, if any.

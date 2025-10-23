@@ -40,7 +40,8 @@ cp "${WLPATH_TEMP}" "${wlpath}"
 
 magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath
 
-if command -v hyprctl &> /dev/null
+# HYPRLAND_INSTANCE_SIGNATURE if running hyprland
+if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] && command -v hyprctl &> /dev/null
 then
     set -e
 
@@ -50,8 +51,7 @@ then
 
     exit 0
 else
-    echo "hyprctl command not found, skipping wallpaper update."
-    exit 1
+    echo "Hyprland not running"
 fi
 
 # if swaybg is installed, set the wallpaper with sway
