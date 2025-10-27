@@ -11,6 +11,8 @@
   ],
   "modules-right": [
     "group/customprivacy",
+    "cpu",
+    "memory",
     "network",
     "pulseaudio",
     "battery",
@@ -146,6 +148,16 @@
         " "
       ]
     }
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}% ",
+    "max-length": 10
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {}% ",
+    "max-length": 10
   },
   "tray": {
     "spacing": 10
