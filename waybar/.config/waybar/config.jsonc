@@ -7,16 +7,16 @@
     "sway/mode"
   ],
   "modules-center": [
-    "custom/spotify"
+    "clock",
+    "group/customprivacy",
   ],
   "modules-right": [
-    "group/customprivacy",
     "cpu",
     "memory",
+    "power-profiles-daemon",
     "network",
     "pulseaudio",
     "battery",
-    "clock",
     "custom/notification",
     "tray",
   ],
@@ -36,6 +36,17 @@
       "custom/camera",
       "privacy",
     ]
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": " ",
+      "performance": " ",
+      "balanced": " ",
+      "power-saver": " "
+    }
   },
   "hyprland/workspaces": {
     "all-outputs": false,
