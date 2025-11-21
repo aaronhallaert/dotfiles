@@ -207,6 +207,8 @@ function send_to
         if test "$confirmation" = "y" -o "$confirmation" = "Y"
             if string match -q "*laptop*" $remote_host
                 rsync -avhe 'ssh' $chosen_file $remote_host:~/Downloads/workstation/
+            else if string match -q "*workstation-aaron*" $remote_host
+                rsync -avhe 'ssh' $chosen_file $remote_host:~/Downloads/
             else
                 rsync -avhe 'ssh' $chosen_file $remote_host:/home/root/
             end
@@ -236,3 +238,5 @@ end
 
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
+
+fish_add_path -g -p ~/Developer/tools/flutter_sdk/flutter/bin

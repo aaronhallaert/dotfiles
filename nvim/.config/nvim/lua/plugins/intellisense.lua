@@ -301,8 +301,20 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
+        cmd = {
+            "MarkdownPreviewToggle",
+            "MarkdownPreview",
+            "MarkdownPreviewStop",
+        },
+        ft = { "markdown", "plantuml" },
         build = function()
             vim.fn["mkdp#util#install"]()
+        end,
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown", "plantuml" }
+            vim.g.mkdp_preview_options = {
+                uml = { server = "http://localhost:8091" },
+            }
             vim.api.nvim_set_keymap(
                 "n",
                 "<leader>md",
@@ -310,11 +322,6 @@ return {
                 { noremap = true, silent = true }
             )
         end,
-        config = function()
-            vim.g.mkdp_filetypes = { "markdown", "plantuml" }
-        end,
-        -- event = "BufReadPre",
-        ft = { "markdown", "plantuml" },
     },
 
     {
@@ -379,9 +386,22 @@ return {
                     "set print pretty on",
                 },
             }
+            dap.adapters.gdb_remote = {
+                type = "executable",
+                command = "gdb",
+                args = {
+                    "--interpreter=dap",
+                    "--eval-command",
+                    "set print pretty on",
+                    "--eval-command",
+                    "set architecture armv7",
+                    "--command",
+                    "build_plixus_cu_imx6/scripts/gdbinit",
+                },
+            }
             dap.configurations.cpp = {
                 {
-                    name = "Launch file",
+                    name = "launch",
                     type = "gdb",
                     request = "launch",
                     program = function()
@@ -393,6 +413,16 @@ return {
                     end,
                     cwd = "${workspaceFolder}",
                     stopAtEntry = true,
+                },
+
+                {
+                    name = "Attach to gdbserver :1234",
+                    type = "gdb_remote",
+                    request = "attach",
+                    target = "10.21.78.25:1234",
+                    program = "build_plixus_cu_imx6/bin/core",
+                    cwd = "${workspaceFolder}",
+                    stopAtBeginningOfMainSubprogram = false,
                 },
             }
 
