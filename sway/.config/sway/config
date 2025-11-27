@@ -246,6 +246,15 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 for_window [title="^Wayland Output Mirror .*$"] move window to workspace 10
 
 for_window [app_id="^zen$" title="^Extension: \(Bitwarden Password Manager\) - Bitwarden — Zen Browser$"] resize set 20 ppt 60 ppt, floating enable, move position center
+for_window [app_id="^zen$" title="^Picture-in-Picture$"] {
+    floating enable;
+    resize set 25 ppt 27 ppt;
+    sticky enable;
+    move position 75 ppt 73 ppt;
+}
+
+# Toggle Picture-in-Picture window visibility (hide off-screen / bring back)
+bindsym $mod+Shift+o exec $HOME/dotfiles/sway/.config/sway/scripts/pip-toggle.sh
 
 mode "present" {
     # command starts mirroring
