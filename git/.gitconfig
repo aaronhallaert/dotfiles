@@ -7,7 +7,7 @@
 [merge]
 	conflictstyle = diff3
 [rerere]
-    enabled = false
+    enabled = true
 [fetch]
 	prune = true
 [commit]
