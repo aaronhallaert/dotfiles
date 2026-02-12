@@ -10,17 +10,17 @@ profile {
 	output "LG Electronics LG ULTRAFINE 402NTEP4R692" mode 3840x2160 position 1920,0 scale 1.5
 }
 
-profile {
+profile homehdmi {
 	output eDP-1 disable
 	# output eDP-1 enable position 1920,1440 scale 1
-	output "LG Electronics LG ULTRAFINE 402NTEP4R692" mode 3840x2160 position 1440,1120 scale 1.5
-	output "LG Electronics LG Ultra HD 0x00001D6B" transform 90 mode 3840x2160 position 0,0 scale 1.5
+	output "LG Electronics LG ULTRAFINE 402NTEP4R692" mode 3840x2160 position 2560,0 scale 1.5
+	output "LG Electronics LG Ultra HD 0x00001D6B" mode 3840x2160 position 0,0 scale 1.5
 }
 
 profile work {
 	# output eDP-1 enable position 1920,1440 scale 1
 	output eDP-1 disable
-	output "Samsung Electric Company LS27D80xU HK7X700312" mode 3840x2160 position 1920,0 scale 1.5
+	output "Samsung Electric Company LS27D80xU HK7X700312" mode 3840x2160 position 1920,0 scale 1.25
 }
 
 profile {
