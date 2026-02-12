@@ -221,22 +221,9 @@ function send_to
 end
 abbr devup "devcontainer up --workspace-folder ./"
 
-function node
-    load_nvm > /dev/stderr
-    bass node $argv
-end
-
-function npm
-    load_nvm > /dev/stderr
-    bass npm $argv
-end
-
-function npx
-    load_nvm > /dev/stderr
-    bass npx $argv
-end
-
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
 
 fish_add_path -g -p ~/Developer/tools/flutter_sdk/flutter/bin
+
+nvm use lts > /dev/null
