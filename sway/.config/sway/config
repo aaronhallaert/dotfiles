@@ -74,7 +74,7 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+space exec --no-startup-id wofi --show drun
+bindsym $mod+space exec --no-startup-id wofi --show drun --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style.css
 bindsym $mod+Tab exec --no-startup-id $HOME/Developer/personal/wofi-bluetooth/wofi-bluetooth
 bindsym $mod+Shift+f exec --no-startup-id $HOME/Programs/rofi-file-selector/rofi-file-selector.sh
 
@@ -114,13 +114,17 @@ bindsym $mod+Shift+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 # bindsym $mod+e layout toggle split
+
+bindsym $mod+e exec $HOME/dotfiles/bin/bin/wofi-emoji
+bindsym $mod+c exec $HOME/dotfiles/bin/bin/wofi-symbol
+
 
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -237,9 +241,6 @@ bindsym $mod+Control+Shift+Left move workspace to output left
 bindsym $mod+Control+Shift+Down move workspace to output down
 bindsym $mod+Control+Shift+Up move workspace to output up
 
-## Presenter mode requires wl-mirror (wl-present)
-
-for_window [title="^Wayland Output Mirror .*$"] move window to workspace 10
 
 for_window [app_id="^zen$" title="^Extension: \(Bitwarden Password Manager\) - Bitwarden — Zen Browser$"] resize set 20 ppt 60 ppt, floating enable, move position center
 for_window [app_id="^zen$" title="^Picture-in-Picture$"] {
@@ -255,9 +256,13 @@ bindsym $mod+Shift+t floating toggle
 # Toggle Picture-in-Picture window visibility (hide off-screen / bring back)
 bindsym $mod+Shift+o exec $HOME/dotfiles/sway/.config/sway/scripts/pip-toggle.sh
 
+## Presenter mode requires wl-mirror (wl-present)
+bindsym $mod+s exec wl-present mirror
+bindsym $mod+m mode "present"
+for_window [title="^Wayland Output Mirror .*$"] move window to workspace 10
 mode "present" {
     # command starts mirroring
-    bindsym m mode "default"; exec wl-present mirror; 
+    bindsym m mode "default"; exec wl-present mirror
     # these commands modify an already running mirroring window
     bindsym o mode "default"; exec wl-present set-output
     bindsym r mode "default"; exec wl-present set-region
@@ -272,7 +277,6 @@ mode "present" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "present"
 
 input "type:touchpad" {
         dwt enabled

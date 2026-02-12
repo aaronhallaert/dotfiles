@@ -93,7 +93,7 @@
     "format": "<span font='JetBrainsMono Nerd Font weight=325 Italic'>{} </span>",
     "interval": 1,
     "on-click": "pkill wl-mirror",
-    "on-click-right": "wl-present custom",
+    "on-click-right": "wl-present toggle-freeze",
     "exec-if": "pgrep wl-mirror",
     "exec": "$HOME/dotfiles/usr/scripts/wl-mirror.sh",
     "return-type": "json"
