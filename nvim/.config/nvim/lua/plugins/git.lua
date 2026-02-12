@@ -138,6 +138,15 @@ return {
         enabled = true,
         dependencies = "nvim-lua/plenary.nvim",
         event = "VeryLazy",
+        config = function()
+            require("diffview").setup({
+                view = {
+                    merge_tool = {
+                        layout = "diff3_mixed",
+                    },
+                },
+            })
+        end,
     },
     {
         "andrewradev/linediff.vim",

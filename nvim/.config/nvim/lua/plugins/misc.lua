@@ -1,5 +1,10 @@
 return {
     {
+        "nvim-zh/colorful-winsep.nvim",
+        config = true,
+        event = { "WinLeave" },
+    },
+    {
         "3rd/image.nvim",
         enabled = false,
         config = function()
