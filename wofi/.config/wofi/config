@@ -1,9 +1,10 @@
 show=drun
-width=450
-height=300
+width=600
+height=400
 always_parse_args=true
 show_all=false
 allow_images=true
+image_size=40
 print_command=true
 insensitive=true
 prompt= Hmm, what do you want to run?
