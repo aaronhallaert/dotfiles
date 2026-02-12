@@ -1,0 +1,9 @@
+
+which wtype
+if [ $? -eq 0 ]
+then
+  sed '1,/^### DATA ###$/d' $0 | wofi --show dmenu -i --matching multi-contains | cut -d ' ' -f 1 | tr -d '\n' | wtype -
+else
+  sed '1,/^### DATA ###$/d' $0 | wofi --show dmenu -i --matching multi-contains | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
+fi
+exit
