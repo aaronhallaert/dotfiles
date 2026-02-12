@@ -1,38 +1,33 @@
 gui:
   nerdFontsVersion: "3"
 os:
-    editPreset: "nvim"
-    openLink: >
-      zsh -c 'source /home/aaron/.zshrc && xdg-open {{link}}'
+  editPreset: "nvim"
+  openLink: >
+    zsh -c 'source /home/aaron/.zshrc && xdg-open {{link}}'
 
 promptToReturnFromSubprocess: false
 git:
-    commit:
-        signOff: false
-    merging:
-        args: "--no-ff"
-    pull:
-        mode: "ff-only"
-    log:
-        showSignature: true
-
+  commit:
+    signOff: false
+  merging:
+    args: "--no-ff"
+  pull:
+    mode: "ff-only"
+  log:
+    showSignature: true
 customCommands:
   - key: '<c-f>'
     description: 'Open diff with current HEAD'
     context: 'commits'
     command: '[ -z "$NVIM" ] && (nvim -c "lua require(\"lazy\").load({plugins = {\"diffview.nvim\"}})" -c "DiffviewOpen {{.SelectedLocalCommit.Hash}}") || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote-send "<C-\><C-N>:DiffviewOpen {{.SelectedLocalCommit.Hash}}<cr>")'
-    subprocess: yes
   - key: '<c-e>'
     description: 'Open diff for entire commit'
     context: 'commits'
     command: '[ -z "$NVIM" ] && (nvim -c "lua require(\"lazy\").load({plugins = {\"diffview.nvim\"}})" -c "DiffviewOpen {{.SelectedLocalCommit.Hash}}..{{.SelectedLocalCommit.Hash}}~") || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote-send "<C-\><C-N>:DiffviewOpen {{.SelectedLocalCommit.Hash}}<cr>")'
-    subprocess: yes
   - key: '<c-o>'
     context: 'worktrees'
     command: 'tmux neww -n {{.SelectedWorktree.Name}} -c {{.SelectedWorktree.Path}}'
-    subprocess: yes
-
 services:
-    'github-rail': 'github:www.github.com'
-    'televic-github': 'github:www.github.com'
-    # bitbucket.televic.com: bitbucketServer:bitbucket.televic.com
+  'github-rail': 'github:www.github.com'
+  'televic-github': 'github:www.github.com'
+  # bitbucket.televic.com: bitbucketServer:bitbucket.televic.com
