@@ -51,7 +51,7 @@ elif [ "$1" = "restore" ]; then
             hyprctl hyprpaper preload "$WLPATH"
             hyprctl hyprpaper wallpaper ",$WLPATH"
         elif command -v swaymsg &> /dev/null; then
-            swaymsg output "*" bg "$WLPATH" fill
+            systemctl --user restart swaybg.service
         else
             echo "Neither hyprctl nor swaymsg found, cannot set wallpaper."
             exit 1
@@ -80,7 +80,7 @@ elif [ "$1" = "preview" ]; then
             hyprctl hyprpaper preload "$WLPATH"
             hyprctl hyprpaper wallpaper ",$WLPATH"
         elif command -v swaymsg &> /dev/null; then
-            swaymsg output "*" bg "$WLPATH" fill
+            systemctl --user restart swaybg.service
         else
             echo "Neither hyprctl nor swaymsg found, cannot set wallpaper."
             exit 1

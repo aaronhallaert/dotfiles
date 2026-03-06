@@ -1,0 +1,9 @@
+[Unit]
+Description=Sway background service
+
+[Service]
+ExecStart=/usr/bin/swaybg -m fill -i "%h/wallpaper.jpg"
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

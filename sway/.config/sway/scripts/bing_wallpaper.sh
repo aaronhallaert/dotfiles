@@ -50,16 +50,14 @@ then
     hyprctl hyprpaper wallpaper ",$wlpath"
 
     exit 0
-else
-    echo "Hyprland not running"
 fi
 
 # if swaybg is installed, set the wallpaper with sway
-if command -v swaymsg &> /dev/null
+if command -v swaybg &> /dev/null
 then
-    swaymsg output "*" bg "$wlpath" fill
+    systemctl --user restart swaybg.service
     exit 0
 else
-    echo "swaymsg command not found, skipping wallpaper update."
+    echo "swaybg command not found, skipping wallpaper update."
     exit 1
 fi
