@@ -227,3 +227,7 @@ test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
 fish_add_path -g -p ~/Developer/tools/flutter_sdk/flutter/bin
 
 nvm use lts > /dev/null
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
