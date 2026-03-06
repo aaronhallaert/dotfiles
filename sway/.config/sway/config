@@ -242,6 +242,7 @@ bindsym $mod+Control+Shift+Down move workspace to output down
 bindsym $mod+Control+Shift+Up move workspace to output up
 
 
+for_window [class="^Pinentry-gtk$"] resize set 20 ppt 60 ppt, floating enable, move position center
 for_window [app_id="^zen$" title="^Extension: \(Bitwarden Password Manager\) - Bitwarden — Zen Browser$"] resize set 20 ppt 60 ppt, floating enable, move position center
 for_window [app_id="^zen$" title="^Picture-in-Picture$"] {
     floating enable;
