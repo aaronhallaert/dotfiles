@@ -404,6 +404,19 @@ return {
                     "build_plixus_cu_imx6/scripts/gdbinit",
                 },
             }
+            dap.adapters.gdb_remote_x86 = {
+                type = "executable",
+                command = "gdb",
+                args = {
+                    "--interpreter=dap",
+                    "--eval-command",
+                    "set print pretty on",
+                    "--eval-command",
+                    "set architecture i386:x86-64",
+                    "--command",
+                    "build_plixus_cu_amd/scripts/gdbinit",
+                },
+            }
             dap.configurations.cpp = {
                 {
                     name = "launch",
@@ -426,6 +439,15 @@ return {
                     request = "attach",
                     target = "10.21.78.25:1234",
                     program = "build_plixus_cu_imx6/bin/core",
+                    cwd = "${workspaceFolder}",
+                    stopAtBeginningOfMainSubprogram = false,
+                },
+                {
+                    name = "[x86_64] Attach to gdbserver :1234",
+                    type = "gdb_remote_x86",
+                    request = "attach",
+                    target = "172.20.0.10:1234",
+                    program = "build_plixus_cu_amd/bin/core",
                     cwd = "${workspaceFolder}",
                     stopAtBeginningOfMainSubprogram = false,
                 },
