@@ -433,7 +433,7 @@ style = "Regular"
 
 [general]
 live_config_reload = true
-import = ["/home/aaron/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]
+import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
 
 [scrolling]
 history = 10000
