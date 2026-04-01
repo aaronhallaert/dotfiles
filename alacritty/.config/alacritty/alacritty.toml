@@ -21,6 +21,12 @@ style = "Italic"
 family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
+[terminal]
+shell = "/usr/bin/fish"
+
+[bell]
+command = "/home/a.hallaert/dotfiles/usr/scripts/beep.sh"
+
 # [[keyboard.bindings]]
 # chars = "\u001Bj"
 # key = "J"
