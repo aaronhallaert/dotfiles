@@ -3,7 +3,7 @@ gui:
 os:
   editPreset: "nvim"
   openLink: >
-    zsh -c 'source /home/aaron/.zshrc && xdg-open {{link}}'
+    zsh -c 'source ${HOME}/.zshrc && xdg-open {{link}}'
 
 promptToReturnFromSubprocess: false
 git:
