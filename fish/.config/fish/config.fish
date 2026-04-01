@@ -2,6 +2,8 @@ set fish_greeting
 fzf --fish | source
 starship init fish | source
 
+build_scripts --fish | source
+
 # Cursor styles
 set -gx fish_vi_force_cursor 1
 set -gx fish_cursor_default block
@@ -45,6 +47,7 @@ set -gx SUDO_EDITOR $EDITOR
 set fish_emoji_width 2
 alias ssh "TERM=xterm-256color command ssh"
 alias mosh "TERM=xterm-256color command mosh"
+
 
 zoxide init fish | source
 
@@ -232,3 +235,6 @@ nvm use lts > /dev/null
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# Created by `pipx` on 2026-03-09 14:15:53
+set PATH $PATH /home/a.hallaert/.local/bin
