@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:*)",
+      "Read(**)",
+      "Glob(**)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git branch -v:*)",
+      "Bash(git remote -v:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(which:*)",
+      "Bash(nvim --version:*)",
+      "Bash(node --version:*)",
+      "Bash(npm list:*)"
+    ]
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send \"Claude Code: $(git rev-parse --abbrev-ref HEAD)\" 'Claude Code needs your attention'; printf '\\a' > /dev/tty"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send \"Claude Code: $(git rev-parse --abbrev-ref HEAD)\" 'Claude Code needs your attention'; printf '\\a' > /dev/tty"
+          }
+        ]
+      }
+    ]
+  },
+  "voiceEnabled": true
+}
