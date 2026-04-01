@@ -352,7 +352,7 @@ return {
         config = function()
             require("cmake-tools").setup({
                 cmake_build_directory = "build/",
-                cmake_kits_path = "/home/aaron/.local/share/CMakeTools/cmake-tools-kits.json",
+                cmake_kits_path = vim.fn.expand("$HOME/.local/share/CMakeTools/cmake-tools-kits.json"),
             })
         end,
     },
