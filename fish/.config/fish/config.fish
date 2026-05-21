@@ -1,5 +1,6 @@
 set fish_greeting
 fzf --fish | source
+build_scripts --fish | source
 starship init fish | source
 
 build_scripts --fish | source
