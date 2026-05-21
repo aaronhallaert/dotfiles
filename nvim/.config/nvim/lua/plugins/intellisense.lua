@@ -61,7 +61,7 @@ return {
     -- code understanding (highlight...)
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "BufReadPre",
+        lazy = false,
         build = ":TSUpdate",
         config = function()
             require("plugins.config.treesitter")
@@ -301,15 +301,14 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
+        enabled = true,
         cmd = {
             "MarkdownPreviewToggle",
             "MarkdownPreview",
             "MarkdownPreviewStop",
         },
         ft = { "markdown", "plantuml" },
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
+        build = "cd app && npm install",
         init = function()
             vim.g.mkdp_filetypes = { "markdown", "plantuml" }
             vim.g.mkdp_preview_options = {
@@ -331,7 +330,8 @@ return {
 
     {
         "vinnymeller/swagger-preview.nvim",
-        build = "npm install -g swagger-ui-watcher",
+        enabled = true,
+        build = "npm install",
         config = function()
             require("swagger-preview").setup({
                 -- The port to run the preview server on
@@ -352,7 +352,9 @@ return {
         config = function()
             require("cmake-tools").setup({
                 cmake_build_directory = "build/",
-                cmake_kits_path = vim.fn.expand("$HOME/.local/share/CMakeTools/cmake-tools-kits.json"),
+                cmake_kits_path = vim.fn.expand(
+                    "$HOME/.local/share/CMakeTools/cmake-tools-kits.json"
+                ),
             })
         end,
     },
