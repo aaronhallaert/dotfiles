@@ -1,70 +1,35 @@
-require("nvim-treesitter.configs").setup({
-    ensure_installed = {
-        "rust",
-        "lua",
-        "ruby",
-        "tsx",
-        "bash",
-        "typescript",
-        "javascript",
-        "org",
-        "vim",
-    },
-    auto_install = true,
-    sync_install = false,
-    ignore_install = { "phpdoc", "php" },
-    highlight = {
-        enable = true, -- false will disable the whole extension
-        additional_vim_regex_highlighting = { "org" },
-        disable = { "json" },
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-                ["]m"] = "@function.outer",
-                ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-                ["]M"] = "@function.outer",
-                ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-                ["[M"] = "@function.outer",
-                ["[]"] = "@class.outer",
-            },
-        },
-    },
+require("nvim-treesitter").setup({
+    -- Directory to install parsers and queries to
+    install_dir = vim.fn.stdpath("data") .. "/site",
 })
 
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
--- vim.cmd("syntax on")
+-- Install parsers (no-op if already installed)
+require("nvim-treesitter").install({
+    "rust",
+    "lua",
+    "ruby",
+    "tsx",
+    "bash",
+    "typescript",
+    "javascript",
+    "vim",
+})
 
--- vim.api.nvim_create_autocmd(
---     { "BufEnter" },
---     { pattern = { "*" }, command = "normal zxzR" }
--- )
---
--- vim.api.nvim_create_autocmd(
---     { "BufReadPost,FileReadPost" },
---     { pattern = { "*" }, command = "normal zR" }
--- )
+-- Enable treesitter highlighting and folds for all filetypes
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(ev)
+        local ft = vim.bo[ev.buf].filetype
+        -- Skip filetypes where treesitter highlighting should be disabled
+        local disabled = { json = true }
+        if ft ~= "" and not disabled[ft] then
+            pcall(vim.treesitter.start)
+        end
+
+        -- Treesitter-based folding
+        vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo[0][0].foldmethod = "expr"
+    end,
+})
+
+vim.opt.foldenable = false
