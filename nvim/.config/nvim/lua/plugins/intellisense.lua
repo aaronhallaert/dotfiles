@@ -476,7 +476,22 @@ return {
         end,
     },
     {
+        "igorlfs/nvim-dap-view",
+        -- let the plugin lazy load itself
+        lazy = false,
+        ---@module 'dap-view'
+        ---@type dapview.Config
+        opts = {
+            winbar = {
+                controls = {
+                    enabled = true,
+                },
+            },
+        },
+    },
+    {
         "rcarriga/nvim-dap-ui",
+        enabled = false,
         config = function()
             require("dapui").setup()
 
