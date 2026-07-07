@@ -10,9 +10,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+vim.api.nvim_create_user_command("FormatToggle", function()
+    vim.g.disable_format = not vim.g.disable_format
+    print("Format on save: " .. (vim.g.disable_format and "OFF" or "ON"))
+end, {})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
-        require("aaron.utils").lsp_format()
+        if not vim.g.disable_format then
+            require("aaron.utils").lsp_format()
+        end
     end,
     pattern = {
         -- "*.js",

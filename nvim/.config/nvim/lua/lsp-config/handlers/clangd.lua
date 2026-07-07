@@ -7,8 +7,8 @@ M.setup = function()
         "--query-driver="
             .. vim.fn.expand("$HOME")
             .. "/.local/share/build_scripts/toolchains/**/*g++",
-        "--clang-tidy=false",
     }
+            -- "--clang-tidy=false",
 
     vim.lsp.config.clangd = {
         root_markers = {"CMakeLists.txt"},
