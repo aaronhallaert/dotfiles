@@ -2,7 +2,7 @@
 Description=Sway idle management service
 
 [Service]
-ExecStart=/home/aaron/.config/sway/scripts/swayidle.sh
+ExecStart=%h/.config/sway/scripts/swayidle.sh
 Restart=on-failure
 
 [Install]
