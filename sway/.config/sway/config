@@ -13,8 +13,9 @@ gaps outer 15
 
 default_border none
 # Remap capslock to home/control with keyd (https://github.com/rvaiya/keyd)
+seat seat0 xcursor_theme Yaru 24
 
-exec_always systemctl --user restart kanshi
+exec_always --no-startup-id systemctl --user restart kanshi
 exec_always --no-startup-id swaymsg "output * bg ~/wallpaper.jpg fill"
 
 exec_always --no-startup-id clipmon
@@ -187,10 +188,11 @@ bindsym $mod+Control+m exec --no-startup-id shutdown now
 bindsym $mod+Control+l exec systemctl suspend
 # bindsym $mod+Control+l exec swaylock -f -i ~/lockscreen_wallpaper.jpg
 
-exec_always /home/aaron/.config/sway/scripts/swayidle.sh &
+exec_always /home/a.hallaert/.config/sway/scripts/swayidle.sh &
 
 
 # reload the configuration file
+bindsym $mod+Shift+r exec kanshi reload
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exit
 
@@ -226,15 +228,16 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show, resize set 80 ppt 80 ppt, move position center
+bindsym $mod+minus scratchpad show, resize set width 60 ppt height 80 ppt, move position center
 bindsym $mod+equal scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 # bindsym $mod+s [title="^Sup ::"] scratchpad show
 
-bar { 
-swaybar_command /home/aaron/.config/sway/scripts/start_waybar.sh
-}
+exec_always "bash -c ${HOME}/.config/sway/scripts/start_waybar.sh"
+# bar { 
+#   swaybar_command /home/a.hallaert/.config/sway/scripts/start_waybar.sh"
+# }
 
 bindsym $mod+Control+Shift+Right move workspace to output right
 bindsym $mod+Control+Shift+Left move workspace to output left
@@ -245,6 +248,13 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 for_window [class="^Pinentry-gtk$"] resize set 20 ppt 60 ppt, floating enable, move position center
 for_window [app_id="^zen$" title="^Extension: \(Bitwarden Password Manager\) - Bitwarden — Zen Browser$"] resize set 20 ppt 60 ppt, floating enable, move position center
 for_window [app_id="^zen$" title="^Picture-in-Picture$"] {
+    floating enable;
+    resize set 25 ppt 27 ppt;
+    sticky enable;
+    move position 75 ppt 73 ppt;
+}
+
+for_window [title="^Picture in picture$"] {
     floating enable;
     resize set 25 ppt 27 ppt;
     sticky enable;

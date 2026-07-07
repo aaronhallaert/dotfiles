@@ -1,0 +1,9 @@
+@define-color bg          rgba(22, 22, 35, 0.96);
+@define-color bg-alt      rgba(38, 38, 58, 0.96);
+@define-color bg-hover    rgba(56, 56, 84, 0.95);
+@define-color fg          #EAEAF8;
+@define-color fg-dim      #B8B8D8;
+@define-color border      rgba(164, 185, 239, 0.28);
+@define-color accent      #A4B9EF;
+@define-color urgent      #e06c75;
+@define-color selected    rgba(164, 185, 239, 0.20);

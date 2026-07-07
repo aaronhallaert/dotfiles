@@ -1,4 +1,4 @@
-@define-color background rgba(24,24,30,1);
+@import "theme.css";
 
 * {
     border-radius: 0;
@@ -10,31 +10,51 @@
 
 window#waybar {
     background: @background;
-    color: #DADAE8;
+    color: @text;
+    border-radius: 12px;
+    border: 1px solid @bar-border;
 }
 
 tooltip {
-	background: @background;
-	border-radius: 15px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #a4b9ef;
-	}
+    background: @surface;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @border;
+    color: @text;
+}
+
+#workspaces,
+#clock {
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 4px;
+    padding: 0 6px;
+}
+
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory {
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 2px;
+    padding: 2px 10px;
+}
 
 #custom-mirror {
-    color: #F9C096;
+    color: @highlight;
 }
 
 #customprivacy {
-    color: #F9C096;
+    color: @highlight;
     margin-top: 5px;
     margin-bottom: 5px;
     padding-right: 10px;
     padding-left: 10px;
-    /* background: #524d45; */
-    /* border-radius: 15px; */
-    /* border-width: 2px; */
-    /* border-style: solid; */
 }
 
 #privacy {
@@ -46,66 +66,100 @@ tooltip {
 }
 
 #mode {
-    color: #1E1E28;
-    background: #F9C096;
+    color: @mode-fg;
+    background: @mode-bg;
+    border-radius: 8px;
     font-size: 8pt;
-    padding: 5px;
+    padding: 4px 8px;
+    margin: 4px 4px;
 }
 
 #workspaces button {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
     min-width: 0;
-    color: #DADAE8;
+    color: @text-dim;
+    border-radius: 8px;
+    margin: 2px 1px;
+    transition: all 0.2s ease;
 }
 
 #workspaces button.focused {
-    color: #A4B9EF;
+    color: @accent;
+    background: @ws-focused-bg;
 }
 
 #workspaces button.urgent {
-    color: #F9C096;
+    color: @highlight;
+    background: @ws-urgent-bg;
 }
 
 #workspaces button:hover {
-    border-color: #332e41;
-	color: #A4B9EF;
-}
-
-#clock, #battery, #pulseaudio, #workspaces, #mpd  {
-	padding: 2px 10px;
-    background: @background;
+    color: @accent;
+    background: @ws-hover-bg;
 }
 
 #network {
-    padding-left: 15px;
-    padding-right: 2px;
-    background: @background;
-}
-
-#tray {
-    margin-right: 1em;
-    margin-left: 1em;
-    background: @background;
-}
-
-
-#custom-vpn {
-    background: @background;
+    padding-left: 12px;
     padding-right: 10px;
 }
 
+#tray {
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 0.6em;
+    padding: 0 6px;
+}
+
+#custom-vpn {
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 2px;
+    padding: 2px 10px;
+}
+
 #clock {
-    padding-right: 15px;
+    padding: 2px 14px;
+    color: @text;
+}
+
+#custom-pi-sessions {
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 2px;
+    padding: 2px 10px;
+    color: @text-dim;
+}
+
+#custom-pi-sessions.pi-idle {
+    color: @highlight;
+}
+
+#custom-theme-toggle {
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 2px;
+    padding: 2px 10px;
+    color: @accent;
+    font-size: 12pt;
 }
 
 #custom-notification {
-    background: @background;
-    margin-right: 5px;
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 2px;
+    padding: 2px 8px;
 }
 
 #custom-spotify {
-    background: @background;
-    padding-right: 15px;
-    padding-left: 15px;
+    background: @surface;
+    border-radius: 10px;
+    border: 1px solid @border;
+    margin: 4px 4px;
+    padding: 2px 14px;
 }

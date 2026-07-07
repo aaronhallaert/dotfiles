@@ -1,0 +1,13 @@
+@define-color background rgba(26, 26, 40, 0.88);
+@define-color surface rgba(40, 40, 62, 0.85);
+@define-color border rgba(164, 185, 239, 0.14);
+@define-color text #DADAE8;
+@define-color text-dim #9898b8;
+@define-color accent #A4B9EF;
+@define-color highlight #F9C096;
+@define-color mode-fg #1E1E28;
+@define-color mode-bg #F9C096;
+@define-color ws-focused-bg rgba(164, 185, 239, 0.12);
+@define-color ws-urgent-bg rgba(249, 192, 150, 0.12);
+@define-color ws-hover-bg rgba(164, 185, 239, 0.08);
+@define-color bar-border rgba(164, 185, 239, 0.10);

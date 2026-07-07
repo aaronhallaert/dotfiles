@@ -1,7 +1,9 @@
 {
   "position": "top",
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
   "modules-left": [
-    "hyprland/workspaces",
     "sway/workspaces",
     "custom/mirror",
     "sway/mode"
@@ -11,13 +13,14 @@
     "group/customprivacy",
   ],
   "modules-right": [
+    "custom/pi-sessions",
     "cpu",
     "memory",
-    "power-profiles-daemon",
     "network",
     "pulseaudio",
     "battery",
     "custom/notification",
+    "custom/theme-toggle",
     "tray",
   ],
   "sway/workspaces": {
@@ -113,7 +116,8 @@
   },
   "clock": {
     "format": "  {:%a %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "xdg-open https://outlook.office.com/calendar/view/week"
   },
   "battery": {
     "states": {
@@ -172,6 +176,20 @@
   },
   "tray": {
     "spacing": 10
+  },
+  "custom/pi-sessions": {
+    "interval": 3,
+    "return-type": "json",
+    "exec": "$HOME/dotfiles/usr/scripts/waybar-pi.py",
+    "tooltip": true,
+    "escape": false
+  },
+  "custom/theme-toggle": {
+    "exec": "$HOME/dotfiles/usr/scripts/waybar-theme-toggle.sh --status",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "$HOME/dotfiles/usr/scripts/waybar-theme-toggle.sh",
+    "tooltip": true
   },
   "custom/notification": {
     "tooltip": false,

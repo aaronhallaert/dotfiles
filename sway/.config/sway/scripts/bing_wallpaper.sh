@@ -38,19 +38,19 @@ curl "$wluri" -s > ${WLPATH_TEMP}
 
 cp "${WLPATH_TEMP}" "${wlpath}"
 
-magick $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath
+convert $wlpath -filter Gaussian -blur 0x8 -level 10%,90%,0.5 $lswlpath
 
 # HYPRLAND_INSTANCE_SIGNATURE if running hyprland
-if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] && command -v hyprctl &> /dev/null
-then
-    set -e
-
-    hyprctl hyprpaper unload all
-    hyprctl hyprpaper preload "$wlpath"
-    hyprctl hyprpaper wallpaper ",$wlpath"
-
-    exit 0
-fi
+# if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] && command -v hyprctl &> /dev/null
+# then
+#     set -e
+#
+#     hyprctl hyprpaper unload all
+#     hyprctl hyprpaper preload "$wlpath"
+#     hyprctl hyprpaper wallpaper ",$wlpath"
+#
+#     exit 0
+# fi
 
 # if swaybg is installed, set the wallpaper with sway
 if command -v swaybg &> /dev/null

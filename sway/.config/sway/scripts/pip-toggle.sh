@@ -4,7 +4,7 @@
 STATE_FILE="/tmp/pip_hidden_state"
 
 # Get the PiP window ID
-PIP_WINDOW=$(swaymsg -t get_tree | jq -r '.. | select(.name? == "Picture-in-Picture") | .id')
+PIP_WINDOW=$(swaymsg -t get_tree | jq -r '.. | select(.name? == "Picture in picture") | .id')
 
 if [ -z "$PIP_WINDOW" ]; then
     exit 0  # No PiP window found
