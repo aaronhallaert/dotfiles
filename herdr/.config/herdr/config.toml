@@ -28,6 +28,8 @@
 # red = "#ff6188"
 # green = "#a6e3a1"
 
+name = "catppuccin"
+auto_switch = false
 [terminal]
 # Executable used for new interactive panes.
 # Empty means $SHELL, then /bin/sh.
@@ -67,12 +69,12 @@ prefix = "ctrl+b"
 
 # Prefix-mode actions
 # help = "prefix+?"
-# settings = "prefix+s"
+settings = "prefix+i"
 # detach = "prefix+q"
-# reload_config = "prefix+shift+r"
+reload_config = "prefix+r"
 # open_notification_target = "prefix+o"
-# workspace_picker = "prefix+w"
-# goto = "prefix+g"
+workspace_picker = "prefix+shift+s"
+goto = "prefix+s"
 # new_workspace = "prefix+shift+n"
 # new_worktree = "prefix+shift+g"
 # open_worktree = ""    # optional, unset by default
@@ -85,33 +87,33 @@ prefix = "ctrl+b"
 # next_agent = ""         # optional, unset by default
 # focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
 # remote_image_paste = "ctrl+v" # only active in herdr --remote; empty disables raw-key image paste
-# new_tab = "prefix+c"
+new_tab = "prefix+a"
 # rename_tab = "prefix+shift+t"
 # previous_tab = "prefix+p"
 # next_tab = "prefix+n"
-# move_tab_previous = ""   # optional, e.g. "alt+shift+left" moves the tab toward the front
-# move_tab_next = ""       # optional, e.g. "alt+shift+right" moves the tab toward the back
+move_tab_previous = "prefix+shift+p"   # tmux: swap-window -1
+move_tab_next = "prefix+shift+n"       # tmux: swap-window +1
 # switch_tab = "prefix+1..9"
 # switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
-# close_tab = "prefix+shift+x"
+close_tab = "prefix+shift+x"           # tmux: X kill-window (confirm)
 # rename_pane = "prefix+shift+p"
 # edit_scrollback = "prefix+e"
-# focus_pane_left = "prefix+h"
-# focus_pane_down = "prefix+j"
-# focus_pane_up = "prefix+k"
-# focus_pane_right = "prefix+l"
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
 # cycle_pane_next = "prefix+tab"
 # cycle_pane_previous = "prefix+shift+tab"
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
 split_vertical = "prefix+%"
 split_horizontal = "prefix+\""
 # close_pane = "prefix+x"
-# zoom = "prefix+z"       # legacy alias: fullscreen
+zoom = "prefix+e"       # tmux: e = resize-pane -Z (fullscreen/zoom)
 # resize_mode = "prefix+r"
-# resize_pane_left = ""   # optional, e.g. "ctrl+shift+alt+left" resizes without entering resize mode
-# resize_pane_down = ""   # optional, e.g. "ctrl+shift+alt+down"
-# resize_pane_up = ""     # optional, e.g. "ctrl+shift+alt+up"
-# resize_pane_right = ""  # optional, e.g. "ctrl+shift+alt+right"
+resize_pane_left = "alt+h"    # tmux: M-h
+resize_pane_down = "alt+j"    # tmux: M-j
+resize_pane_up = "alt+k"      # tmux: M-k
+resize_pane_right = "alt+l"   # tmux: M-l
 # toggle_sidebar = "prefix+b"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
@@ -130,9 +132,16 @@ split_horizontal = "prefix+\""
 # Popup width and height accept terminal cells or percentages such as "80%".
 # On Windows, command strings run through cmd.exe /d /c.
 [[keys.command]]
-key = "prefix+alt+g"
+key = "prefix+g"        # tmux: g = lazygit popup
 type = "popup"
 command = "lazygit"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+c"        # tmux: c = claude popup
+type = "popup"
+command = "claude"
 width = "80%"
 height = "80%"
 
@@ -289,6 +298,7 @@ height = "80%"
 # delivery = "off"
 # delay_seconds = 1
 
+delivery = "system"
 [ui.toast.herdr]
 # position = "bottom-right"
 
