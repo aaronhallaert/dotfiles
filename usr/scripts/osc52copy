@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Clipboard via OSC 52 — works headless over SSH. Kitty/wezterm/foot handle it.
+buf=$(cat)
+if [ -n "$TMUX" ]; then
+    # set-buffer -w sends via tmux's client connection — works in popups too
+    tmux set-buffer -w "$buf"
+else
+    encoded=$(printf '%s' "$buf" | base64 -w 0)
+    printf '\033]52;c;%s\a' "$encoded" > /dev/tty
+fi
