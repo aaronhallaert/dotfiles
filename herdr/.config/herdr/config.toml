@@ -145,6 +145,12 @@ command = "claude"
 width = "80%"
 height = "80%"
 
+[[keys.command]]
+key = "prefix+L"
+type = "plugin_action"
+command = "third774.last-workspace.toggle"
+description = "last workspace"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
