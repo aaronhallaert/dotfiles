@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
@@ -31,6 +32,7 @@
 name = "catppuccin"
 auto_switch = false
 [terminal]
+default_shell = "fish"
 # Executable used for new interactive panes.
 # Empty means $SHELL, then /bin/sh.
 # default_shell = ""
