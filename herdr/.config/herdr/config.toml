@@ -73,12 +73,12 @@ settings = "prefix+i"
 # detach = "prefix+q"
 reload_config = "prefix+r"
 # open_notification_target = "prefix+o"
-workspace_picker = "prefix+shift+s"
-goto = "prefix+s"
+# workspace_picker = "prefix+shift+s"
+# goto = "prefix+s"
 new_workspace = "prefix+shift+n"
 # new_worktree = "prefix+shift+g"
 # open_worktree = ""    # optional, unset by default
-# remove_worktree = ""  # optional, unset by default; opens confirmation
+remove_worktree = "prefix+U"  # optional, unset by default; opens confirmation
 # rename_workspace = "prefix+shift+w"
 # close_workspace = "prefix+shift+d"
 # previous_workspace = "" # optional, unset by default
@@ -161,6 +161,18 @@ height = "80%"
 # [worktrees]
 # directory = "~/.herdr/worktrees"
 
+[[keys.command]]
+key = "prefix+s"
+type = "plugin_action"
+command = "sessionizer.open"
+description = "open project workspace"
+
+[[keys.command]]
+key = "prefix+S"
+type = "plugin_action"
+command = "sessionizer.worktree-open"
+description = "open worktree workspace"
+
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
@@ -240,7 +252,7 @@ height = "80%"
 # hide_tab_bar_when_single_tab = false
 
 # Desktop tab row placement: "top" or "bottom".
-# tab_bar_position = "top"
+tab_bar_position = "bottom"
 
 # Ordered status entries at the right edge of the desktop tab bar.
 # Supported types: zoom, hostname, datetime, text, and command.
